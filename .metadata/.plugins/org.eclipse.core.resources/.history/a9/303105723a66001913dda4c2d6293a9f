@@ -1,0 +1,25 @@
+package com.ehr.portal.portal.socialsecutiry.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ehr.portal.mapper.EhrSsTypeMapper;
+import com.ehr.portal.pojo.EhrSsType;
+import com.ehr.portal.pojo.EhrSsTypeExample;
+import com.ehr.portal.socialsecutiry.service.SSTypeService;
+
+@Service
+public class SSTypeServiceImpl implements SSTypeService {
+
+	@Autowired
+	EhrSsTypeMapper typeMapper;
+	
+	@Override
+	public List<EhrSsType> queryAll() {
+		EhrSsTypeExample exam = new EhrSsTypeExample();
+		return typeMapper.selectByExample(exam);
+	}
+
+}

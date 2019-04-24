@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ehr.portal.mapper.EhrRecruitmentPlanMapper" >
+  <resultMap id="BaseResultMap" type="com.ehr.portal.pojo.EhrRecruitmentPlan" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="department" property="department" jdbcType="VARCHAR" />
+    <result column="post" property="post" jdbcType="VARCHAR" />
+    <result column="needs" property="needs" jdbcType="INTEGER" />
+    <result column="salary" property="salary" jdbcType="INTEGER" />
+    <result column="recruitmentWay" property="recruitmentway" jdbcType="CHAR" />
+    <result column="startDate" property="startdate" jdbcType="DATE" />
+    <result column="endDate" property="enddate" jdbcType="DATE" />
+    <result column="request" property="request" jdbcType="VARCHAR" />
+    <result column="duty" property="duty" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="flowPath" property="flowpath" jdbcType="VARCHAR" />
+    <result column="others" property="others" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, code, name, department, post, needs, salary, recruitmentWay, startDate, endDate, 
+    request, duty, remarks, flowPath, others
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ehr.portal.pojo.EhrRecruitmentPlanExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ehr_recruitment_plan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ehr_recruitment_plan
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ehr_recruitment_plan
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ehr.portal.pojo.EhrRecruitmentPlanExample" >
+    delete from ehr_recruitment_plan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ehr.portal.pojo.EhrRecruitmentPlan" >
+    insert into ehr_recruitment_plan (id, code, name, 
+      department, post, needs, 
+      salary, recruitmentWay, startDate, 
+      endDate, request, duty, 
+      remarks, flowPath, others
+      )
+    values (#{id,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{department,jdbcType=VARCHAR}, #{post,jdbcType=VARCHAR}, #{needs,jdbcType=INTEGER}, 
+      #{salary,jdbcType=INTEGER}, #{recruitmentway,jdbcType=CHAR}, #{startdate,jdbcType=DATE}, 
+      #{enddate,jdbcType=DATE}, #{request,jdbcType=VARCHAR}, #{duty,jdbcType=VARCHAR}, 
+      #{remarks,jdbcType=VARCHAR}, #{flowpath,jdbcType=VARCHAR}, #{others,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ehr.portal.pojo.EhrRecruitmentPlan" >
+    insert into ehr_recruitment_plan
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="department != null" >
+        department,
+      </if>
+      <if test="post != null" >
+        post,
+      </if>
+      <if test="needs != null" >
+        needs,
+      </if>
+      <if test="salary != null" >
+        salary,
+      </if>
+      <if test="recruitmentway != null" >
+        recruitmentWay,
+      </if>
+      <if test="startdate != null" >
+        startDate,
+      </if>
+      <if test="enddate != null" >
+        endDate,
+      </if>
+      <if test="request != null" >
+        request,
+      </if>
+      <if test="duty != null" >
+        duty,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="flowpath != null" >
+        flowPath,
+      </if>
+      <if test="others != null" >
+        others,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="post != null" >
+        #{post,jdbcType=VARCHAR},
+      </if>
+      <if test="needs != null" >
+        #{needs,jdbcType=INTEGER},
+      </if>
+      <if test="salary != null" >
+        #{salary,jdbcType=INTEGER},
+      </if>
+      <if test="recruitmentway != null" >
+        #{recruitmentway,jdbcType=CHAR},
+      </if>
+      <if test="startdate != null" >
+        #{startdate,jdbcType=DATE},
+      </if>
+      <if test="enddate != null" >
+        #{enddate,jdbcType=DATE},
+      </if>
+      <if test="request != null" >
+        #{request,jdbcType=VARCHAR},
+      </if>
+      <if test="duty != null" >
+        #{duty,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="flowpath != null" >
+        #{flowpath,jdbcType=VARCHAR},
+      </if>
+      <if test="others != null" >
+        #{others,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ehr.portal.pojo.EhrRecruitmentPlanExample" resultType="java.lang.Integer" >
+    select count(*) from ehr_recruitment_plan
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ehr_recruitment_plan
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.code != null" >
+        code = #{record.code,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.department != null" >
+        department = #{record.department,jdbcType=VARCHAR},
+      </if>
+      <if test="record.post != null" >
+        post = #{record.post,jdbcType=VARCHAR},
+      </if>
+      <if test="record.needs != null" >
+        needs = #{record.needs,jdbcType=INTEGER},
+      </if>
+      <if test="record.salary != null" >
+        salary = #{record.salary,jdbcType=INTEGER},
+      </if>
+      <if test="record.recruitmentway != null" >
+        recruitmentWay = #{record.recruitmentway,jdbcType=CHAR},
+      </if>
+      <if test="record.startdate != null" >
+        startDate = #{record.startdate,jdbcType=DATE},
+      </if>
+      <if test="record.enddate != null" >
+        endDate = #{record.enddate,jdbcType=DATE},
+      </if>
+      <if test="record.request != null" >
+        request = #{record.request,jdbcType=VARCHAR},
+      </if>
+      <if test="record.duty != null" >
+        duty = #{record.duty,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remarks != null" >
+        remarks = #{record.remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.flowpath != null" >
+        flowPath = #{record.flowpath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.others != null" >
+        others = #{record.others,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ehr_recruitment_plan
+    set id = #{record.id,jdbcType=INTEGER},
+      code = #{record.code,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      department = #{record.department,jdbcType=VARCHAR},
+      post = #{record.post,jdbcType=VARCHAR},
+      needs = #{record.needs,jdbcType=INTEGER},
+      salary = #{record.salary,jdbcType=INTEGER},
+      recruitmentWay = #{record.recruitmentway,jdbcType=CHAR},
+      startDate = #{record.startdate,jdbcType=DATE},
+      endDate = #{record.enddate,jdbcType=DATE},
+      request = #{record.request,jdbcType=VARCHAR},
+      duty = #{record.duty,jdbcType=VARCHAR},
+      remarks = #{record.remarks,jdbcType=VARCHAR},
+      flowPath = #{record.flowpath,jdbcType=VARCHAR},
+      others = #{record.others,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ehr.portal.pojo.EhrRecruitmentPlan" >
+    update ehr_recruitment_plan
+    <set >
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="post != null" >
+        post = #{post,jdbcType=VARCHAR},
+      </if>
+      <if test="needs != null" >
+        needs = #{needs,jdbcType=INTEGER},
+      </if>
+      <if test="salary != null" >
+        salary = #{salary,jdbcType=INTEGER},
+      </if>
+      <if test="recruitmentway != null" >
+        recruitmentWay = #{recruitmentway,jdbcType=CHAR},
+      </if>
+      <if test="startdate != null" >
+        startDate = #{startdate,jdbcType=DATE},
+      </if>
+      <if test="enddate != null" >
+        endDate = #{enddate,jdbcType=DATE},
+      </if>
+      <if test="request != null" >
+        request = #{request,jdbcType=VARCHAR},
+      </if>
+      <if test="duty != null" >
+        duty = #{duty,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="flowpath != null" >
+        flowPath = #{flowpath,jdbcType=VARCHAR},
+      </if>
+      <if test="others != null" >
+        others = #{others,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ehr.portal.pojo.EhrRecruitmentPlan" >
+    update ehr_recruitment_plan
+    set code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      department = #{department,jdbcType=VARCHAR},
+      post = #{post,jdbcType=VARCHAR},
+      needs = #{needs,jdbcType=INTEGER},
+      salary = #{salary,jdbcType=INTEGER},
+      recruitmentWay = #{recruitmentway,jdbcType=CHAR},
+      startDate = #{startdate,jdbcType=DATE},
+      endDate = #{enddate,jdbcType=DATE},
+      request = #{request,jdbcType=VARCHAR},
+      duty = #{duty,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      flowPath = #{flowpath,jdbcType=VARCHAR},
+      others = #{others,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

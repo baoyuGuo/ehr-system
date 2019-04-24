@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head id="Head1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>
+		员工离职
+	</title>
+	<link href="../css/Main.css" type="text/css" rel="stylesheet">
+    <script src="../js/MyJs.js" type="text/javascript" charset="gb2312"></script>
+    <script type="text/javascript" src="../js/WebCalendar.js"></script>
+    <script type="text/javascript" src="../css/Choose.js"></script>
+
+    <script type="text/javascript" language="javascript">
+        function addfrom() {
+            window.open("../../page/dimission_add", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
+        }
+
+        function showfrom(str) {
+            window.open("../../page/show", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
+        }
+
+        function updatefrom(str) {
+            window.open("../../page/dimission-update", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
+        }
+    </script>
+
+</head>
+<body class="main" marginwidth="0" marginheight="0">
+    <form method="post" action="Yglz_R.aspx" id="form1">
+		<div class="aspNetHidden">
+		<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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">
+		</div>
+
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+                <td>
+                    <table cellspacing="0" cellpadding="0" width="100%" align="center" border="0" class="form">
+                        <tbody><tr>
+                            <td align="right">员工工号：
+                            </td>
+                            <td>
+                                <input name="jsStaffNumer" type="text" id="jsStaffNumer" class="mytext">
+                            </td>
+                            <td align="right">员工姓名：
+                            </td>
+                            <td>
+                                <input name="jsXingMing" type="text" id="jsXingMing" class="mytext">
+                            </td>
+                            <td align="right">员工部门：
+                            </td>
+                            <td>
+                                <input name="jsBuMen" type="text" id="jsBuMen" class="mytext">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">离职类型：
+                            </td>
+                            <td colspan="5">
+                                <input name="jsLiZhiLX" type="text" id="jsLiZhiLX" class="mytext">
+                                离职时间：<input name="StartTime" type="text" id="StartTime" class="mytext" onclick="SelectDate(this,'yyyy-MM-dd')" readonly="readonly" style="width:75px;">至<input name="EndTime" type="text" id="EndTime" class="mytext" onclick="SelectDate(this,'yyyy-MM-dd')" readonly="readonly" style="width:75px;">
+                                <input type="submit" name="QueryBtn" value="查询" id="QueryBtn" class="mybtn">
+                                <input name="AddBtn" type="button" id="AddBtn" value="增加" class="mybtn" onclick="javascript: addfrom();">
+                                <input type="submit" name="DelBtn" value="删除" onclick="javascript:return delcheck();" id="DelBtn" class="mybtn">
+                                <a href="javascript:void(0)" onclick="chkAllw()" class="gvlink">全选</a>
+                                <a href="javascript:void(0)" onclick="revchkAll()" class="gvlink">反选</a>
+                            </td>
+                        </tr>
+                    </tbody></table>
+                    <table cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
+                        <tbody><tr>
+                            <td colspan="2">
+                                <div>
+	<table class="hkgv" cellspacing="0" rules="all" border="1" id="GridView1" style="width:100%;border-collapse:collapse;">
+		<tbody><tr class="hkHeadStyle">
+			<th scope="col" style="width:30px;"><img src="../../images/refresh.gif" alt="序号"></th><th align="center" scope="col" style="white-space:nowrap;">选择</th><th scope="col">员工工号</th><th scope="col">员工姓名</th><th scope="col">员工部门</th><th scope="col">离职类型</th><th scope="col">离职时间</th><th scope="col" style="width:80px;white-space:nowrap;">操作</th>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl02_lblxh">1</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl02_CheckSelect" type="checkbox" name="GridView1$ctl02$CheckSelect">
+                                                
+                                                
+                                            </td><td>00001</td><td>貂禅</td><td>行政办</td><td>辞退</td><td>2017/9/1</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                
+                                                <span id="GridView1_ctl02_Label1"> <a href="javascript:void(0)" onclick="showfrom(1);" class="gvlink">查看</a></span>
+                                                <span id="GridView1_ctl02_Label2"> <a href="javascript:void(0)" onclick="updatefrom(1);" class="gvlink">修改</a></span>
+                                            </td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl03_lblxh">2</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl03_CheckSelect" type="checkbox" name="GridView1$ctl03$CheckSelect">
+                                                
+                                                
+                                            </td><td>00002</td><td>庞统</td><td>零售事业部</td><td>外调</td><td>2017/9/7</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                
+                                                <span id="GridView1_ctl03_Label1"> <a href="javascript:void(0)" onclick="showfrom(2);" class="gvlink">查看</a></span>
+                                                <span id="GridView1_ctl03_Label2"> <a href="javascript:void(0)" onclick="updatefrom(2);" class="gvlink">修改</a></span>
+                                            </td>
+		</tr>
+		<tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                <span id="GridView1_ctl04_lblxh">3</span>
+            </td>
+            <td align="center" style="width:30px;">
+                <input id="GridView1_ctl04_CheckSelect" type="checkbox" name="GridView1$ctl04$CheckSelect">
+            </td>
+            <td>00004</td><td>李典</td><td>财务中心</td><td>退休</td><td>2017/8/16</td><td align="center" style="width:80px;white-space:nowrap;">
+                
+                <span id="GridView1_ctl04_Label1"> <a href="javascript:void(0)" onclick="showfrom(3);" class="gvlink">查看</a></span>
+                <span id="GridView1_ctl04_Label2"> <a href="javascript:void(0)" onclick="updatefrom(3);" class="gvlink">修改</a></span>
+            </td>
+		</tr>
+	</tbody></table>
+</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="height: 22px" >
+                            	Footer
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </td>
+            </tr>
+        </tbody></table>
+    </form>
+
+
+</body>
+</html>

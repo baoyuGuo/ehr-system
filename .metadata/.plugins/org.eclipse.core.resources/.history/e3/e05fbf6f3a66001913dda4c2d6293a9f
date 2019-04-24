@@ -1,0 +1,31 @@
+package com.ehr.portal.portal.mapper;
+
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+
+import com.ehr.portal.pojo.EhrSsRecords;
+import com.ehr.portal.pojo.EhrSsRecordsExample;
+
+public interface EhrSsRecordsMapper {
+    int countByExample(EhrSsRecordsExample example);
+
+    int deleteByExample(EhrSsRecordsExample example);
+
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(EhrSsRecords record);
+
+    int insertSelective(EhrSsRecords record);
+
+    List<EhrSsRecords> selectByExample(EhrSsRecordsExample example);
+
+    EhrSsRecords selectByPrimaryKey(Integer id);
+
+    int updateByExampleSelective(@Param("record") EhrSsRecords record, @Param("example") EhrSsRecordsExample example);
+
+    int updateByExample(@Param("record") EhrSsRecords record, @Param("example") EhrSsRecordsExample example);
+
+    int updateByPrimaryKeySelective(EhrSsRecords record);
+
+    int updateByPrimaryKey(EhrSsRecords record);
+}

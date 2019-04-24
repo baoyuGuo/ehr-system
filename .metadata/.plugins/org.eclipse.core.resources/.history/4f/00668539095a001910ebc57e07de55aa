@@ -1,0 +1,236 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1"><meta http-equiv="Content-Type" content="text/html; charset=gb2312" /><title>
+	考核信息
+</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script th:src="@{/js/Choose.js}" ></script>
+<script th:src="@{/js/MyJs.js}" ></script>
+<script th:src="@{/js/WebCalendar.js}" ></script>
+
+<script type="text/javascript">
+    function addfrom() {
+        var num = Math.random();
+        window.open("/page/p_records_add", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
+    }
+
+    function showfrom(str) {
+        var num = Math.random();
+        window.open("Khgl_R_Show.aspx?tmp=" + num + "&id=" + str + "", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
+    }
+
+    function updatefrom(str) {
+        var num = Math.random();
+        window.open("Khgl_R_Mod.aspx?tmp=" + num + "&id=" + str + "", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
+    }
+</script>
+</head>
+<body class="main">
+    <form method="post" action="Khgl_R.aspx" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+</div>
+
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    <table cellspacing="0" cellpadding="0" width="100%" align="center" border="0" class="form">
+                         <tr>
+                            <td align="right">员工工号：
+                            </td>
+                            <td>
+                                <input name="enumber" type="text" id="enumber" class="mytext">
+                            </td>
+                            <td align="right">员工姓名：
+                            </td>
+                            <td>
+                                <input name="ename" type="text" id="ename" class="mytext">
+                            </td>
+                            <td align="right">考核类型：
+                            </td>
+                            <td>
+                                <select name="type" id="type" style="width:150px;">
+									<option selected="selected" value=""></option>
+									<option value="工作日休假">业务能力</option>
+									<option value="休息日休假">管理能力</option>
+									<option value="休息日休假">技术能力</option>
+								</select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">考核区间
+                            </td>
+                            <td>
+								<select name="range" id="range" style="width:150px;">
+									<option selected="selected" value=""></option>
+									<option value="一季度">一季度</option>
+									<option value="二季度">二季度</option>
+									<option value="三季度">三季度</option>
+									<option value="四季度">四季度</option>
+								</select>                            </td>
+                            <td align="right">考核等级：
+                            </td>
+                            <td>
+								<select name="level" id="level" style="width:150px;">
+									<option selected="selected" value=""></option>
+									<option value="A">A</option>
+									<option value="B">B</option>
+									<option value="C">C</option>
+									<option value="D">D</option>
+								</select>                              </td>
+                        </tr>
+                        <tr>
+                            <td align="right">考核时间：
+                            </td>
+                            <td colspan="5">
+                                <input name="StartTime" type="text" id="StartTime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />至<input name="EndTime" type="text" id="EndTime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />
+                                <input type="submit" name="QueryBtn" value="查询" id="QueryBtn" class="mybtn" />
+                                <input name="AddBtn" type="button" id="AddBtn" value="增加" class="mybtn" onclick="javascript: addfrom();" />
+                                <input type="submit" name="DelBtn" value="删除" id="DelBtn" class="mybtn" />
+                                <a href="javascript:void(0)" onclick="chkAllw()" class="gvlink">全选</a>
+                                <a href="javascript:void(0)" onclick="revchkAll()" class="gvlink">反选</a>
+                            </td>
+                        </tr>
+
+                    </table>
+                    <table cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
+                        <tr>
+                            <td colspan="2">
+                                <div>
+	<table class="hkgv" cellspacing="0" rules="all" border="1" id="GridView1" style="width:100%;border-collapse:collapse;">
+		<tr class="hkHeadStyle">
+			<th scope="col" style="width:30px;"><img src="/pic/refresh.gif" alt="序号" /></th><th align="center" scope="col" style="white-space:nowrap;">选择</th><th scope="col">工号</th><th scope="col">员工姓名</th><th scope="col">考核类型</th><th scope="col">考核期间</th><th scope="col">考核成绩</th><th scope="col">考核等级</th><th scope="col">考核时间</th><th scope="col" style="width:80px;white-space:nowrap;">操作</th>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl02_lblxh">1</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl02_CheckSelect" type="checkbox" name="GridView1$ctl02$CheckSelect" />
+                                                
+                                                
+                                            </td><td>00001</td><td>貂禅</td><td>业务能力</td><td>上半年</td><td>90.00</td><td>优秀(80-100)</td><td>2017/9/14</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                
+                                                <span id="GridView1_ctl02_Label1"> <a href="javascript:void(0)" onclick="showfrom(1);" class="gvlink">查看</a></span>
+                                                <span id="GridView1_ctl02_Label2"> <a href="javascript:void(0)" onclick="updatefrom(1);" class="gvlink">修改</a></span>
+                                            </td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl03_lblxh">2</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl03_CheckSelect" type="checkbox" name="GridView1$ctl03$CheckSelect" />
+                                                
+                                                
+                                            </td><td>00001</td><td>貂禅</td><td>管理能力</td><td>一季度</td><td>75.00</td><td>良好(60-79)</td><td>2017/9/13</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                
+                                                <span id="GridView1_ctl03_Label1"> <a href="javascript:void(0)" onclick="showfrom(2);" class="gvlink">查看</a></span>
+                                                <span id="GridView1_ctl03_Label2"> <a href="javascript:void(0)" onclick="updatefrom(2);" class="gvlink">修改</a></span>
+                                            </td>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl04_lblxh">3</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl04_CheckSelect" type="checkbox" name="GridView1$ctl04$CheckSelect" />
+                                                
+                                                
+                                            </td><td>00003</td><td>马超</td><td>技术能力</td><td>二季度</td><td>45.00</td><td>不及格(0-59)</td><td>2017/9/25</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                
+                                                <span id="GridView1_ctl04_Label1"> <a href="javascript:void(0)" onclick="showfrom(3);" class="gvlink">查看</a></span>
+                                                <span id="GridView1_ctl04_Label2"> <a href="javascript:void(0)" onclick="updatefrom(3);" class="gvlink">修改</a></span>
+                                            </td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl05_lblxh">4</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl05_CheckSelect" type="checkbox" name="GridView1$ctl05$CheckSelect" />
+                                                
+                                                
+                                            </td><td>00004</td><td>李典</td><td>业务能力</td><td>下半年</td><td>85.00</td><td>优秀(80-100)</td><td>2017/9/12</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                
+                                                <span id="GridView1_ctl05_Label1"> <a href="javascript:void(0)" onclick="showfrom(4);" class="gvlink">查看</a></span>
+                                                <span id="GridView1_ctl05_Label2"> <a href="javascript:void(0)" onclick="updatefrom(4);" class="gvlink">修改</a></span>
+                                            </td>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl06_lblxh">5</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl06_CheckSelect" type="checkbox" name="GridView1$ctl06$CheckSelect" />
+                                                
+                                                
+                                            </td><td>00006</td><td>张昭</td><td>管理能力</td><td>上半年</td><td>65.00</td><td>良好(60-79)</td><td>2017/9/28</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                
+                                                <span id="GridView1_ctl06_Label1"> <a href="javascript:void(0)" onclick="showfrom(5);" class="gvlink">查看</a></span>
+                                                <span id="GridView1_ctl06_Label2"> <a href="javascript:void(0)" onclick="updatefrom(5);" class="gvlink">修改</a></span>
+                                            </td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl07_lblxh">6</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl07_CheckSelect" type="checkbox" name="GridView1$ctl07$CheckSelect" />
+                                                
+                                                
+                                            </td><td>00002</td><td>庞统</td><td>业务能力</td><td>上半年</td><td>75.00</td><td>良好(60-79)</td><td>2017/9/14</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                
+                                                <span id="GridView1_ctl07_Label1"> <a href="javascript:void(0)" onclick="showfrom(6);" class="gvlink">查看</a></span>
+                                                <span id="GridView1_ctl07_Label2"> <a href="javascript:void(0)" onclick="updatefrom(6);" class="gvlink">修改</a></span>
+                                            </td>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl08_lblxh">7</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl08_CheckSelect" type="checkbox" name="GridView1$ctl08$CheckSelect" />
+                                                
+                                                
+                                            </td><td>00001</td><td>貂禅</td><td>业务能力</td><td>上半年</td><td>96.00</td><td>优秀(80-100)</td><td>2017/9/15</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                
+                                                <span id="GridView1_ctl08_Label1"> <a href="javascript:void(0)" onclick="showfrom(7);" class="gvlink">查看</a></span>
+                                                <span id="GridView1_ctl08_Label2"> <a href="javascript:void(0)" onclick="updatefrom(7);" class="gvlink">修改</a></span>
+                                            </td>
+		</tr>
+	</table>
+</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="height: 22px">
+                                
+<!-- AspNetPager 7.5 Copyright:2003-2015 Webdiyer (www.webdiyer.com) -->
+<!--记录总数只有一页，AspNetPager已自动隐藏，若需在只有一页数据时显示AspNetPager，请将AlwaysShow属性值设为true！-->
+<!-- AspNetPager 7.5 Copyright:2003-2015 Webdiyer (www.webdiyer.com) -->
+
+
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+        <script type="text/javascript">
+            var wName;
+            var vtbox;
+            function OpenType(tbox, ttype) {
+                vtbox = tbox;
+                var rdm = Math.random();
+                var str = "" + document.getElementById(tbox).value;
+
+                //browser
+                var bstr = getBrowserType();
+                if (bstr == '3' | bstr == '4' | bstr == '5') {
+                    window.open("../../Choose/hr/Xzqt.aspx?tmp=" + rdm + "&rqstr=" + str + "&type=" + ttype + "", 'newwindow8', 'height=480,width=400,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no');
+                }
+                else {
+                    wName = window.showModalDialog("../../Choose/hr/Xzqt.aspx?tmp=" + rdm + "&rqstr=" + str + "&type=" + ttype + "", "newwindow", "dialogWidth:400px;DialogHeight=480px;status:no;scroll=yes;help:no");
+                }
+
+                //if (wName != null && wName != "undefined") {
+                document.getElementById(tbox).value = wName;
+                //}
+            }
+
+            function setValue_sys(str) {
+                document.getElementById(vtbox).value = str;
+            }
+        </script>
+    </form>
+</body>
+</html>

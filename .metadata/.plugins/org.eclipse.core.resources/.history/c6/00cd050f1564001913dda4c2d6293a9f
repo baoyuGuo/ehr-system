@@ -1,0 +1,8 @@
+package com.ehr.portal.humanfiles.service;
+
+import com.ehr.portal.utils.EhrResult;
+
+public interface SuspensionReinstateService {
+	//查询所有记录
+	EhrResult queryAll();
+}

@@ -1,0 +1,13 @@
+package com.ehr.humanfiles;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class EhrHumanfilesSysApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(EhrHumanfilesSysApplication.class, args);
+	}
+
+}

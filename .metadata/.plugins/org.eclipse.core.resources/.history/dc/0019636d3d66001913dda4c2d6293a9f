@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+	奖惩系统
+</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+<script th:src="@{/js/Choose.js}" ></script>
+<script th:src="@{/js/MyJs.js}" ></script>
+<script th:src="@{/js/WebCalendar.js}" ></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script type="text/javascript">
+        function addfrom() {
+            var num = Math.random();
+            window.open("Jcgl_Add.aspx?tmp=" + num + "", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
+        }
+
+        function showfrom(str) {
+            var num = Math.random();
+            window.open("Jcgl_Show.aspx?tmp=" + num + "&id=" + str + "", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
+        }
+
+        function updatefrom(str) {
+            var num = Math.random();
+            window.open("Jcgl_Mod.aspx?tmp=" + num + "&id=" + str + "", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
+        }
+    </script>
+
+</head>
+<body class="main">
+    <form method="post" action="Jcgl_R.aspx" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTQ5MTUxNDI1MA9kFgICAw9kFgoCCQ8PZBYCHghyZWFkb25seQUIcmVhZG9ubHlkAgsPD2QWAh8ABQhyZWFkb25seWQCEQ8PZBYCHgdvbmNsaWNrBR1qYXZhc2NyaXB0OnJldHVybiBkZWxjaGVjaygpO2QCEw88KwARAwAPFgQeC18hRGF0YUJvdW5kZx4LXyFJdGVtQ291bnQCBGQBEBYAFgAWAAwUKwAAFgJmD2QWCgIBDw9kFgIfAQUZamF2YXNjcmlwdDpjaGFuZ2VCZyh0aGlzKRYQZg9kFgICAQ8PFgIeBFRleHQFATFkZAIBD2QWBAIDDw8WAh8EBQExZGQCBQ8PFgIfBAUG6LKC56aFZGQCAg8PFgIfBAUKMjAxNy0wOS0wN2RkAgMPDxYCHwQFBuiyguemhWRkAgQPDxYCHwQFCeWFqOWLpOWllmRkAgUPDxYCHwQFBuWlluWKsWRkAgYPDxYCHwQFBjQ0OC44MGRkAgcPZBYGAgEPDxYCHwQFATFkZAIDDw8WAh8EBU4gPGEgaHJlZj0iamF2YXNjcmlwdDp2b2lkKDApIiBvbmNsaWNrPSJzaG93ZnJvbSgxKTsiIGNsYXNzPSJndmxpbmsiPuafpeecizwvYT5kZAIFDw8WAh8EBVAgPGEgaHJlZj0iamF2YXNjcmlwdDp2b2lkKDApIiBvbmNsaWNrPSJ1cGRhdGVmcm9tKDEpOyIgY2xhc3M9Imd2bGluayI+5L+u5pS5PC9hPmRkAgIPD2QWAh8BBRlqYXZhc2NyaXB0OmNoYW5nZUJnKHRoaXMpFhBmD2QWAgIBDw8WAh8EBQEyZGQCAQ9kFgQCAw8PFgIfBAUBMmRkAgUPDxYCHwQFBuW6nue7n2RkAgIPDxYCHwQFCjIwMTctMDktMjhkZAIDDw8WAh8EBQblup7nu59kZAIEDw8WAh8EBRXkvJrorq7ov5/liLDljYHliIbpkp9kZAIFDw8WAh8EBQbmg6nnvZpkZAIGDw8WAh8EBQctMTQ1LjQ4ZGQCBw9kFgYCAQ8PFgIfBAUBMmRkAgMPDxYCHwQFTiA8YSBocmVmPSJqYXZhc2NyaXB0OnZvaWQoMCkiIG9uY2xpY2s9InNob3dmcm9tKDIpOyIgY2xhc3M9Imd2bGluayI+5p+l55yLPC9hPmRkAgUPDxYCHwQFUCA8YSBocmVmPSJqYXZhc2NyaXB0OnZvaWQoMCkiIG9uY2xpY2s9InVwZGF0ZWZyb20oMik7IiBjbGFzcz0iZ3ZsaW5rIj7kv67mlLk8L2E+ZGQCAw8PZBYCHwEFGWphdmFzY3JpcHQ6Y2hhbmdlQmcodGhpcykWEGYPZBYCAgEPDxYCHwQFATNkZAIBD2QWBAIDDw8WAh8EBQEzZGQCBQ8PFgIfBAUG6ams6LaFZGQCAg8PFgIfBAUKMjAxNy0wOC0xMGRkAgMPDxYCHwQFBumprOi2hWRkAgQPDxYCHwQFD+acgOS9s+WQjOS6i+WllmRkAgUPDxYCHwQFBuWlluWKsWRkAgYPDxYCHwQFBjQ0OC44MGRkAgcPZBYGAgEPDxYCHwQFATNkZAIDDw8WAh8EBU4gPGEgaHJlZj0iamF2YXNjcmlwdDp2b2lkKDApIiBvbmNsaWNrPSJzaG93ZnJvbSgzKTsiIGNsYXNzPSJndmxpbmsiPuafpeecizwvYT5kZAIFDw8WAh8EBVAgPGEgaHJlZj0iamF2YXNjcmlwdDp2b2lkKDApIiBvbmNsaWNrPSJ1cGRhdGVmcm9tKDMpOyIgY2xhc3M9Imd2bGluayI+5L+u5pS5PC9hPmRkAgQPD2QWAh8BBRlqYXZhc2NyaXB0OmNoYW5nZUJnKHRoaXMpFhBmD2QWAgIBDw8WAh8EBQE0ZGQCAQ9kFgQCAw8PFgIfBAUBOGRkAgUPDxYCHwQFBuiyguemhWRkAgIPDxYCHwQFCjIwMTgtMDUtMDRkZAIDDw8WAh8EBQbosoLnpoVkZAIEDw8WAh8EBRLpg6jpl6jkuJrnu6nmnIDlt65kZAIFDw8WAh8EBQbmg6nnvZpkZAIGDw8WAh8EBQctMTIzLjQwZGQCBw9kFgYCAQ8PFgIfBAUBOGRkAgMPDxYCHwQFTiA8YSBocmVmPSJqYXZhc2NyaXB0OnZvaWQoMCkiIG9uY2xpY2s9InNob3dmcm9tKDgpOyIgY2xhc3M9Imd2bGluayI+5p+l55yLPC9hPmRkAgUPDxYCHwQFUCA8YSBocmVmPSJqYXZhc2NyaXB0OnZvaWQoMCkiIG9uY2xpY2s9InVwZGF0ZWZyb20oOCk7IiBjbGFzcz0iZ3ZsaW5rIj7kv67mlLk8L2E+ZGQCBQ9kFgICBg8PFgIfBAUGNjI4LjcyZGQCFQ8PFgQeCFBhZ2VTaXplAg8eC1JlY29yZGNvdW50AgRkZBgCBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WBAUbR3JpZFZpZXcxJGN0bDAyJENoZWNrU2VsZWN0BRtHcmlkVmlldzEkY3RsMDMkQ2hlY2tTZWxlY3QFG0dyaWRWaWV3MSRjdGwwNCRDaGVja1NlbGVjdAUbR3JpZFZpZXcxJGN0bDA1JENoZWNrU2VsZWN0BQlHcmlkVmlldzEPPCsADAEIAgFk" />
+</div>
+
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    <table cellspacing="0" cellpadding="0" width="100%" align="center" border="0" class="form">
+                        <tr>
+                            <td align="right">员工工号：
+                            </td>
+                            <td>
+                                <input name="eNum" type="text" id="eNum" class="mytext" style="width:150px;" />
+                            </td>
+                            <td align="right">员工姓名：
+                            </td>
+                            <td>
+                                <input name="eName" type="text" id="eName" class="mytext" style="width:150px;" />
+                            </td>
+                            <td align="right">奖惩属性：
+                            </td>
+                            <td>
+                                <select name="JcShuxing" id="JcShuxing" style="width:150px;">
+									<option selected="selected" value=""></option>
+									<option value="奖励">奖励</option>
+									<option value="惩罚">惩罚</option>
+								</select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">奖惩项目：
+                            </td>
+                            <td colspan="5">
+                                <input name="jsJcXiangMu" type="text" id="jsJcXiangMu" class="mytext" style="width:150px;" />
+                                奖惩时间：
+                            <input name="StartTime" type="text" id="StartTime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />至<input name="EndTime" type="text" id="EndTime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />
+                                <input type="submit" name="QueryBtn" value="查询" id="QueryBtn" class="mybtn" />
+                                <input name="AddBtn" type="button" id="AddBtn" value="增加" class="mybtn" onclick="javascript: addfrom();" />
+                                <input type="submit" name="DelBtn" value="删除" onclick="javascript:return delcheck();" id="DelBtn" class="mybtn" />
+                                <a href="javascript:void(0)" onclick="chkAllw()" class="gvlink">全选</a>
+                                <a href="javascript:void(0)" onclick="revchkAll()" class="gvlink">反选</a>
+                            </td>
+                        </tr>
+                    </table>
+                    <table cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
+                        <tr>
+                            <td colspan="2">
+                                <div>
+									<table class="hkgv" cellspacing="0" rules="all" border="1" id="GridView1" style="width:100%;border-collapse:collapse;">
+										<tr class="hkHeadStyle">
+											<th scope="col" style="width:30px;">
+											<img src="/pic/refresh.gif" alt="序号" /></th>
+											<th align="center" scope="col" style="white-space:nowrap;">选择</th>
+											<th scope="col" style="width:80px;">奖惩时间</th>
+											<th scope="col">员工姓名</th>
+											<th scope="col">奖惩项目</th>
+											<th scope="col" style="width:70px;">奖惩属性</th>
+											<th scope="col">奖惩金额</th>
+											<th scope="col" style="width:80px;white-space:nowrap;">操作</th>
+										</tr>
+										</table>
+									</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="height: 22px">
+                                
+<!-- AspNetPager 7.5 Copyright:2003-2015 Webdiyer (www.webdiyer.com) -->
+<!--记录总数只有一页，AspNetPager已自动隐藏，若需在只有一页数据时显示AspNetPager，请将AlwaysShow属性值设为true！-->
+<!-- AspNetPager 7.5 Copyright:2003-2015 Webdiyer (www.webdiyer.com) -->
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+<script type="text/javascript">
+	window.onload=function (){
+		$.ajax({
+	        type:'get',
+	        url:'/humanfiles/queryRewardPunish',
+	        async:false,	        
+	        success:function(res){
+	        	var data = res.data;
+	        	for (var i=1;i<=data.length;i++){
+	        		
+	        		var $tr = $("<tr class=\"hkRowStyle\" onclick=\"javascript:changeBg(this)\">"+
+	    					"<td align=\"center\"> <span id=\"GridView1_ctl\""+ i +"_lblxh\">"+ i +"</span>"+ "</td>"+
+	    					"<td align=\"center\" style=\"width:30px;\"><input id=\"GridView1_ctl\""+ i +"\"_CheckSelect\" type=\"checkbox\" name=\"GridView1$ctl\""+i+"\"$CheckSelect\">"+"</td>"+
+	    					"<td>" + data[i-1].enumber + "</td>" +
+	    					"<td>" + data[i-1].ename + "</td>" +
+	    					"<td align=\"center\">" + data[i-1].type + "</td>" +
+	    					"<td align=\"center\">" + data[i-1].title + "</td>" +
+	    					"<td align=\"center\">" + data[i-1].remarks + "</td>" +
+	    					"<td align=\"center\" style=\"width:80px;white-space:nowrap;\"> " + 
+	    						"<span id=\"GridView1_ctl"+i+"_Label1\">" + "<a href=\"javascript:void(0)\" onclick=\"showfrom(1);\" class=\"gvlink\">查看</a></span>" + 
+	    						"<span id=\"GridView1_ctl"+i+"_Label2\"> <a href=\"javascript:void(0)\" onclick=\"updatefrom(1);\" class=\"gvlink\">修改</a></span></td></tr>");
+	    					var $table = $(".hkgv");
+	    					$table.append($tr);
+	        	}
+	        }
+	   });
+	}
+</script>
+</html>

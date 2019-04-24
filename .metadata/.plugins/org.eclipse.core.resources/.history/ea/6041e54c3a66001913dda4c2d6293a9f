@@ -1,0 +1,102 @@
+package com.ehr.portal.controllers;
+
+import java.text.ParseException;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.ehr.portal.portal.pojo.EhrRegisterForm;
+import com.ehr.portal.portal.pojo.EhrUser;
+import com.ehr.portal.portal.service.PortalService;
+import com.ehr.portal.portal.utils.DateUtils;
+import com.ehr.portal.portal.utils.EhrResult;
+
+@Controller
+@RequestMapping("/portal")
+public class PortalController {
+
+	@Autowired
+	PortalService portalService;
+	/*
+	 * 	进行登陆；
+	 * 	登陆成功跳转至首页并初始化左边导航栏
+	 * */
+	@RequestMapping("/login")
+	public ModelAndView login(EhrUser user,HttpServletRequest request,HttpServletResponse response) {
+		EhrResult result = portalService.login(user,request,response);
+		ModelAndView mv = new ModelAndView();
+		if (result.isOK()) {
+			mv.addObject("username", user.getEnumber());
+			mv.setViewName("redirect:/createLeft/humanfiles");
+		}else {
+			mv.addObject("login_failed", result.getMsg());
+			mv.setViewName("index");
+		}
+		return mv;
+	}
+	
+	/**
+	 * @param reg
+	 * @param result
+	 * @return
+	 * @throws ParseException
+	 * 注册
+	 */
+	@RequestMapping("/register")
+	public ModelAndView register(@Validated EhrRegisterForm reg, BindingResult result) throws ParseException {
+		//注册数据校验
+		ModelAndView mv = new ModelAndView();
+		if (result.hasErrors()) {
+			List<FieldError> fieldErrors = result.getFieldErrors();
+			Map<String, String> map = new HashMap<>();
+			for (FieldError fieldError :  fieldErrors) {
+				map.put(fieldError.getField(), fieldError.getDefaultMessage());
+			}
+			mv.addObject("errors", map);
+			mv.setViewName("register");
+			return mv;
+		}
+		//进行注册
+		EhrUser user = new EhrUser();
+		String email =  reg.getEmail();
+		user.setEnumber(email.substring(0, email.indexOf("@")));
+		user.setPassword(reg.getPassword());
+		user.setDay(DateUtils.fDate(new Date(System.currentTimeMillis())));
+		EhrResult res = portalService.register(user);
+		if (!res.isOK()){
+			mv.addObject("errors_unknown", res.getMsg());
+			mv.setViewName("register");
+		}else {
+			mv.addObject("reg_success","注册成功！请登陆");
+			mv.setViewName("index");
+		}
+		return mv;
+	}
+	
+	/**
+	 * @param request
+	 * @param response
+	 * @return
+	 * 退出登录
+	 */
+	@RequestMapping("/logout")
+	public String logout(HttpServletRequest request, HttpServletResponse response) {
+		if(portalService.logout(request, response).isOK()) {
+			return "index";
+		}else {
+			return "error";
+		}
+	}
+}

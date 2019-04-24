@@ -1,0 +1,16 @@
+package com.ehr.portal.socialsecutiry.service.impl;
+
+import java.util.List;
+
+import com.ehr.portal.pojo.EhrAccounts;
+import com.ehr.portal.socialsecutiry.service.AccountServcie;
+
+public class AccountServiceImpl implements AccountServcie {
+
+	@Override
+	public List<EhrAccounts> queryAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

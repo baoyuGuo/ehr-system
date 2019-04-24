@@ -1,0 +1,31 @@
+package com.ehr.portal.portal.mapper;
+
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+
+import com.ehr.portal.portal.pojo.EhrAdjustment;
+import com.ehr.portal.portal.pojo.EhrAdjustmentExample;
+
+public interface EhrAdjustmentMapper {
+    int countByExample(EhrAdjustmentExample example);
+
+    int deleteByExample(EhrAdjustmentExample example);
+
+    int deleteByPrimaryKey(String enumber);
+
+    int insert(EhrAdjustment record);
+
+    int insertSelective(EhrAdjustment record);
+
+    List<EhrAdjustment> selectByExample(EhrAdjustmentExample example);
+
+    EhrAdjustment selectByPrimaryKey(String enumber);
+
+    int updateByExampleSelective(@Param("record") EhrAdjustment record, @Param("example") EhrAdjustmentExample example);
+
+    int updateByExample(@Param("record") EhrAdjustment record, @Param("example") EhrAdjustmentExample example);
+
+    int updateByPrimaryKeySelective(EhrAdjustment record);
+
+    int updateByPrimaryKey(EhrAdjustment record);
+}

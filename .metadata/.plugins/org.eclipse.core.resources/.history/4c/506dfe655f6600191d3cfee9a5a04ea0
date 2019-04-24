@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ehr.portal.mapper.EhrEmployeeBaseInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.ehr.portal.pojo.EhrEmployeeBaseInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="eNumber" property="enumber" jdbcType="VARCHAR" />
+    <result column="eBirth" property="ebirth" jdbcType="DATE" />
+    <result column="eNativePlace" property="enativeplace" jdbcType="VARCHAR" />
+    <result column="nation" property="nation" jdbcType="VARCHAR" />
+    <result column="maritalStatus" property="maritalstatus" jdbcType="CHAR" />
+    <result column="politicalStatus" property="politicalstatus" jdbcType="CHAR" />
+    <result column="health" property="health" jdbcType="CHAR" />
+    <result column="identityNumber" property="identitynumber" jdbcType="VARCHAR" />
+    <result column="workBeginning" property="workbeginning" jdbcType="VARCHAR" />
+    <result column="workTime" property="worktime" jdbcType="VARCHAR" />
+    <result column="educationBg" property="educationbg" jdbcType="CHAR" />
+    <result column="graduatedSchool" property="graduatedschool" jdbcType="VARCHAR" />
+    <result column="major" property="major" jdbcType="VARCHAR" />
+    <result column="graduationDate" property="graduationdate" jdbcType="DATE" />
+    <result column="foreignLanguage" property="foreignlanguage" jdbcType="VARCHAR" />
+    <result column="languageLevel" property="languagelevel" jdbcType="VARCHAR" />
+    <result column="computerSkills" property="computerskills" jdbcType="VARCHAR" />
+    <result column="computerGrade" property="computergrade" jdbcType="VARCHAR" />
+    <result column="certificate" property="certificate" jdbcType="VARCHAR" />
+    <result column="educationExperience" property="educationexperience" jdbcType="VARCHAR" />
+    <result column="speciality" property="speciality" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="hobby" property="hobby" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="postalCode" property="postalcode" jdbcType="VARCHAR" />
+    <result column="recruitmentWay" property="recruitmentway" jdbcType="CHAR" />
+    <result column="referrerID" property="referrerid" jdbcType="VARCHAR" />
+    <result column="socialRelationship" property="socialrelationship" jdbcType="VARCHAR" />
+    <result column="workExperience" property="workexperience" jdbcType="VARCHAR" />
+    <result column="learningExperience" property="learningexperience" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="dateOfEntry" property="dateofentry" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, eNumber, eBirth, eNativePlace, nation, maritalStatus, politicalStatus, health, 
+    identityNumber, workBeginning, workTime, educationBg, graduatedSchool, major, graduationDate, 
+    foreignLanguage, languageLevel, computerSkills, computerGrade, certificate, educationExperience, 
+    speciality, email, hobby, address, postalCode, recruitmentWay, referrerID, socialRelationship, 
+    workExperience, learningExperience, remarks, dateOfEntry
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ehr.portal.pojo.EhrEmployeeBaseInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ehr_employee_base_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ehr_employee_base_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ehr_employee_base_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ehr.portal.pojo.EhrEmployeeBaseInfoExample" >
+    delete from ehr_employee_base_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ehr.portal.pojo.EhrEmployeeBaseInfo" >
+    insert into ehr_employee_base_info (id, eNumber, eBirth, 
+      eNativePlace, nation, maritalStatus, 
+      politicalStatus, health, identityNumber, 
+      workBeginning, workTime, educationBg, 
+      graduatedSchool, major, graduationDate, 
+      foreignLanguage, languageLevel, computerSkills, 
+      computerGrade, certificate, educationExperience, 
+      speciality, email, hobby, 
+      address, postalCode, recruitmentWay, 
+      referrerID, socialRelationship, workExperience, 
+      learningExperience, remarks, dateOfEntry
+      )
+    values (#{id,jdbcType=INTEGER}, #{enumber,jdbcType=VARCHAR}, #{ebirth,jdbcType=DATE}, 
+      #{enativeplace,jdbcType=VARCHAR}, #{nation,jdbcType=VARCHAR}, #{maritalstatus,jdbcType=CHAR}, 
+      #{politicalstatus,jdbcType=CHAR}, #{health,jdbcType=CHAR}, #{identitynumber,jdbcType=VARCHAR}, 
+      #{workbeginning,jdbcType=VARCHAR}, #{worktime,jdbcType=VARCHAR}, #{educationbg,jdbcType=CHAR}, 
+      #{graduatedschool,jdbcType=VARCHAR}, #{major,jdbcType=VARCHAR}, #{graduationdate,jdbcType=DATE}, 
+      #{foreignlanguage,jdbcType=VARCHAR}, #{languagelevel,jdbcType=VARCHAR}, #{computerskills,jdbcType=VARCHAR}, 
+      #{computergrade,jdbcType=VARCHAR}, #{certificate,jdbcType=VARCHAR}, #{educationexperience,jdbcType=VARCHAR}, 
+      #{speciality,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{hobby,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{postalcode,jdbcType=VARCHAR}, #{recruitmentway,jdbcType=CHAR}, 
+      #{referrerid,jdbcType=VARCHAR}, #{socialrelationship,jdbcType=VARCHAR}, #{workexperience,jdbcType=VARCHAR}, 
+      #{learningexperience,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, #{dateofentry,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ehr.portal.pojo.EhrEmployeeBaseInfo" >
+    insert into ehr_employee_base_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="enumber != null" >
+        eNumber,
+      </if>
+      <if test="ebirth != null" >
+        eBirth,
+      </if>
+      <if test="enativeplace != null" >
+        eNativePlace,
+      </if>
+      <if test="nation != null" >
+        nation,
+      </if>
+      <if test="maritalstatus != null" >
+        maritalStatus,
+      </if>
+      <if test="politicalstatus != null" >
+        politicalStatus,
+      </if>
+      <if test="health != null" >
+        health,
+      </if>
+      <if test="identitynumber != null" >
+        identityNumber,
+      </if>
+      <if test="workbeginning != null" >
+        workBeginning,
+      </if>
+      <if test="worktime != null" >
+        workTime,
+      </if>
+      <if test="educationbg != null" >
+        educationBg,
+      </if>
+      <if test="graduatedschool != null" >
+        graduatedSchool,
+      </if>
+      <if test="major != null" >
+        major,
+      </if>
+      <if test="graduationdate != null" >
+        graduationDate,
+      </if>
+      <if test="foreignlanguage != null" >
+        foreignLanguage,
+      </if>
+      <if test="languagelevel != null" >
+        languageLevel,
+      </if>
+      <if test="computerskills != null" >
+        computerSkills,
+      </if>
+      <if test="computergrade != null" >
+        computerGrade,
+      </if>
+      <if test="certificate != null" >
+        certificate,
+      </if>
+      <if test="educationexperience != null" >
+        educationExperience,
+      </if>
+      <if test="speciality != null" >
+        speciality,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="hobby != null" >
+        hobby,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="postalcode != null" >
+        postalCode,
+      </if>
+      <if test="recruitmentway != null" >
+        recruitmentWay,
+      </if>
+      <if test="referrerid != null" >
+        referrerID,
+      </if>
+      <if test="socialrelationship != null" >
+        socialRelationship,
+      </if>
+      <if test="workexperience != null" >
+        workExperience,
+      </if>
+      <if test="learningexperience != null" >
+        learningExperience,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="dateofentry != null" >
+        dateOfEntry,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="enumber != null" >
+        #{enumber,jdbcType=VARCHAR},
+      </if>
+      <if test="ebirth != null" >
+        #{ebirth,jdbcType=DATE},
+      </if>
+      <if test="enativeplace != null" >
+        #{enativeplace,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null" >
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="maritalstatus != null" >
+        #{maritalstatus,jdbcType=CHAR},
+      </if>
+      <if test="politicalstatus != null" >
+        #{politicalstatus,jdbcType=CHAR},
+      </if>
+      <if test="health != null" >
+        #{health,jdbcType=CHAR},
+      </if>
+      <if test="identitynumber != null" >
+        #{identitynumber,jdbcType=VARCHAR},
+      </if>
+      <if test="workbeginning != null" >
+        #{workbeginning,jdbcType=VARCHAR},
+      </if>
+      <if test="worktime != null" >
+        #{worktime,jdbcType=VARCHAR},
+      </if>
+      <if test="educationbg != null" >
+        #{educationbg,jdbcType=CHAR},
+      </if>
+      <if test="graduatedschool != null" >
+        #{graduatedschool,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null" >
+        #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="graduationdate != null" >
+        #{graduationdate,jdbcType=DATE},
+      </if>
+      <if test="foreignlanguage != null" >
+        #{foreignlanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="languagelevel != null" >
+        #{languagelevel,jdbcType=VARCHAR},
+      </if>
+      <if test="computerskills != null" >
+        #{computerskills,jdbcType=VARCHAR},
+      </if>
+      <if test="computergrade != null" >
+        #{computergrade,jdbcType=VARCHAR},
+      </if>
+      <if test="certificate != null" >
+        #{certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="educationexperience != null" >
+        #{educationexperience,jdbcType=VARCHAR},
+      </if>
+      <if test="speciality != null" >
+        #{speciality,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="hobby != null" >
+        #{hobby,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="postalcode != null" >
+        #{postalcode,jdbcType=VARCHAR},
+      </if>
+      <if test="recruitmentway != null" >
+        #{recruitmentway,jdbcType=CHAR},
+      </if>
+      <if test="referrerid != null" >
+        #{referrerid,jdbcType=VARCHAR},
+      </if>
+      <if test="socialrelationship != null" >
+        #{socialrelationship,jdbcType=VARCHAR},
+      </if>
+      <if test="workexperience != null" >
+        #{workexperience,jdbcType=VARCHAR},
+      </if>
+      <if test="learningexperience != null" >
+        #{learningexperience,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="dateofentry != null" >
+        #{dateofentry,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ehr.portal.pojo.EhrEmployeeBaseInfoExample" resultType="java.lang.Integer" >
+    select count(*) from ehr_employee_base_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ehr_employee_base_info
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.enumber != null" >
+        eNumber = #{record.enumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ebirth != null" >
+        eBirth = #{record.ebirth,jdbcType=DATE},
+      </if>
+      <if test="record.enativeplace != null" >
+        eNativePlace = #{record.enativeplace,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nation != null" >
+        nation = #{record.nation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.maritalstatus != null" >
+        maritalStatus = #{record.maritalstatus,jdbcType=CHAR},
+      </if>
+      <if test="record.politicalstatus != null" >
+        politicalStatus = #{record.politicalstatus,jdbcType=CHAR},
+      </if>
+      <if test="record.health != null" >
+        health = #{record.health,jdbcType=CHAR},
+      </if>
+      <if test="record.identitynumber != null" >
+        identityNumber = #{record.identitynumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.workbeginning != null" >
+        workBeginning = #{record.workbeginning,jdbcType=VARCHAR},
+      </if>
+      <if test="record.worktime != null" >
+        workTime = #{record.worktime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.educationbg != null" >
+        educationBg = #{record.educationbg,jdbcType=CHAR},
+      </if>
+      <if test="record.graduatedschool != null" >
+        graduatedSchool = #{record.graduatedschool,jdbcType=VARCHAR},
+      </if>
+      <if test="record.major != null" >
+        major = #{record.major,jdbcType=VARCHAR},
+      </if>
+      <if test="record.graduationdate != null" >
+        graduationDate = #{record.graduationdate,jdbcType=DATE},
+      </if>
+      <if test="record.foreignlanguage != null" >
+        foreignLanguage = #{record.foreignlanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.languagelevel != null" >
+        languageLevel = #{record.languagelevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.computerskills != null" >
+        computerSkills = #{record.computerskills,jdbcType=VARCHAR},
+      </if>
+      <if test="record.computergrade != null" >
+        computerGrade = #{record.computergrade,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certificate != null" >
+        certificate = #{record.certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.educationexperience != null" >
+        educationExperience = #{record.educationexperience,jdbcType=VARCHAR},
+      </if>
+      <if test="record.speciality != null" >
+        speciality = #{record.speciality,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hobby != null" >
+        hobby = #{record.hobby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postalcode != null" >
+        postalCode = #{record.postalcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recruitmentway != null" >
+        recruitmentWay = #{record.recruitmentway,jdbcType=CHAR},
+      </if>
+      <if test="record.referrerid != null" >
+        referrerID = #{record.referrerid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.socialrelationship != null" >
+        socialRelationship = #{record.socialrelationship,jdbcType=VARCHAR},
+      </if>
+      <if test="record.workexperience != null" >
+        workExperience = #{record.workexperience,jdbcType=VARCHAR},
+      </if>
+      <if test="record.learningexperience != null" >
+        learningExperience = #{record.learningexperience,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remarks != null" >
+        remarks = #{record.remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dateofentry != null" >
+        dateOfEntry = #{record.dateofentry,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ehr_employee_base_info
+    set id = #{record.id,jdbcType=INTEGER},
+      eNumber = #{record.enumber,jdbcType=VARCHAR},
+      eBirth = #{record.ebirth,jdbcType=DATE},
+      eNativePlace = #{record.enativeplace,jdbcType=VARCHAR},
+      nation = #{record.nation,jdbcType=VARCHAR},
+      maritalStatus = #{record.maritalstatus,jdbcType=CHAR},
+      politicalStatus = #{record.politicalstatus,jdbcType=CHAR},
+      health = #{record.health,jdbcType=CHAR},
+      identityNumber = #{record.identitynumber,jdbcType=VARCHAR},
+      workBeginning = #{record.workbeginning,jdbcType=VARCHAR},
+      workTime = #{record.worktime,jdbcType=VARCHAR},
+      educationBg = #{record.educationbg,jdbcType=CHAR},
+      graduatedSchool = #{record.graduatedschool,jdbcType=VARCHAR},
+      major = #{record.major,jdbcType=VARCHAR},
+      graduationDate = #{record.graduationdate,jdbcType=DATE},
+      foreignLanguage = #{record.foreignlanguage,jdbcType=VARCHAR},
+      languageLevel = #{record.languagelevel,jdbcType=VARCHAR},
+      computerSkills = #{record.computerskills,jdbcType=VARCHAR},
+      computerGrade = #{record.computergrade,jdbcType=VARCHAR},
+      certificate = #{record.certificate,jdbcType=VARCHAR},
+      educationExperience = #{record.educationexperience,jdbcType=VARCHAR},
+      speciality = #{record.speciality,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      hobby = #{record.hobby,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      postalCode = #{record.postalcode,jdbcType=VARCHAR},
+      recruitmentWay = #{record.recruitmentway,jdbcType=CHAR},
+      referrerID = #{record.referrerid,jdbcType=VARCHAR},
+      socialRelationship = #{record.socialrelationship,jdbcType=VARCHAR},
+      workExperience = #{record.workexperience,jdbcType=VARCHAR},
+      learningExperience = #{record.learningexperience,jdbcType=VARCHAR},
+      remarks = #{record.remarks,jdbcType=VARCHAR},
+      dateOfEntry = #{record.dateofentry,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ehr.portal.pojo.EhrEmployeeBaseInfo" >
+    update ehr_employee_base_info
+    <set >
+      <if test="enumber != null" >
+        eNumber = #{enumber,jdbcType=VARCHAR},
+      </if>
+      <if test="ebirth != null" >
+        eBirth = #{ebirth,jdbcType=DATE},
+      </if>
+      <if test="enativeplace != null" >
+        eNativePlace = #{enativeplace,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null" >
+        nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="maritalstatus != null" >
+        maritalStatus = #{maritalstatus,jdbcType=CHAR},
+      </if>
+      <if test="politicalstatus != null" >
+        politicalStatus = #{politicalstatus,jdbcType=CHAR},
+      </if>
+      <if test="health != null" >
+        health = #{health,jdbcType=CHAR},
+      </if>
+      <if test="identitynumber != null" >
+        identityNumber = #{identitynumber,jdbcType=VARCHAR},
+      </if>
+      <if test="workbeginning != null" >
+        workBeginning = #{workbeginning,jdbcType=VARCHAR},
+      </if>
+      <if test="worktime != null" >
+        workTime = #{worktime,jdbcType=VARCHAR},
+      </if>
+      <if test="educationbg != null" >
+        educationBg = #{educationbg,jdbcType=CHAR},
+      </if>
+      <if test="graduatedschool != null" >
+        graduatedSchool = #{graduatedschool,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null" >
+        major = #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="graduationdate != null" >
+        graduationDate = #{graduationdate,jdbcType=DATE},
+      </if>
+      <if test="foreignlanguage != null" >
+        foreignLanguage = #{foreignlanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="languagelevel != null" >
+        languageLevel = #{languagelevel,jdbcType=VARCHAR},
+      </if>
+      <if test="computerskills != null" >
+        computerSkills = #{computerskills,jdbcType=VARCHAR},
+      </if>
+      <if test="computergrade != null" >
+        computerGrade = #{computergrade,jdbcType=VARCHAR},
+      </if>
+      <if test="certificate != null" >
+        certificate = #{certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="educationexperience != null" >
+        educationExperience = #{educationexperience,jdbcType=VARCHAR},
+      </if>
+      <if test="speciality != null" >
+        speciality = #{speciality,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="hobby != null" >
+        hobby = #{hobby,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="postalcode != null" >
+        postalCode = #{postalcode,jdbcType=VARCHAR},
+      </if>
+      <if test="recruitmentway != null" >
+        recruitmentWay = #{recruitmentway,jdbcType=CHAR},
+      </if>
+      <if test="referrerid != null" >
+        referrerID = #{referrerid,jdbcType=VARCHAR},
+      </if>
+      <if test="socialrelationship != null" >
+        socialRelationship = #{socialrelationship,jdbcType=VARCHAR},
+      </if>
+      <if test="workexperience != null" >
+        workExperience = #{workexperience,jdbcType=VARCHAR},
+      </if>
+      <if test="learningexperience != null" >
+        learningExperience = #{learningexperience,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="dateofentry != null" >
+        dateOfEntry = #{dateofentry,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ehr.portal.pojo.EhrEmployeeBaseInfo" >
+    update ehr_employee_base_info
+    set eNumber = #{enumber,jdbcType=VARCHAR},
+      eBirth = #{ebirth,jdbcType=DATE},
+      eNativePlace = #{enativeplace,jdbcType=VARCHAR},
+      nation = #{nation,jdbcType=VARCHAR},
+      maritalStatus = #{maritalstatus,jdbcType=CHAR},
+      politicalStatus = #{politicalstatus,jdbcType=CHAR},
+      health = #{health,jdbcType=CHAR},
+      identityNumber = #{identitynumber,jdbcType=VARCHAR},
+      workBeginning = #{workbeginning,jdbcType=VARCHAR},
+      workTime = #{worktime,jdbcType=VARCHAR},
+      educationBg = #{educationbg,jdbcType=CHAR},
+      graduatedSchool = #{graduatedschool,jdbcType=VARCHAR},
+      major = #{major,jdbcType=VARCHAR},
+      graduationDate = #{graduationdate,jdbcType=DATE},
+      foreignLanguage = #{foreignlanguage,jdbcType=VARCHAR},
+      languageLevel = #{languagelevel,jdbcType=VARCHAR},
+      computerSkills = #{computerskills,jdbcType=VARCHAR},
+      computerGrade = #{computergrade,jdbcType=VARCHAR},
+      certificate = #{certificate,jdbcType=VARCHAR},
+      educationExperience = #{educationexperience,jdbcType=VARCHAR},
+      speciality = #{speciality,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      hobby = #{hobby,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      postalCode = #{postalcode,jdbcType=VARCHAR},
+      recruitmentWay = #{recruitmentway,jdbcType=CHAR},
+      referrerID = #{referrerid,jdbcType=VARCHAR},
+      socialRelationship = #{socialrelationship,jdbcType=VARCHAR},
+      workExperience = #{workexperience,jdbcType=VARCHAR},
+      learningExperience = #{learningexperience,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      dateOfEntry = #{dateofentry,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

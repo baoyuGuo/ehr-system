@@ -1,0 +1,21 @@
+package com.ehr.portal.humanfiles.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ehr.portal.humanfiles.service.SuspensionReinstateService;
+import com.ehr.portal.mapper.EhrAdjustmentMapper;
+import com.ehr.portal.utils.EhrResult;
+
+@Service
+public class SuspensionReinstateServiceImpl implements SuspensionReinstateService {
+
+	@Autowired
+	EhrAdjustmentMapper aMapper;
+	
+	@Override
+	public EhrResult queryAll() {
+		return null;
+	}
+
+}

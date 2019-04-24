@@ -1,0 +1,64 @@
+package com.ehr.portal.service.impl;
+
+import java.util.List;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ehr.portal.mapper.EhrUserMapper;
+import com.ehr.portal.pojo.EhrUser;
+import com.ehr.portal.pojo.EhrUserExample;
+import com.ehr.portal.pojo.EhrUserExample.Criteria;
+import com.ehr.portal.service.PortalService;
+import com.ehr.portal.utils.EhrResult;
+import com.ehr.portal.utils.JsonUtils;
+
+@Service
+public class PortalServiceImpl implements PortalService {
+	
+	@Autowired
+	EhrUserMapper userMapper;
+	
+	@Override
+	public EhrResult login(EhrUser user,HttpServletResponse response) {
+		try {
+			String enumber = user.getEnumber();
+			String password = user.getPassword();
+			EhrUserExample example = new EhrUserExample();
+			Criteria criteria = example.createCriteria();
+			criteria.andEnumberEqualTo(enumber);
+			List<EhrUser> list = userMapper.selectByExample(example);
+			if (list.isEmpty() || list==null) {
+				return EhrResult.build(403, "用户不存在!");
+			}else if(!list.get(0).getPassword().equals(password)) {
+				return EhrResult.build(403, "密码不正确!");
+			}
+			Cookie cookie = new Cookie("user", JsonUtils.objectToJson(user));
+			response.addCookie(cookie);
+			return EhrResult.ok();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public EhrResult register(EhrUser register) {
+		try {
+			EhrUserExample example = new EhrUserExample();
+			Criteria criteria = example.createCriteria();
+			criteria.andEnumberEqualTo(register.getEnumber());
+			if (userMapper.countByExample(example) > 0) {
+				return EhrResult.build(403, "账户已被注册");
+			}
+			userMapper.insert(register);
+			return EhrResult.ok();
+		} catch (Exception e) {
+			return EhrResult.build(403, "未知的错误！");
+		}
+	}
+
+}

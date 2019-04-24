@@ -1,0 +1,12 @@
+package com.ehr.portal.pojo;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Mappings {
+	public static Map<String, String> ADJUST_MAP = new HashMap<String, String>();
+	
+	static {
+		ADJUST_MAP.put("post", "岗位调用");
+	}
+}

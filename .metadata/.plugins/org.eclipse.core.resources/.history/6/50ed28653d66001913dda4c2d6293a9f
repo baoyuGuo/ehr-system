@@ -1,0 +1,60 @@
+package com.ehr.pojo;
+
+public class QueryForm {
+	//员工工号
+	private String enumber;
+	//开始事件
+	private String start;
+	//结束时间 
+	private String end;
+	//类别
+	private String type;
+	//员工姓名
+	private String ename;
+	//部门名称
+	private String edname;
+	//部门编号
+	private String edepartmentnum;
+	public String getEnumber() {
+		return enumber;
+	}
+	public void setEnumber(String enumber) {
+		this.enumber = enumber;
+	}
+	public String getStart() {
+		return start;
+	}
+	public void setStart(String start) {
+		this.start = start;
+	}
+	public String getEnd() {
+		return end;
+	}
+	public void setEnd(String end) {
+		this.end = end;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public String getEname() {
+		return ename;
+	}
+	public void setEname(String ename) {
+		this.ename = ename;
+	}
+	public String getEdname() {
+		return edname;
+	}
+	public void setEdname(String edname) {
+		this.edname = edname;
+	}
+	public String getEdepartmentnum() {
+		return edepartmentnum;
+	}
+	public void setEdepartmentnum(String edepartmentnum) {
+		this.edepartmentnum = edepartmentnum;
+	}
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<!-- 添加viewport标签，使得页面对移动设备友好； 
+	   initial-scale:加载完的比例为1：1
+	   maxinum-scale=1.0和user-scalable=no确保页面不支持缩放
+-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>eHR System</title>
+
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+ 
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+ 
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var location = window.location.href;   
+		var id = location.substring(location.lastIndexOf('/')+1);
+        $("#"+id).addClass("active");
+	});
+	
+	//右侧嵌入页面高度自适应
+    function changeFrameHeight(){
+        var ifm= document.getElementById("mainFrame"); 
+        ifm.height=document.documentElement.clientHeight;
+    }
+
+    window.onresize=function(){  
+         changeFrameHeight();  
+    };
+</script>
+</head>
+<body >
+		<div class="container-fluid">
+			<!-- 导航栏 -->
+			<div id="nav">
+				<nav class="navbar navbar-inverse" role="navigation">
+					<div class="navbar-header">
+	     			   <a class="navbar-brand" href="#">人力资源管理系统</a>
+	    			</div>
+    				<ul id="navbar" class="nav navbar-nav navbar-left" >
+			            <li id="humanfiles"><a href="../createLeft/humanfiles">人事管理</a></li>
+			            <li id="salary"><a href="../createLeft/salary">薪酬管理</a></li>
+			            <li id="socialsecurity"><a href="../createLeft/socialsecurity">社保福利</a></li>
+			            <li id="attendence"><a href="../createLeft/attendence">考勤管理</a></li>
+			            <li id="performance"><a href="../createLeft/performance">绩效考核</a></li>
+			            <li id="department"><a href="../createLeft/department">部门管理</a></li>
+			            <li id="recruitment"><a href="../createLeft/recruitment">招聘管理</a></li>
+			            <li id="training"><a href="../createLeft/training">培训管理</a></li>
+			            <li id="warning"><a href="../createLeft/warning">预警系统</a></li>
+			            <li id="system"><a href="../createLeft/system">系统管理</a></li>
+			        </ul>    
+					<ul class="nav  navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-user" th:text="${username}"></span>Admin</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span>退出</a></li>
+					</ul>
+				</nav>
+			</div>
+			
+			<div  id="left_nav" class="pageSidebar col-xs-2 col-sm-2 col-md-2 col-lg-2" >
+			 	<a class="list-group-item"  th:each="module : ${sys_module}" target="mainFrame" th:href="@{${'../../page/' + module.key}}">
+					<span  th:text="${module.value}"></span>
+              	</a>
+			</div>
+			
+			<!-- 左侧导航栏和右侧面板的分割线 -->
+			<div class="splitter"></div>
+			
+			<div id="workspace" class="col-xs-10 col-sm-10 col-md-10 col-lg-10 ">
+				<a class="list-group-item" target="mainFrame"  href="/page/notice">
+					<span class="">公告栏</span>
+              	</a>
+				<iframe id="mainFrame" name="mainFrame" src="../../page/notice" scrolling="yes" frameborder="0"  onload="changeFrameHeight()" width="100%" >
+				</iframe>
+			</div>
+		</div>
+</body>
+
+
+</html>

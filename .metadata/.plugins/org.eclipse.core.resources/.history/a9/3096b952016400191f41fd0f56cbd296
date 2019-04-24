@@ -1,0 +1,17 @@
+package com.ehr.portal.humanfiles.service;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import com.ehr.portal.pojo.EhrDimission;
+import com.ehr.portal.pojo.EhrEmployee;
+import com.ehr.portal.pojo.EhrEmployeeBaseInfo;
+import com.ehr.portal.pojo.EhrSalaryAccounts;
+import com.ehr.portal.pojo.QueryForm;
+import com.ehr.portal.utils.EhrResult;
+
+public interface HumanFilesService {
+	public EhrResult entry(EhrEmployee employee,MultipartFile picture,EhrEmployeeBaseInfo baseInfo, EhrSalaryAccounts salaryInfo );
+	public EhrResult dimission_add(EhrDimission dimission);
+	public EhrEmployee queryEmployeeByEnumber(String enumber);
+	public EhrResult queryDimissionRecords(QueryForm form);
+}

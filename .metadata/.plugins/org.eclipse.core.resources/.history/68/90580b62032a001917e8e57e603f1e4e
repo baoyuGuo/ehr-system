@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<div class="container-fluid">
+		<form action="" role="form" class="">
+			 <!-- 左边12 -->
+			 <div class="span10"></div>
+			 <div class="span2"></div>
+		</form>
+	</div>
+
+</body>
+</html>

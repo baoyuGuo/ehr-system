@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ehr.mapper.EhrEmployeeMapper" >
+  <resultMap id="BaseResultMap" type="com.ehr.pojo.EhrEmployee" >
+    <id column="eNumber" property="enumber" jdbcType="VARCHAR" />
+    <result column="eName" property="ename" jdbcType="VARCHAR" />
+    <result column="eGender" property="egender" jdbcType="CHAR" />
+    <result column="eEmail" property="eemail" jdbcType="VARCHAR" />
+    <result column="eTelphone" property="etelphone" jdbcType="VARCHAR" />
+    <result column="eDepartmentNum" property="edepartmentnum" jdbcType="VARCHAR" />
+    <result column="eAbilityLevel" property="eabilitylevel" jdbcType="VARCHAR" />
+    <result column="ePost" property="epost" jdbcType="VARCHAR" />
+    <result column="eFileUrl" property="efileurl" jdbcType="VARCHAR" />
+    <result column="eStatus" property="estatus" jdbcType="VARCHAR" />
+    <result column="eContractType" property="econtracttype" jdbcType="CHAR" />
+    <result column="ePostType" property="eposttype" jdbcType="VARCHAR" />
+    <result column="photo" property="photo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    eNumber, eName, eGender, eEmail, eTelphone, eDepartmentNum, eAbilityLevel, ePost, 
+    eFileUrl, eStatus, eContractType, ePostType, photo
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ehr.pojo.EhrEmployeeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ehr_employee
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ehr_employee
+    where eNumber = #{enumber,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ehr_employee
+    where eNumber = #{enumber,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ehr.pojo.EhrEmployeeExample" >
+    delete from ehr_employee
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ehr.pojo.EhrEmployee" >
+    insert into ehr_employee (eNumber, eName, eGender, 
+      eEmail, eTelphone, eDepartmentNum, 
+      eAbilityLevel, ePost, eFileUrl, 
+      eStatus, eContractType, ePostType, 
+      photo)
+    values (#{enumber,jdbcType=VARCHAR}, #{ename,jdbcType=VARCHAR}, #{egender,jdbcType=CHAR}, 
+      #{eemail,jdbcType=VARCHAR}, #{etelphone,jdbcType=VARCHAR}, #{edepartmentnum,jdbcType=VARCHAR}, 
+      #{eabilitylevel,jdbcType=VARCHAR}, #{epost,jdbcType=VARCHAR}, #{efileurl,jdbcType=VARCHAR}, 
+      #{estatus,jdbcType=VARCHAR}, #{econtracttype,jdbcType=CHAR}, #{eposttype,jdbcType=VARCHAR}, 
+      #{photo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ehr.pojo.EhrEmployee" >
+    insert into ehr_employee
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="enumber != null" >
+        eNumber,
+      </if>
+      <if test="ename != null" >
+        eName,
+      </if>
+      <if test="egender != null" >
+        eGender,
+      </if>
+      <if test="eemail != null" >
+        eEmail,
+      </if>
+      <if test="etelphone != null" >
+        eTelphone,
+      </if>
+      <if test="edepartmentnum != null" >
+        eDepartmentNum,
+      </if>
+      <if test="eabilitylevel != null" >
+        eAbilityLevel,
+      </if>
+      <if test="epost != null" >
+        ePost,
+      </if>
+      <if test="efileurl != null" >
+        eFileUrl,
+      </if>
+      <if test="estatus != null" >
+        eStatus,
+      </if>
+      <if test="econtracttype != null" >
+        eContractType,
+      </if>
+      <if test="eposttype != null" >
+        ePostType,
+      </if>
+      <if test="photo != null" >
+        photo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="enumber != null" >
+        #{enumber,jdbcType=VARCHAR},
+      </if>
+      <if test="ename != null" >
+        #{ename,jdbcType=VARCHAR},
+      </if>
+      <if test="egender != null" >
+        #{egender,jdbcType=CHAR},
+      </if>
+      <if test="eemail != null" >
+        #{eemail,jdbcType=VARCHAR},
+      </if>
+      <if test="etelphone != null" >
+        #{etelphone,jdbcType=VARCHAR},
+      </if>
+      <if test="edepartmentnum != null" >
+        #{edepartmentnum,jdbcType=VARCHAR},
+      </if>
+      <if test="eabilitylevel != null" >
+        #{eabilitylevel,jdbcType=VARCHAR},
+      </if>
+      <if test="epost != null" >
+        #{epost,jdbcType=VARCHAR},
+      </if>
+      <if test="efileurl != null" >
+        #{efileurl,jdbcType=VARCHAR},
+      </if>
+      <if test="estatus != null" >
+        #{estatus,jdbcType=VARCHAR},
+      </if>
+      <if test="econtracttype != null" >
+        #{econtracttype,jdbcType=CHAR},
+      </if>
+      <if test="eposttype != null" >
+        #{eposttype,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null" >
+        #{photo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ehr.pojo.EhrEmployeeExample" resultType="java.lang.Integer" >
+    select count(*) from ehr_employee
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ehr_employee
+    <set >
+      <if test="record.enumber != null" >
+        eNumber = #{record.enumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ename != null" >
+        eName = #{record.ename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.egender != null" >
+        eGender = #{record.egender,jdbcType=CHAR},
+      </if>
+      <if test="record.eemail != null" >
+        eEmail = #{record.eemail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.etelphone != null" >
+        eTelphone = #{record.etelphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.edepartmentnum != null" >
+        eDepartmentNum = #{record.edepartmentnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eabilitylevel != null" >
+        eAbilityLevel = #{record.eabilitylevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.epost != null" >
+        ePost = #{record.epost,jdbcType=VARCHAR},
+      </if>
+      <if test="record.efileurl != null" >
+        eFileUrl = #{record.efileurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.estatus != null" >
+        eStatus = #{record.estatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.econtracttype != null" >
+        eContractType = #{record.econtracttype,jdbcType=CHAR},
+      </if>
+      <if test="record.eposttype != null" >
+        ePostType = #{record.eposttype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.photo != null" >
+        photo = #{record.photo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ehr_employee
+    set eNumber = #{record.enumber,jdbcType=VARCHAR},
+      eName = #{record.ename,jdbcType=VARCHAR},
+      eGender = #{record.egender,jdbcType=CHAR},
+      eEmail = #{record.eemail,jdbcType=VARCHAR},
+      eTelphone = #{record.etelphone,jdbcType=VARCHAR},
+      eDepartmentNum = #{record.edepartmentnum,jdbcType=VARCHAR},
+      eAbilityLevel = #{record.eabilitylevel,jdbcType=VARCHAR},
+      ePost = #{record.epost,jdbcType=VARCHAR},
+      eFileUrl = #{record.efileurl,jdbcType=VARCHAR},
+      eStatus = #{record.estatus,jdbcType=VARCHAR},
+      eContractType = #{record.econtracttype,jdbcType=CHAR},
+      ePostType = #{record.eposttype,jdbcType=VARCHAR},
+      photo = #{record.photo,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ehr.pojo.EhrEmployee" >
+    update ehr_employee
+    <set >
+      <if test="ename != null" >
+        eName = #{ename,jdbcType=VARCHAR},
+      </if>
+      <if test="egender != null" >
+        eGender = #{egender,jdbcType=CHAR},
+      </if>
+      <if test="eemail != null" >
+        eEmail = #{eemail,jdbcType=VARCHAR},
+      </if>
+      <if test="etelphone != null" >
+        eTelphone = #{etelphone,jdbcType=VARCHAR},
+      </if>
+      <if test="edepartmentnum != null" >
+        eDepartmentNum = #{edepartmentnum,jdbcType=VARCHAR},
+      </if>
+      <if test="eabilitylevel != null" >
+        eAbilityLevel = #{eabilitylevel,jdbcType=VARCHAR},
+      </if>
+      <if test="epost != null" >
+        ePost = #{epost,jdbcType=VARCHAR},
+      </if>
+      <if test="efileurl != null" >
+        eFileUrl = #{efileurl,jdbcType=VARCHAR},
+      </if>
+      <if test="estatus != null" >
+        eStatus = #{estatus,jdbcType=VARCHAR},
+      </if>
+      <if test="econtracttype != null" >
+        eContractType = #{econtracttype,jdbcType=CHAR},
+      </if>
+      <if test="eposttype != null" >
+        ePostType = #{eposttype,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null" >
+        photo = #{photo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where eNumber = #{enumber,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ehr.pojo.EhrEmployee" >
+    update ehr_employee
+    set eName = #{ename,jdbcType=VARCHAR},
+      eGender = #{egender,jdbcType=CHAR},
+      eEmail = #{eemail,jdbcType=VARCHAR},
+      eTelphone = #{etelphone,jdbcType=VARCHAR},
+      eDepartmentNum = #{edepartmentnum,jdbcType=VARCHAR},
+      eAbilityLevel = #{eabilitylevel,jdbcType=VARCHAR},
+      ePost = #{epost,jdbcType=VARCHAR},
+      eFileUrl = #{efileurl,jdbcType=VARCHAR},
+      eStatus = #{estatus,jdbcType=VARCHAR},
+      eContractType = #{econtracttype,jdbcType=CHAR},
+      ePostType = #{eposttype,jdbcType=VARCHAR},
+      photo = #{photo,jdbcType=VARCHAR}
+    where eNumber = #{enumber,jdbcType=VARCHAR}
+  </update>
+</mapper>

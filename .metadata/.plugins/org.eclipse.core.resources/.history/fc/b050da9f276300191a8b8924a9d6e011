@@ -1,0 +1,12 @@
+package com.ehr.portal.service;
+
+import com.ehr.portal.utils.EhrResult;
+
+/**
+ * @author 12866
+ * 前端登陆、注册
+ */
+public interface PortalService {
+	EhrResult login();
+	EhrResult register();
+}

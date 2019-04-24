@@ -1,0 +1,34 @@
+package com.ehr.portal.humanfiles.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ehr.portal.humanfiles.service.SuspensionReinstateService;
+import com.ehr.portal.mapper.EhrAdjustmentMapper;
+import com.ehr.portal.pojo.EhrAdjustment;
+import com.ehr.portal.pojo.EhrAdjustmentExample;
+import com.ehr.portal.pojo.ParamMapping;
+
+@Service
+public class SuspensionReinstateServiceImpl implements SuspensionReinstateService {
+
+	@Autowired
+	EhrAdjustmentMapper aMapper;
+	
+	@Override
+	public List<EhrAdjustment> queryAll() {
+		EhrAdjustmentExample exam = new EhrAdjustmentExample();
+		exam.createCriteria().andTypeIn(ParamMapping.SUSPENSION_REINSTATE_LIST);
+		return aMapper.selectByExample(exam);
+	}
+
+	@Override
+	public List<EhrAdjustment> queryByType(String type) {
+		EhrAdjustmentExample exam = new EhrAdjustmentExample();
+		exam.createCriteria().andTypeEqualTo(type);
+		return aMapper.selectByExample(exam);
+	}
+
+}

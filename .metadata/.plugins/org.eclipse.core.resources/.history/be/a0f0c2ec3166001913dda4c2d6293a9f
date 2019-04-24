@@ -1,0 +1,16 @@
+package com.ehr.portal.socialsecutiry.service.impl;
+
+import java.util.List;
+
+import com.ehr.portal.pojo.EhrSsType;
+import com.ehr.portal.socialsecutiry.service.SSTypeService;
+
+public class SSTypeServiceImpl implements SSTypeService {
+
+	@Override
+	public List<EhrSsType> queryAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

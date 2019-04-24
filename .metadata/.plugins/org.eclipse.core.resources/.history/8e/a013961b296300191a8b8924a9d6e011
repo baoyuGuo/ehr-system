@@ -1,0 +1,26 @@
+package com.ehr.portal.pojo;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+/**
+ * @author guobaoyu
+ * 注册表单实体
+ */
+public class EhrRegisterForm {
+	@NotBlank
+	@Email()
+	private String email;
+	
+	@NotBlank
+	@Size(min=6,max=15)
+	private String password;
+	
+	@NotBlank
+	@Size(min=6,max=15)
+	private String repassword;
+	
+	@NotBlank
+	private String emailcode;
+}

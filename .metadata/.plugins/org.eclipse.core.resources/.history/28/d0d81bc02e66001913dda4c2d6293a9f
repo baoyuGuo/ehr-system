@@ -1,0 +1,29 @@
+package com.ehr.portal.socialsecutiry.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.stereotype.Service;
+
+import com.ehr.portal.mapper.EhrAccountsMapper;
+import com.ehr.portal.pojo.EhrAccounts;
+import com.ehr.portal.pojo.EhrAccountsExample;
+import com.ehr.portal.pojo.ParamMapping;
+import com.ehr.portal.pojo.EhrAccountsExample.Criteria;
+import com.ehr.portal.socialsecutiry.service.AccountServcie;
+
+@Service
+public class AccountServiceImpl implements AccountServcie {
+
+	@Autowired
+	EhrAccountsMapper accountMapper;
+	
+	@Override
+	public List<EhrAccounts> queryAll() {
+		EhrAccountsExample exam = new EhrAccountsExample();
+		exam.createCriteria().andTypeEqualTo(ParamMapping.SOCIAL_SECURITY_ACCOUNT);
+		return accountMapper.selectByExample(exam);
+	}
+
+}

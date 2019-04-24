@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<!-- 新员工入职 -->
+	<form action="/humanfiles/entry" role="form" class="form-inline">
+		<h5>基本信息</h5>
+		<div class="form-group" >
+			<label for="name">姓名</label>
+		    <input type="text" class="form-control" id="name">
+		</div>
+		<div class="form-group">
+			<label for="eNum">工号</label>
+			<input type="text" class="form-control" id="eNum">
+			<button type="button" onclick="" class="btn btn-info">生成工号</button>
+		</div>
+		<div class="form-group">
+			<label for="sex">性别</label>
+			<div class="btn-group" data-toggle="buttons">
+				<label class="btn btn-primary">
+					<input type="redio"> 男
+				</label>
+				<label class="btn btn-primary">
+					<input type="redio"> 女
+				</label>
+			</div>
+		</div>
+	</form>
+</body>
+</html>

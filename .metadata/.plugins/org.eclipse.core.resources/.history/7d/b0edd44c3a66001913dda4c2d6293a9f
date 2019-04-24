@@ -1,0 +1,33 @@
+package com.ehr.portal.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.ehr.portal.portal.pojo.EhrAccounts;
+import com.ehr.portal.portal.salary.service.AccountService;
+import com.ehr.portal.portal.utils.EhrResult;
+
+@Controller
+@RequestMapping("/salary")
+public class SalaryController {
+	
+	@Autowired
+	AccountService accountService;
+	
+	@RequestMapping("/queryAccounts")
+	@ResponseBody
+	public EhrResult queryAccounts() {
+		try {
+			List<EhrAccounts> list = accountService.queryAccounts();
+			return EhrResult.ok(list);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return EhrResult.build(500, "未知的错误");
+		}
+	}
+	
+}

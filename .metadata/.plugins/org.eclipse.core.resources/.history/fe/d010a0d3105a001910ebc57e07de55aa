@@ -1,0 +1,43 @@
+package com.ehr.portal.pojo;
+
+public class EhrUser {
+    private Integer id;
+
+    private Integer enumber;
+
+    private String password;
+
+    private String competence;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getEnumber() {
+        return enumber;
+    }
+
+    public void setEnumber(Integer enumber) {
+        this.enumber = enumber;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
+    }
+
+    public String getCompetence() {
+        return competence;
+    }
+
+    public void setCompetence(String competence) {
+        this.competence = competence == null ? null : competence.trim();
+    }
+}

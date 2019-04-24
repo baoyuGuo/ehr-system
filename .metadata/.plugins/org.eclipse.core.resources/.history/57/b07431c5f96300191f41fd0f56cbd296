@@ -1,0 +1,5 @@
+package com.ehr.portal.pojo;
+
+public class QueryForm {
+
+}

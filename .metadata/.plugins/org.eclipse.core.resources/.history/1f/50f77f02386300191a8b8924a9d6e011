@@ -1,0 +1,69 @@
+package com.ehr.portal.controllers;
+
+import java.text.ParseException;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResourceLoader;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.ehr.portal.pojo.EhrRegisterForm;
+import com.ehr.portal.pojo.EhrUser;
+import com.ehr.portal.service.PortalService;
+import com.ehr.portal.utils.DateUtils;
+import com.ehr.portal.utils.EhrResult;
+
+@Controller
+@RequestMapping("/portal")
+public class PortalController {
+
+	@Autowired
+	PortalService portalService;
+	/*
+	 * 	进行登陆；
+	 * 	登陆成功跳转至首页并初始化左边导航栏
+	 * */
+	@RequestMapping("/login")
+	public String login(Map<String, Object> map) {
+		
+		return "redirect:/createLeft/humanfiles"; 
+	}
+	
+	@RequestMapping("/register")
+	public ModelAndView register(@Validated EhrRegisterForm reg, BindingResult result) throws ParseException {
+		//注册数据校验
+		ModelAndView mv = new ModelAndView();
+		if (result.hasErrors()) {
+			List<FieldError> fieldErrors = result.getFieldErrors();
+			Map<String, FieldError> = new HashMap<>();
+			for (FieldError fieldError : fieldErrors) {
+				
+			}
+			mv.addObject("errors", );
+			mv.setViewName("register");
+			return mv;
+		}
+		//进行注册
+		EhrUser user = new EhrUser();
+		String email =  reg.getEmail();
+		user.setEnumber(email.substring(0, email.indexOf("@")));
+		user.setPassword(reg.getPassword());
+		user.setDay(DateUtils.fDate(new Date(System.currentTimeMillis())));
+		EhrResult res = portalService.register(user);
+		if (!res.isOK()){
+			mv.addObject("errors_unknown", res.getMsg());
+			mv.setViewName("register");
+		}
+		mv.setViewName("home");
+		return mv;
+	}
+}

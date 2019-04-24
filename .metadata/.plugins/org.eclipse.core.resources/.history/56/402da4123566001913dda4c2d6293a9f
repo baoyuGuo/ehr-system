@@ -1,0 +1,167 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head >
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" /><title>
+	员工社保
+</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script th:src="@{/js/Choose.js}" ></script>
+<script th:src="@{/js/MyJs.js}" ></script>
+<script th:src="@{/js/WebCalendar.js}" ></script>
+    <script type="text/javascript">
+        function addfrom() {
+            var num = Math.random();
+            window.open("/page/socialsecurity_add", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
+        }
+
+        function showfrom(str) {
+            var num = Math.random();
+            window.open("Ygbxgl_R_show.aspx?tmp=" + num + "&id=" + str + "", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
+        }
+
+        function updatefrom(str) {
+            var num = Math.random();
+            window.open("Ygbxgl_R_Mod.aspx?tmp=" + num + "&id=" + str + "", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
+        }
+
+        function updatestrfrom() {
+            var num = Math.random();
+            window.open("Ygbxgl_R_Plmod.aspx?tmp=" + num + "", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
+        }
+
+        function addstrfrom() {
+            var num = Math.random();
+            window.open("Ygbxgl_R_Pladd.aspx?tmp=" + num + "", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
+        }
+    </script>
+</head>
+<body class="main">
+    <form method="post" action="Ygbxgl_R.aspx" id="form1">
+		<div class="aspNetHidden">
+			<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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cm9tKDQpOyIgY2xhc3M9Imd2bGluayI+5p+l55yLPC9hPmRkAgUPDxYCHwQFUCA8YSBocmVmPSJqYXZhc2NyaXB0OnZvaWQoMCkiIG9uY2xpY2s9InVwZGF0ZWZyb20oNCk7IiBjbGFzcz0iZ3ZsaW5rIj7kv67mlLk8L2E+ZGQCBQ8PZBYCHwEFGWphdmFzY3JpcHQ6Y2hhbmdlQmcodGhpcykWFGYPZBYCAgEPDxYCHwQFATVkZAIBD2QWBAIDDw8WAh8EBQE1ZGQCBQ8PFgIfBAUG5byg5pitZGQCAg8PFgIfBAUFMDAwMDZkZAIDDw8WAh8EBQblvKDmmK1kZAIEDw8WAh8EBQ/lubPlronmhI/lpJbpmalkZAIFDw8WAh8EBQpCWDIwMTcwMDA1ZGQCBg8PFgIfBAUIMjAxNy0xLTFkZAIHDw8WAh8EBQEwZGQCCA8PFgIfBAUDMTAwZGQCCQ9kFgYCAQ8PFgIfBAUBNWRkAgMPDxYCHwQFTiA8YSBocmVmPSJqYXZhc2NyaXB0OnZvaWQoMCkiIG9uY2xpY2s9InNob3dmcm9tKDUpOyIgY2xhc3M9Imd2bGluayI+5p+l55yLPC9hPmRkAgUPDxYCHwQFUCA8YSBocmVmPSJqYXZhc2NyaXB0OnZvaWQoMCkiIG9uY2xpY2s9InVwZGF0ZWZyb20oNSk7IiBjbGFzcz0iZ3ZsaW5rIj7kv67mlLk8L2E+ZGQCBg8PZBYCHwEFGWphdmFzY3JpcHQ6Y2hhbmdlQmcodGhpcykWFGYPZBYCAgEPDxYCHwQFATZkZAIBD2QWBAIDDw8WAh8EBQE2ZGQCBQ8PFgIfBAUJ5Y+46ams5pitZGQCAg8PFgIfBAUFMDAwMDVkZAIDDw8WAh8EBQnlj7jpqazmmK1kZAIEDw8WAh8EBQ/lubPlronmhI/lpJbpmalkZAIFDw8WAh8EBQpCWDIwMTcwMDA2ZGQCBg8PFgIfBAUJMjAxNy05LTI4ZGQCBw8PFgIfBAUDNzAwZGQCCA8PFgIfBAUEMjMwMGRkAgkPZBYGAgEPDxYCHwQFATZkZAIDDw8WAh8EBU4gPGEgaHJlZj0iamF2YXNjcmlwdDp2b2lkKDApIiBvbmNsaWNrPSJzaG93ZnJvbSg2KTsiIGNsYXNzPSJndmxpbmsiPuafpeecizwvYT5kZAIFDw8WAh8EBVAgPGEgaHJlZj0iamF2YXNjcmlwdDp2b2lkKDApIiBvbmNsaWNrPSJ1cGRhdGVmcm9tKDYpOyIgY2xhc3M9Imd2bGluayI+5L+u5pS5PC9hPmRkAgcPDxYCHgdWaXNpYmxlaGRkAhUPDxYEHghQYWdlU2l6ZQIPHgtSZWNvcmRjb3VudAIGZGQYAgUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgYFG0dyaWRWaWV3MSRjdGwwMiRDaGVja1NlbGVjdAUbR3JpZFZpZXcxJGN0bDAzJENoZWNrU2VsZWN0BRtHcmlkVmlldzEkY3RsMDQkQ2hlY2tTZWxlY3QFG0dyaWRWaWV3MSRjdGwwNSRDaGVja1NlbGVjdAUbR3JpZFZpZXcxJGN0bDA2JENoZWNrU2VsZWN0BRtHcmlkVmlldzEkY3RsMDckQ2hlY2tTZWxlY3QFCUdyaWRWaWV3MQ88KwAMAQgCAWT5toTLWjG6xGL8y5vF+zc0L7F12C4WrtE3AYQDe3IKOA==" />
+		</div>
+		<div class="aspNetHidden">
+			<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="4ACBCF35" />
+		</div>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    <table cellspacing="0" cellpadding="0" width="100%" align="center" border="0" class="form">
+                        <tr>
+                            <td align="right">员工工号
+                            </td>
+                            <td>
+                                <input name="jsStaffNumer" type="text" id="jsStaffNumer" class="mytext" />
+                            </td>
+                            <td align="right">员工姓名
+                            </td>
+                            <td>
+                                <input name="jsXingMing" type="text" id="jsXingMing" class="mytext" />
+                            </td>
+                            <td align="right">保险类型
+                            </td>
+                            <td>
+                                <select name="type" id="type">
+                                	<option value="楠��诧拷锟斤拷锟芥径锟斤拷锟�">楠��诧拷锟斤拷锟芥径锟斤拷锟�</option>
+                                	<option value="濞��挎��缁�锟芥担锟芥�撮�锟斤拷锟借�わ拷锟斤拷锟�	">濞��挎��缁�锟芥担锟芥�撮�锟斤拷锟借�わ拷锟斤拷锟�</option>
+                                	<option value="楠��诧拷锟界�锟芥���锟藉じ锟斤拷锟�">楠��诧拷锟界�锟芥���锟藉じ锟斤拷锟�</option>
+                                	<option value="娴���锟藉�����癸拷锟斤拷婢堆�锟藉�э拷锟斤拷锟�">娴���锟藉�����癸拷锟斤拷婢堆�锟藉�э拷锟斤拷锟�</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">娣�锟斤拷��锟斤拷锟藉�わ拷
+                            </td>
+                            <td>
+                                <input name="jsDanhao" type="text" id="jsDanhao" class="mytext" />
+                            </td>
+                            <td align="right">锟芥��锟界��锟藉��锟借揪锟�
+                            </td>
+                            <td colspan="3">
+                                <input name="startTime" type="text" id="startTime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />锟斤拷<input name="endTime" type="text" id="endTime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />&nbsp;
+                            	<input type="submit" name="QueryBtn" value="锟姐��锟斤拷" id="QueryBtn" class="mybtn" />
+                                <input name="AddBtn" type="button" id="AddBtn" value="婢э拷锟斤拷" class="mybtn" onclick="javascript: addfrom();" />
+                                <input type="submit" name="DelBtn" value="锟斤拷锟斤拷" onclick="javascript:return delcheck();" id="DelBtn" class="mybtn" />
+                                <a href="javascript:void(0)" onclick="chkAllw()" class="gvlink">锟姐�╋拷锟�</a>
+                                <a href="javascript:void(0)" onclick="revchkAll()" class="gvlink">锟斤拷锟斤拷</a>
+                                [<a href="javascript:void(0)" onclick="addstrfrom()" class="gvlink">锟藉�锟斤拷瑜帮拷锟斤拷</a>]
+                                [<a href="javascript:void(0)" onclick="updatestrfrom()" class="gvlink">锟藉�锟斤拷娣�锟斤拷锟�</a>]
+                            </td>
+                        </tr>
+                    </table>
+                    <table cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
+                        <tr>
+                            <td colspan="2">
+                                <div>
+									<table class="hkgv" cellspacing="0" rules="all" border="1" id="GridView1" style="width:100%;border-collapse:collapse;">
+										<tr class="hkHeadStyle">
+											<th scope="col" style="width:30px;"><img src="/pic/refresh.gif" alt="�达拷锟斤拷" /></th>
+											<th align="center" scope="col" style="white-space:nowrap;">锟斤拷锟斤拷</th>
+											<th scope="col">瀹搞�ワ拷锟�</th>
+											<th scope="col">锟斤拷瀹搞�ワ拷锟斤拷</th>
+											<th scope="col">娣�锟斤拷��琚�锟斤拷</th>
+											<th scope="col">娣�锟斤拷��锟斤拷锟斤拷</th>
+											<th scope="col">锟芥��锟界��锟藉��锟斤拷</th><th scope="col">娑�锟芥���锟斤拷娴�锟斤拷锟芥０锟�</th><th scope="col">锟斤拷娴ｏ拷锟斤拷娴�锟斤拷锟芥０锟�</th><th scope="col" style="width:80px;white-space:nowrap;">锟斤拷娴ｏ拷</th>
+										</tr>
+									</table>
+								</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="height: 22px">
+								<!-- AspNetPager 7.5 Copyright:2003-2015 Webdiyer (www.webdiyer.com) -->
+								<!--���匡拷锟界�锟芥�匡拷锟斤拷锟芥�锟芥い纰�锟�AspNetPager瀹歌�讹拷锟斤拷�╋拷锟斤拷锟介��锟斤拷�╋拷锟斤拷�ワ拷锟斤拷锟芥�锟芥い��锟界��锟斤拷锟借�碉拷�с��AspNetPager��锟界��宄帮拷AlwaysShow��锟斤拷�锟借�帮拷�ヨ�true��锟�-->
+								<!-- AspNetPager 7.5 Copyright:2003-2015 Webdiyer (www.webdiyer.com) -->
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+<script type="text/javascript">
+	window.onload=function (){
+		$.ajax({
+	        type:'get',
+	        url:'/socialsecurity/queryAllRecords',
+	        async:false,	        
+	        /*data:{
+	         email:$("#email").val(),
+	         password:$("#password").val()
+	         }*/
+	        success:function(res){
+	        	var data = res.data;
+	        	for (var i=1;i<=data.length;i++){
+	        		var day = data[i-1].day;
+	        		var index = data[i-1].day.indexOf('T');
+	        		var begin = data[i-1].begin;
+	        		var end = data[i-1].end;
+	        		day = day.substring(0,index);
+	        		
+	        		var in1 = begin.indexOf('.');
+	        		begin = begin.substring(index+1,in1);
+	        		end = end.substring(index+1,in1);
+	        		
+	        		var $tr = $("<tr class=\"hkRowStyle\" onclick=\"javascript:changeBg(this)\">"+
+	    					"<td align=\"center\"> <span id=\"GridView1_ctl\""+ i +"_lblxh\">"+ i +"</span>"+ "</td>"+
+	    					"<td align=\"center\" style=\"width:30px;\"><input id=\"GridView1_ctl\""+ i +"\"_CheckSelect\" type=\"checkbox\" name=\"GridView1$ctl\""+i+"\"$CheckSelect\">"+"</td>"+
+	    					"<td>" + data[i-1].enumber + "</td>" +
+	    					"<td>" + data[i-1].ename + "</td>" +
+	    					"<td align=\"center\">" + day + "</td>" +
+	    					"<td align=\"center\">" + begin + "</td>" +
+	    					"<td align=\"center\">" + end + "</td>" +
+	    					"<td align=\"center\">" + data[i-1].type + "</td>" +
+	    					"<td align=\"center\" style=\"width:80px;white-space:nowrap;\"> " + 
+	    						"<span id=\"GridView1_ctl"+i+"_Label1\">" + "<a href=\"javascript:void(0)\" onclick=\"showfrom(1);\" class=\"gvlink\">锟姐�э拷锟�</a></span>" + 
+	    						"<span id=\"GridView1_ctl"+i+"_Label2\"> <a href=\"javascript:void(0)\" onclick=\"updatefrom(1);\" class=\"gvlink\">娣�锟斤拷锟�</a></span></td></tr>");
+	    					var $table = $(".hkgv tbody");
+	    					$table.append($tr);
+	        	}
+	        }
+	   });
+	}
+</script>
+</html>

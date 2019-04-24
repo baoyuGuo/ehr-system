@@ -1,0 +1,8 @@
+package com.ehr.portal.service;
+
+import com.ehr.portal.utils.EhrResult;
+
+public interface PortalService {
+	EhrResult login();
+	EhrResult register();
+}

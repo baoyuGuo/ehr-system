@@ -1,0 +1,95 @@
+package com.ehr.portal.portal.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.ehr.portal.portal.mapper.EhrAttendenceMapper;
+import com.ehr.portal.portal.mapper.EhrEmployeeMapper;
+import com.ehr.portal.portal.mapper.EhrOnbusinessMapper;
+import com.ehr.portal.portal.mapper.EhrOnholidayMapper;
+import com.ehr.portal.portal.mapper.EhrOvertimeMapper;
+import com.ehr.portal.portal.pojo.EhrAttendence;
+import com.ehr.portal.portal.pojo.EhrAttendenceExample;
+import com.ehr.portal.portal.pojo.EhrEmployee;
+import com.ehr.portal.portal.pojo.EhrEmployeeExample;
+import com.ehr.portal.portal.pojo.EhrOnbusiness;
+import com.ehr.portal.portal.pojo.EhrOnbusinessExample;
+import com.ehr.portal.portal.pojo.EhrOnholiday;
+import com.ehr.portal.portal.pojo.EhrOnholidayExample;
+import com.ehr.portal.portal.pojo.EhrOvertime;
+import com.ehr.portal.portal.pojo.EhrOvertimeExample;
+import com.ehr.portal.portal.pojo.EhrEmployeeExample.Criteria;
+import com.ehr.portal.portal.utils.EhrResult;
+
+@Controller
+@RequestMapping("/attendence")
+public class AttendenceController {
+	
+	@Autowired
+	EhrEmployeeMapper eMapper;
+	
+	@Autowired
+	EhrAttendenceMapper aMapper;
+	
+	@Autowired
+	EhrOnbusinessMapper businessMapper;
+	
+	@Autowired
+	EhrOnholidayMapper holidayMapper;
+	
+	@Autowired
+	EhrOvertimeMapper overtimeMapper;
+	
+	@RequestMapping("/queryByName")
+	@ResponseBody
+	public ModelAndView queryByName(String ename) {
+		EhrEmployeeExample example = new EhrEmployeeExample();
+		Criteria criteria = example.createCriteria();
+		ModelAndView mv = new ModelAndView();
+		criteria.andEnameEqualTo(ename);
+		List<EhrEmployee> list = eMapper.selectByExample(example);
+		if(list !=null) {
+			mv.addObject("employInfo", list);
+			mv.setViewName("select_employee");
+		}
+		return mv;
+	}
+	
+	@RequestMapping("/queryAll")
+	@ResponseBody
+	public EhrResult queryAllRecords() {
+		EhrAttendenceExample example = new EhrAttendenceExample();
+		List<EhrAttendence> list = aMapper.selectByExample(example);
+		return EhrResult.ok(list);
+	}
+	
+	@RequestMapping("/queryOnBusiness")
+	@ResponseBody
+	public EhrResult queryOnBusiness() {
+		EhrOnbusinessExample example = new EhrOnbusinessExample();
+		List<EhrOnbusiness> list = businessMapper.selectByExample(example);
+		return EhrResult.ok(list);
+	}
+	
+	@RequestMapping("/queryOnHoliday")
+	@ResponseBody
+	public EhrResult queryOnHoliday() {
+		EhrOnholidayExample example = new EhrOnholidayExample();
+		List<EhrOnholiday> list = holidayMapper.selectByExample(example);
+		return EhrResult.ok(list);
+	}
+	
+	@ResponseBody
+	@RequestMapping("/queryOnOvertime")
+	public EhrResult queryOnOvertime() {
+		EhrOvertimeExample example = new EhrOvertimeExample();
+		List<EhrOvertime> list = overtimeMapper.selectByExample(example);
+		return EhrResult.ok(list);
+	}
+	
+}

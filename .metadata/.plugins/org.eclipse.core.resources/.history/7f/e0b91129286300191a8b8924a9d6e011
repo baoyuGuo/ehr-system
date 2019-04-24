@@ -1,0 +1,9 @@
+package com.ehr.portal.pojo;
+
+/**
+ * @author guobaoyu
+ * 注册表单实体
+ */
+public class EhrRegisterForm {
+
+}

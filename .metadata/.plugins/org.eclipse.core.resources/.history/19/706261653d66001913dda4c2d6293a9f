@@ -1,0 +1,9 @@
+package com.ehr.socialsecutiry.service;
+
+import java.util.List;
+
+import com.ehr.pojo.EhrSsType;
+
+public interface SSTypeService {
+	List<EhrSsType> queryAll();
+}

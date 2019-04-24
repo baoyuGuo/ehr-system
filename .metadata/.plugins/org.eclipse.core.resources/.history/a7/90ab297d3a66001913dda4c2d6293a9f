@@ -1,0 +1,24 @@
+package com.ehr.portal.controllers;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.ehr.portal.utils.EhrResult;
+
+@Controller
+@RequestMapping("/training")
+public class TrainingController {
+	
+	/**
+	 * @return
+	   *    查询所有的培训协议
+	 */
+	public EhrResult queryTrainingContracts() {
+		return EhrResult.ok();
+	}
+	
+	@RequestMapping("/modify_contract")
+	public String  modify_contract(String id) {
+		return "training_contract_info_modify";
+	}
+}

@@ -1,0 +1,14 @@
+package com.ehr.portal.humanfiles.service.impl;
+
+import com.ehr.portal.humanfiles.service.RewardPunishService;
+import com.ehr.portal.utils.EhrResult;
+
+public class RewardPunishServiceImpl implements RewardPunishService {
+
+	@Override
+	public EhrResult queryAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

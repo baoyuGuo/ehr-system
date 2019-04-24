@@ -1,0 +1,5 @@
+package com.ehr.portal.socialsecutiry.service;
+
+public class SSTypeService {
+
+}

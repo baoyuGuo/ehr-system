@@ -1,0 +1,4 @@
+
+#log
+logging.level.com.example.demo=trace
+logging.file=springboot.log

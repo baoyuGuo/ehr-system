@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ehr.mapper.EhrContractMapper" >
+  <resultMap id="BaseResultMap" type="com.ehr.pojo.EhrContract" >
+    <id column="cID" property="cid" jdbcType="VARCHAR" />
+    <result column="eNumber" property="enumber" jdbcType="INTEGER" />
+    <result column="cType" property="ctype" jdbcType="VARCHAR" />
+    <result column="effecticeDate" property="effecticedate" jdbcType="DATE" />
+    <result column="expiryDate" property="expirydate" jdbcType="DATE" />
+    <result column="cStatus" property="cstatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    cID, eNumber, cType, effecticeDate, expiryDate, cStatus
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ehr.pojo.EhrContractExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ehr_contract
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ehr_contract
+    where cID = #{cid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ehr_contract
+    where cID = #{cid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ehr.pojo.EhrContractExample" >
+    delete from ehr_contract
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ehr.pojo.EhrContract" >
+    insert into ehr_contract (cID, eNumber, cType, 
+      effecticeDate, expiryDate, cStatus
+      )
+    values (#{cid,jdbcType=VARCHAR}, #{enumber,jdbcType=INTEGER}, #{ctype,jdbcType=VARCHAR}, 
+      #{effecticedate,jdbcType=DATE}, #{expirydate,jdbcType=DATE}, #{cstatus,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ehr.pojo.EhrContract" >
+    insert into ehr_contract
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cid != null" >
+        cID,
+      </if>
+      <if test="enumber != null" >
+        eNumber,
+      </if>
+      <if test="ctype != null" >
+        cType,
+      </if>
+      <if test="effecticedate != null" >
+        effecticeDate,
+      </if>
+      <if test="expirydate != null" >
+        expiryDate,
+      </if>
+      <if test="cstatus != null" >
+        cStatus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cid != null" >
+        #{cid,jdbcType=VARCHAR},
+      </if>
+      <if test="enumber != null" >
+        #{enumber,jdbcType=INTEGER},
+      </if>
+      <if test="ctype != null" >
+        #{ctype,jdbcType=VARCHAR},
+      </if>
+      <if test="effecticedate != null" >
+        #{effecticedate,jdbcType=DATE},
+      </if>
+      <if test="expirydate != null" >
+        #{expirydate,jdbcType=DATE},
+      </if>
+      <if test="cstatus != null" >
+        #{cstatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ehr.pojo.EhrContractExample" resultType="java.lang.Integer" >
+    select count(*) from ehr_contract
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ehr_contract
+    <set >
+      <if test="record.cid != null" >
+        cID = #{record.cid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enumber != null" >
+        eNumber = #{record.enumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.ctype != null" >
+        cType = #{record.ctype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.effecticedate != null" >
+        effecticeDate = #{record.effecticedate,jdbcType=DATE},
+      </if>
+      <if test="record.expirydate != null" >
+        expiryDate = #{record.expirydate,jdbcType=DATE},
+      </if>
+      <if test="record.cstatus != null" >
+        cStatus = #{record.cstatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ehr_contract
+    set cID = #{record.cid,jdbcType=VARCHAR},
+      eNumber = #{record.enumber,jdbcType=INTEGER},
+      cType = #{record.ctype,jdbcType=VARCHAR},
+      effecticeDate = #{record.effecticedate,jdbcType=DATE},
+      expiryDate = #{record.expirydate,jdbcType=DATE},
+      cStatus = #{record.cstatus,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ehr.pojo.EhrContract" >
+    update ehr_contract
+    <set >
+      <if test="enumber != null" >
+        eNumber = #{enumber,jdbcType=INTEGER},
+      </if>
+      <if test="ctype != null" >
+        cType = #{ctype,jdbcType=VARCHAR},
+      </if>
+      <if test="effecticedate != null" >
+        effecticeDate = #{effecticedate,jdbcType=DATE},
+      </if>
+      <if test="expirydate != null" >
+        expiryDate = #{expirydate,jdbcType=DATE},
+      </if>
+      <if test="cstatus != null" >
+        cStatus = #{cstatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cID = #{cid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ehr.pojo.EhrContract" >
+    update ehr_contract
+    set eNumber = #{enumber,jdbcType=INTEGER},
+      cType = #{ctype,jdbcType=VARCHAR},
+      effecticeDate = #{effecticedate,jdbcType=DATE},
+      expiryDate = #{expirydate,jdbcType=DATE},
+      cStatus = #{cstatus,jdbcType=VARCHAR}
+    where cID = #{cid,jdbcType=VARCHAR}
+  </update>
+</mapper>

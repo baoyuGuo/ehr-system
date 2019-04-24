@@ -1,0 +1,172 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>选择员工</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+	<script th:src="@{/js/Choose.js}" ></script>
+	<script th:src="@{/js/MyJs.js}" ></script>
+	<script th:src="@{/js/WebCalendar.js}" ></script>
+
+
+    <base target="_self" />
+    <script type="text/javascript">
+        function checkbtn() {
+            var a = 0
+
+            //001
+            //for (var i = 0; i < document.Form1.elements.length; i++) {
+            //    if (document.Form1.elements[i].checked == true)
+            //    { a = a + 1 }
+            //}
+
+            //002
+            for (var i = 0; i < document.getElementsByName("Rad").length; i++) {
+                if (document.getElementsByName("Rad")[i].checked == true) {
+                    a = a + 1
+                }
+            }
+
+            if (a > 0) {
+                sendFromChild();
+            }
+            else {
+                alert('您未选中任何项');
+                return false;
+            }
+        }
+
+        var getFromParent = window.dialogArguments;
+        function chkSelect() {
+            //001
+            //for (var i = 0; i < window.document.Form1.elements.length; i++) {
+            //    var e = Form1.elements[i];
+            //    if (e.checked)
+            //        return e.value;
+            //}
+
+            //002
+            for (var i = 0; i < window.document.getElementsByName("Rad").length; i++) {
+                var e = window.document.getElementsByName("Rad")[i];
+                if (e.checked)
+                    return e.value;
+            }
+
+            var retrunstr = "";
+            return retrunstr;
+        }
+
+        function sendFromChild() {
+            //browser
+            var bstr = getBrowserType();
+            if (bstr == '3' | bstr == '4' | bstr == '5') {
+                window.opener.setValue(chkSelect());
+            }
+            else {
+                window.returnValue = chkSelect();
+            }
+
+            window.close();
+        }
+
+        function clearwin() {
+            //browser
+            var bstr = getBrowserType();
+            if (bstr == '3' | bstr == '4' | bstr == '5') {
+                window.opener.setValue("||||||||");
+            }
+            else {
+                window.returnValue = "||||||||";
+            }
+
+            window.close();
+        }
+
+        window.onbeforeunload = function () {
+            var n = window.event.screenX - window.screenLeft;
+            var b = n > document.documentElement.scrollWidth - 20;
+            if (b && window.event.clientY < 0 || window.event.altKey) {
+            }
+        }
+
+        function closewin() {
+            window.close();
+        }
+    </script>
+    <script type="text/javascript">
+        function onRadBtn() {
+            aa = document.getElementsByName("Rad");
+            for (i = 0; i < aa.length; i++) {
+                if (aa[i].value == document.getElementById('requeststr').value) {
+                    aa[i].checked = true;
+                    //alert(i);  
+                    return false;
+                }
+                else {
+                    aa[i].checked = false;
+                }
+            }
+        }
+    </script>
+    <script type="text/javascript">
+	    $(function(){
+	        $("#Button4").on('click',function (event) {
+	        	alert(1);
+	            $.ajax({
+	                type:"GET",
+	                url:"../../attendence/queryByName",
+	                data:$("form").serialize(),
+	                dataType:'json',
+	                success: function(data) {
+						alert(data);			
+	                }
+	            });
+	        })
+	    })
+
+    </script>
+</head>
+<body scroll="yes" onload="onRadBtn()" class="main">
+    <form method="post" action="../../attendence/queryByName" id="Form1">
+	<div class="aspNetHidden">
+	<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE1NDk1NTEyMzkPFgIeE1ZhbGlkYXRlUmVxdWVzdE1vZGUCARYCAgEPZBYEAgEPEA8WAh4HRW5hYmxlZGdkEBUuAAzpm4blm6LmgLvpg6gTfOKAlOmbtuWUruS6i+S4mumDqBF84oCUfOKAlOmHh+i0remDqBh84oCUfOKAlHzigJTph4fotK3nu4TkuIAYfOKAlHzigJR84oCU6YeH6LSt57uE5LqMGHzigJR84oCUfOKAlOmHh+i0ree7hOS4iRh84oCUfOKAlHzigJTph4fotK3nu4Tlm5sRfOKAlHzigJTokKXov5Dpg6gRfOKAlHzigJTkvIHliJLpg6gQfOKAlOi0ouWKoeS4reW/gxF84oCUfOKAlOS8muiuoeWupBF84oCUfOKAlOWHuue6s+WupBB84oCU5Lq65LqL5Lit5b+DEXzigJR84oCU5oC757uP5YqeEXzigJR84oCU6KGM5pS/5YqeEHzigJTkv6Hmga/kuK3lv4MXfOKAlHzigJTova/ku7bns7vnu5/nu4QXfOKAlHzigJTnoazku7bnvZHnu5znu4QTfOKAlOeJqeS4muS6i+S4mumDqBd84oCUfOKAlOWuo+atpuWtkOWFrOWPuBd84oCUfOKAlOacnemYs+WtkOWFrOWPuBd84oCUfOKAlOa1t+a3gOWtkOWFrOWPuBV84oCUfOKAlHzigJTotKLliqHpg6gVfOKAlHzigJR84oCU6KGM5pS/6YOoG3zigJR84oCUfOKAlOeJqeS4mueuoeeQhumDqB984oCUfOKAlHzigJR84oCU6LS555So57uT566X56eRGXzigJR84oCUfOKAlHzigJTkv53lronnu4QZfOKAlHzigJR84oCUfOKAlOe7v+WMluenkRl84oCUfOKAlHzigJR84oCU5L+d5rSB56eRGXzigJR84oCUfOKAlHzigJTnu7Tkv67np5EVfOKAlHzigJR84oCU5bel56iL6YOoE3zigJTlubzmlZnkuovkuJrpg6gRfOKAlHzigJTmlZnlrabpg6gXfOKAlHzigJTooYzmlL/mgLvliqHpg6gRfOKAlHzigJTlkI7li6Tpg6gRfOKAlHzigJTooYzovabpg6gRfOKAlHzigJTotKLliqHpg6gRfOKAlHzigJTmi5vnlJ/lip4XfOKAlHzigJTkurrlipvotYTmupDpg6gXfOKAlHzigJTnm7TokKXkuovkuJrpg6gefOKAlHzigJR84oCU5YyX5Lqs5Zyw5Yy65Lit5b+DJXzigJR84oCUfOKAlHzigJTljJfkuqzkuZDlpKnlubzlhL/lm60efOKAlHzigJR84oCU6KW/5a6J5Zyw5Yy65Lit5b+DJXzigJR84oCUfOKAlHzigJTopb/lronkuZDlpKnlubzlhL/lm60lfOKAlHzigJR84oCUfOKAlOWFsOW3nuS5kOWkqeW5vOWEv+WbrRUuAAIzOAExATYCMTMCMTQCMTUCMTYBNwIyMwE0ATgBOQE1AjEwAjExAjIwAjIxAjIyAjI1AjI2AjI3AjI4AjI5AjMwAjMxAjMzAjM0AjM1AjM2AjM3AjMyAjQwAjQxAjQyAjQzAjQ0AjQ1AjQ2AjQ3AjQ4AjQ5AjUzAjUwAjU0AjU1FCsDLmdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dkZAIHDzwrABEDAA8WBB4LXyFEYXRhQm91bmRnHgtfIUl0ZW1Db3VudAIHZAEQFgAWABYADBQrAAAWAmYPZBYQAgEPZBYIZg9kFgJmDxUJATEFMDAwMDEG6LKC56aFA+WlsxIxMTAxMDExOTgwMDcwNzIxMjECMTAJ5oC757uP5YqeBuS4u+S7uwnokaPkuovplb9kAgEPDxYCHgRUZXh0BQUwMDAwMWRkAgIPDxYCHwQFBuiyguemhWRkAgMPDxYCHwQFCeaAu+e7j+WKnmRkAgIPZBYIZg9kFgJmDxUJATIFMDAwMDIG5bqe57ufA+eUtwABMQ/pm7bllK7kuovkuJrpg6gG5Li75Lu7AGQCAQ8PFgIfBAUFMDAwMDJkZAICDw8WAh8EBQblup7nu59kZAIDDw8WAh8EBQ/pm7bllK7kuovkuJrpg6hkZAIDD2QWCGYPZBYCZg8VCQEzBTAwMDAzBumprOi2hQPnlLcAAjIxD+i9r+S7tuezu+e7n+e7hAbmgLvnm5EG5paH5ZGYZAIBDw8WAh8EBQUwMDAwM2RkAgIPDxYCHwQFBumprOi2hWRkAgMPDxYCHwQFD+i9r+S7tuezu+e7n+e7hGRkAgQPZBYIZg9kFgJmDxUJATQFMDAwMDQG5p2O5YW4A+eUtwABNAzotKLliqHkuK3lv4MG56eR6ZW/DOWAvOePree7j+eQhmQCAQ8PFgIfBAUFMDAwMDRkZAICDw8WAh8EBQbmnY7lhbhkZAIDDw8WAh8EBQzotKLliqHkuK3lv4NkZAIFD2QWCGYPZBYCZg8VCQE1BTAwMDA1CeWPuOmprOaYrQPnlLcAAjIwDOS/oeaBr+S4reW/gwbogYzlkZgJ5Lia5Yqh5ZGYZAIBDw8WAh8EBQUwMDAwNWRkAgIPDxYCHwQFCeWPuOmprOaYrWRkAgMPDxYCHwQFDOS/oeaBr+S4reW/g2RkAgYPZBYIZg9kFgJmDxUJATYFMDAwMDYG5byg5pitA+eUtwABNQzkurrkuovkuK3lv4MG56eR6ZW/DOWAvOePree7j+eQhmQCAQ8PFgIfBAUFMDAwMDZkZAICDw8WAh8EBQblvKDmmK1kZAIDDw8WAh8EBQzkurrkuovkuK3lv4NkZAIHD2QWCGYPZBYCZg8VCQIyMQRBMDAxBui1teS6kQPnlLcSMTEwMTAyMTk2NTExMDkzMDAwAjIwDOS/oeaBr+S4reW/gwbnu4/nkIYM5YC854+t57uP55CGZAIBDw8WAh8EBQRBMDAxZGQCAg8PFgIfBAUG6LW15LqRZGQCAw8PFgIfBAUM5L+h5oGv5Lit5b+DZGQCCA8PFgIeB1Zpc2libGVoZGQYAQUJR3JpZFZpZXcxDzwrAAwBCAIBZA==" />
+	</div>
+        <table border="0" cellspacing="0" cellpadding="0" width="100%">
+            <tr>
+                <td colspan="2" style="height: 30px;">&nbsp;姓名：<input name="ename" type="text" id="ename" class="mytext" />
+                    <button name="Button4" value="查询" id="Button4" class="mybtn" type="submit">查询</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <div>
+						<table class="hkgv" cellspacing="0" rules="all" border="1" id="GridView1" style="width:98%;border-collapse:collapse;">
+							<tr class="hkHeadStyle">
+								<th align="center" scope="col" style="white-space:nowrap;">选择</th><th scope="col" style="white-space:nowrap;">工号</th><th scope="col" style="white-space:nowrap;">姓名</th><th scope="col" style="white-space:nowrap;">部门</th>
+							</tr>
+							<tr class="hkRowStyle" th:each="info: ${employInfo}">
+								<td align="center" style="width:30px;">
+                                    <input th:id="${info.enumber}" type="radio"
+                                    	th:value="${'1|' + info.enumber + '|' + info.ename + '|'+ info.egender + '|' + info.enumber + '|10|总经办|主任|董事长'}"
+                                        name="Rad" />
+                                </td>
+                                <td th:text="${info.enumber}"></td>
+                                <td th:text="${info.ename}"></td>
+                                <td th:text=${info.edepartmentnum}></td>
+							</tr>
+						</table>
+					</div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="button" value="确定" onclick="return checkbtn();" class="mybtn" id="Button1">
+                    <input type="button" value="关闭" onclick="closewin();" class="mybtn" id="Button3">
+                    <input type="button" value="清空" onclick="clearwin();" class="mybtn" id="Button2">
+                </td>
+            </tr>
+        </table>
+        <input name="requeststr" type="text" id="requeststr" style="display: none" />
+    </form>
+</body>
+</html>

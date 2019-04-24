@@ -1,0 +1,28 @@
+package com.ehr.portal.service.impl;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.ehr.portal.mapper.EhrUserMapper;
+import com.ehr.portal.pojo.EhrRegisterForm;
+import com.ehr.portal.pojo.EhrUser;
+import com.ehr.portal.service.PortalService;
+import com.ehr.portal.utils.EhrResult;
+
+public class PortalServiceImpl implements PortalService {
+	
+	@Autowired
+	EhrUserMapper userMapper;
+	
+	@Override
+	public EhrResult login(EhrUser user) {
+		return null;
+	}
+
+	@Override
+	public EhrResult register(@Valid EhrRegisterForm register) {
+		return null;
+	}
+
+}

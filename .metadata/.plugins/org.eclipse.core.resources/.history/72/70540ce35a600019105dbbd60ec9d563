@@ -1,0 +1,104 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head id="Head1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+	保险类别
+</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
+    <script th:src="@{/js/MyJs.js}" ></script>
+	<script th:src="@{/js/WebCalendar.js}" ></script>
+</head>
+<body class="main">
+    <form method="post" action="/page/ss_type_add" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTc2MzY0MDc4MA8WAh4TVmFsaWRhdGVSZXF1ZXN0TW9kZQIBFgICAw9kFggCAw8PZBYCHgdvbmNsaWNrBR1qYXZhc2NyaXB0OnJldHVybiBtb2RjaGVjaygpO2QCBQ8PZBYCHwEFHWphdmFzY3JpcHQ6cmV0dXJuIGRlbGNoZWNrKCk7ZAIHDzwrABEDAA8WBB4LXyFEYXRhQm91bmRnHgtfIUl0ZW1Db3VudAIEZAEQFgAWABYADBQrAAAWAmYPZBYKAgEPD2QWAh8BBRlqYXZhc2NyaXB0OmNoYW5nZUJnKHRoaXMpFgpmD2QWAgIBDw8WAh4EVGV4dAUBMWRkAgEPZBYEAgMPDxYCHwQFATFkZAIFDw8WAh8EBQ/lubPlronmhI/lpJbpmalkZAICDw8WAh8EBQ/lubPlronmhI/lpJbpmalkZAIDD2QWAmYPFQEBMGQCBA9kFgJmDxUBAzE1MGQCAg8PZBYCHwEFGWphdmFzY3JpcHQ6Y2hhbmdlQmcodGhpcykWCmYPZBYCAgEPDxYCHwQFATJkZAIBD2QWBAIDDw8WAh8EBQEyZGQCBQ8PFgIfBAUb5rOw5bq356aP5L2R5bq355Sf5Yy755aX6ZmpZGQCAg8PFgIfBAUb5rOw5bq356aP5L2R5bq355Sf5Yy755aX6ZmpZGQCAw9kFgJmDxUBATFkAgQPZBYCZg8VAQM4MDBkAgMPD2QWAh8BBRlqYXZhc2NyaXB0OmNoYW5nZUJnKHRoaXMpFgpmD2QWAgIBDw8WAh8EBQEzZGQCAQ9kFgQCAw8PFgIfBAUBM2RkAgUPDxYCHwQFFeW5s+Wuieemj+S6uuWvv+S/nemZqWRkAgIPDxYCHwQFFeW5s+Wuieemj+S6uuWvv+S/nemZqWRkAgMPZBYCZg8VAQExZAIED2QWAmYPFQEENTAwMGQCBA8PZBYCHwEFGWphdmFzY3JpcHQ6Y2hhbmdlQmcodGhpcykWCmYPZBYCAgEPDxYCHwQFATRkZAIBD2QWBAIDDw8WAh8EBQE0ZGQCBQ8PFgIfBAUb5Lq65a+/5bq35a6B6YeN5aSn55a+55eF6ZmpZGQCAg8PFgIfBAUb5Lq65a+/5bq35a6B6YeN5aSn55a+55eF6ZmpZGQCAw9kFgJmDxUBATNkAgQPZBYCZg8VAQQxNTAwZAIFDw8WAh4HVmlzaWJsZWhkZAIJDw8WBB4IUGFnZVNpemUCDx4LUmVjb3JkY291bnQCBGRkGAIFHl9fQ29udHJvbHNSZXF1aXJlUG9zdEJhY2tLZXlfXxYEBRtHcmlkVmlldzEkY3RsMDIkQ2hlY2tTZWxlY3QFG0dyaWRWaWV3MSRjdGwwMyRDaGVja1NlbGVjdAUbR3JpZFZpZXcxJGN0bDA0JENoZWNrU2VsZWN0BRtHcmlkVmlldzEkY3RsMDUkQ2hlY2tTZWxlY3QFCUdyaWRWaWV3MQ88KwAMAQgCAWQ=" />
+</div>
+
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    <table cellspacing="0" cellpadding="0" width="98%" align="center" border="0">
+                        <tr>
+                            <td align="right" style="height: 30px">
+                                <a href="javascript:void(0)" onclick="chkAllw()" class="gvlink">全选</a>
+                                <a href="javascript:void(0)" onclick="revchkAll()" class="gvlink">反选</a>
+                                <input type="submit" name="AddBtn" value="增加" id="AddBtn" class="mybtn"/>
+                                <input type="submit" name="updatebtn" value="修改" onclick="javascript:return modcheck();" id="updatebtn" class="mybtn" />
+                                <input type="submit" name="DelBtn" value="删除" onclick="javascript:return delcheck();" id="DelBtn" class="mybtn" />&nbsp;
+                            </td>
+                        </tr>
+                    </table>
+                    <table cellspacing="0" cellpadding="0" width="98%" align="center" border="0">
+                        <tr>
+                            <td colspan="2">
+                                <div>
+									<table class="hkgv" cellspacing="0" rules="all" border="1" id="GridView1" style="width:100%;border-collapse:collapse;">
+										<tr class="hkHeadStyle">
+											<th scope="col" style="width:30px;"><img src="/pic/refresh.gif" alt="序号" /></th><th align="center" scope="col" style="white-space:nowrap;">选择</th><th scope="col">保险类型</th><th scope="col" style="width:140px;white-space:nowrap;">保险周期</th><th scope="col" style="width:140px;white-space:nowrap;">保险金额</th>
+										</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+											<td align="center">
+                                                <span id="GridView1_ctl02_lblxh">1</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl02_CheckSelect" type="checkbox" name="GridView1$ctl02$CheckSelect" />
+                                                
+                                                
+                                            </td><td>平安意外险</td><td align="center" style="width:140px;white-space:nowrap;">
+                                                0
+                                            </td><td align="center" style="width:140px;white-space:nowrap;">
+									                                                ￥150
+									                                            </td>
+										</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+												<td align="center">
+                                                <span id="GridView1_ctl03_lblxh">2</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl03_CheckSelect" type="checkbox" name="GridView1$ctl03$CheckSelect" />
+                                                
+                                                
+                                            </td><td>泰康福佑康生医疗险</td><td align="center" style="width:140px;white-space:nowrap;">
+                                                1
+                                            </td><td align="center" style="width:140px;white-space:nowrap;">
+                                                ￥800
+                                            </td>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl04_lblxh">3</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl04_CheckSelect" type="checkbox" name="GridView1$ctl04$CheckSelect" />
+                                                
+                                                
+                                            </td><td>平安福人寿保险</td><td align="center" style="width:140px;white-space:nowrap;">
+                                                1
+                                            </td><td align="center" style="width:140px;white-space:nowrap;">
+                                                ￥5000
+                                            </td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl05_lblxh">4</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl05_CheckSelect" type="checkbox" name="GridView1$ctl05$CheckSelect" />
+                                                
+                                                
+                                            </td><td>人寿康宁重大疾病险</td><td align="center" style="width:140px;white-space:nowrap;">
+                                                3
+                                            </td><td align="center" style="width:140px;white-space:nowrap;">
+                                                ￥1500
+                                            </td>
+		</tr>
+	</table>
+</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="height: 22px">
+								<!-- AspNetPager 7.5 Copyright:2003-2015 Webdiyer (www.webdiyer.com) -->
+								<!--记录总数只有一页，AspNetPager已自动隐藏，若需在只有一页数据时显示AspNetPager，请将AlwaysShow属性值设为true！-->
+								<!-- AspNetPager 7.5 Copyright:2003-2015 Webdiyer (www.webdiyer.com) -->
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

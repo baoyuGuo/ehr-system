@@ -1,0 +1,31 @@
+package com.ehr.mapper;
+
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+
+import com.ehr.pojo.EhrRecruitmentPlan;
+import com.ehr.pojo.EhrRecruitmentPlanExample;
+
+public interface EhrRecruitmentPlanMapper {
+    int countByExample(EhrRecruitmentPlanExample example);
+
+    int deleteByExample(EhrRecruitmentPlanExample example);
+
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(EhrRecruitmentPlan record);
+
+    int insertSelective(EhrRecruitmentPlan record);
+
+    List<EhrRecruitmentPlan> selectByExample(EhrRecruitmentPlanExample example);
+
+    EhrRecruitmentPlan selectByPrimaryKey(Integer id);
+
+    int updateByExampleSelective(@Param("record") EhrRecruitmentPlan record, @Param("example") EhrRecruitmentPlanExample example);
+
+    int updateByExample(@Param("record") EhrRecruitmentPlan record, @Param("example") EhrRecruitmentPlanExample example);
+
+    int updateByPrimaryKeySelective(EhrRecruitmentPlan record);
+
+    int updateByPrimaryKey(EhrRecruitmentPlan record);
+}

@@ -1,0 +1,103 @@
+#ehr-portal system
+#端口配置
+server.port: 8080
+
+#日志
+logging:
+  config: src/main/resources/logback.xml
+
+#dubbo service consumer config
+dubbo: 
+  application: 
+    name: consumer
+  registry: 
+    address: zookeeper://118.25.219.233:2181
+  scan: com.ehr.humanfiles.service
+  portocol: 
+    name: dubbo
+    port: 20880
+  provider: 
+         timeout: 60000 
+  consumer: 
+         timeout: 60000 
+         check: false 
+         retries: 0 
+
+spring: 
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ehr?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+  
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 1024000
+      max-request-size: 1024000
+      location: E:/ehr
+  devtools:
+    restart:
+      enabled: true  #设置开启热部署
+  freemarker:
+    cache: false    #页面不加载缓存，修改即时生效      
+
+#系统模块配置
+modules: 
+  #人事档案  [入职,离职,调岗,调薪,奖励,处分,停职,复职] 
+  humanfiles: 
+    h_entry: 入职
+    h_dimission: 离职
+    h_reassignment: 调岗
+    h_salary_adujstment: 调薪
+    h_reward_punishment: 奖励&处分
+    h_suspension: 停职
+    h_reinstate: 复职
+    
+  #部门管理
+  department:
+    d_tree: 组织架构
+    d_info: 部门详情
+    d_rules: 规章制度
+    
+  #薪资  [薪资调整,薪酬账户,报表,申诉记录]
+  salary: 
+    sl_adjustment: 薪资发放策略
+    sl_accounts: 薪酬账户
+    sl_reports: 薪酬发放报表
+    sl_appeal_record: 申诉记录
+    
+  #社保 [缴费基数,社保账户,报表,申诉记录]
+  socialsecurity: 
+    base_pay: 社保缴费策略
+    ss_accounts: 社保账户
+    ss_reports: 社保缴纳报表
+    ss_appeal_record: 申诉记录
+    
+  #考勤 [考核模板,申请系统,考勤日志,申诉记录]
+  attendence: 
+    #a_data: 考勤数据采集
+    a_records: 考勤日志
+    a_on_business: 出差管理
+    a_on_holiday: 休假管理
+    a_overtime: 加班管理
+    a_appeal_record: 申诉记录
+  #绩效考核
+  performance: 
+    p_records: 考核记录
+  #培训
+  training: 
+    new_training_plan: 新建培训计划
+    check_training_plan: 培训计划查看
+    training_summary: 培训总结
+  
+  #系统管理
+  system: 
+    sys_reward_punishment_config: 奖惩配置
+    
+ #热部署
+debug: true
+
+  
+ 

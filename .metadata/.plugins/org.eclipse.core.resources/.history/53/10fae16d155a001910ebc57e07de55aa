@@ -1,0 +1,102 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>考勤记录</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script th:src="@{/js/Choose.js}" ></script>
+<script th:src="@{/js/MyJs.js}" ></script>
+<script th:src="@{/js/WebCalendar.js}" ></script>
+<body class="main">
+    <form method="post" action="yh.aspx" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+</div>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+	<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+</div>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    <table cellspacing="0" cellpadding="0" width="98%" align="center" border="0">
+                    	<tr>
+                    		<td><span>用户名:</span>
+                                <input name="enumber" type="text" id="enumber" class="mytext" style="width:100px;" />
+                            </td>
+                            <td align="right">
+                                <input type="submit" name="QueryBtn" value="查 询" id="QueryBtn" class="mybtn" />
+                                <input name="AddBtn" type="button" id="AddBtn" value="增 加" class="mybtn" onclick="javascript:popView(&#39;yh_add.aspx&#39;);" />
+                                <input type="submit" name="ExpBtn" value="导 出" id="ExpBtn" class="mybtn" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div>
+									<table class="hkgv" cellspacing="0" rules="all" border="1" id="GridView1" style="width:100%;border-collapse:collapse;">
+										<tr class="hkHeadStyle">
+											<th scope="col" style="width:30px;">
+											<img src="/pic/refresh.gif" alt="序号" /></th>
+											<th scope="col">用户名</th>
+											<th scope="col">密码</th>
+											<th scope="col" >权限</th>
+											<th scope="col" style="width:60px;">创建日期</th>
+											<th scope="col" style="width:170px;">附加操作</th>
+										</tr>
+										</table>
+									</div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+</form>
+</body>
+<script type="text/javascript">
+	window.onload=function (){
+		$.ajax({
+	        type:'get',
+	        url:'/system/queryAllUser',
+	        async:false,	        
+	        success:function(res){
+	        	var data = res.data;
+	        	for (var i=1;i<=data.length;i++){
+	        		var day = data[i-1].day;
+	        		var index = data[i-1].day.indexOf('T');
+	        		day = day.substring(0,day);
+	        		var $tr = $("<tr>"+
+	    					"<td align=\"center\" style=\"width:30px;\"><input id=\"GridView1_ctl\""+ i +"\"_CheckSelect\" type=\"checkbox\" name=\"GridView1$ctl\""+i+"\"$CheckSelect\">"+"</td>"+
+	    					"<td>" + data[i-1].enumber + "</td>" +
+	    					"<td>" + data[i-1].password + "</td>" +
+	    					"<td align=\"center\">" + day + "</td>" +
+	    					"<td align=\"center\" style=\"width:80px;white-space:nowrap;\"> " + 
+	    						"<span id=\"GridView1_ctl"+i+"_Label1\">" + "<a href=\"javascript:void(0)\" onclick=\"showfrom(1);\" class=\"gvlink\">查看</a></span>" + 
+	    						"<span id=\"GridView1_ctl"+i+"_Label2\"> <a href=\"javascript:void(0)\" onclick=\"updatefrom(1);\" class=\"gvlink\">修改</a></span></td></tr>");
+	    					var $table = $(".hkgv tbody");
+	    					$table.append($tr);
+	        	}
+	        }
+	   });
+	}
+</script>
+</html>

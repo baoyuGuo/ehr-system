@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<div class="container-fluid">
+		<form action="" role="form" class="">
+			 <!-- 左边12 -->
+			 <div class="span10">
+			 	<div class="form-group form-inline">
+			 		<h5>基本信息</h5>
+			 		<label for="eNUm">工号</label>
+			 		<input type="text" class="form-control" id="eNum" placeholder="点击生成工号">
+			 		<button title="生成工号"></button>
+			 	</div>
+			 </div>
+			 <!-- 上传照片 -->
+			 <div class="span2">
+			 	
+			 </div>
+		</form>
+	</div>
+
+</body>
+</html>

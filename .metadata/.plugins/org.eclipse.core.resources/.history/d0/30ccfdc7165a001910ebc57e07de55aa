@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="/sys/createUser" method="post">
+		用户名:<input placeholder="请输入工号)">
+	</form>
+</body>
+</html>

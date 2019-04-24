@@ -1,0 +1,96 @@
+package com.ehr.portal.pojo;
+
+import java.io.Serializable;
+import java.util.Date;
+
+public class EhrDimission implements Serializable{
+    private String enumber;
+
+    private String dmType;
+
+    private Date dmDate;
+
+    private String to;
+
+    private String dDescription;
+
+    private String filepath;
+
+    private String deleteconstract;
+
+    private String marks;
+
+    private Date gzjz;
+
+    public String getEnumber() {
+        return enumber;
+    }
+
+    public void setEnumber(String enumber) {
+        this.enumber = enumber == null ? null : enumber.trim();
+    }
+
+    public String getDmType() {
+        return dmType;
+    }
+
+    public void setDmType(String dmType) {
+        this.dmType = dmType == null ? null : dmType.trim();
+    }
+
+    public Date getDmDate() {
+        return dmDate;
+    }
+
+    public void setDmDate(Date dmDate) {
+        this.dmDate = dmDate;
+    }
+
+    public String getTo() {
+        return to;
+    }
+
+    public void setTo(String to) {
+        this.to = to == null ? null : to.trim();
+    }
+
+    public String getdDescription() {
+        return dDescription;
+    }
+
+    public void setdDescription(String dDescription) {
+        this.dDescription = dDescription == null ? null : dDescription.trim();
+    }
+
+    public String getFilepath() {
+        return filepath;
+    }
+
+    public void setFilepath(String filepath) {
+        this.filepath = filepath == null ? null : filepath.trim();
+    }
+
+    public String getDeleteconstract() {
+        return deleteconstract;
+    }
+
+    public void setDeleteconstract(String deleteconstract) {
+        this.deleteconstract = deleteconstract == null ? null : deleteconstract.trim();
+    }
+
+    public String getMarks() {
+        return marks;
+    }
+
+    public void setMarks(String marks) {
+        this.marks = marks == null ? null : marks.trim();
+    }
+
+    public Date getGzjz() {
+        return gzjz;
+    }
+
+    public void setGzjz(Date gzjz) {
+        this.gzjz = gzjz;
+    }
+}

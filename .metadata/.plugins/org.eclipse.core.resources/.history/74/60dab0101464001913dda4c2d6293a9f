@@ -1,0 +1,5 @@
+package com.ehr.portal.humanfiles.service;
+
+public interface SuspensionReinstateService {
+
+}

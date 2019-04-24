@@ -1,0 +1,16 @@
+package com.ehr.portal.salary.service.impl;
+
+import java.util.List;
+
+import com.ehr.portal.pojo.EhrAccounts;
+import com.ehr.portal.salary.service.AccountService;
+
+public class AccountServiceImpl implements AccountService {
+
+	@Override
+	public List<EhrAccounts> queryAccounts() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

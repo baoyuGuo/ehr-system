@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<head>
+    <meta charset="utf-8">
+    <title>注册页面</title>
+    <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .row-center{
+            text-align:center;
+            margin-top: 120px;
+        }
+        .col-center {
+            display:inline-block;
+            float:none;
+            text-align:left;
+        }
+    </style>
+</head>
+<body  >
+<div class="container">
+    <div  class="row  row-center" >
+	     <form action="/portal/register" method="post">
+	     	<div  class="col-center">
+		        <img src="/pic/xupt_ehr_logo.png" style="margin-top:-3px">
+	            <div id="loginui" style="background-color: darkseagreen; padding: 28px;border-radius: 8px;border-color: #00a3ff;border-width: 2px  ">
+	                <div style="height: 80px;" th:each="error: ${errors}">
+	                    <h3 style="text-align: center;color: #00559B; font-size: 35px;">注册中心</h3>
+	                </div>
+	                <span style="color: red;" th:if="${errors_unknown}" th:text="${errors_unknown}"></span>
+	                <div  class="form-group">
+	                    <input name="email" class="form-control uname" id="email" placeholder="请输入您的工号">
+	                </div>
+	                <span style="color: red;" th:if="${errors}" th:text="${errors.email}"></span>
+	                <div style="padding: 1px" class="form-group">
+	                    <input name="password" type="password" class="form-control pword m-b" id="password" placeholder="请输入您的密码">
+	                </div>
+	                <span style="color: red;" th:if="${errors}" th:text="${errors.password}"></span>
+	                <div style="padding: 1px" class="form-group">
+	                    <input name="repassword" type="password" class="form-control pword m-b" id="repassword" placeholder="确认密码">
+	                </div>
+	                <div class="submit">
+	                    <button style="border-radius:8px; background-color: #00A3FF" class="btn btn-lg  btn-login btn-block">注册</button>
+	                </div>
+	            </div>
+	        </div>
+	     </form>
+    </div>
+</div>
+</body>
+</html>
+

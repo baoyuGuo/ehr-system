@@ -1,0 +1,44 @@
+package com.ehr.portal.pojo;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.ehr.portal.salary.service.AccountService;
+
+public class ParamMapping {
+	//调整
+	public static Map<String, String> ADJUST_MAP = new HashMap<String, String>();
+	
+	//奖惩
+	public static Map<String, String> REWARD_PUNISH_MAP = new HashMap<>();
+	
+	public static Map<String, String> ACCOUNT_TYPE_MAP = new HashMap<>();
+	
+	//停职、复职
+	public static List<String> SUSPENSION_REINSTATE_LIST =  new ArrayList<>();
+	
+	//账户类型
+	public static String SALARY_ACCOUNT = "薪资账户";
+	public static String SOCIAL_SECURITY_ACCOUNT = "社保账户";
+	
+	static {
+		ADJUST_MAP.put("post", "岗位调动");
+		ADJUST_MAP.put("salary", "薪资调整");
+		ADJUST_MAP.put("suspension", "停职");
+		ADJUST_MAP.put("reinstate", "复职");
+		//奖惩
+		REWARD_PUNISH_MAP.put("reward", "奖励");
+		REWARD_PUNISH_MAP.put("punish", "处罚");
+		
+		//停职、复职
+		SUSPENSION_REINSTATE_LIST.add("停职");
+		SUSPENSION_REINSTATE_LIST.add("复职");
+		
+		//账户类型
+		ACCOUNT_TYPE_MAP.put("salary", "薪资账户");
+		ACCOUNT_TYPE_MAP.puy("social")
+		
+	}
+}

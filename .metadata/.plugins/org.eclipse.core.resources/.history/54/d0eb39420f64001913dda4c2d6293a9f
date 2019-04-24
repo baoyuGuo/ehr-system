@@ -1,0 +1,132 @@
+#ehr-portal system
+#端口配置
+server.port: 8080
+
+#日志
+logging:
+  config: src/main/resources/logback.xml
+
+#dubbo service consumer config
+#dubbo: 
+# application: 
+#    name: consumer
+#  registry: 
+#    address: zookeeper://118.25.219.233:2181
+#  scan: com.ehr.humanfiles.service
+#  portocol: 
+#    name: dubbo
+#    port: 20880
+#  provider: 
+#         timeout: 60000 
+#  consumer: 
+#         timeout: 60000 
+#         check: false 
+#         retries: 0 
+
+
+spring: 
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ehr?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+  
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 1024000
+      max-request-size: 1024000
+      location: E:/ehr
+  devtools:
+    restart:
+      enabled: true  #设置开启热部署
+  freemarker:
+    cache: false    #页面不加载缓存，修改即时生效      
+
+#系统模块配置
+modules: 
+  #人事档案  [入职,离职,调岗,调薪,奖励,处分,停职,复职] 
+  humanfiles: 
+    h_entry: 入职
+    h_dimission: 离职
+    h_reassignment: 调岗
+    h_salary_adujstment: 调薪
+    h_reward_punishment: 奖励&处分
+    h_suspension: 停职
+    h_reinstate: 复职
+    
+  #部门管理
+  department:
+    d_tree_manage: 组织架构
+    d_post: 岗位管理
+    d_rules: 规章制度
+    
+  #薪资  [薪资调整,薪酬账户,报表,申诉记录]
+  salary: 
+    sl_accounts: 薪酬账户
+    sl_tax_conf: 税收设置
+    sl_account_set: 薪资账套
+    sl_count: 工资计算
+    sl_reports: 薪酬发放报表
+    appeal_record: 申诉记录
+    
+  #社保 [缴费基数,社保账户,报表,申诉记录]
+  socialsecurity: 
+    ss_type: 社保类别
+    ss_accounts: 社保账户
+    socialsecurity: 员工社保
+    ss_reports: 社保缴纳报表
+    appeal_record: 申诉记录
+    
+  #考勤 [考核模板,申请系统,考勤日志,申诉记录]
+  attendence: 
+    #a_data: 考勤数据采集
+    a_records: 考勤日志
+    a_on_business: 出差管理
+    a_on_holiday: 休假管理
+    a_overtime: 加班管理
+    appeal_record: 申诉记录
+    
+  #绩效考核
+  performance: 
+    p_records: 考核记录
+    p_reward_punishment_type: 绩效奖惩类型
+    p_reward_punishment: 绩效奖惩记录
+    appeal_record: 申诉记录
+    
+  #培训
+  training: 
+    training_plans: 培训计划
+    training_contract: 培训协议
+    training_scores: 培训考核
+    training_cost: 费用报销
+    
+  #招聘管理
+  recruitment: 
+    r_needs: 人员需求申请
+    r_needs_deal: 人员申请审批
+    r_plans: 招聘计划
+    r_pool: 人才储备库
+    r_test_plan: 笔试/面试安排
+    r_test_res: 笔试/面试结果
+    
+  #系统管理
+  system: 
+    company_info: 企业档案
+    sys_reward_punishment_config: 奖惩配置
+    sys_users: 用户管理
+    sys_logs: 系统日志
+    
+  #预警系统
+  warning: 
+    w_birth: 员工生日
+    w_contract: 合同到期
+    w_entry: 员工转正
+    w_cards: 证件到期
+    
+ #热部署
+debug: true
+
+  
+ 

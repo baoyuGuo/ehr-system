@@ -1,0 +1,115 @@
+package com.ehr.portal.service.impl;
+
+import java.util.List;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ehr.mapper.EhrEmployeeMapper;
+import com.ehr.mapper.EhrUserMapper;
+import com.ehr.pojo.EhrEmployee;
+import com.ehr.pojo.EhrEmployeeExample;
+import com.ehr.pojo.EhrUser;
+import com.ehr.pojo.EhrUserExample;
+import com.ehr.pojo.EhrUserExample.Criteria;
+import com.ehr.portal.utils.EhrResult;
+import com.ehr.service.PortalService;
+
+@Service
+public class PortalServiceImpl implements PortalService {
+	
+	@Autowired
+	EhrUserMapper userMapper;
+	
+	@Autowired
+	EhrEmployeeMapper eMapper;
+	
+	/** 
+	 * 系统登陆
+	 */
+	@Override
+	public EhrResult login(EhrUser user,HttpServletRequest request,HttpServletResponse response) {
+		try {
+			String enumber = user.getEnumber();
+			String password = user.getPassword();
+			EhrUserExample example = new EhrUserExample();
+			Criteria criteria = example.createCriteria();
+			criteria.andEnumberEqualTo(enumber);
+			List<EhrUser> list = userMapper.selectByExample(example);
+			if (list.isEmpty() || list==null) {
+				return EhrResult.build(403, "用户不存在!");
+			}else if(!list.get(0).getPassword().equals(password)) {
+				return EhrResult.build(403, "密码不正确!");
+			}
+			int flag = 0;
+			if(request.getCookies()!=null && request.getCookies().length>=0) {
+				for (Cookie c : request.getCookies()) {
+					if(c.getName().equals("username")) {
+						c.setValue(user.getEnumber());
+						flag = 1;
+					}
+					if(c.getName().equals("password")) {
+						c.setValue(user.getPassword());
+					}
+				}
+			}
+			if(flag==0) {
+				Cookie cookie1 = new Cookie("username", user.getEnumber());
+				Cookie cookie2 = new Cookie("password", user.getPassword());
+				//cookie的有效期为一天
+				cookie1.setMaxAge(60*60*24);
+				cookie2.setMaxAge(60*60*24);
+				response.addCookie(cookie1);
+				response.addCookie(cookie2);
+			}
+			return EhrResult.ok();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return EhrResult.build(400, "未知的错误!");
+		}
+	}
+
+	/** 
+	 * @see com.ehr.service.PortalService#register(com.ehr.pojo.EhrUser)
+	 * 注册
+	 */
+	@Override
+	public EhrResult register(EhrUser register) {
+		try {
+			EhrEmployee employee = eMapper.selectByPrimaryKey(register.getEnumber());
+			if(employee==null) {
+				return EhrResult.build(403, "非公司员工邮箱不能注册");
+			}
+			EhrUserExample example = new EhrUserExample();
+			example.createCriteria().andEnumberEqualTo(register.getEnumber());
+			if (userMapper.countByExample(example) > 0) {
+				return EhrResult.build(403, "账户已被注册");
+			}
+			userMapper.insert(register);
+			return EhrResult.ok();
+		} catch (Exception e) {
+			return EhrResult.build(403, "未知的错误！");
+		}
+	}
+
+	@Override
+	public EhrResult logout(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			Cookie[] cookies = request.getCookies();
+			for (Cookie cookie : cookies) {
+				if(cookie.getName().equals("username") || cookie.getName().equals("password")) {
+					cookie.setMaxAge(0);
+				}
+			}
+			return EhrResult.ok();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return EhrResult.build(500, "未知的异常");
+		}
+	}
+
+}

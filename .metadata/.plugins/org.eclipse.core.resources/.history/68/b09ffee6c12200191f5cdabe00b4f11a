@@ -1,0 +1,63 @@
+package com.xupt.sso.service.impl;
+
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
+
+import com.xupt.common.pojo.EhrResult;
+import com.xupt.ehr.mapper.EhrUserMapper;
+import com.xupt.ehr.pojo.EhrUser;
+import com.xupt.ehr.pojo.EhrUserExample;
+import com.xupt.ehr.pojo.EhrUserExample.Criteria;
+import com.xupt.sso.service.LoginService;
+
+@Service
+public class LoginServiceImpl implements LoginService {
+	
+	@Autowired
+	private EhrUserMapper userMapper;
+
+	@Override
+	public EhrResult login(String username, String password, HttpServletRequest request,
+			HttpServletResponse response) {
+		//校验登陆数据
+		EhrUserExample example = new EhrUserExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andUsernameEqualTo(username);
+		List<EhrUser> list = userMapper.selectByExample(example);
+		
+		if(null == list || list.isEmpty() )
+		{
+			return EhrResult.build(400, "用户不存在");
+		}
+		EhrUser user = list.get(0);
+		
+		if(!user.getPassword().equals(DigestUtils.md5DigestAsHex(password.getBytes())))
+		{
+			return EhrResult.build(400, "用户名或密码错误");
+		}
+		
+		//登录成功
+		//生成token
+		String token = UUID.randomUUID().toString();
+		//写入Redis   
+		// key: REDIS_SESSION_KEY:token
+		//value: user转json
+		tbUser.setPassword(null);
+		jedisClient.set(REDIS_SESSION_KEY+":"+token, JsonUtils.objectToJson(tbUser));
+		//设置session的过期时间
+		jedisClient.expire(REDIS_SESSION_KEY+":"+token, SESSION_EXPIRE);
+		//token写入cookie
+		CookieUtils.setCookie(request, response, "TT_TOKEN", token);
+		return TaotaoResult.ok(token);
+		return null;
+	}
+	
+}

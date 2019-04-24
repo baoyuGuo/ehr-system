@@ -1,0 +1,25 @@
+package com.ehr.portal.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.ehr.portal.pojo.EhrAccounts;
+import com.ehr.portal.salary.service.AccountService;
+import com.ehr.portal.utils.EhrResult;
+
+@Controller
+@RequestMapping("/salary")
+public class SalaryController {
+	
+	@Autowired
+	AccountService accountService;
+	
+	@RequestMapping("/queryAccounts")
+	public EhrResult queryAccounts() {
+		List<EhrAccounts> list = accountService.queryAccounts();
+	}
+	
+}

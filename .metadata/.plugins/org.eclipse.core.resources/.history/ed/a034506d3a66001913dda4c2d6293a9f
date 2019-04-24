@@ -1,0 +1,10 @@
+package com.ehr.portal.portal.humanfiles.service;
+
+import java.util.List;
+
+import com.ehr.portal.portal.pojo.EhrAdjustment;
+
+public interface SuspensionReinstateService {
+	//查询所有记录
+	List<EhrAdjustment> queryAll();
+}

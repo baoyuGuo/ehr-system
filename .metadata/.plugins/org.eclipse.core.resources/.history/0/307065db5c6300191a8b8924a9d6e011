@@ -1,0 +1,828 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>	新增人员信息</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+<script th:src="@{/js/Choose.js}" ></script>
+<script th:src="@{/js/MyJs.js}" ></script>
+<script th:src="@{/js/WebCalendar.js}" ></script>
+
+<script type="text/javascript" language="javascript">
+	
+	$(document).ready(function (){
+		if(${alert_msg}){
+			alert(${alert_msg});
+		}
+	});
+
+    function chknull() {
+        if (document.getElementById('enumber').value == '') {
+            alert('工号不能为空');
+            form1.GongHao.focus();
+            return false;
+        }
+        if (document.getElementById('ename').value == '') {
+            alert('姓名不能为空');
+            form1.XingMing.focus();
+            return false;
+        }
+        if (document.getElementById('dateofentry').value == '') {
+            alert('入职日期不能为空');
+            form1.DaoGangRQ.focus();
+            return false;
+        }
+        if (document.getElementById('edepartmentnum').value == '') {
+            alert('部门名称不能为空');
+            form1.YinPinBM.focus();
+            return false;
+        }
+        if (document.getElementById('basicwage').value == '') {
+            alert('基本工资不能为空');
+            form1.JbGongZ.focus();
+            return false;
+        }
+        if (document.getElementById('basicwage').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('basicwage').value)) {
+                alert("基本工资只能为正数");
+                form1.JbGongZ.focus();
+                return false;
+            }
+        }
+        if (document.getElementById('gwgz').value == '') {
+            alert('岗位工资不能为空');
+            form1.Gwgz.focus();
+            return false;
+        }
+        if (document.getElementById('gwgz').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('gwgz').value)) {
+                alert("岗位工资只能为正数");
+                form1.Gwgz.focus();
+                return false;
+            }
+        }
+        if (document.getElementById('jxgz').value == '') {
+            alert('绩效工资不能为空');
+            form1.Jxgz.focus();
+            return false;
+        }
+        if (document.getElementById('jxgz').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('jxgz').value)) {
+                alert("绩效工资只能为正数");
+                form1.Jxgz.focus();
+                return false;
+            }
+        }
+        if (document.getElementById('glgz').value == '') {
+            alert('工龄工资不能为空');
+            form1.Glgz.focus();
+            return false;
+        }
+        if (document.getElementById('glgz').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('glgz').value)) {
+                alert("工龄工资只能为0或正数");
+                form1.Glgz.focus();
+                return false;
+            }
+        }
+        if (document.getElementById('gwjt').value == '') {
+            alert('岗位津贴不能为空');
+            form1.Gwjt.focus();
+            return false;
+        }
+        if (document.getElementById('gwjt').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('gwjt').value)) {
+                alert("岗位津贴只能为0或正数");
+                form1.Gwjt.focus();
+                return false;
+            }
+        }
+        if (document.getElementById('hfbt').value == '') {
+            alert('话费补贴不能为空');
+            form1.Hfbt.focus();
+            return false;
+        }
+        if (document.getElementById('hfbt').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('hfbt').value)) {
+                alert("话费补贴只能为正数");
+                form1.Hfbt.focus();
+                return false;
+            }
+        }
+        if (document.getElementById('cfbt').value == '') {
+            alert('餐费补贴不能为空');
+            form1.Cfbt.focus();
+            return false;
+        }
+        if (document.getElementById('cfbt').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('cfbt').value)) {
+                alert("餐费补贴只能为正数");
+                form1.Cfbt.focus();
+                return false;
+            }
+        }
+        if (document.getElementById('jtbt').value == '') {
+            alert('交通补贴不能为空');
+            form1.Jtbt.focus();
+            return false;
+        }
+        if (document.getElementById('jtbt').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('jtbt').value)) {
+                alert("交通补贴只能为正数");
+                form1.Jtbt.focus();
+                return false;
+            }
+        }
+        if (document.getElementById('qqjj').value == '') {
+            alert('全勤奖金不能为空');
+            form1.Qqjj.focus();
+            return false;
+        }
+        if (document.getElementById('qqjj').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('qqjj').value)) {
+                alert("全勤奖金只能为正数");
+                form1.Qqjj.focus();
+                return false;
+            }
+        }
+        if (document.getElementById('qtjj').value == '') {
+            alert('其它奖金不能为空');
+            form1.Qtjj.focus();
+            return false;
+        }
+        if (document.getElementById('qtjj').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('qtjj').value)) {
+                alert("其它奖金只能为正数");
+                form1.Qtjj.focus();
+                return false;
+            }
+        }
+        if (document.getElementById('bxdk').value == '') {
+            alert('保险代扣不能为空');
+            form1.Bxdk.focus();
+            return false;
+        }
+        if (document.getElementById('bxdk').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('bxdk').value)) {
+                alert("保险代扣只能为正数");
+                form1.Bxdk.focus();
+                return false;
+            }
+        }
+        if (document.getElementById('cfdk').value == '') {
+            alert('餐费代扣不能为空');
+            form1.Cfdk.focus();
+            return false;
+        }
+        if (document.getElementById('cfdk').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('cfdk').value)) {
+                alert("餐费代扣只能为正数");
+                form1.Cfdk.focus();
+                return false;
+            }
+        }
+        if (document.getElementById('qtdk').value == '') {
+            alert('其它代扣不能为空');
+            form1.Qtdk.focus();
+            return false;
+        }
+        if (document.getElementById('qtdk').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('qtdk').value)) {
+                alert("其它代扣只能为正数");
+                form1.Qtdk.focus();
+                return false;
+            }
+        }
+    }
+</script>
+<script language="javascript" type="text/javascript">
+    function PageCheck() {
+        var strUploadFile = document.getElementById('uploadFile').value;
+        if (strUploadFile == "") {
+            alert("请选择要上传的附件！");
+            return false;
+        }
+        var nameLen = strUploadFile.length;
+        var rightName = strUploadFile.substr(nameLen - 4, 4).toLowerCase();
+        var sAllowExt = ".doc|.docx|.xls|.xlsx|.ppt|.pptx|.pdf|.rar|.zip|.gif|.jpg|.jpeg";
+        var str = document.getElementById('uploadFile').value;
+        var rightName = str.substr(str.lastIndexOf('.') + 1, str.length - str.lastIndexOf('.')).toLowerCase();
+        if (sAllowExt.indexOf(rightName) == -1) {
+            alert('对不起，您只能上传【' + sAllowExt + '】格式的文件\r如果需要上传其他格式的文件，请联系系统管理员！');
+            return false;
+        }
+    }
+
+    function AttDown() {
+        if (document.getElementById('fjlb').value == '') {
+            alert('请先选中附件！');
+            return false;
+        }
+        else {
+            var num = Math.random();
+            var littleproduct = document.getElementById("fjlb");
+            var cindex = littleproduct.selectedIndex;
+            var cText = littleproduct.options[cindex].text;
+            var cValue = littleproduct.options[cindex].value;
+            window.open("../../AttDown.aspx?tmp=" + num + "&number=" + cValue + "&fname=hr/h01", "_blank", "height=1, width=1,toolbar=no, menubar=no, scrollbars=no,resizable=yes,location=no, status=no")
+        }
+    }
+
+    function AttDel() {
+        if (document.getElementById('fjlb').value == '') {
+            alert('请先选中附件！');
+            return false;
+        }
+        else {
+            if (!confirm("您确定要删除此附件吗？"))
+                return false;
+            var num = Math.random();
+            var littleproduct = document.getElementById("fjlb");
+            var cindex = littleproduct.selectedIndex;
+            var cText = littleproduct.options[cindex].text;
+            var cValue = littleproduct.options[cindex].value;
+            window.open("../../AttDel.aspx?tmp=" + num + "&number=" + cValue + " ", "window", "height=1, width=1,top=150,left=150,toolbar=no, menubar=no, scrollbars=no,resizable=yes,location=no, status=no");
+        }
+    }
+    
+    //成功工号
+    $("#generateEnum").click(function(){
+	    $.ajax({
+	    	url:'/humanfiles/generateEnum',
+	    	success:function(result){
+	        $("#div1").html(result);
+	    }});
+	});
+</script>
+</head>
+
+<body class="main" cz-shortcut-listen="true">
+    <form method="post" action="/humanfiles/entry" id="entry_form" enctype="multipart/form-data">
+        <table width="100%" cellspacing="0" cellpadding="0" border="0">
+            <tbody><tr>
+                <td class="td_base" width="80%" height="25px">新增人员信息
+                </td>
+                <td class="td_base" width="20%"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                        <tbody><tr>
+                            <td colspan="2">
+                                <table class="form" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                    <tbody>
+                                    <tr>
+                                        <td class="form-item"><font color="red">*</font>招聘方式：</td>
+                                        <td>
+                                            <select name="recruitmentway" id="recruitmentway" style="width:90%;">
+												<option value="校招大流程" selected="selected">校招大流程</option>
+												<option value="校招内推">校招内推</option>
+												<option value="社招">社招</option>
+											</select>
+                                        </td>
+                                        <td class="form-item">内推人工号：
+                                        </td>
+                                        <td>
+                                            <input name="referrerid" type="text" id="referrerid" class="mytext" style="width:80%;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" style="height: 26px" align="center">
+                                            <b>基本信息</b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item" style="width: 20%"><font color="red">*</font>工号：
+                                        </td>
+                                        <td style="width: 30%">
+                                            <input name="enumber" type="text" id="enumber" class="mytext" style="width:80%;">
+                                            <a href="javascript:void(0)">
+                                          	 	<img id="generateEnum" src="/pic/choose_002.gif" border="0">
+                                            </a>
+                                        </td>
+                                        <td class="form-item" style="width: 20%"><font color="red">*</font>姓名：
+                                        </td>
+                                        <td style="width: 30%">
+                                            <input name="ename" type="text" id="ename" class="mytext" style="width:90%;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item"><font color="red">*</font>性别：
+                                        </td>
+                                        <td>
+                                            <select name="egender" id="egender" style="width:90%;">
+												<option value="男" selected="selected">男</option>
+												<option value="女">女</option>
+											</select>
+                                        </td>
+                                        <td class="form-item"><font color="red">*</font>出生年月：
+                                        </td>
+                                        <td>
+                                            <input name="ebirth" type="text" id="ebirth" class="mytext" onclick="SelectDate(this,'yyyy-MM-dd')" style="width:90%;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item"><font color="red">*</font>籍贯：
+                                        </td>
+                                        <td style="width: 30%">
+                                            <input name="enativeplace" type="text" id="enativeplace" class="mytext" style="width:90%;">
+                                        </td>
+                                        <td class="form-item">民族：
+                                        </td>
+                                        <td>
+                                            <input name="nation" type="text" id="nation" class="mytext" style="width:90%">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">婚姻状况：
+                                        </td>
+                                        <td>
+                                            <select name="maritalstatus" id="maritalstatus" style="width:90%;">
+												<option value="未婚" selected="selected">未婚</option>
+												<option value="已婚">已婚</option>
+												<option value="离异">离异</option>
+												<option value="丧偶">丧偶</option>
+											</select>
+                                        </td>
+                                        <td class="form-item">政治面貌：
+                                        </td>
+                                        <td>
+                                            <select name="politicalstatus" id="politicalstatus" style="width:90%;">
+												<option value="群众" selected="selected">群众</option>
+												<option value="共青团员">共青团员</option>
+												<option value="预备党员">预备党员</option>
+												<option value="党员">党员</option>
+												<option value="其他">其他</option>
+											</select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">健康状况：
+                                        </td>
+                                        <td>
+                                            <select name="health" id="health" style="width:90%;">
+												<option value="良好" selected="selected">良好</option>
+												<option value="一般">一般</option>
+												<option value="疾病">疾病</option>
+											</select>
+                                        </td>
+                                        <td class="form-item">身份证号：
+                                        </td>
+                                        <td>
+                                            <input name="identitynumber" type="text" id="identitynumber" class="mytext" style="width:90%;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" style="text-align: center">
+                                            <strong>个人情况</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">参加工作时间：
+                                        </td>
+                                        <td>
+                                            <input name="workbeginning" type="text" id="workbeginning" class="mytext" onclick="SelectDate(this,'yyyy-MM-dd')" style="width:90%;">
+                                        </td>
+                                        <td class="form-item">工作年限：
+                                        </td>
+                                        <td>
+                                            <input name="worktime" type="text" id="worktime" class="mytext" style="width:90%;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">学历：
+                                        </td>
+                                        <td>
+                                            <select name="educationbg" id="educationbg" style="width:90%;">
+												<option value="小学">小学</option>
+												<option value="初中">初中</option>
+												<option value="高中">高中</option>
+												<option value="中专">中专</option>
+												<option value="大专">大专</option>
+												<option value="本科" selected="selected">本科</option>
+												<option value="硕士">硕士</option>
+												<option value="博士">博士</option>
+											</select>
+                                        </td>
+                                        <td class="form-item">毕业院校：
+                                        </td>
+                                        <td>
+                                            <input name="graduatedschool" type="text" id="graduatedschool" class="mytext" style="width:90%;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">所学专业：
+                                        </td>
+                                        <td>
+                                            <input name=major type="text" id="major" class="mytext" style="width:90%;">
+                                        </td>
+                                        <td class="form-item">毕业时间：
+                                        </td>
+                                        <td>
+                                            <input name="graduationdate" type="text" id="graduationdate" class="mytext" onclick="SelectDate(this,'yyyy-MM-dd')" style="width:90%;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">所学外语：
+                                        </td>
+                                        <td>
+                                            <input name="foreignlanguage" type="text" id="foreignlanguage" class="mytext" style="width:90%;">
+                                        </td>
+                                        <td class="form-item">外语等级：
+                                        </td>
+                                        <td>
+                                            <input name="languagelevel" type="text" id="languagelevel" class="mytext" style="width:90%;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">计算机掌握程度：
+                                        </td>
+                                        <td>
+                                            <input name="computerskills" type="text" id="computerskills" class="mytext" style="width:90%;">
+                                        </td>
+                                        <td class="form-item">计算机等级：
+                                        </td>
+                                        <td>
+                                            <input name="computergrade" type="text" id="computergrade" class="mytext" style="width:90%;">
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td class="form-item">所获证书：
+                                        </td>
+                                        <td colspan="3">
+                                            <input name="certificate" type="text" id="certificate" class="mytext" style="width:96%;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">教育简历：
+                                        </td>
+                                        <td colspan="3">
+                                            <input name="educationexperience" type="text" id="educationexperience" class="mytext" style="width:96%;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">特长：
+                                        </td>
+                                        <td>
+                                            <input name="speciality" type="text" id="speciality" class="mytext" style="width:90%;">
+                                        </td>
+                                        <td class="form-item">爱好：
+                                        </td>
+                                        <td>
+                                            <input name="hobby" type="text" id="hobby" class="mytext" style="width:90%;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">电子邮件：
+                                        </td>
+                                        <td>
+                                            <input name="email" type="text" id="email" class="mytext" style="width:90%;">
+                                        </td>
+                                        <td class="form-item">联系地址：
+                                        </td>
+                                        <td>
+                                            <input name="address" type="text" id="address" class="mytext" style="width:90%;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">手机号：
+                                        </td>
+                                        <td>
+                                            <input name="etelphone" type="text" id="etelphone" class="mytext" style="width:90%;">
+                                        </td>
+                                        <td class="form-item">邮政编码：
+                                        </td>
+                                        <td>
+                                            <input name="postalcode" type="text" id="postalcode" class="mytext" style="width:90%;">
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td colspan="4" style="text-align: center">
+                                            <strong>单位信息</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item"><font color="red">*</font>入职日期：
+                                        </td>
+                                        <td>
+                                            <input name="dateofentry" type="text" id="dateofentry" class="mytext" onclick="SelectDate(this,'yyyy-MM-dd')" style="width:90%;">
+                                        </td>
+                                        <td class="form-item"><font color="red">*</font>员工部门：
+                                        </td>
+                                        <td>
+                                            <input name="edepartmentnum" type="text" id="edepartmentnum" class="mytext" readonly="readonly" style="width:80%;">
+                                            <a href="javascript:void(0)">
+                                                <img onclick="openunit();" alt="" src="/pic/choose_002.gif" border="0"></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">员工岗位：
+                                        </td>
+                                        <td>
+                                            <input name="epost" type="text" id="epost" class="mytext" style="width:80%;">
+                                            <a href="javascript:void(0)">
+                                                <img onclick="OpenType('YinPinZW','h01');" alt="" src="/pic/choose_002.gif" border="0"></a>
+                                        </td>
+                                        <td class="form-item">合同类型：
+                                        </td>
+                                        <td>
+                                            <select name="econtracttype" id="econtracttype" style="width:90%;">
+												<option value="" selected="selected"></option>
+												<option value="劳务合同">劳务合同</option>
+												<option value="实习合同">实习合同</option>
+												<option value="临时工">临时工</option>
+												<option value="外包">外包</option>
+											</select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">岗位类型：
+                                        </td>
+                                        <td>
+                                            <select name="eposttype" id="eposttype" style="width:90%;">
+												<option value="" selected="selected"></option>
+												<option value="产品">产品</option>
+												<option value="技术">技术开发</option>
+												<option value="运维">运维</option>
+												<option value="测试">测试</option>
+												<option value="人事">人事</option>
+												<option value="行政">行政</option>
+											</select>
+                                        </td>
+                                        <td class="form-item">人才等级：
+                                        </td>
+                                        <td>
+                                            <select name="eabilitylevel" id="eabilitylevel" style="width:90%;">
+												<option value="" selected="selected"></option>
+												<option value="P1">P1</option>
+												<option value="P2">P2</option>
+												<option value="P3">P3</option>
+												<option value="P4">P4</option>
+												<option value="P5">P5</option>
+												<option value="P6">P6</option>
+												<option value="P7">P7</option>
+												<option value="P8">P8</option>
+												<option value="P9">P9</option>
+												<option value="P10">P10</option>
+											</select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" align="center"><strong>工资信息</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">工资卡开户行：
+                                        </td>
+                                        <td>
+                                            <select name="bankofaccount" id="bankofaccount" style="width:90%;">
+												<option value="" selected="selected"></option>
+												<option value="招商银行">招商银行</option>
+											</select>
+                                        </td>
+                                        <td class="form-item">工资卡帐号：
+                                        </td>
+                                        <td>
+                                            <input name="account" type="text" id="account" class="mytext" style="width:90%;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item"><font color="red">*</font>基本工资：
+                                        </td>
+                                        <td>
+                                            <input name="basicwage" type="text" value="0" id="basicwage" class="mytext" style="width:90%;">
+                                        </td>
+                                        <td class="form-item"><font color="red">*</font>岗位工资：</td>
+                                        <td>
+                                            <input name="gwgz" type="text" value="0" id="gwgz" class="mytext" style="width:90%;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item"><font color="red">*</font>绩效工资：</td>
+                                        <td>
+                                            <input name="jxgz" type="text" value="0" id="jxgz" class="mytext" style="width:90%;"></td>
+                                        <td class="form-item"><font color="red">*</font>工龄工资：</td>
+                                        <td>
+                                            <input name="glgz" type="text" value="0" id="glgz" class="mytext" style="width:90%;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item"><font color="red">*</font>岗位津贴：</td>
+                                        <td>
+                                            <input name="gwjt" type="text" value="0" id="gwjt" class="mytext" style="width:90%;"></td>
+                                        <td class="form-item"><font color="red">*</font>话费补贴：</td>
+                                        <td>
+                                            <input name="hfbt" type="text" value="0" id="hfbt" class="mytext" style="width:90%;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item"><font color="red">*</font>餐费补贴：</td>
+                                        <td>
+                                            <input name="cfbt" type="text" value="0" id="cfbt" class="mytext" style="width:90%;">
+                                        </td>
+                                        <td class="form-item"><font color="red">*</font>交通补贴：</td>
+                                        <td>
+                                            <input name="jtbt" type="text" value="0" id="jtbt" class="mytext" style="width:90%;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item"><font color="red">*</font>全勤奖金：</td>
+                                        <td>
+                                            <input name="qqjj" type="text" value="0" id="qqjj" class="mytext" style="width:90%;">
+                                        </td>
+                                        <td class="form-item"><font color="red">*</font>其它奖金：</td>
+                                        <td>
+                                            <input name="qtjj" type="text" value="0" id="qtjj" class="mytext" style="width:90%;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item"><font color="red">*</font>保险代扣：</td>
+                                        <td>
+                                            <input name="bxdk" type="text" value="0" id="bxdk" class="mytext" style="width:90%;">
+                                        </td>
+                                        <td class="form-item"><font color="red">*</font>餐费代扣：</td>
+                                        <td>
+                                            <input name="cfdk" type="text" value="0" id="cfdk" class="mytext" style="width:90%;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item"><font color="red">*</font>其它代扣：</td>
+                                        <td>
+                                            <input name="qtdk" type="text" value="0" id="qtdk" class="mytext" style="width:90%;">
+                                        </td>
+                                        <td class="form-item">&nbsp;</td>
+                                        <td>
+                                            &nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" style="text-align: center">
+                                            <strong>其他信息</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">相片：
+                                        </td>
+                                        <td colspan="3">
+                                            <input name="picture" type="file" id="picture" style="width: 80%">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">社会关系：
+                                        </td>
+                                        <td colspan="3">
+                                            <textarea name="socialrelationship" rows="2" cols="20" id="socialrelationship" class="mytextarea" style="height:66px;width:96%;"></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">工作经历：
+                                        </td>
+                                        <td colspan="3">
+                                            <textarea name="workexperience" rows="2" cols="20" id="workexperience" class="mytextarea" style="height:66px;width:96%;"></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">学习经历：
+                                        </td>
+                                        <td colspan="3">
+                                            <textarea name="learningexperience" rows="2" cols="20" id="learningexperience" class="mytextarea" style="height:66px;width:96%;"></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">备注：
+                                        </td>
+                                        <td colspan="3">
+                                            <textarea name="remarks" rows="2" cols="20" id="remarks" class="mytextarea" style="height:66px;width:96%;"></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">附件：
+                                        </td>
+                                        <td colspan="3">
+                                            <select name="annex" id="annex" style="width:70%;">
+											</select>
+                                            <input id="Button5" type="button" value="下载" onclick="AttDown();" class="mybtn">
+                                            <input type="submit" name="Button3" value="删除" onclick="javascript:return AttDel();" id="Button3" class="mybtn">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">上传附件：
+                                        </td>
+                                        <td colspan="3">
+                                            <input name="uploadFile" type="file" id="uploadFile" style="width: 80%">
+                                            <input type="submit" name="Button4" value="上传" onclick="javascript:return PageCheck();" id="Button4" class="mybtn">
+                                        </td>
+                                    </tr>
+                                    <tr><td colspan="4" align="center"><div align="center"><strong>用户自定义字段</strong></div></td></tr> <tr><td class="form-item">自定义字段：</td><td colspan="3"><textarea rows="1" id="201791153919283549" name="201791153919283549" cols="80"></textarea></td></tr>
+                                    <tr>
+                                        <td colspan="4" align="center">
+                                            <input type="submit" name="Button1" value="确定" onclick="javascript:return chknull();" id="Button1" class="mybtn">
+                                            <input id="Button2" class="mybtn" onclick="window.close()" type="button" value="关闭">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                  </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+        
+      <script type="text/javascript" language="javascript">
+          var wName2;
+          function openunit() {
+              var num = Math.random();
+             // var str = "" + document.getElementById('YinPinBMId').value + "";
+
+              //browser
+              var bstr = getBrowserType();
+              if (bstr == '3' | bstr == '4' | bstr == '5') {
+                  window.open("/page/select_department_post", 'window', 'height=600,width=650,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no');
+              }
+              else {
+                  wName2 = window.showModalDialog("/page/select_department_post", "window", "dialogWidth:650px;DialogHeight=600px;status:no;scroll=yes;help:no");
+              }
+
+			  $("#edepartmentnum").attr("value",wName2);
+          }
+
+          function setValue(str) {
+                document.getElementById("edepartmentnum").value = str;
+          }
+
+          var uIdName1;
+          function chooseuser() {
+              var rdm = Math.random();
+              var str = "" + document.getElementById('UserID1').value + "|" + document.getElementById('UserName1').value + "";
+
+              //browser
+              var bstr = getBrowserType();
+              if (bstr == '3' | bstr == '4' | bstr == '5') {
+                  window.open("../../Choose/portal/ChooseUserS.aspx?tmp=" + rdm + "&rqstr=" + str + "", 'newwindow', 'height=550,width=550,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no');
+              }
+              else {
+                  uIdName1 = window.showModalDialog("../../Choose/portal/ChooseUserS.aspx?tmp=" + rdm + "&rqstr=" + str + "", "newwindow", "dialogWidth:550px;DialogHeight=550px;status:no;scroll=yes;help:no");
+              }
+
+              var arr = uIdName1.split("|");
+              for (var i = 0; i < arr.length; i++) {
+                  document.getElementById("UserID1").value = arr[0];
+                  document.getElementById("UserName1").value = arr[1];
+              }
+          }
+
+          function setValue_s(str) {
+              var arr = str.split("|");
+              for (var i = 0; i < arr.length; i++) {
+                  document.getElementById("UserID1").value = arr[0];
+                  document.getElementById("UserName1").value = arr[1];
+              }
+          }
+      </script>
+
+<!-- 打开小窗口 -->
+      <script type="text/javascript" language="javascript">
+          var wName;
+          var vtbox;
+          function OpenType(tbox, ttype) {
+              vtbox = tbox;
+              var rdm = Math.random();
+              var str = "" + document.getElementById(tbox).value;
+
+              //browser
+              var bstr = getBrowserType();
+              if (bstr == '3' | bstr == '4' | bstr == '5') {
+                  window.open("../page/"+str, 'newwindow8', 'height=480,width=400,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no');
+              }
+              else {
+                  wName = window.showModalDialog("../page/"+str, "newwindow", "dialogWidth:400px;DialogHeight=480px;status:no;scroll=yes;help:no");
+              }
+
+              //if (wName != null && wName != "undefined") {
+              document.getElementById(tbox).value = wName;
+              //}
+          }
+
+          function setValue_sys(str) {
+              document.getElementById(vtbox).value = str;
+          }
+      </script>
+  </form>
+</body>
+</html>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy package &apos;com.ehr.department.config&apos; to &apos;ehr-portal/src/main/java&apos;&#x0D;&#x0A;- Original project: &apos;ehr-departmentManagement&apos;&#x0D;&#x0A;- Destination element: &apos;ehr-portal/src/main/java&apos;&#x0D;&#x0A;- Original element: &apos;ehr-departmentManagement/src/main/java/com.ehr.department.config&apos;" description="Copy package" destination="=ehr-portal/src\/main\/java" element1="/src\/main\/java&lt;com.ehr.department.config" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1553422758680" version="1.0"/>
+</session>

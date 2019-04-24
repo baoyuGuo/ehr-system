@@ -1,0 +1,192 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>考勤记录</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+<script th:src="@{/js/jquery.js}" ></script>
+<script th:src="@{/js/Choose.js}" ></script>
+<script th:src="@{/js/MyJs.js}" ></script>
+<script th:src="@{/js/WebCalendar.js}" ></script>
+<script type="text/javascript">
+$(docment).ready(function (){
+	alert("init");
+	initData();
+});
+function initData(){
+	$.ajax({
+        type:'GET',
+        dataType: "json",
+        url:${pageContext.request.contextPath } + "/attendence/queryAll",
+        async:false,
+        /*data:{
+         email:$("#email").val(),
+         password:$("#password").val()
+         },*/
+        success:function(res){
+            alert("加载数据");
+            if(res.status=="200"){
+                console.log(res);
+                alert(res.msg);
+                var info = res.data;
+				var list = JSON.parse(info);
+				for( var i = 1; i <= list.length; i++){
+					var item = list[i-1];
+					var record = JSON.parse(item);
+					
+					var $tr = $("<tr class=\"hkRowStyle\" onclick=\"javascript:changeBg(this)\">"+
+					"<td align=\"center\"> <span id=\"GridView1_ctl\""+ i +"_lblxh\">"+ i +"\"</span>"+ "</td>"+
+					"<td align=\"center\" style=\"width:30px;\"><input id=\"GridView1_ctl\""+ i +"\"_CheckSelect\" type=\"checkbox\" name=\"GridView1$ctl\""+i+"\"$CheckSelect\">"+"</td>"+
+					"<td>" + record.enumber + "</td>" +
+					"<td>" + record.ename + "</td>" +
+					"<td align=\"center\">" + record.day + "</td>" +
+					"<td align=\"center\">" + record.type + "</td>" +
+					"<td align=\"center\" style=\"width:80px;white-space:nowrap;\"> " + 
+						"<span id=\"GridView1_ctl"+i+"_Label1\">" + "<a href=\"javascript:void(0)\" onclick=\"showfrom(1);\" class=\"gvlink\">查看</a></span>" + 
+						"<span id=\"GridView1_ctl"+i+"_Label2\"> <a href=\"javascript:void(0)\" onclick=\"updatefrom(1);\" class=\"gvlink\">修改</a></span>" +
+					+ "</td>" +
+					"</tr>");
+					var $table = $("#aTableBody");
+					$table.append($tr);
+					
+                    //$("#name").attr("value", info.name);
+				}
+            }else{
+                alert("用户信息不合法，或邮箱已被占用");
+                $("#aTableBody").prepend('<tr><td colspan='2'>暂无数据</td></tr>');
+            }
+        },
+        error:function(){
+//        $("#test").html("发生错误:"+jqXHR.status);
+            alert("发生错误");
+        }
+    });
+}
+</script>
+<script type="text/javascript">
+    function addfrom() {
+        var num = Math.random();
+        window.open("/page/a_records_add", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
+    }
+
+    function showfrom(str) {
+        var num = Math.random();
+        window.open("Kqjl_R_Show.aspx?tmp=" + num + "&id=" + str + "", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
+    }
+
+    function updatefrom(str) {
+        var num = Math.random();
+        window.open("Kqjl_R_Mod.aspx?tmp=" + num + "&id=" + str + "", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
+    }
+</script>
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+</head>
+<body class="main" marginwidth="0" marginheight="0">
+    <form method="post" action="Kqjl_R.aspx" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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PmRkAg8PD2QWAh8CBRlqYXZhc2NyaXB0OmNoYW5nZUJnKHRoaXMpFg5mD2QWAgIBDw8WAh8FBQIxNWRkAgEPZBYEAgMPDxYCHwUFAjE1ZGQCBQ8PFgIfBQUG6ams6LaFZGQCAg8PFgIfBQUFMDAwMDNkZAIDDw8WAh8FBQbpqazotoVkZAIEDw8WAh8FBQoyMDE3LTA5LTA2ZGQCBQ8PFgIfBQUG5pe35belZGQCBg9kFgYCAQ8PFgIfBQUCMTVkZAIDDw8WAh8FBU8gPGEgaHJlZj0iamF2YXNjcmlwdDp2b2lkKDApIiBvbmNsaWNrPSJzaG93ZnJvbSgxNSk7IiBjbGFzcz0iZ3ZsaW5rIj7mn6XnnIs8L2E+ZGQCBQ8PFgIfBQVRIDxhIGhyZWY9ImphdmFzY3JpcHQ6dm9pZCgwKSIgb25jbGljaz0idXBkYXRlZnJvbSgxNSk7IiBjbGFzcz0iZ3ZsaW5rIj7kv67mlLk8L2E+ZGQCEA8PFgIeB1Zpc2libGVoZGQCEw8PFgQeCFBhZ2VTaXplAg8eC1JlY29yZGNvdW50AhFkZBgCBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WDwUbR3JpZFZpZXcxJGN0bDAyJENoZWNrU2VsZWN0BRtHcmlkVmlldzEkY3RsMDMkQ2hlY2tTZWxlY3QFG0dyaWRWaWV3MSRjdGwwNCRDaGVja1NlbGVjdAUbR3JpZFZpZXcxJGN0bDA1JENoZWNrU2VsZWN0BRtHcmlkVmlldzEkY3RsMDYkQ2hlY2tTZWxlY3QFG0dyaWRWaWV3MSRjdGwwNyRDaGVja1NlbGVjdAUbR3JpZFZpZXcxJGN0bDA4JENoZWNrU2VsZWN0BRtHcmlkVmlldzEkY3RsMDkkQ2hlY2tTZWxlY3QFG0dyaWRWaWV3MSRjdGwxMCRDaGVja1NlbGVjdAUbR3JpZFZpZXcxJGN0bDExJENoZWNrU2VsZWN0BRtHcmlkVmlldzEkY3RsMTIkQ2hlY2tTZWxlY3QFG0dyaWRWaWV3MSRjdGwxMyRDaGVja1NlbGVjdAUbR3JpZFZpZXcxJGN0bDE0JENoZWNrU2VsZWN0BRtHcmlkVmlldzEkY3RsMTUkQ2hlY2tTZWxlY3QFG0dyaWRWaWV3MSRjdGwxNiRDaGVja1NlbGVjdAUJR3JpZFZpZXcxDzwrAAwBCAIBZA==">
+</div>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+	<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+</div>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tbody>
+            	<tr>
+                	<td>
+                    <table id="aTable" cellspacing="0" cellpadding="0" width="100%" align="center" border="0" class="form">
+                        <tbody id="aTableBody"><tr>
+                            <td align="right">员工工号：
+                            </td>
+                            <td>
+                                <input name="tbjsStaffNumer" type="text" id="tbjsStaffNumer" class="mytext">
+                            </td>
+                            <td align="right">员工姓名：
+                            </td>
+                            <td>
+                                <input name="tbjsXingMing" type="text" id="tbjsXingMing" class="mytext">
+                            </td>
+                            <td align="right">考勤类型：
+                            </td>
+                            <td>
+                                <select name="KqLeiXing" id="KqLeiXing" style="width:150px;">
+								<option selected="selected" value=""></option>
+								<option value="正常">正常</option>
+								<option value="迟到">迟到</option>
+								<option value="早退">早退</option>
+								<option value="旷工">旷工</option>
+							
+							</select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">考勤时间：
+                            </td>
+                            <td colspan="5">
+                                <input name="StartTime" type="text" id="StartTime" class="mytext" onclick="SelectDate(this,'yyyy-MM-dd')" readonly="readonly" style="width:75px;">至<input name="EndTime" type="text" id="EndTime" class="mytext" onclick="SelectDate(this,'yyyy-MM-dd')" readonly="readonly" style="width:75px;">
+                                <input type="submit" name="QueryBtn" value="查询" id="QueryBtn" class="mybtn">
+                                <input name="AddBtn" type="button" id="AddBtn" value="增加" class="mybtn" onclick="javascript: addfrom();">
+                                <input type="submit" name="DelBtn" value="删除" onclick="javascript:return delcheck();" id="DelBtn" class="mybtn">
+                                <a href="javascript:void(0)" onclick="chkAllw()" class="gvlink">全选</a>
+                                <a href="javascript:void(0)" onclick="revchkAll()" class="gvlink">反选</a>
+                            </td>
+                        </tr>
+                    </tbody></table>
+                    <table cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
+                        <tbody><tr>
+                            <td colspan="2">
+                                <div>
+									<table class="hkgv" cellspacing="0" rules="all" border="1" id="GridView1" style="width:100%;border-collapse:collapse;">
+										<tbody>
+											<tr class="hkHeadStyle">
+												<th scope="col" style="width:30px;">
+												<img src="/pic/refresh.gif" alt="序号"></th><th align="center" scope="col" style="white-space:nowrap;">选择</th><th scope="col">工号</th><th scope="col">员工姓名</th><th scope="col" style="width:80px;">考勤时间</th><th scope="col" style="width:80px;">考勤类型</th><th scope="col" style="width:80px;white-space:nowrap;">操作</th>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+	                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="height: 22px">
+                                
+<!-- AspNetPager 7.5 Copyright:2003-2015 Webdiyer (www.webdiyer.com) -->
+<div id="AspNetPager1" class="page_text" showinputbox="Auto" inputboxclass="pagetext">
+<div class="page_text" style="width:250px;float:left;">
+	<font color="#333333">共 17 行/每页15行 第1/2页</font>
+</div><div class="page_text" style="float:left;">
+	<a disabled="disabled" style="margin-right:5px;">首页</a><a disabled="disabled" style="margin-right:5px;">上页</a><span style="margin-right:5px;font-weight:Bold;color:red;">1</span><a href="javascript:__doPostBack('AspNetPager1','2')" style="margin-right:5px;">2</a><a href="javascript:__doPostBack('AspNetPager1','2')" style="margin-right:5px;">下页</a><a href="javascript:__doPostBack('AspNetPager1','2')" style="margin-right:5px;">末页</a>
+</div>
+</div>
+<!-- AspNetPager 7.5 Copyright:2003-2015 Webdiyer (www.webdiyer.com) -->
+
+
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </td>
+            </tr>
+        </tbody></table>
+    
+
+
+</form>
+
+
+</body></html>

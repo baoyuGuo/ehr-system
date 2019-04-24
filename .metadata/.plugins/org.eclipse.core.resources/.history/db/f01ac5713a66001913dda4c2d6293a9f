@@ -1,0 +1,35 @@
+package com.ehr.portal.portal.service;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.ehr.portal.pojo.EhrUser;
+import com.ehr.portal.utils.EhrResult;
+
+/**
+ * @author 12866
+ * 前端登陆、注册
+ */
+public interface PortalService {
+	/**
+	 * @param user
+	 * @param request
+	 * @param response
+	 * @return
+	 * 登陆
+	 */
+	EhrResult login(EhrUser user,HttpServletRequest request,HttpServletResponse response);
+	/**
+	 * @param register
+	 * @return
+	 * 注册
+	 */
+	EhrResult register(EhrUser register);
+	/**
+	 * @param request
+	 * @param response
+	 * @return
+	 * 退出登录
+	 */
+	EhrResult logout(HttpServletRequest request, HttpServletResponse response);
+}

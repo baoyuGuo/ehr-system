@@ -1,0 +1,5 @@
+package com.ehr.portal.utils;
+
+public class ParseQueryFormUtil {
+
+}

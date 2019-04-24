@@ -1,0 +1,23 @@
+package com.ehr.portal.pojo;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.scheduling.quartz.AdaptableJobFactory;
+
+public class ParamMapping {
+	//调整
+	public static Map<String, String> ADJUST_MAP = new HashMap<String, String>();
+	
+	//奖惩
+	public static Map<String, String> REWARD_PUNISH_MAP = new HashMap<>();
+	
+	static {
+		ADJUST_MAP.put("post", "岗位调动");
+		ADJUST_MAP.put("salary", "薪资调整");
+		
+		//奖惩
+		REWARD_PUNISH_MAP.put("reward", "奖励");
+		REWARD_PUNISH_MAP.put("punish", "处罚");
+	}
+}

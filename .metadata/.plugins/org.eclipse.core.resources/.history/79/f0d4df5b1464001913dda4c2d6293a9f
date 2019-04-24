@@ -1,0 +1,14 @@
+package com.ehr.portal.humanfiles.service.impl;
+
+import com.ehr.portal.humanfiles.service.SuspensionReinstateService;
+import com.ehr.portal.utils.EhrResult;
+
+public class SuspensionReinstateServiceImpl implements SuspensionReinstateService {
+
+	@Override
+	public EhrResult queryAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,67 @@
+package com.ehr.portal.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.ehr.portal.portal.pojo.EhrAccounts;
+import com.ehr.portal.portal.pojo.EhrSsRecords;
+import com.ehr.portal.portal.pojo.EhrSsType;
+import com.ehr.portal.portal.pojo.ParamMapping;
+import com.ehr.portal.portal.socialsecutiry.service.SSAccountServcie;
+import com.ehr.portal.portal.socialsecutiry.service.SSRecordService;
+import com.ehr.portal.portal.socialsecutiry.service.SSTypeService;
+import com.ehr.portal.portal.utils.EhrResult;
+
+@Controller
+@RequestMapping("/socialsecurity")
+public class SocialSecurityCtrl {
+	
+	@Autowired
+	SSAccountServcie accountService;
+	
+	@Autowired
+	SSTypeService typeService;
+	
+	@Autowired
+	SSRecordService recordService;
+	
+	@RequestMapping("/queryAccounts")
+	@ResponseBody
+	public EhrResult queryAccounts() {
+		try {
+			List<EhrAccounts> list = accountService.queryAll();
+			return EhrResult.ok(list);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return EhrResult.build(500, ParamMapping.UNKNOWN_ERROR);
+		}
+	}
+	
+	@ResponseBody
+	@RequestMapping("/queryAllTypes")
+	public EhrResult queryAllTypes() {
+		try {
+			List<EhrSsType> list = typeService.queryAll();
+			return EhrResult.ok(list);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return EhrResult.build(500, ParamMapping.UNKNOWN_ERROR);
+		}
+	}
+	
+	@ResponseBody
+	@RequestMapping("/queryAllRecords")
+	public EhrResult queryAllRecords() {
+		try {
+			List<EhrSsRecords> list = recordService.queryAll();
+			return EhrResult.ok(list);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return EhrResult.build(500, ParamMapping.UNKNOWN_ERROR);
+		}
+	}
+}

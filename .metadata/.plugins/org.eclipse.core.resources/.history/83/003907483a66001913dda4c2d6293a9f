@@ -1,0 +1,25 @@
+package com.ehr.portal.salary.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ehr.portal.portal.mapper.EhrAccountsMapper;
+import com.ehr.portal.portal.pojo.EhrAccounts;
+import com.ehr.portal.portal.pojo.EhrAccountsExample;
+import com.ehr.portal.portal.salary.service.AccountService;
+
+@Service
+public class AccountServiceImpl implements AccountService {
+
+	@Autowired
+	EhrAccountsMapper accountMapper;
+	
+	@Override
+	public List<EhrAccounts> queryAccounts() {
+		EhrAccountsExample exam = new EhrAccountsExample();
+		return accountMapper.selectByExample(exam);
+	}
+
+}

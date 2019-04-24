@@ -1,0 +1,9 @@
+package com.ehr.portal.socialsecutiry.service;
+
+import java.util.List;
+
+import com.ehr.portal.pojo.EhrAccounts;
+
+public interface AccountServcie {
+	List<EhrAccounts> queryAll();
+}

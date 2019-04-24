@@ -1,0 +1,8 @@
+package com.ehr.humanfiles.service;
+
+import com.ehr.utils.EhrResult;
+
+public interface RewardPunishService {
+	//查询所有
+	EhrResult queryAll();
+}

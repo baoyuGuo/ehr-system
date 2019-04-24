@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head id="Head1"><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>
+	员工离职
+</title>
+	
+<link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+<script th:src="@{/js/Choose.js}" ></script>
+<script th:src="@{/js/MyJs.js}" ></script>
+<script th:src="@{/js/WebCalendar.js}" ></script>
+
+<script type="text/javascript" language="javascript">
+    function addfrom() {
+        window.open("/page/h_dimission_add", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
+    }
+
+    function showfrom(str) {
+        var num = Math.random();
+        window.open("/humanfiles/queryDimission", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
+    }
+
+    function updatefrom(str) {
+        var num = Math.random();
+        window.open("/humanfiles/updateDimission", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
+    }
+</script>
+
+</head>
+<body class="main">
+    <form method="post" id="dimission_form">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                	<!-- 搜索栏 -->
+                    <table cellspacing="0" cellpadding="0" width="100%" align="center" border="0" class="form">
+                        <tr>
+                            <td align="right">员工工号：
+                            </td>
+                            <td>
+                                <input name="enum" type="text" id="enum" class="mytext" />
+                            </td>
+                            <td align="right">员工姓名：
+                            </td>
+                            <td>
+                                <input name="ename" type="text" id="ename" class="mytext" />
+                            </td>
+                            <td align="right">员工部门：
+                            </td>
+                            <td>
+                                <input name="edepartmentnum" type="text" id="edepartmentnum" class="mytext" />
+                            </td>
+                            <td align="right">部门：
+                            </td>
+                            <td>
+                                <input name="edname" type="text" id="edname" class="mytext" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">离职类型：
+                            </td>
+                            <td colspan="5">
+                                <select name="type" id="type">
+									<option value="辞退" selected="selected">辞退</option>
+									<option value="外调">外调</option>
+									<option value="退休">退休</option>
+								</select>
+                           		  离职时间：
+                           		<input name="start" type="text" id="start" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />至<input name="end" type="text" id="end" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />
+                                <input type="submit" name="QueryBtn" value="查询" id="QueryBtn" class="mybtn" />
+                                <input name="AddBtn" type="button" id="AddBtn" value="增加" class="mybtn" onclick="javascript: addfrom();" />
+                                <input type="submit" name="DelBtn" value="删除" onclick="javascript:return delcheck();" id="DelBtn" class="mybtn" />
+                                <a href="javascript:void(0)" onclick="chkAllw()" class="gvlink">全选</a>
+                                <a href="javascript:void(0)" onclick="revchkAll()" class="gvlink">反选</a>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <!-- 离职信息表 -->
+                    <table cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
+                        <tr>
+                            <td colspan="2">
+                                <div>
+									<table class="hkgv" cellspacing="0" rules="all" border="1" id="GridView1" style="width:100%;border-collapse:collapse;">
+										<tr class="hkHeadStyle">
+											<th scope="col" style="width:30px;">
+											<img src="/pic/refresh.gif" alt="序号" />
+											</th>
+											<th align="center" scope="col" style="white-space:nowrap;">选择</th>
+											<th scope="col">员工工号</th>
+											<th scope="col">员工姓名</th>
+											<th scope="col">员工部门</th>
+											<th scope="col">离职类型</th>
+											<th scope="col">离职时间</th>
+											<th scope="col" style="width:80px;white-space:nowrap;">操作</th>
+										</tr>
+										<tr class="hkRowStyle" th:each="dm : ${dimission_info}" onclick="javascript:changeBg(this)">
+											<td align="center">
+                                                <span id="GridView1_ctl02_lblxh" th:value="${dmStat.index + 1}"></span>
+                                            </td>
+                                            <td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl02_CheckSelect" type="checkbox" name="GridView1$ctl02$CheckSelect" />
+                                            </td>
+                                            <td th:value="${dm.eNum}"></td>
+                                            <td th:value="${dm.eName}"></td>
+                                            <td th:value="${dm.department}"></td>
+                                            <td th:value="${dm.dmType}"></td>
+                                            <td th:value="${dm.dmDate}"></td>
+                                            <td align="center" style="width:80px;white-space:nowrap;">
+                                                <span id="GridView1_ctl02_Label1"> <a href="javascript:void(0)" onclick="showfrom();" class="gvlink">查看</a></span>
+                                                <span id="GridView1_ctl02_Label2"> <a href="javascript:void(0)" onclick="updatefrom();" class="gvlink">修改</a></span>
+                                            </td>
+										</tr>
+									</table>
+								</div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+<script type="text/javascript">
+	window.onload=function (){
+		$.ajax({
+	        type:'get',
+	        url:'/humanfiles/queryDimission',
+	        async:false,	        
+	        success:function(res){
+	        	var data = res.data;
+	        	for (var i=1;i<=data.length;i++){
+	        		var day = data[i-1].day;
+	        		var index = data[i-1].day.indexOf('T');
+	        		var begin = data[i-1].begin;
+	        		var end = data[i-1].end;
+	        		day = day.substring(0,index);
+	        		
+	        		var in1 = begin.indexOf('.');
+	        		begin = begin.substring(index+1,in1);
+	        		end = end.substring(index+1,in1);
+	        		
+	        		var $tr = $("<tr class=\"hkRowStyle\" onclick=\"javascript:changeBg(this)\">"+
+	    					"<td align=\"center\"> <span id=\"GridView1_ctl\""+ i +"_lblxh\">"+ i +"</span>"+ "</td>"+
+	    					"<td align=\"center\" style=\"width:30px;\"><input id=\"GridView1_ctl\""+ i +"\"_CheckSelect\" type=\"checkbox\" name=\"GridView1$ctl\""+i+"\"$CheckSelect\">"+"</td>"+
+	    					"<td>" + data[i-1].enumber + "</td>" +
+	    					"<td>" + data[i-1].ename + "</td>" +
+	    					"<td align=\"center\">" + day + "</td>" +
+	    					"<td align=\"center\">" + begin + "</td>" +
+	    					"<td align=\"center\">" + end + "</td>" +
+	    					"<td align=\"center\">" + data[i-1].type + "</td>" +
+	    					"<td align=\"center\" style=\"width:80px;white-space:nowrap;\"> " + 
+	    						"<span id=\"GridView1_ctl"+i+"_Label1\">" + "<a href=\"javascript:void(0)\" onclick=\"showfrom(1);\" class=\"gvlink\">查看</a></span>" + 
+	    						"<span id=\"GridView1_ctl"+i+"_Label2\"> <a href=\"javascript:void(0)\" onclick=\"updatefrom(1);\" class=\"gvlink\">修改</a></span></td></tr>");
+	    					var $table = $(".hkgv tbody");
+	    					$table.append($tr);
+	        	}
+	        }
+	   });
+	}
+</script>
+</html>

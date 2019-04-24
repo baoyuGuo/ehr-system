@@ -1,0 +1,5 @@
+package com.ehr.portal.portal.pojo;
+
+public class SysModuleNames {
+	public static final String DIMISSION_INDEX = "h_dission";
+}

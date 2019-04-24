@@ -1,0 +1,11 @@
+package com.ehr.portal.department.service;
+
+import java.util.List;
+
+import com.ehr.pojo.EhrDepartment;
+
+//import com.ehr.department.pojo.EhrDepartment;
+
+public interface DepartmentService {
+	List<EhrDepartment> queryDepartment(Integer id);
+}

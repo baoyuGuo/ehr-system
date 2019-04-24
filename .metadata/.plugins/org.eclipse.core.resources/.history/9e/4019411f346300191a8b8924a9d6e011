@@ -1,0 +1,47 @@
+package com.ehr.portal.pojo;
+
+import java.io.Serializable;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+/**
+ * @author guobaoyu
+ * 注册表单实体
+ */
+public class EhrRegisterForm implements Serializable {
+	@NotBlank
+	@Email()
+	 @Pattern(regexp = "^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$", message = "邮箱格式不正确")
+	private String email;
+	
+	@NotBlank
+	@Size(min=6,max=15)
+	private String password;
+	
+	@NotBlank
+	@Size(min=6,max=15)
+	private String repassword;
+	
+	@Override
+	public String toString() {
+		return "email:" + email ;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+}

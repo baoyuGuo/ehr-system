@@ -1,0 +1,36 @@
+package com.ehr.portal.service.impl;
+
+import javax.validation.Valid;
+
+import org.hibernate.validator.constraints.pl.REGON;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ehr.portal.mapper.EhrUserMapper;
+import com.ehr.portal.pojo.EhrRegisterForm;
+import com.ehr.portal.pojo.EhrUser;
+import com.ehr.portal.service.PortalService;
+import com.ehr.portal.utils.EhrResult;
+
+@Service
+public class PortalServiceImpl implements PortalService {
+	
+	@Autowired
+	EhrUserMapper userMapper;
+	
+	@Override
+	public EhrResult login(EhrUser user) {
+		return null;
+	}
+
+	@Override
+	public EhrResult register(EhrUser register) {
+		try {
+			userMapper.insert(register);
+			return EhrResult.ok();
+		} catch (Exception e) {
+			return EhrResult.build(403, "未知的错误！");
+		}
+	}
+
+}

@@ -1,0 +1,109 @@
+package com.ehr.portal.humanfiles.service.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfigureOrder;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.ehr.portal.humanfiles.service.HumanFilesService;
+import com.ehr.portal.mapper.EhrAdjustmentMapper;
+import com.ehr.portal.mapper.EhrDimissionMapper;
+import com.ehr.portal.mapper.EhrEmployeeBaseInfoMapper;
+import com.ehr.portal.mapper.EhrEmployeeMapper;
+import com.ehr.portal.mapper.EhrSalaryAccountsMapper;
+import com.ehr.portal.pojo.EhrAdjustment;
+import com.ehr.portal.pojo.EhrAdjustmentExample;
+import com.ehr.portal.pojo.EhrDimission;
+import com.ehr.portal.pojo.EhrDimissionExample;
+import com.ehr.portal.pojo.EhrDimissionExample.Criteria;
+import com.ehr.portal.pojo.EhrEmployee;
+import com.ehr.portal.pojo.EhrEmployeeBaseInfo;
+import com.ehr.portal.pojo.EhrSalaryAccounts;
+import com.ehr.portal.pojo.ParamMapping;
+import com.ehr.portal.pojo.QueryForm;
+import com.ehr.portal.utils.EhrResult;
+import com.ehr.portal.utils.ParseQueryFormUtil;
+
+@Service
+public class HumanfilesServiceImpl  implements HumanFilesService{
+	
+	@Autowired
+	EhrEmployeeMapper employeeMapper ;
+	
+	@Autowired
+	EhrEmployeeBaseInfoMapper baseInfoMapper;
+	
+	@Autowired
+	EhrSalaryAccountsMapper salaryMapper;
+	
+	@Autowired
+	EhrDimissionMapper dimissionMapper;
+	
+	@Autowired
+	EhrAdjustmentMapper adjustMapper;
+	
+	@Override
+	public EhrResult entry(EhrEmployee employee, MultipartFile picture,
+			EhrEmployeeBaseInfo baseInfo, EhrSalaryAccounts salaryInfo) {
+		employeeMapper.insert(employee);
+		baseInfoMapper.insert(baseInfo);
+		salaryMapper.insert(salaryInfo);
+		return EhrResult.ok();
+	}
+
+	@Override
+	public EhrResult dimission_add(EhrDimission dimission) {
+		//添加离职信息
+		return null;
+	}
+
+	@Override
+	public EhrEmployee queryEmployeeByEnumber(String enumber) {
+		return employeeMapper.selectByPrimaryKey(enumber);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.ehr.portal.humanfiles.service.HumanFilesService#queryDimissionRecords(com.ehr.portal.pojo.QueryForm)
+	 * 查询离职记录
+	 */
+	@Override
+	public EhrResult queryDimissionRecords() {
+		try {
+			EhrDimissionExample example = new EhrDimissionExample();
+			List<EhrDimission> list = dimissionMapper.selectByExample(example);
+			return EhrResult.ok(list);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return EhrResult.build(500, "未知的异常 ");
+		}
+	}
+	/**
+	 * 查询调动
+	 */
+	@Override
+	public EhrResult queryByTitle(String title) {
+		try {
+			EhrAdjustmentExample exam = new EhrAdjustmentExample();
+			title = ParamMapping.ADJUST_MAP.get(title);
+			exam.createCriteria().andTitleEqualTo(title);
+			List<EhrAdjustment> list = adjustMapper.selectByExample(exam);
+			return EhrResult.ok(list);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return EhrResult.build(500, "未知的异常");
+		}
+	}
+
+	@Override
+	public List<EhrAdjustment> queryByType(String type) {
+		EhrAdjustmentExample exam = new EhrAdjustmentExample();
+		exam.createCriteria().andTypeEqualTo(type);
+		return adjustMapper.selectByExample(exam);
+	}
+
+
+
+}

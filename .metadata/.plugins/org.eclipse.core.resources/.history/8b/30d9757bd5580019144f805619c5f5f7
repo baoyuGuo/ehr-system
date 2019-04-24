@@ -1,0 +1,47 @@
+package com.ehr.portal.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.ehr.portal.mapper.EhrAttendenceMapper;
+import com.ehr.portal.mapper.EhrEmployeeMapper;
+import com.ehr.portal.pojo.EhrAttendenceExample;
+import com.ehr.portal.pojo.EhrEmployee;
+import com.ehr.portal.pojo.EhrEmployeeExample;
+import com.ehr.portal.pojo.EhrEmployeeExample.Criteria;
+
+@Controller
+@RequestMapping("/attendence")
+public class AttendenceController {
+	
+	@Autowired
+	EhrEmployeeMapper eMapper;
+	@Autowired
+	EhrAttendenceMapper aMapper;
+	
+	@RequestMapping("/queryByName")
+	@ResponseBody
+	public ModelAndView queryByName(String ename) {
+		EhrEmployeeExample example = new EhrEmployeeExample();
+		Criteria criteria = example.createCriteria();
+		ModelAndView mv = new ModelAndView();
+		criteria.andEnameEqualTo(ename);
+		List<EhrEmployee> list = eMapper.selectByExample(example);
+		if(list !=null) {
+			mv.addObject("employInfo", list);
+			mv.setViewName("select_employee");
+		}
+		return mv;
+	}
+	
+	@RequestMapping("/queryAll")
+	public void queryAllRecords() {
+		EhrAttendenceExample example = new EhrAttendenceExample();
+		com.ehr.portal.pojo.EhrAttendenceExample.Criteria createCriteria = example.createCriteria();
+	}
+}

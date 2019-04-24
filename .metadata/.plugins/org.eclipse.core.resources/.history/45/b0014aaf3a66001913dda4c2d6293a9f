@@ -1,0 +1,26 @@
+package com.ehr.humanfiles.service;
+
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import com.ehr.portal.pojo.EhrAdjustment;
+import com.ehr.portal.pojo.EhrDimission;
+import com.ehr.portal.pojo.EhrEmployee;
+import com.ehr.portal.pojo.EhrEmployeeBaseInfo;
+import com.ehr.portal.pojo.EhrSalaryAccounts;
+import com.ehr.portal.utils.EhrResult;
+
+public interface HumanFilesService {
+	public EhrResult entry(EhrEmployee employee,MultipartFile picture,EhrEmployeeBaseInfo baseInfo, EhrSalaryAccounts salaryInfo );
+	public EhrResult dimission_add(EhrDimission dimission);
+	public EhrEmployee queryEmployeeByEnumber(String enumber);
+	
+	//查询所有的离职记录
+	public EhrResult queryDimissionRecords();
+	//查询调动记录
+	public EhrResult queryAdjustmentByTitle(String title);
+	
+	List<EhrAdjustment> queryAdjustmentByType(String type);
+
+}

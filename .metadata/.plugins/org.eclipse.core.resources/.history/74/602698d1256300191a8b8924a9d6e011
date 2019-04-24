@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<head>
+    <meta charset="utf-8">
+    <title>login</title>
+    <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .row-center{
+            text-align:center;
+            margin-top: 120px;
+        }
+        .col-center {
+            display:inline-block;
+            float:none;
+            text-align:left;
+        }
+    </style>
+</head>
+<body  >
+<div class="container">
+    <div  class="row  row-center" >
+	     	<div  class="col-center">
+			     <form method="post">
+			        <img src="/pic/xupt_ehr_logo.png" style="margin-top:-3px">
+		            <div id="loginui" style="background-color: darkseagreen; padding: 28px;border-radius: 8px;border-color: #00a3ff;border-width: 2px  ">
+		                <div style="height: 80px;">
+		                    <h3 style="text-align: center;color: #00559B; font-size: 35px;">登录中心</h3>
+		                </div>
+		                <div  class="form-group">
+		                    <input name="username" class="form-control uname" id="s_ic_no" placeholder="请输入您的用户名">
+		                </div>
+		                <div style="padding: 1px" class="form-group">
+		                    <input name="password" type="password" class="form-control pword m-b" id="password" placeholder="请输入您的密码">
+		                </div>
+		                <div >
+		                    <button style="border-radius:8px; background-color: #00A3FF"  class="submit btn btn-lg  btn-login btn-block">登录</button>
+					     	<button style="border-radius:8px; background-color: #00A3FF" onclick="/page/register" class="btn btn-lg  btn-login btn-block">没有账号？点击注册</button>
+		                </div>
+		            </div>
+			     </form>
+	        </div>
+    </div>
+</div>
+</body>
+</html>
+

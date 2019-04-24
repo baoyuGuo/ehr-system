@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<!-- 部门管理页面 -->
+<title>department management</title>
+</head>
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
+<script th:src="@{/js/Choose.js}" ></script>
+<script th:src="@{/js/MyJs.js}" ></script>
+<script th:src="@{/js/WebCalendar.js}" ></script>
+<script type="text/javascript" src="../easyui/locale/easyui-lang-zh_CN.js"></script>
+<link href="../easyui/themes/bootstrap/easyui.css" type="text/css" rel="stylesheet">
+<link href="../easyui/themes/icon.css" type="text/css" rel="stylesheet">
+
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$("#departmentTree").tree({
+		//在节点展开时触发，添加节点
+		url : '../../department/tree',
+		animate: true,
+		method : "GET",
+		onClick: function(node){
+			$("#selectEle").attr("value",node.code);//推荐这种写法,可正常赋值
+		}
+	});
+	
+	
+});
+</script>
+<script type="text/javascript">
+	
+	function checkTree(){
+	     var text = $("#departmentTree").tree('getSelected').code;
+	     sendFromChild(text);
+	     return false;
+	}
+
+	function sendFromChild(data) {
+        //browser
+        var bstr = getBrowserType();
+        if (bstr == '3' | bstr == '4' | bstr == '5') {
+            window.opener.setValue(data);
+        }
+        else {
+            window.returnValue = data;
+        }
+        window.close();
+    }
+
+</script>
+
+<body>
+	<table>
+		<tr>
+			<td>
+				<table>
+					<tr>
+						<td>
+							<div class="container-fluid" align="left">
+								<!-- 部门结构图  easyui创建动态树 -->
+							   	<div class="pageSidebar col-xs-2 col-sm-2 col-md-2 col-lg-2" >
+									<ul id="departmentTree" class="easyui-tree" ></ul>
+								</div>
+								
+								<!-- 部门结构操作界面 -->
+								<div id="modifyDiv" class="col-xs-8 col-sm-8 col-md-8 col-lg-8 ">
+								</div>
+							</div>
+						</td>
+						
+					</tr>
+				</table>
+			</td>
+			<td>
+				<div>
+					代码：<input id="selectEle"  name="selectEle">
+				</div>
+                <input type="button" value="确定" onclick="return checkTree();" class="mybtn" id="Button1">
+                <input type="button" value="关闭" onclick="closewin();" class="mybtn" id="Button3">
+                <input type="button" value="清空" onclick="clearwin();" class="mybtn" id="Button2">
+			</td>
+		</tr>
+	</table>
+</body>
+
+</html>

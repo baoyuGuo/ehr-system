@@ -1,0 +1,303 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+<script th:src="@{/js/Choose.js}" ></script>
+<script th:src="@{/js/MyJs.js}" ></script>
+<script th:src="@{/js/WebCalendar.js}" ></script>
+<script type="text/javascript">
+    function chknull() {
+        if (document.getElementById('ename').value == '') {
+            alert('工号不能为空');
+            form1.ename.focus();
+            return false;
+        }
+        if (document.getElementById('KqShiJian').value == '') {
+            alert('休假日期不能为空');
+            form1.KqShiJian.focus();
+            return false;
+        }
+        if (document.getElementById('StartTime').value == '') {
+            alert('休假开始时间不能为空');
+            form1.StartTime.focus();
+            return false;
+        }
+        if (document.getElementById('EndTime').value == '') {
+            alert('休假结束时间不能为空');
+            form1.EndTime.focus();
+            return false;
+        }
+        if (document.getElementById('Tianshu').value == '') {
+            alert('休假天数不能为空');
+            form1.Tianshu.focus();
+            return false;
+        }
+        if (document.getElementById('Tianshu').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('Tianshu').value)) {
+                alert("休假天数只能为数值型，参考格式如1或1.5");
+                form1.Tianshu.focus();
+                return false;
+            }
+        }
+    }
+</script>
+<script type="text/javascript">
+    function PageCheck() {
+        var strUploadFile = document.getElementById('uploadFile').value;
+        if (strUploadFile == "") {
+            alert("请选择要上传的附件！");
+            return false;
+        }
+        var nameLen = strUploadFile.length;
+        var rightName = strUploadFile.substr(nameLen - 4, 4).toLowerCase();
+        var sAllowExt = ".doc|.docx|.xls|.xlsx|.ppt|.pptx|.pdf|.rar|.zip|.gif|.jpg|.jpeg";
+        var str = document.getElementById('uploadFile').value;
+        var rightName = str.substr(str.lastIndexOf('.') + 1, str.length - str.lastIndexOf('.')).toLowerCase();
+        if (sAllowExt.indexOf(rightName) == -1) {
+            alert('对不起，您只能上传【' + sAllowExt + '】格式的文件\r如果需要上传其他格式的文件，请联系系统管理员！');
+            return false;
+        }
+    }
+    function AttDown() {
+        if (document.getElementById('fjlb').value == '') {
+
+            alert('请先选中附件！');
+
+            return false;
+        }
+        else {
+            var num = Math.random();
+            var littleproduct = document.getElementById("fjlb");
+            var cindex = littleproduct.selectedIndex;
+            var cText = littleproduct.options[cindex].text;
+            var cValue = littleproduct.options[cindex].value;
+            window.open("../../AttDown.aspx?tmp=" + num + "&number=" + cValue + "&fname=hr/h12", "_blank", "height=1, width=1,toolbar=no, menubar=no, scrollbars=no,resizable=yes,location=no, status=no")
+        }
+    }
+    function AttDel() {
+        if (document.getElementById('fjlb').value == '') {
+
+            alert('请先选中附件！');
+            return false;
+        }
+        else {
+            if (!confirm("您确定要删除此附件吗？"))
+                return false;
+            var num = Math.random();
+            var littleproduct = document.getElementById("fjlb");
+            var cindex = littleproduct.selectedIndex;
+            var cText = littleproduct.options[cindex].text;
+            var cValue = littleproduct.options[cindex].value;
+            window.open("../../AttDel.aspx?tmp=" + num + "&number=" + cValue + " ", "window", "height=1, width=1,top=150,left=150,toolbar=no, menubar=no, scrollbars=no,resizable=yes,location=no, status=no");
+        }
+    }
+</script>
+<script type="text/javascript">
+    function btnCount_Click() {
+        var bDate = document.getElementById('StartTime').value;
+        var eDate = document.getElementById('EndTime').value;
+        var tDiff = document.getElementById('TDiffTime').value;
+        document.getElementById('Tianshu').value = DateDiff(bDate, eDate, tDiff);
+    }
+    //计算天数的函数
+    function DateDiff(beginDate, endDate, textDiff) {    
+        var arrbeginDate, Date1, Date2, arrendDate, iDays
+        arrbeginDate = beginDate.split("-")
+        Date1 = new Date(arrbeginDate[1] + '-' + arrbeginDate[2] + '-' + arrbeginDate[0])    
+        arrendDate = endDate.split("-")
+        Date2 = new Date(arrendDate[1] + '-' + arrendDate[2] + '-' + arrendDate[0])
+        iDays = parseInt(Math.abs(Date1 - Date2) / 1000 / 60 / 60 / 24)    //转换为天数 
+        iHours = parseInt(Math.abs(Date1 - Date2) / 1000 / 60 / 60)    //转换为小时数 
+        if (textDiff != '加班小时') {
+            return iDays+1
+        }
+        else {
+            return iHours
+        }
+    }
+</script>
+<head id="Head1"><meta http-equiv="Content-Type" content="text/html; charset=gb2312" /><title>
+	休假管理
+</title><link href="../../CssJs/Main.css" type="text/css" rel="stylesheet" />
+    <script src="../../CssJs/MyJs.js" type="text/javascript" charset="gb2312"></script>
+    <script type="text/javascript" src="../../CssJs/WebCalendar.js"></script>
+    
+</head>
+<body class="main">
+    <form method="post" action="Ccgl_R_Add.aspx?tmp=0.07861976885918964" id="form1" enctype="multipart/form-data">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMjEyMzQyNzI1OQ8WAh4TVmFsaWRhdGVSZXF1ZXN0TW9kZQIBFgICAQ8WAh4HZW5jdHlwZQUTbXVsdGlwYXJ0L2Zvcm0tZGF0YRYeZg8PZBYCHghyZWFkb25seQUIcmVhZG9ubHlkAgEPD2QWAh8CBQhyZWFkb25seWQCAg8PZBYCHwIFCHJlYWRvbmx5ZAIDDw9kFgIfAgUIcmVhZG9ubHlkAgQPD2QWAh8CBQhyZWFkb25seWQCBQ8PZBYCHwIFCHJlYWRvbmx5ZAIGDw9kFgIfAgUIcmVhZG9ubHlkAgcPD2QWAh8CBQhyZWFkb25seWQCCQ8PZBYCHwIFCHJlYWRvbmx5ZAIKDw9kFgIfAgUIcmVhZG9ubHlkAg0PEGQQFQAVABQrAwBkZAIODw9kFgIeB29uY2xpY2sFG2phdmFzY3JpcHQ6cmV0dXJuIEF0dERlbCgpO2QCEA8PZBYCHwMFHmphdmFzY3JpcHQ6cmV0dXJuIFBhZ2VDaGVjaygpO2QCEQ8PZBYCHwMFHGphdmFzY3JpcHQ6cmV0dXJuIGNoa251bGwoKTtkAhUPDxYCHgRUZXh0BRMyMDE5NDcxOTI3NTg2ODE1MzgyZGRk" />
+</div>
+
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="td_base" width="80%" height="25px">休假管理
+                </td>
+                <td class="td_base" width="20%"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <table class="form" border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td align="center" colspan="4">
+                                <b>员工信息</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item" style="width: 20%"><font color="red">*</font>员工工号：
+                            </td>
+                            <td style="width: 30%">
+                                <input name="ename" type="text" id="ename" class="mytext" readonly="readonly" style="width:80%;" /><a href="javascript:void(0)"><img
+                                    onclick="openunit();" alt="" src="../../images/choose.gif" border="0"></a>
+                            </td>
+                            <td class="form-item" style="width: 20%">员工姓名：
+                            </td>
+                            <td style="width: 30%">
+                                <input name="ename" type="text" id="ename" class="mytext" readonly="readonly" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">性别：
+                            </td>
+                            <td>
+                                <input name="egender" type="text" id="egender" class="mytext" readonly="readonly" style="width:90%;" />
+                            </td>
+                            <td class="form-item">员工身份证：
+                            </td>
+                            <td>
+                                <input name="identitynumber" type="text" id="identitynumber" class="mytext" readonly="readonly" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">所在部门名称：
+                            </td>
+                            <td colspan="3">
+                                <input name="edepartmentnum" type="text" id="edepartmentnum" class="mytext" readonly="readonly" style="width:96%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">岗位：
+                            </td>
+                            <td>
+                                <input name="epost" type="text" id="epost" class="mytext" readonly="readonly" style="width:90%;" />
+                            </td>
+                            <td class="form-item">职务：
+                            </td>
+                            <td>
+                                <input name="eposttype" type="text" id="eposttype" class="mytext" readonly="readonly" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" style="text-align: center">
+                                <strong>休假信息</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item"><font color="red">*</font>休假日期：
+                            </td>
+                            <td>
+                                <input name="KqShiJian" type="text" id="KqShiJian" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:90%;" />
+                            </td>
+                            <td class="form-item">休假类型：
+                            </td>
+                            <td>
+                                <select name="type" id="type" style="width:90%;">
+								<option selected="selected" value=""></option>
+									<option value="休假中">休假</option>
+									<option value="已结束">已结束</option>
+									<option value="待开始">待开始</option>
+								</select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item"><font color="red">*</font>休假开始时间：
+                            </td>
+                            <td>
+                                <input name="begin" type="text" id="StartTime" class="begin" onclick="SelectDate(this,&#39;yyyy-MM-dd hh:mm&#39;)" DataType="DateTime" readonly="readonly" style="width:90%;" />
+                            </td>
+                            <td class="form-item"><font color="red">*</font>休假结束时间：
+                            </td>
+                            <td>
+                                <input name="end" type="text" id="EndTime" class="end" onclick="SelectDate(this,&#39;yyyy-MM-dd hh:mm&#39;)" DataType="DateTime" readonly="readonly" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item"><font color="red">*</font>休假天数：
+                            </td>
+                            <td colspan="3">
+                                <input name="ndays" type="text" id="ndays" class="mytext" onclick="btnCount_Click()" style="width:96%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">休假备注：
+                            </td>
+                            <td colspan="3">
+                                <textarea name="note" rows="2" cols="20" id="Beizhu" class="mytextarea" style="height:78px;width:96%;">
+</textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">上传附件：
+                            </td>
+                            <td colspan="3">
+                                <input name="uploadFile" type="file" id="uploadFile" style="width: 80%" />
+                                <input type="submit" name="Button4" value="上传" onclick="javascript:return PageCheck();" id="Button4" class="mybtn" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" align="center">
+                                <input type="submit" name="Button1" value="确定" onclick="javascript:return chknull();" id="Button1" class="mybtn" />
+                                <input id="Button2" class="mybtn" onclick="window.close()" type="button" value="关闭" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <input name="StaffId" type="text" id="StaffId" style="display: none" />
+        <input name="BuMenId" type="text" id="BuMenId" style="display: none" />
+        <input name="TDiffTime" type="text" value="&lt;/>" id="TDiffTime" style="display: none" />
+        
+         <script type="text/javascript">
+            var wName;
+            function openunit() {
+                var num = Math.random();
+                var str = "" + document.getElementById('enumber').value + "|" + document.getElementById('ename').value + "|" + document.getElementById('egender').value + "|" + document.getElementById('identitynumber').value + "|"  + document.getElementById('edepartmentnum').value + "|" + document.getElementById('epost').value + "|" + document.getElementById('eposttype').value + "";
+
+                //browser
+                var bstr = getBrowserType();
+                if (bstr == '3' | bstr == '4' | bstr == '5') {
+                    window.open("../page/select_employee", 'window', 'height=600,width=650,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no');
+                }
+                else {
+                    wName = window.showModalDialog("../page/select_employee", "window", "dialogWidth:650px;DialogHeight=600px;status:no;scroll=yes;help:no");
+                }
+
+                var arr = wName.split("|");
+                for (var i = 0; i < arr.length; i++) {
+                    document.getElementById("enumber").value = arr[1];
+                    document.getElementById("ename").value = arr[2];
+                    document.getElementById("egender").value = arr[3];
+                    document.getElementById("identitynumber").value = arr[4];
+                    document.getElementById("edepartmentnum").value = arr[5];
+                    document.getElementById("epost").value = arr[6];
+                    document.getElementById("eposttype").value = arr[7];
+                }
+            }
+
+            function setValue(str) {
+                var arr = str.split("|");
+                for (var i = 0; i < arr.length; i++) {
+                    document.getElementById("enumber").value = arr[1];
+                    document.getElementById("ename").value = arr[2];
+                    document.getElementById("egender").value = arr[3];
+                    document.getElementById("identitynumber").value = arr[4];
+                    document.getElementById("edepartmentnum").value = arr[5];
+                    document.getElementById("epost").value = arr[6];
+                    document.getElementById("eposttype").value = arr[7];
+                }
+            }
+        </script>
+    </form>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="/sys/createUser" method="post">
+		<table>
+			<tr>
+				<td>
+					用户名:<input placeholder="请输入工号" id="enumber" name="enumber">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					密码:<input type="password" placeholder="请输入密码" id="password" name = "password">
+				</td>
+			</tr>
+				<button type="submit" value="注册">注册</button>
+		</table>
+	</form>
+</body>
+</html>

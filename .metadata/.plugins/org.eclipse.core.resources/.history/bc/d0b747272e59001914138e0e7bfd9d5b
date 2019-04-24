@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ehr.portal.mapper.EhrOnbusinessMapper" >
+  <resultMap id="BaseResultMap" type="com.ehr.portal.pojo.EhrOnbusiness" >
+    <id column="enumber" property="enumber" jdbcType="VARCHAR" />
+    <result column="day" property="day" jdbcType="DATE" />
+    <result column="type" property="type" jdbcType="CHAR" />
+    <result column="begin" property="begin" jdbcType="TIMESTAMP" />
+    <result column="end" property="end" jdbcType="TIMESTAMP" />
+    <result column="ename" property="ename" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    enumber, day, type, begin, end, ename
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ehr.portal.pojo.EhrOnbusinessExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ehr_onbusiness
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ehr_onbusiness
+    where enumber = #{enumber,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ehr_onbusiness
+    where enumber = #{enumber,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ehr.portal.pojo.EhrOnbusinessExample" >
+    delete from ehr_onbusiness
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ehr.portal.pojo.EhrOnbusiness" >
+    insert into ehr_onbusiness (enumber, day, type, 
+      begin, end, ename
+      )
+    values (#{enumber,jdbcType=VARCHAR}, #{day,jdbcType=DATE}, #{type,jdbcType=CHAR}, 
+      #{begin,jdbcType=TIMESTAMP}, #{end,jdbcType=TIMESTAMP}, #{ename,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ehr.portal.pojo.EhrOnbusiness" >
+    insert into ehr_onbusiness
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="enumber != null" >
+        enumber,
+      </if>
+      <if test="day != null" >
+        day,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="begin != null" >
+        begin,
+      </if>
+      <if test="end != null" >
+        end,
+      </if>
+      <if test="ename != null" >
+        ename,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="enumber != null" >
+        #{enumber,jdbcType=VARCHAR},
+      </if>
+      <if test="day != null" >
+        #{day,jdbcType=DATE},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="begin != null" >
+        #{begin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="end != null" >
+        #{end,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ename != null" >
+        #{ename,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ehr.portal.pojo.EhrOnbusinessExample" resultType="java.lang.Integer" >
+    select count(*) from ehr_onbusiness
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ehr_onbusiness
+    <set >
+      <if test="record.enumber != null" >
+        enumber = #{record.enumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.day != null" >
+        day = #{record.day,jdbcType=DATE},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=CHAR},
+      </if>
+      <if test="record.begin != null" >
+        begin = #{record.begin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.end != null" >
+        end = #{record.end,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ename != null" >
+        ename = #{record.ename,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ehr_onbusiness
+    set enumber = #{record.enumber,jdbcType=VARCHAR},
+      day = #{record.day,jdbcType=DATE},
+      type = #{record.type,jdbcType=CHAR},
+      begin = #{record.begin,jdbcType=TIMESTAMP},
+      end = #{record.end,jdbcType=TIMESTAMP},
+      ename = #{record.ename,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ehr.portal.pojo.EhrOnbusiness" >
+    update ehr_onbusiness
+    <set >
+      <if test="day != null" >
+        day = #{day,jdbcType=DATE},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=CHAR},
+      </if>
+      <if test="begin != null" >
+        begin = #{begin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="end != null" >
+        end = #{end,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ename != null" >
+        ename = #{ename,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where enumber = #{enumber,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ehr.portal.pojo.EhrOnbusiness" >
+    update ehr_onbusiness
+    set day = #{day,jdbcType=DATE},
+      type = #{type,jdbcType=CHAR},
+      begin = #{begin,jdbcType=TIMESTAMP},
+      end = #{end,jdbcType=TIMESTAMP},
+      ename = #{ename,jdbcType=VARCHAR}
+    where enumber = #{enumber,jdbcType=VARCHAR}
+  </update>
+</mapper>

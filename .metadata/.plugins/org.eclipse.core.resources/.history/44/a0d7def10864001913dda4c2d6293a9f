@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ehr.portal.mapper.EhrDimissionMapper" >
+  <resultMap id="BaseResultMap" type="com.ehr.portal.pojo.EhrDimission" >
+    <id column="enumber" property="enumber" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="CHAR" />
+    <result column="start" property="start" jdbcType="DATE" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="filePath" property="filepath" jdbcType="VARCHAR" />
+    <result column="deleteConstract" property="deleteconstract" jdbcType="VARCHAR" />
+    <result column="marks" property="marks" jdbcType="VARCHAR" />
+    <result column="edname" property="edname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    enumber, type, start, description, filePath, deleteConstract, marks, edname
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ehr.portal.pojo.EhrDimissionExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ehr_dimission
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ehr_dimission
+    where enumber = #{enumber,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ehr_dimission
+    where enumber = #{enumber,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ehr.portal.pojo.EhrDimissionExample" >
+    delete from ehr_dimission
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ehr.portal.pojo.EhrDimission" >
+    insert into ehr_dimission (enumber, type, start, 
+      description, filePath, deleteConstract, 
+      marks, edname)
+    values (#{enumber,jdbcType=VARCHAR}, #{type,jdbcType=CHAR}, #{start,jdbcType=DATE}, 
+      #{description,jdbcType=VARCHAR}, #{filepath,jdbcType=VARCHAR}, #{deleteconstract,jdbcType=VARCHAR}, 
+      #{marks,jdbcType=VARCHAR}, #{edname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ehr.portal.pojo.EhrDimission" >
+    insert into ehr_dimission
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="enumber != null" >
+        enumber,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="start != null" >
+        start,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="filepath != null" >
+        filePath,
+      </if>
+      <if test="deleteconstract != null" >
+        deleteConstract,
+      </if>
+      <if test="marks != null" >
+        marks,
+      </if>
+      <if test="edname != null" >
+        edname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="enumber != null" >
+        #{enumber,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="start != null" >
+        #{start,jdbcType=DATE},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="filepath != null" >
+        #{filepath,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteconstract != null" >
+        #{deleteconstract,jdbcType=VARCHAR},
+      </if>
+      <if test="marks != null" >
+        #{marks,jdbcType=VARCHAR},
+      </if>
+      <if test="edname != null" >
+        #{edname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ehr.portal.pojo.EhrDimissionExample" resultType="java.lang.Integer" >
+    select count(*) from ehr_dimission
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ehr_dimission
+    <set >
+      <if test="record.enumber != null" >
+        enumber = #{record.enumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=CHAR},
+      </if>
+      <if test="record.start != null" >
+        start = #{record.start,jdbcType=DATE},
+      </if>
+      <if test="record.description != null" >
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.filepath != null" >
+        filePath = #{record.filepath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deleteconstract != null" >
+        deleteConstract = #{record.deleteconstract,jdbcType=VARCHAR},
+      </if>
+      <if test="record.marks != null" >
+        marks = #{record.marks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.edname != null" >
+        edname = #{record.edname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ehr_dimission
+    set enumber = #{record.enumber,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=CHAR},
+      start = #{record.start,jdbcType=DATE},
+      description = #{record.description,jdbcType=VARCHAR},
+      filePath = #{record.filepath,jdbcType=VARCHAR},
+      deleteConstract = #{record.deleteconstract,jdbcType=VARCHAR},
+      marks = #{record.marks,jdbcType=VARCHAR},
+      edname = #{record.edname,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ehr.portal.pojo.EhrDimission" >
+    update ehr_dimission
+    <set >
+      <if test="type != null" >
+        type = #{type,jdbcType=CHAR},
+      </if>
+      <if test="start != null" >
+        start = #{start,jdbcType=DATE},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="filepath != null" >
+        filePath = #{filepath,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteconstract != null" >
+        deleteConstract = #{deleteconstract,jdbcType=VARCHAR},
+      </if>
+      <if test="marks != null" >
+        marks = #{marks,jdbcType=VARCHAR},
+      </if>
+      <if test="edname != null" >
+        edname = #{edname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where enumber = #{enumber,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ehr.portal.pojo.EhrDimission" >
+    update ehr_dimission
+    set type = #{type,jdbcType=CHAR},
+      start = #{start,jdbcType=DATE},
+      description = #{description,jdbcType=VARCHAR},
+      filePath = #{filepath,jdbcType=VARCHAR},
+      deleteConstract = #{deleteconstract,jdbcType=VARCHAR},
+      marks = #{marks,jdbcType=VARCHAR},
+      edname = #{edname,jdbcType=VARCHAR}
+    where enumber = #{enumber,jdbcType=VARCHAR}
+  </update>
+</mapper>

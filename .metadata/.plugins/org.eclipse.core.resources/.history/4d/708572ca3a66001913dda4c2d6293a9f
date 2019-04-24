@@ -1,0 +1,25 @@
+package com.ehr.portal.socialsecutiry.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ehr.mapper.EhrSsRecordsMapper;
+import com.ehr.pojo.EhrSsRecords;
+import com.ehr.pojo.EhrSsRecordsExample;
+import com.ehr.portal.socialsecutiry.service.SSRecordService;
+
+@Service
+public class SSRecordsServiceImpl implements SSRecordService {
+
+	@Autowired
+	EhrSsRecordsMapper rMapper;
+	
+	@Override
+	public List<EhrSsRecords> queryAll() {
+		EhrSsRecordsExample exam = new EhrSsRecordsExample();
+		return rMapper.selectByExample(exam);
+	}
+
+}

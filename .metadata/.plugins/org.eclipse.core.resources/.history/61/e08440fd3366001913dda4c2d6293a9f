@@ -1,0 +1,16 @@
+package com.ehr.portal.socialsecutiry.service.impl;
+
+import java.util.List;
+
+import com.ehr.portal.pojo.EhrSsRecords;
+import com.ehr.portal.socialsecutiry.service.SSRecordService;
+
+public class SSRecordsServiceImpl implements SSRecordService {
+
+	@Override
+	public List<EhrSsRecords> queryAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,33 @@
+package com.ehr.portal.humanfiles.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.remoting.rmi.RmiBasedExporter;
+import org.springframework.stereotype.Service;
+
+import com.ehr.portal.portal.humanfiles.service.RewardPunishService;
+import com.ehr.portal.portal.mapper.EhrRewardPunishMapper;
+import com.ehr.portal.portal.pojo.EhrRewardPunish;
+import com.ehr.portal.portal.pojo.EhrRewardPunishExample;
+import com.ehr.portal.portal.utils.EhrResult;
+
+@Service
+public class RewardPunishServiceImpl implements RewardPunishService {
+
+	@Autowired
+	EhrRewardPunishMapper rpMapper;
+	
+	@Override
+	public EhrResult queryAll() {
+		try {
+			EhrRewardPunishExample exam = new EhrRewardPunishExample();
+			List<EhrRewardPunish> list = rpMapper.selectByExample(exam);
+			return EhrResult.ok(list);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return EhrResult.build(500, "未知的错误");
+		}
+	}
+
+}

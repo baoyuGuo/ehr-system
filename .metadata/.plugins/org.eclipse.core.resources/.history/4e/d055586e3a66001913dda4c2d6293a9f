@@ -1,0 +1,25 @@
+package com.ehr.portal.portal.controllers;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Controller
+@RequestMapping("/openType")
+public class OpenByTypeController {
+
+	@RequestMapping(method=RequestMethod.GET)
+	public String openType(@RequestParam String reqstr,@RequestParam String type) {
+		switch (type) {
+		case "h14":
+			return "select_training_type";
+		case "h18":
+			return "select_training_way";
+		case "post":
+			//reqstr的值为部门Code
+			return "select_post";
+		}
+		return "";
+	}
+}

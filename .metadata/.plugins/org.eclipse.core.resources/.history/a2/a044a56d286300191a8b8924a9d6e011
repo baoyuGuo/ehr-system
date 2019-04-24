@@ -1,0 +1,18 @@
+package com.ehr.portal.pojo;
+
+import javax.validation.constraints.NotBlank;
+
+/**
+ * @author guobaoyu
+ * 注册表单实体
+ */
+public class EhrRegisterForm {
+	@NotBlank
+	private String email;
+	
+	@NotBlank
+	private String password;
+	
+	@
+	private String repassword;
+}

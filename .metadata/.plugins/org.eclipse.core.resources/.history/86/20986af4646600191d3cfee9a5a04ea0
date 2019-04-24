@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ehr.mapper.EhrAdjustmentMapper" >
+  <resultMap id="BaseResultMap" type="com.ehr.pojo.EhrAdjustment" >
+    <id column="enumber" property="enumber" jdbcType="VARCHAR" />
+    <result column="ename" property="ename" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="CHAR" />
+    <result column="fromp" property="fromp" jdbcType="VARCHAR" />
+    <result column="top" property="top" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="CHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    enumber, ename, type, fromp, top, title, remarks, time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ehr.pojo.EhrAdjustmentExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ehr_adjustment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ehr_adjustment
+    where enumber = #{enumber,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ehr_adjustment
+    where enumber = #{enumber,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ehr.pojo.EhrAdjustmentExample" >
+    delete from ehr_adjustment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ehr.pojo.EhrAdjustment" >
+    insert into ehr_adjustment (enumber, ename, type, 
+      fromp, top, title, remarks, 
+      time)
+    values (#{enumber,jdbcType=VARCHAR}, #{ename,jdbcType=VARCHAR}, #{type,jdbcType=CHAR}, 
+      #{fromp,jdbcType=VARCHAR}, #{top,jdbcType=VARCHAR}, #{title,jdbcType=CHAR}, #{remarks,jdbcType=VARCHAR}, 
+      #{time,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ehr.pojo.EhrAdjustment" >
+    insert into ehr_adjustment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="enumber != null" >
+        enumber,
+      </if>
+      <if test="ename != null" >
+        ename,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="fromp != null" >
+        fromp,
+      </if>
+      <if test="top != null" >
+        top,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="enumber != null" >
+        #{enumber,jdbcType=VARCHAR},
+      </if>
+      <if test="ename != null" >
+        #{ename,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="fromp != null" >
+        #{fromp,jdbcType=VARCHAR},
+      </if>
+      <if test="top != null" >
+        #{top,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=CHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ehr.pojo.EhrAdjustmentExample" resultType="java.lang.Integer" >
+    select count(*) from ehr_adjustment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ehr_adjustment
+    <set >
+      <if test="record.enumber != null" >
+        enumber = #{record.enumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ename != null" >
+        ename = #{record.ename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=CHAR},
+      </if>
+      <if test="record.fromp != null" >
+        fromp = #{record.fromp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.top != null" >
+        top = #{record.top,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title != null" >
+        title = #{record.title,jdbcType=CHAR},
+      </if>
+      <if test="record.remarks != null" >
+        remarks = #{record.remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.time != null" >
+        time = #{record.time,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ehr_adjustment
+    set enumber = #{record.enumber,jdbcType=VARCHAR},
+      ename = #{record.ename,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=CHAR},
+      fromp = #{record.fromp,jdbcType=VARCHAR},
+      top = #{record.top,jdbcType=VARCHAR},
+      title = #{record.title,jdbcType=CHAR},
+      remarks = #{record.remarks,jdbcType=VARCHAR},
+      time = #{record.time,jdbcType=DATE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ehr.pojo.EhrAdjustment" >
+    update ehr_adjustment
+    <set >
+      <if test="ename != null" >
+        ename = #{ename,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=CHAR},
+      </if>
+      <if test="fromp != null" >
+        fromp = #{fromp,jdbcType=VARCHAR},
+      </if>
+      <if test="top != null" >
+        top = #{top,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=CHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=DATE},
+      </if>
+    </set>
+    where enumber = #{enumber,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ehr.pojo.EhrAdjustment" >
+    update ehr_adjustment
+    set ename = #{ename,jdbcType=VARCHAR},
+      type = #{type,jdbcType=CHAR},
+      fromp = #{fromp,jdbcType=VARCHAR},
+      top = #{top,jdbcType=VARCHAR},
+      title = #{title,jdbcType=CHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      time = #{time,jdbcType=DATE}
+    where enumber = #{enumber,jdbcType=VARCHAR}
+  </update>
+</mapper>
