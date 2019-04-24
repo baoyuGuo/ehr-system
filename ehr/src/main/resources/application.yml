@@ -68,7 +68,7 @@ modules:
     sl_tax_conf: 税收设置
     sl_account_set: 薪资账套
     sl_count: 工资计算
-    sl_reports: 薪酬发放报表
+    sl_pay_record: 薪酬发放报表
     appeal_record: 申诉记录
     
   #社保 [缴费基数,社保账户,报表,申诉记录]

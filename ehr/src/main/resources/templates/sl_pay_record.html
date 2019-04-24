@@ -9,7 +9,7 @@
 <script th:src="@{/js/Choose.js}" ></script>
 <script th:src="@{/js/MyJs.js}" ></script>
 <script th:src="@{/js/WebCalendar.js}" ></script>
-
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 <script type="text/javascript" language="javascript">
     function addfrom() {
@@ -73,23 +73,6 @@
 											<th scope="col" style="width:80px;">导入时间</th>
 											<th scope="col" style="width:80px;white-space:nowrap;">操作</th>
 										</tr>
-										<tr class="hkRowStyle" onclick="javascript:changeBg(this)" th:each="re : ${reassignment_info}">
-											<td align="center">
-                                                <span id="GridView1_ctl02_lblxh" th:value="${reStat.index + 1}"></span>
-                                            </td>
-                                            <td align="center" style="width:30px;">
-                                                <input id="GridView1_ctl02_CheckSelect" type="checkbox" name="GridView1$ctl02$CheckSelect" />
-                                            </td>
-                                            <td>111</td>
-                                            <td>貂禅</td>
-                                            <td>岗位变动</td>
-                                            <td>晋升</td>
-                                            <td align="center">2017-09-01</td>
-                                            <td align="center" style="width:80px;white-space:nowrap;">
-                                                <span id="GridView1_ctl02_Label1"> <a href="javascript:void(0)" onclick="showfrom(1);" class="gvlink">查看</a></span>
-                                                <span id="GridView1_ctl02_Label2"> <a href="javascript:void(0)" onclick="updatefrom(1);" class="gvlink">修改</a></span>
-                                            </td>
-										</tr>
 									</table>
 								</div>
                             </td>
@@ -101,4 +84,44 @@
         </table>
     </form>
 </body>
+<script type="text/javascript">
+	window.onload=function (){
+		$.ajax({
+	        type:'get',
+	        url:'/salary/queryPayRecord',
+	        async:false,	        
+	        success:function(res){
+	        	if(res.status!=200){
+	        		alert(res.msg);
+	        		return;
+	        	}
+	        	var data = res.data;
+	        	if(data.length==0){
+	        		alert("没有相关记录");
+	        		return;
+	        	}
+	        	for (var i=1;i<=data.length;i++){
+	        		var date = data[i-1].createdate;
+	        		var index = date.indexOf('T');
+	        		date = date.substring(0,index);
+	        		
+	        		var $tr = $("<tr class=\"hkRowStyle\" onclick=\"javascript:changeBg(this)\">"+
+	    					"<td align=\"center\"> <span id=\"GridView1_ctl\""+ i +"_lblxh\">"+ i +"</span>"+ "</td>"+
+	    					"<td align=\"center\" style=\"width:30px;\"><input id=\"GridView1_ctl\""+ i +"\"_CheckSelect\" type=\"checkbox\" name=\"GridView1$ctl\""+i+"\"$CheckSelect\">"+"</td>"+
+	    					"<td>" + data[i-1].enumber + "</td>" +
+	    					"<td>" + data[i-1].ename + "</td>" +
+	    					"<td align=\"center\">" + data[i-1].type + "</td>" +
+	    					"<td align=\"center\">" + data[i-1].account + "</td>" +
+	    					"<td align=\"center\">" + date + "</td>" +
+	    					"<td align=\"center\">" + data[i-1].pay + "</td>" +
+	    					"<td align=\"center\" style=\"width:80px;white-space:nowrap;\"> " + 
+	    						"<span id=\"GridView1_ctl"+i+"_Label1\">" + "<a href=\"javascript:void(0)\" onclick=\"showfrom(1);\" class=\"gvlink\">查看</a></span>" + 
+	    						"<span id=\"GridView1_ctl"+i+"_Label2\"> <a href=\"javascript:void(0)\" onclick=\"updatefrom(1);\" class=\"gvlink\">修改</a></span></td></tr>");
+	    					var $table = $(".hkgv tbody");
+	    					$table.append($tr);
+	        	}
+	        }
+	   });
+	}
+</script>
 </html>

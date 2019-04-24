@@ -136,6 +136,10 @@
 	        		return;
 	        	}
 	        	var data = res.data;
+	        	if(data.length==0){
+	        		alert("没有相关记录");
+	        		return;
+	        	}
 	        	for (var i=1;i<=data.length;i++){
 	        		var index = data[i-1].createdate.indexOf('T') ;
 	        		createdate = data[i-1].createdate.substring(0,index);
