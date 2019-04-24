@@ -76,7 +76,7 @@ modules:
     ss_type: 社保类别
     ss_accounts: 社保账户
     socialsecurity: 员工社保
-    ss_reports: 社保缴纳报表
+    ss_pay_record: 社保缴纳报表
     appeal_record: 申诉记录
     
   #考勤 [考核模板,申请系统,考勤日志,申诉记录]

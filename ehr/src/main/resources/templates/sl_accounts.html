@@ -93,7 +93,15 @@
 	        url:'/salary/queryAccounts',
 	        async:false,	        
 	        success:function(res){
+	        	if(res.status!=200){
+	        		alert("error");
+	        		return ;
+	        	}
 	        	var data = res.data;
+	        	if(data.length == 0){
+	        		alert("查询到0条数据");
+	        		return;
+	        	}
 	        	for (var i=1;i<=data.length;i++){
 	        		var date = data[i-1].createdate;
 	        		var index = date.indexOf('T');
