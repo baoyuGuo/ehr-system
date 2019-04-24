@@ -9,4 +9,7 @@ public interface AdjustService {
 	
 	//根据title查询调整记录
 	List<EhrAdjustment> queryByTitle(String title);
+	
+	//根据type查询
+	List<EhrAdjustment> queryByType(String type);
 }

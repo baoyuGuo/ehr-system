@@ -110,7 +110,19 @@ public class HumanFilesController {
 	@RequestMapping("/queryAdjustment/{title}")
 	public EhrResult queryAdjustmentByTitle(@PathVariable String title) {
 		try {
-			List<EhrAdjustment> list = aService.queryByTitle(ParamMapping.ADJUST_TYPE.get(title));
+			List<EhrAdjustment> list = aService.queryByTitle(ParamMapping.ADJUST_TITLE.get(title));
+			return EhrResult.ok(list);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return EhrResult.build(500, ParamMapping.UNKNOWN_ERROR);
+		}
+	}
+	
+	@ResponseBody
+	@RequestMapping("/queryAdjustmentByType/{type}")
+	public EhrResult queryAdjustmentByType(@PathVariable String type) {
+		try {
+			List<EhrAdjustment> list = aService.queryByType(type);
 			return EhrResult.ok(list);
 		} catch (Exception e) {
 			e.printStackTrace();

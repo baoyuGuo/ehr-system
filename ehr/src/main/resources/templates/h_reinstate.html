@@ -89,23 +89,6 @@
 											<th scope="col" style="width:80px;">调动时间</th>
 											<th scope="col" style="width:80px;white-space:nowrap;">操作</th>
 										</tr>
-										<tr class="hkRowStyle" onclick="javascript:changeBg(this)" th:each="re : ${reassignment_info}">
-											<td align="center">
-                                                <span id="GridView1_ctl02_lblxh" th:value="${reStat.index + 1}"></span>
-                                            </td>
-                                            <td align="center" style="width:30px;">
-                                                <input id="GridView1_ctl02_CheckSelect" type="checkbox" name="GridView1$ctl02$CheckSelect" />
-                                            </td>
-                                            <td>111</td>
-                                            <td>貂禅</td>
-                                            <td>岗位变动</td>
-                                            <td>晋升</td>
-                                            <td align="center">2017-09-01</td>
-                                            <td align="center" style="width:80px;white-space:nowrap;">
-                                                <span id="GridView1_ctl02_Label1"> <a href="javascript:void(0)" onclick="showfrom(1);" class="gvlink">查看</a></span>
-                                                <span id="GridView1_ctl02_Label2"> <a href="javascript:void(0)" onclick="updatefrom(1);" class="gvlink">修改</a></span>
-                                            </td>
-										</tr>
 									</table>
 								</div>
                             </td>
@@ -124,7 +107,15 @@
 	        url:'/humanfiles/queryAdjustmentByType/reinstate',
 	        async:false,	        
 	        success:function(res){
+	        	if(res.status!=200){
+	        		alert("error");
+	        		return ;
+	        	}
 	        	var data = res.data;
+	        	if(data.length == 0){
+	        		alert("查询到0条数据");
+	        		return;
+	        	}
 	        	for (var i=1;i<=data.length;i++){
 	        		var time = data[i-1].time;
 	        		var index = time.indexOf('T');
