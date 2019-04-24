@@ -1,0 +1,166 @@
+
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>请选择培训方式</title>
+    <link href="../../CssJs/Main.css" type="text/css" rel="stylesheet" />
+    <script src="../../CssJs/MyJs.js" type="text/javascript" charset="gb2312"></script>
+    <script type="text/javascript" src="../../CssJs/WebCalendar.js"></script>
+    
+    <base target="_self" />
+    <script type="text/javascript">
+        function checkbtn() {
+            var a = 0
+
+            //001
+            //for (var i = 0; i < document.Form1.elements.length; i++) {
+            //    if (document.Form1.elements[i].checked == true)
+            //    { a = a + 1 }
+            //}
+
+            //002
+            for (var i = 0; i < document.getElementsByName("Rad").length; i++) {
+                if (document.getElementsByName("Rad")[i].checked == true) {
+                    a = a + 1
+                }
+            }
+
+            if (a > 0) {
+                sendFromChild();
+            }
+            else {
+                alert('您未选中任何项');
+                return false;
+            }
+        }
+
+        var getFromParent = window.dialogArguments;
+        function chkSelect() {
+            //001
+            //for (var i = 0; i < window.document.Form1.elements.length; i++) {
+            //    var e = Form1.elements[i];
+            //    if (e.checked)
+            //        return e.value;
+            //}
+
+            //002
+            for (var i = 0; i < window.document.getElementsByName("Rad").length; i++) {
+                var e = window.document.getElementsByName("Rad")[i];
+                if (e.checked)
+                    return e.value;
+            }
+
+            var retrunstr = "";
+            return retrunstr;
+        }
+
+        function sendFromChild() {
+            //browser
+            var bstr = getBrowserType();
+            if (bstr == '3' | bstr == '4' | bstr == '5') {
+                window.opener.setValue_sys(chkSelect());
+            }
+            else {
+                window.returnValue = chkSelect();
+            }
+
+            window.close();
+        }
+
+        function clearwin() {
+            //browser
+            var bstr = getBrowserType();
+            if (bstr == '3' | bstr == '4' | bstr == '5') {
+                window.opener.setValue_sys("");
+            }
+            else {
+                window.returnValue = "";
+            }
+
+            window.close();
+        }
+
+        window.onbeforeunload = function () {
+            var n = window.event.screenX - window.screenLeft;
+            var b = n > document.documentElement.scrollWidth - 20;
+            if (b && window.event.clientY < 0 || window.event.altKey) {
+                //window.returnValue = chkSelect();
+            }
+        }
+
+        function closewin() {
+            window.close();
+        }
+    </script>
+    <script type="text/javascript">
+        function onRadBtn() {
+            aa = document.getElementsByName("Rad");
+            for (i = 0; i < aa.length; i++) {
+                if (aa[i].value == document.getElementById('rqstr').value) {
+                    aa[i].checked = true;
+                    //alert(i);  
+                    return false;
+                }
+                else {
+                    aa[i].checked = false;
+                }
+            }
+        }
+    </script>
+</head>
+<body scroll="no" onload="onRadBtn()" class="main">
+    <form method="post" action="Xzqt.aspx?tmp=0.7947325932733065&amp;rqstr=&amp;type=h18" id="Form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE3MTQ5MTk3NzIPFgIeE1ZhbGlkYXRlUmVxdWVzdE1vZGUCARYCZg9kFgQCAQ8PZBYCHglvbmtleWRvd24FRWlmIChldmVudC5rZXlDb2RlPT0xMykgeyBkb2N1bWVudC5hbGwuQnV0dG9uNC5jbGljaygpOyByZXR1cm4gZmFsc2U7fWQCBQ88KwARAwAPFgQeC18hRGF0YUJvdW5kZx4LXyFJdGVtQ291bnQCBGQBEBYAFgAWAAwUKwAAFgJmD2QWCgIBD2QWBGYPZBYCZg8VARLlhoXpg6jnjrDlnLrln7norq1kAgEPDxYCHgRUZXh0BRLlhoXpg6jnjrDlnLrln7norq1kZAICD2QWBGYPZBYCZg8VARLlhoXpg6jnvZHnu5zln7norq1kAgEPDxYCHwQFEuWGhemDqOe9kee7nOWfueiurWRkAgMPZBYEZg9kFgJmDxUBEuWbveWGheeOsOWcuuWfueiurWQCAQ8PFgIfBAUS5Zu95YaF546w5Zy65Z+56K6tZGQCBA9kFgRmD2QWAmYPFQES5Zu95YaF572R57uc5Z+56K6tZAIBDw8WAh8EBRLlm73lhoXnvZHnu5zln7norq1kZAIFDw8WAh4HVmlzaWJsZWhkZBgBBQlHcmlkVmlldzEPPCsADAEIAgFk" />
+</div>
+
+        <table border="0" width="100%" cellspacing="0" cellpadding="0">
+            <tr>
+                <td colspan="2" style="height: 30px;">&nbsp;名称：<input name="name" type="text" id="name" class="mytext" onkeydown="if (event.keyCode==13) { document.all.Button4.click(); return false;}" />
+                    <input type="submit" name="Button4" value="查询" id="Button4" class="mybtn" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <div>
+	<table class="hkgv" cellspacing="0" rules="all" border="1" id="GridView1" style="width:98%;border-collapse:collapse;">
+		<tr class="hkHeadStyle">
+			<th align="center" scope="col" style="white-space:nowrap;">选择</th><th scope="col">名称</th>
+		</tr><tr class="hkRowStyle">
+			<td align="center" style="width:30px;">
+                                    <input id="Radio1" type="radio" value='内部现场培训'
+                                        name="Rad" />
+                                </td><td>内部现场培训</td>
+		</tr><tr class="hkAltRowStyle">
+			<td align="center" style="width:30px;">
+                                    <input id="Radio1" type="radio" value='内部网络培训'
+                                        name="Rad" />
+                                </td><td>内部网络培训</td>
+		</tr><tr class="hkRowStyle">
+			<td align="center" style="width:30px;">
+                                    <input id="Radio1" type="radio" value='国内现场培训'
+                                        name="Rad" />
+                                </td><td>国内现场培训</td>
+		</tr><tr class="hkAltRowStyle">
+			<td align="center" style="width:30px;">
+                                    <input id="Radio1" type="radio" value='国内网络培训'
+                                        name="Rad" />
+                                </td><td>国内网络培训</td>
+		</tr>
+	</table>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="height: 30px; text-align: center;">
+                    <input type="button" value="确定" onclick="return checkbtn();" class="mybtn" id="Button1">
+                    <input type="button" value="关闭" onclick="closewin();" class="mybtn" id="Button3">
+                    <input type="button" value="清空" onclick="clearwin();" class="mybtn" id="Button2">
+                </td>
+            </tr>
+        </table>
+        <input name="rqstr" type="text" id="rqstr" style="display: none" />
+    </form>
+</body>
+</html>

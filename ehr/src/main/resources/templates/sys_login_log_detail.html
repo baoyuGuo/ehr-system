@@ -1,0 +1,323 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>日志查询</title>
+    <link href="../../CssJs/Main.css" type="text/css" rel="stylesheet" />
+    <script src="../../CssJs/MyJs.js" type="text/javascript" charset="gb2312"></script>
+    <script type="text/javascript" src="../../CssJs/WebCalendar.js"></script>
+</head>
+<body class="main">
+    <form method="post" action="rzcx_mx.aspx" onsubmit="javascript:return WebForm_OnSubmit();" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=DzBDzDLddDX8DC317I5USuKh-iDJc2I8rCCBcG9F7UnNZ7eJRdCHeN2h42RTtbVGK7KlvDv7T6Ymq6t5QQXGXPFnEwsTJSJYTFZ1unSQZ8g1&amp;t=636153175333906250" type="text/javascript"></script>
+
+
+<script src="/WebResource.axd?d=UvwGXkeCA7__g31JGeBDUujPTGHZA0uTJiFGRO5zNAUOoU5ABiVu0dHv_m6YS0S1HdguP6agMvC8JIyEdYfbDNqqFpgX8tUm62fvSvtdIR81&amp;t=636153175333906250" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+</script>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="7413D269" />
+</div>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td style="height: 10px"></td>
+            </tr>
+            <tr>
+                <td>
+                    <table cellspacing="0" cellpadding="0" border="0" width="98%" align="center">
+                        <tr>
+                            <td style="height: 21px; width: 91px; background-image: url(../../images/tab_b_n.gif)"
+                                align="center">
+                                <a href="rzcx.aspx" class="black">登录日志汇总</a>
+                            </td>
+                            <td style="width: 91px; background-image: url(../../images/tab_b_y.gif)" align="center">
+                                <a href="rzcx_mx.aspx" class="mail_top">登录日志明细</a>
+                            </td>
+                            <td style="width: 91px; background-image: url(../../images/tab_b_n.gif)" align="center">
+                                <a href="rzcx_cz.aspx" class="black">操作日志明细</a>
+                            </td>
+                            <td align="right">&nbsp;
+                            </td>
+                        </tr>
+                    </table>
+                    <table cellspacing="0" cellpadding="0" width="98%" align="center" border="0" class="form">
+                        <tr>
+                            <td align="right">操作人员：
+                            </td>
+                            <td>
+                                <input name="rysq" type="text" id="rysq" class="mytext" style="width:150px;" />&nbsp;<img
+                                    src="../../images/choose.gif" onclick="popMini('../../choose/portal/yhview.aspx?id=rysq2')"
+                                    alt="选择要查询的操作人员" />
+                            </td>
+                            <td align="right">模块编码：
+                            </td>
+                            <td>
+                                <input name="jrmk" type="text" id="jrmk" class="mytext" style="width:150px;" />
+                            </td>
+                            <td align="right">IP地址：
+                            </td>
+                            <td>
+                                <input name="ipdz" type="text" id="ipdz" class="mytext" style="width:150px;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">登录状态：
+                            </td>
+                            <td colspan="5">
+                                <select name="dlzt" id="dlzt">
+	<option selected="selected" value=""></option>
+	<option value="登陆系统">登陆系统</option>
+	<option value="注销系统">注销系统</option>
+
+</select>
+                                操作日期：<input name="txtSdate" type="text" value="2019-04-12" id="txtSdate" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" style="width:70px;" />至<input name="txtEdate" type="text" value="2019-04-13" id="txtEdate" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" style="width:70px;" />
+                                登录入口：<select name="dl_rk" id="dl_rk">
+	<option selected="selected" value="">全部</option>
+	<option value="PC">PC</option>
+	<option value="WebAPP">WebAPP</option>
+
+</select>
+                                <input type="submit" name="QueryBtn" value="查询" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;QueryBtn&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="QueryBtn" class="mybtn" />
+                                <input type="submit" name="ClearBtn" value="清空" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ClearBtn&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="ClearBtn" class="mybtn" />
+                                <input type="submit" name="ExpBtn" value="导出" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ExpBtn&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="ExpBtn" class="mybtn" />
+                            </td>
+                        </tr>
+                    </table>
+                    <table cellspacing="0" cellpadding="0" width="98%" align="center" border="0">
+                        <tr>
+                            <td colspan="2">
+                                <div>
+	<table class="hkgv" cellspacing="0" rules="all" border="1" id="GridView1" style="width:100%;border-collapse:collapse;">
+		<tr class="hkHeadStyle">
+			<th scope="col" style="width:30px;"><img src="../../images/refresh.gif" alt="序号" /></th><th scope="col" style="width:140px;">操作日期</th><th scope="col" style="width:80px;">用户编码</th><th scope="col" style="width:80px;">用户名称</th><th scope="col">IP地址</th><th scope="col">端口号</th><th scope="col" style="width:80px;">登录状态</th><th scope="col">进入模块</th><th scope="col">登录入口</th>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl02_Label1">1</span>
+                                            </td><td align="center">2019-04-12 18:54:05</td><td>hr</td><td>
+                                                <span id="GridView1_ctl02_Label3">HR管理员</span>
+                                            </td><td>58.49.27.146</td><td>59329</td><td align="center">&nbsp;</td><td>
+                                                <span id="GridView1_ctl02_Label4">90407</span>-<span id="GridView1_ctl02_Label5">日志查询</span>
+                                            </td><td align="center">PC</td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl03_Label1">2</span>
+                                            </td><td align="center">2019-04-12 18:54:04</td><td>hr</td><td>
+                                                <span id="GridView1_ctl03_Label3">HR管理员</span>
+                                            </td><td>58.49.27.146</td><td>59329</td><td align="center">&nbsp;</td><td>
+                                                <span id="GridView1_ctl03_Label4">90407</span>-<span id="GridView1_ctl03_Label5">日志查询</span>
+                                            </td><td align="center">PC</td>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl04_Label1">3</span>
+                                            </td><td align="center">2019-04-12 18:53:59</td><td>hr</td><td>
+                                                <span id="GridView1_ctl04_Label3">HR管理员</span>
+                                            </td><td>58.49.27.146</td><td>59316</td><td align="center">登陆系统</td><td>
+                                                <span id="GridView1_ctl04_Label4"></span>-<span id="GridView1_ctl04_Label5"></span>
+                                            </td><td align="center">PC</td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl05_Label1">4</span>
+                                            </td><td align="center">2019-04-12 18:49:52</td><td>hr</td><td>
+                                                <span id="GridView1_ctl05_Label3">HR管理员</span>
+                                            </td><td>58.49.27.146</td><td>59001</td><td align="center">&nbsp;</td><td>
+                                                <span id="GridView1_ctl05_Label4">90407</span>-<span id="GridView1_ctl05_Label5">日志查询</span>
+                                            </td><td align="center">PC</td>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl06_Label1">5</span>
+                                            </td><td align="center">2019-04-12 18:49:50</td><td>hr</td><td>
+                                                <span id="GridView1_ctl06_Label3">HR管理员</span>
+                                            </td><td>58.49.27.146</td><td>59001</td><td align="center">&nbsp;</td><td>
+                                                <span id="GridView1_ctl06_Label4">90407</span>-<span id="GridView1_ctl06_Label5">日志查询</span>
+                                            </td><td align="center">PC</td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl07_Label1">6</span>
+                                            </td><td align="center">2019-04-12 18:39:36</td><td>hr</td><td>
+                                                <span id="GridView1_ctl07_Label3">HR管理员</span>
+                                            </td><td>58.49.27.146</td><td>57976</td><td align="center">&nbsp;</td><td>
+                                                <span id="GridView1_ctl07_Label4">90407</span>-<span id="GridView1_ctl07_Label5">日志查询</span>
+                                            </td><td align="center">PC</td>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl08_Label1">7</span>
+                                            </td><td align="center">2019-04-12 18:39:35</td><td>hr</td><td>
+                                                <span id="GridView1_ctl08_Label3">HR管理员</span>
+                                            </td><td>58.49.27.146</td><td>57976</td><td align="center">&nbsp;</td><td>
+                                                <span id="GridView1_ctl08_Label4">90407</span>-<span id="GridView1_ctl08_Label5">日志查询</span>
+                                            </td><td align="center">PC</td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl09_Label1">8</span>
+                                            </td><td align="center">2019-04-12 18:39:34</td><td>hr</td><td>
+                                                <span id="GridView1_ctl09_Label3">HR管理员</span>
+                                            </td><td>58.49.27.146</td><td>57976</td><td align="center">&nbsp;</td><td>
+                                                <span id="GridView1_ctl09_Label4">90407</span>-<span id="GridView1_ctl09_Label5">日志查询</span>
+                                            </td><td align="center">PC</td>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl10_Label1">9</span>
+                                            </td><td align="center">2019-04-12 18:39:33</td><td>hr</td><td>
+                                                <span id="GridView1_ctl10_Label3">HR管理员</span>
+                                            </td><td>58.49.27.146</td><td>57976</td><td align="center">&nbsp;</td><td>
+                                                <span id="GridView1_ctl10_Label4">90407</span>-<span id="GridView1_ctl10_Label5">日志查询</span>
+                                            </td><td align="center">PC</td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl11_Label1">10</span>
+                                            </td><td align="center">2019-04-12 18:39:32</td><td>hr</td><td>
+                                                <span id="GridView1_ctl11_Label3">HR管理员</span>
+                                            </td><td>58.49.27.146</td><td>57976</td><td align="center">&nbsp;</td><td>
+                                                <span id="GridView1_ctl11_Label4">90407</span>-<span id="GridView1_ctl11_Label5">日志查询</span>
+                                            </td><td align="center">PC</td>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl12_Label1">11</span>
+                                            </td><td align="center">2019-04-12 18:39:25</td><td>hr</td><td>
+                                                <span id="GridView1_ctl12_Label3">HR管理员</span>
+                                            </td><td>58.49.27.146</td><td>57976</td><td align="center">&nbsp;</td><td>
+                                                <span id="GridView1_ctl12_Label4">90407</span>-<span id="GridView1_ctl12_Label5">日志查询</span>
+                                            </td><td align="center">PC</td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl13_Label1">12</span>
+                                            </td><td align="center">2019-04-12 18:39:13</td><td>hr</td><td>
+                                                <span id="GridView1_ctl13_Label3">HR管理员</span>
+                                            </td><td>58.49.27.146</td><td>57976</td><td align="center">&nbsp;</td><td>
+                                                <span id="GridView1_ctl13_Label4">90407</span>-<span id="GridView1_ctl13_Label5">日志查询</span>
+                                            </td><td align="center">PC</td>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl14_Label1">13</span>
+                                            </td><td align="center">2019-04-12 18:39:09</td><td>hr</td><td>
+                                                <span id="GridView1_ctl14_Label3">HR管理员</span>
+                                            </td><td>58.49.27.146</td><td>57976</td><td align="center">&nbsp;</td><td>
+                                                <span id="GridView1_ctl14_Label4">90407</span>-<span id="GridView1_ctl14_Label5">日志查询</span>
+                                            </td><td align="center">PC</td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl15_Label1">14</span>
+                                            </td><td align="center">2019-04-12 17:15:21</td><td>hr</td><td>
+                                                <span id="GridView1_ctl15_Label3">HR管理员</span>
+                                            </td><td>58.49.27.146</td><td>50850</td><td align="center">&nbsp;</td><td>
+                                                <span id="GridView1_ctl15_Label4">90202</span>-<span id="GridView1_ctl15_Label5">短信授权</span>
+                                            </td><td align="center">PC</td>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl16_Label1">15</span>
+                                            </td><td align="center">2019-04-12 17:15:19</td><td>hr</td><td>
+                                                <span id="GridView1_ctl16_Label3">HR管理员</span>
+                                            </td><td>58.49.27.146</td><td>50832</td><td align="center">&nbsp;</td><td>
+                                                <span id="GridView1_ctl16_Label4">90201</span>-<span id="GridView1_ctl16_Label5">常用短信</span>
+                                            </td><td align="center">PC</td>
+		</tr>
+	</table>
+</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="height: 22px">
+                                
+<!-- AspNetPager 7.5 Copyright:2003-2015 Webdiyer (www.webdiyer.com) -->
+<div id="AspNetPager1" class="page_text" ShowInputBox="Auto" InputBoxClass="pagetext">
+<div class="page_text" style="width:250px;float:left;">
+	<font color='#333333'>共 53 行/每页15行 第1/4页</font>
+</div><div class="page_text" style="float:left;">
+	<a disabled="disabled" style="margin-right:5px;">首页</a><a disabled="disabled" style="margin-right:5px;">上页</a><span style="margin-right:5px;font-weight:Bold;color:red;">1</span><a href="javascript:__doPostBack('AspNetPager1','2')" style="margin-right:5px;">2</a><a href="javascript:__doPostBack('AspNetPager1','3')" style="margin-right:5px;">3</a><a href="javascript:__doPostBack('AspNetPager1','4')" style="margin-right:5px;">4</a><a href="javascript:__doPostBack('AspNetPager1','2')" style="margin-right:5px;">下页</a><a href="javascript:__doPostBack('AspNetPager1','4')" style="margin-right:5px;">末页</a>
+</div>
+</div>
+<!-- AspNetPager 7.5 Copyright:2003-2015 Webdiyer (www.webdiyer.com) -->
+
+
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <div id="ValidationSummary2" style="display:none;">
+
+</div>
+        <span id="RequiredFieldValidator8" style="visibility:hidden;">&nbsp;
+        </span>
+        <span id="RequiredFieldValidator9" style="visibility:hidden;">&nbsp;
+        </span>
+    
+<script type="text/javascript">
+//<![CDATA[
+var Page_ValidationSummaries =  new Array(document.getElementById("ValidationSummary2"));
+var Page_Validators =  new Array(document.getElementById("RequiredFieldValidator8"), document.getElementById("RequiredFieldValidator9"));
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+var ValidationSummary2 = document.all ? document.all["ValidationSummary2"] : document.getElementById("ValidationSummary2");
+ValidationSummary2.showmessagebox = "True";
+ValidationSummary2.showsummary = "False";
+var RequiredFieldValidator8 = document.all ? document.all["RequiredFieldValidator8"] : document.getElementById("RequiredFieldValidator8");
+RequiredFieldValidator8.controltovalidate = "txtSdate";
+RequiredFieldValidator8.errormessage = "请输入操作日期(自)";
+RequiredFieldValidator8.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+RequiredFieldValidator8.initialvalue = "";
+var RequiredFieldValidator9 = document.all ? document.all["RequiredFieldValidator9"] : document.getElementById("RequiredFieldValidator9");
+RequiredFieldValidator9.controltovalidate = "txtEdate";
+RequiredFieldValidator9.errormessage = "请输入操作日期(至)";
+RequiredFieldValidator9.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+RequiredFieldValidator9.initialvalue = "";
+//]]>
+</script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        //]]>
+</script>
+</form>
+</body>
+</html>

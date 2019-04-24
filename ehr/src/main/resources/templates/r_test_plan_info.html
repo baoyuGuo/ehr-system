@@ -1,0 +1,249 @@
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script type="text/javascript">
+    function chknull() {
+        if (document.getElementById('tbTitle').value == '') {
+            alert('招聘主题不能为空');
+            form1.Title.focus();
+            return false;
+        }
+
+        if (document.getElementById('ZpBmName').value == '') {
+            alert('招聘部门不能为空');
+            form1.ZpBmName.focus();
+            return false;
+        }
+
+        if (document.getElementById('FlowName').value == '') {
+            alert('请选择审批流程');
+            form1.FlowName.focus();
+            return false;
+        }
+    }
+</script>
+<head id="Head1"><meta http-equiv="Content-Type" content="text/html; charset=gb2312" /><title>
+	新增招聘计划
+</title><link href="../../CssJs/Main.css" type="text/css" rel="stylesheet" />
+    <script src="../../CssJs/MyJs.js" type="text/javascript" charset="gb2312"></script>
+    <script type="text/javascript" src="../../CssJs/WebCalendar.js"></script>
+    
+    <script type="text/javascript" src="../../ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" src="../../ueditor/ueditor.all.min.js"></script>
+    <script type="text/javascript" src="../../ueditor/lang/zh-cn/zh-cn.js"></script>
+</head>
+<body class="main">
+    <form method="post" action="Zpjhsq_Add.aspx" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTQ2NzM3NTI3OA8WAh4TVmFsaWRhdGVSZXF1ZXN0TW9kZQIBFgICAw9kFgoCAQ8PZBYCHghyZWFkb25seQUIcmVhZG9ubHlkAgcPD2QWAh8BBQhyZWFkb25seWQCCA8PZBYCHwEFCHJlYWRvbmx5ZAIMDw9kFgIfAQUIcmVhZG9ubHlkAg0PD2QWAh4Hb25jbGljawUcamF2YXNjcmlwdDpyZXR1cm4gY2hrbnVsbCgpO2Rk" />
+</div>
+
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    <table class="form" border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td align="center" colspan="4">
+                                <b>基本信息</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item"><font color="red">*</font>招聘主题：
+                            </td>
+                            <td colspan="3">
+                                <input name="tbTitle" type="text" id="tbTitle" class="mytext" style="width:96%;" />
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item" style="width: 20%"><font color="red">*</font>招聘部门：
+                            </td>
+                            <td style="width: 30%">
+                                <input name="ZpBmName" type="text" id="ZpBmName" class="mytext" readonly="readonly" style="width:80%;" />
+                                <img onclick="openunit();" alt="" src="../../images/choose.gif" border="0">
+                            </td>
+                            <td class="form-item" style="width: 20%">招聘岗位：
+                            </td>
+                            <td style="width: 30%">
+                                <input name="ZpZwName" type="text" id="ZpZwName" class="mytext" style="width:80%;" />
+                                <img onclick="OpenType('ZpZwName','h01');" alt="" src="../../images/choose.gif" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">薪资：
+                            </td>
+                            <td>
+                                <input name="Xinzi" type="text" id="Xinzi" class="mytext" style="width:90%;" />
+                            </td>
+                            <td class="form-item">员工职务：
+                            </td>
+                            <td>
+                                <input name="Ygzw" type="text" id="Ygzw" class="mytext" style="width:80%;" />
+                                <img onclick="OpenType('Ygzw','p06');" alt="" src="../../images/choose.gif" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">招聘人数：
+                            </td>
+                            <td>
+                                <input name="Zprs" type="text" id="Zprs" class="mytext" style="width:90%;" />
+                            </td>
+                            <td class="form-item">招聘方式：
+                            </td>
+                            <td>
+                                <input name="Zpfs" type="text" id="Zpfs" class="mytext" style="width:80%;" />
+                                <img onclick="OpenType('Zpfs','h07')" alt="" src="../../images/choose.gif" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">计划开始日期：
+                            </td>
+                            <td>
+                                <input name="Jhkssj" type="text" id="Jhkssj" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" DataType="DateTime" readonly="readonly" style="width:90%;" />
+                            </td>
+                            <td class="form-item">计划完成日期：
+                            </td>
+                            <td>
+                                <input name="Jhwcsj" type="text" id="Jhwcsj" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" DataType="DateTime" readonly="readonly" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">岗位要求：
+                            </td>
+                            <td colspan="3">
+                                <textarea name="Zwyq" rows="2" cols="20" id="Zwyq" class="mytextarea" style="height:100px;width:96%;">
+</textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">工作内容：
+                            </td>
+                            <td colspan="3">
+                                <textarea name="editor" id="editor" rows="10" cols="10" style="width: 100%; height: 180px;"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">备注：
+                            </td>
+                            <td colspan="3">
+                                <textarea name="Remark" rows="2" cols="20" id="Remark" class="mytextarea" style="height:100px;width:96%;">
+</textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item"><font color="red">*</font>选择流程：
+                            </td>
+                            <td colspan="3">
+                                <input name="FlowName" type="text" id="FlowName" class="mytext" readonly="readonly" style="width:90%;" />
+                                <img onclick="openFlow()" alt="" src="../../images/choose.gif" border="0">
+                            </td>
+                        </tr>
+                        <tr> <td  align=center colspan=4><div align=center><strong>用户自定义字段</strong></div> </td> </tr> <tr> <td class=form-item>自定义字段：</td><td colspan=3><TEXTAREA rows=1 id=2017911537263242706 name=2017911537263242706 cols=80></TEXTAREA></td></tr>
+                        <tr>
+                            <td colspan="4" align="center">
+                                <input type="submit" name="Button1" value="下一步" onclick="javascript:return chknull();" id="Button1" class="mybtn" />
+                                <input type="submit" name="Button2" value="返回" id="Button2" class="mybtn" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <input name="ZpBmId" type="text" id="ZpBmId" style="display: none" />
+        <input name="FlowNumber" type="text" id="FlowNumber" style="display: none" />
+        <input name="Number" type="text" value="2019410223431670180" id="Number" style="display: none" />
+        
+        <script type="text/javascript">
+            //机构部门
+            var wName2;
+            function openunit() {
+                var num = Math.random();
+                var str = "" + document.getElementById('ZpBmId').value + "";
+
+                //browser
+                var bstr = getBrowserType();
+                if (bstr == '3' | bstr == '4' | bstr == '5') {
+                    window.open("../../Choose/hr/Xzjg.aspx?tmp=" + num + "&requeststr=" + str + "&id=" + str + "", 'window', 'height=600,width=650,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no');
+                }
+                else {
+                    wName2 = window.showModalDialog("../../choose/hr/Xzjg.aspx?tmp=" + num + "&requeststr=" + str + "&id=" + str + "", "window_unit", "dialogWidth:650px;DialogHeight=600px;status:no;scroll=yes;help:no");
+                }
+
+                var arr = wName2.split("|");
+                for (var i = 0; i < arr.length; i++) {
+                    document.getElementById("ZpBmId").value = arr[0];
+                    document.getElementById("ZpBmName").value = arr[1];
+                }
+            }
+
+            function setValue(str) {
+                var arr = str.split("|");
+                for (var i = 0; i < arr.length; i++) {
+                    document.getElementById("ZpBmId").value = arr[0];
+                    document.getElementById("ZpBmName").value = arr[1];
+                }
+            }
+        
+            //流程
+            var wName_flow;
+            function openFlow() {
+                var num = Math.random();
+                var str = "" + document.getElementById('FlowName').value + "|" + document.getElementById('FlowNumber').value + "";
+                var FlowNumber = document.getElementById('FlowNumber').value;
+
+                //browser
+                var bstr = getBrowserType();
+                if (bstr == '3' | bstr == '4' | bstr == '5') {
+                    window.open("../../Choose/hr/Xzgzlc.aspx?tmp=" + num + "&requeststr=" + str + "&FlowNumber=" + FlowNumber + "&FormId=2", 'window', 'height=480,width=500,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no');
+                }
+                else {
+                    wName_flow = window.showModalDialog("../../choose/hr/Xzgzlc.aspx?tmp=" + num + "&requeststr=" + str + "&FlowNumber=" + FlowNumber + "&FormId=2", "window", "dialogWidth:500px;DialogHeight=480px;status:no;scroll=yes;help:no");
+                }
+
+                var arr = wName_flow.split("|");
+                for (var i = 0; i < arr.length; i++) {
+                    document.getElementById("FlowName").value = arr[0];
+                    document.getElementById("FlowNumber").value = arr[1];
+                }
+            }
+
+            function setValue_flow(str) {
+                var arr = str.split("|");
+                for (var i = 0; i < arr.length; i++) {
+                    document.getElementById("FlowName").value = arr[0];
+                    document.getElementById("FlowNumber").value = arr[1];
+                }
+            }
+
+            //自定义类型
+            var wName;
+            var vtbox;
+            function OpenType(tbox, ttype) {
+                vtbox = tbox;
+                var rdm = Math.random();
+                var str = "" + document.getElementById(tbox).value;
+
+                //browser
+                var bstr = getBrowserType();
+                if (bstr == '3' | bstr == '4' | bstr == '5') {
+                    window.open("../../Choose/hr/Xzqt.aspx?tmp=" + rdm + "&rqstr=" + str + "&type=" + ttype + "", 'newwindow8', 'height=480,width=400,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no');
+                }
+                else {
+                    wName = window.showModalDialog("../../Choose/hr/Xzqt.aspx?tmp=" + rdm + "&rqstr=" + str + "&type=" + ttype + "", "newwindow", "dialogWidth:400px;DialogHeight=480px;status:no;scroll=yes;help:no");
+                }
+
+                //if (wName != null && wName != "undefined") {
+                document.getElementById(tbox).value = wName;
+                //}
+            }
+
+            function setValue_sys(str) {
+                document.getElementById(vtbox).value = str;
+            }
+        </script>
+        <script type="text/javascript">
+            var ue = UE.getEditor('editor');
+        </script>
+    </form>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<script type="text/javascript">
+    function chknull() {
+        if (document.getElementById('LeiXing').value == '') {
+            alert('保险类型不能为空');
+            form1.LeiXing.focus();
+            return false;
+        }
+        if (document.getElementById('ZhouQi').value == '') {
+            alert('保险周期不能为空');
+            form1.ZhouQi.focus();
+            return false;
+        }
+        if (document.getElementById('ZhouQi').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('ZhouQi').value)) {
+                alert("保险周期只能为正数");
+                form1.ZhouQi.focus();
+                return false;
+            }
+        }
+        if (document.getElementById('BaoXianJE').value == '') {
+            alert('保险金额不能为空');
+            form1.BaoXianJE.focus();
+            return false;
+        }
+        if (document.getElementById('BaoXianJE').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('BaoXianJE').value)) {
+                alert("保险金额只能为正数");
+                form1.BaoXianJE.focus();
+                return false;
+            }
+        }
+    }
+</script>
+<head id="Head1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+	保险类别
+</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
+    <script th:src="@{/js/MyJs.js}" ></script>
+	<script th:src="@{/js/WebCalendar.js}" ></script>
+    
+</head>
+<body class="main">
+    <form method="post" action="/socialsecurity/add_type" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNTk1OTQ5OTc3DxYCHhNWYWxpZGF0ZVJlcXVlc3RNb2RlAgEWAgIDD2QWAgIHDw9kFgIeB29uY2xpY2sFHGphdmFzY3JpcHQ6cmV0dXJuIGNoa251bGwoKTtkZA==" />
+</div>
+
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    <table class="form" border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td class="form-item"><font color="red">*</font>保险类型：
+                            </td>
+                            <td colspan="3">
+                                <input name="LeiXing" type="text" id="LeiXing" style="width:96%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item" style="width:20%"><font color="red">*</font>保险周期：
+                            </td>
+                            <td style="width:30%">
+                                <input name="ZhouQi" type="text" id="ZhouQi" title="0表示一次投保" style="width:90%;" />
+                            </td>
+                            <td class="form-item" style="width:20%"><font color="red">*</font>保险金额：
+                            </td>
+                            <td style="width:30%">
+                                <input name="BaoXianJE" type="text" id="BaoXianJE" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" colspan="4" height="25">
+                                <input type="submit" name="Button1" value="确定" onclick="javascript:return chknull();" id="Button1" class="mybtn" />
+                                <input type="submit" name="Button2" value="返回" id="Button2" class="mybtn" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

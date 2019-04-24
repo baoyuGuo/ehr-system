@@ -1,0 +1,137 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>职位管理</title>
+    
+	<link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
+	<script th:src="@{/js/MyJs.js}" ></script>
+</head>
+<body class="main">
+    <form method="post" action="/page/d_post_add" id="form1">
+		<div class="aspNetHidden">
+		<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+		</div>
+
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    <table cellspacing="0" cellpadding="0" width="98%" align="center" border="0">
+                        <tr>
+                            <td style="height: 40px"></td>
+                            <td align="right">
+                                <input name="AddBtn" type="button" id="AddBtn" value="增 加" class="mybtn" onclick="javascript: popAdd(&#39;/page/d_post_add&#39;);" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div>
+									<table class="hkgv" cellspacing="0" rules="all" border="1" id="GridView1" style="width:100%;border-collapse:collapse;">
+										<tr class="hkHeadStyle">
+											<th scope="col" style="width:30px;"><img src="/pic/refresh.gif" alt="序号" /></th><th class="hidden" scope="col">职位编码</th><th scope="col" style="width:200px;">职位名称</th><th scope="col">职位描述</th>
+										</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+											<td align="center">
+                                                <span id="GridView1_ctl02_Label1">1</span>
+                                            </td><td class="hidden">1</td><td>
+                                                <a href="#" onclick="javascript:popMod('zwwh_mod.aspx?id=1')" class="gvlink">
+                                                    <span id="GridView1_ctl02_Labelyjje">部门经理</span></a>
+                                            </td><td>各部门的负责人</td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl03_Label1">2</span>
+                                            </td><td class="hidden">21</td><td>
+                                                <a href="#" onclick="javascript:popMod('zwwh_mod.aspx?id=21')" class="gvlink">
+                                                    <span id="GridView1_ctl03_Labelyjje">总经理</span></a>
+                                            </td><td>公司负责人</td>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl04_Label1">3</span>
+                                            </td><td class="hidden">22</td><td>
+                                                <a href="#" onclick="javascript:popMod('zwwh_mod.aspx?id=22')" class="gvlink">
+                                                    <span id="GridView1_ctl04_Labelyjje">财务总监</span></a>
+                                            </td><td>&nbsp;</td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl05_Label1">4</span>
+                                            </td><td class="hidden">23</td><td>
+                                                <a href="#" onclick="javascript:popMod('zwwh_mod.aspx?id=23')" class="gvlink">
+                                                    <span id="GridView1_ctl05_Labelyjje">副总经理</span></a>
+                                            </td><td>&nbsp;</td>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl06_Label1">5</span>
+                                            </td><td class="hidden">24</td><td>
+                                                <a href="#" onclick="javascript:popMod('zwwh_mod.aspx?id=24')" class="gvlink">
+                                                    <span id="GridView1_ctl06_Labelyjje">人事总监</span></a>
+                                            </td><td>&nbsp;</td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl07_Label1">6</span>
+                                            </td><td class="hidden">25</td><td>
+                                                <a href="#" onclick="javascript:popMod('zwwh_mod.aspx?id=25')" class="gvlink">
+                                                    <span id="GridView1_ctl07_Labelyjje">采购总监</span></a>
+                                            </td><td>&nbsp;</td>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl08_Label1">7</span>
+                                            </td><td class="hidden">26</td><td>
+                                                <a href="#" onclick="javascript:popMod('zwwh_mod.aspx?id=26')" class="gvlink">
+                                                    <span id="GridView1_ctl08_Labelyjje">营运总监</span></a>
+                                            </td><td>&nbsp;</td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl09_Label1">8</span>
+                                            </td><td class="hidden">27</td><td>
+                                                <a href="#" onclick="javascript:popMod('zwwh_mod.aspx?id=27')" class="gvlink">
+                                                    <span id="GridView1_ctl09_Labelyjje">系统管理员</span></a>
+                                            </td><td>系统运维人员</td>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl10_Label1">9</span>
+                                            </td><td class="hidden">28</td><td>
+                                                <a href="#" onclick="javascript:popMod('zwwh_mod.aspx?id=28')" class="gvlink">
+                                                    <span id="GridView1_ctl10_Labelyjje">电脑员</span></a>
+                                            </td><td>&nbsp;</td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl11_Label1">10</span>
+                                            </td><td class="hidden">29</td><td>
+                                                <a href="#" onclick="javascript:popMod('zwwh_mod.aspx?id=29')" class="gvlink">
+                                                    <span id="GridView1_ctl11_Labelyjje">董事长</span></a>
+                                            </td><td>&nbsp;</td>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl12_Label1">11</span>
+                                            </td><td class="hidden">43</td><td>
+                                                <a href="#" onclick="javascript:popMod('zwwh_mod.aspx?id=43')" class="gvlink">
+                                                    <span id="GridView1_ctl12_Labelyjje">园长</span></a>
+                                            </td><td>&nbsp;</td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl13_Label1">12</span>
+                                            </td><td class="hidden">44</td><td>
+                                                <a href="#" onclick="javascript:popMod('zwwh_mod.aspx?id=44')" class="gvlink">
+                                                    <span id="GridView1_ctl13_Labelyjje">出纳</span></a>
+                                            </td><td>&nbsp;</td>
+		</tr>
+	</table>
+</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="height: 22px">
+                                
+<!-- AspNetPager 7.5 Copyright:2003-2015 Webdiyer (www.webdiyer.com) -->
+<!--记录总数只有一页，AspNetPager已自动隐藏，若需在只有一页数据时显示AspNetPager，请将AlwaysShow属性值设为true！-->
+<!-- AspNetPager 7.5 Copyright:2003-2015 Webdiyer (www.webdiyer.com) -->
+
+
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

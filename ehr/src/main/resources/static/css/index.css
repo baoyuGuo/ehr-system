@@ -1,0 +1,16 @@
+.sys-title {
+	color: #014a95;
+	font-family: Monospace;
+	font-size: 2.1em ;
+	font-weight:bold; /*加粗*/
+}
+
+.login_form {
+	padding-left: 75%;
+	padding-top: 3.333333333%;
+}
+
+.login_bg_pic {
+	padding-top: 3.333333333%;
+	padding-left: 0px;
+}

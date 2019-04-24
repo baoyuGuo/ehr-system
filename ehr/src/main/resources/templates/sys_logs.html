@@ -1,0 +1,187 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head >
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>日志查询</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script th:src="@{/js/Choose.js}" ></script>
+<script th:src="@{/js/MyJs.js}" ></script>
+<script th:src="@{/js/WebCalendar.js}" ></script>
+    
+</head>
+<body class="main">
+    <form method="post" action="rzcx.aspx" onsubmit="javascript:return WebForm_OnSubmit();" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUINjk0MzE4MDAPZBYCAgEPZBYEAg8PPCsAEQIADxYEHgtfIURhdGFCb3VuZGceC18hSXRlbUNvdW50AgFkARAWABYAFgAWAmYPZBYEAgEPD2QWAh4Hb25jbGljawUZamF2YXNjcmlwdDpjaGFuZ2VCZyh0aGlzKRYIZg9kFgICAQ8PFgIeBFRleHQFATFkZAIBDw8WAh8DBQJocmRkAgIPZBYCAgEPDxYCHwMFC0hS566h55CG5ZGYZGQCAw8PFgIfAwUBNGRkAgIPDxYCHgdWaXNpYmxlaGRkAhEPDxYEHghQYWdlU2l6ZQIPHgtSZWNvcmRjb3VudAIBZGQYAQUJR3JpZFZpZXcxDzwrAAwBCAIBZGjP2cqex9Jl5XnjmAlxo7if16xgRHg3i/x8y2JDAHfB" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=DzBDzDLddDX8DC317I5USuKh-iDJc2I8rCCBcG9F7UnNZ7eJRdCHeN2h42RTtbVGK7KlvDv7T6Ymq6t5QQXGXPFnEwsTJSJYTFZ1unSQZ8g1&amp;t=636153175333906250" type="text/javascript"></script>
+
+
+<script src="/WebResource.axd?d=UvwGXkeCA7__g31JGeBDUujPTGHZA0uTJiFGRO5zNAUOoU5ABiVu0dHv_m6YS0S1HdguP6agMvC8JIyEdYfbDNqqFpgX8tUm62fvSvtdIR81&amp;t=636153175333906250" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+</script>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="5AD860B1" />
+</div>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td style="height: 10px"></td>
+            </tr>
+            <tr>
+                <td>
+                    <table cellspacing="0" cellpadding="0" border="0" width="98%" align="center">
+                        <tr>
+                            <td style="height: 21px; width: 91px; background-image: url(/pic/tab_b_y.gif)"
+                                align="center">
+                                <a href="" class="mail_top">登录日志汇总</a>
+                            </td>
+                            <td style="width: 91px; background-image: url(/pic/tab_b_n.gif)" align="center">
+                                <a href="rzcx_mx.aspx" class="black">登录日志明细</a>
+                            </td>
+                            <td style="width: 91px; background-image: url(/pic/tab_b_n.gif)" align="center">
+                                <a href="rzcx_cz.aspx" class="black">操作日志明细</a>
+                            </td>
+                            <td align="right">&nbsp;
+                            </td>
+                        </tr>
+                    </table>
+                    <table cellspacing="0" cellpadding="0" width="98%" align="center" border="0" class="form">
+                        <tr>
+                            <td align="right">操作人员：
+                            </td>
+                            <td>
+                                <input name="rysq" type="text" id="rysq" class="mytext" style="width:90px;" />&nbsp;<img
+                                    src="/pic/choose.gif" onclick="popMini('../../choose/portal/yhview.aspx?id=rysq2')"
+                                    alt="选择要查询的操作人员" />
+						                                操作日期：<input name="txtSdate" type="text" value="2019-04-12" id="txtSdate" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" style="width:90px;" />至<input name="txtEdate" type="text" value="2019-04-13" id="txtEdate" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" style="width:90px;" />
+						                                登录入口：<select name="dl_rk" id="dl_rk">
+											<option selected="selected" value="">全部</option>
+											<option value="PC">PC</option>
+											<option value="WebAPP">WebAPP</option>
+										</select>
+                                <input type="submit" name="QueryBtn" value="查询" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;QueryBtn&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="QueryBtn" class="mybtn" />
+                                <input type="submit" name="ClearBtn" value="清空" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ClearBtn&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="ClearBtn" class="mybtn" />
+                                <input type="submit" name="ExpBtn" value="导出" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ExpBtn&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="ExpBtn" class="mybtn" />
+                            </td>
+                        </tr>
+                    </table>
+                    <table cellspacing="0" cellpadding="0" width="98%" align="center" border="0">
+                        <tr>
+                            <td colspan="2">
+                                <div>
+									<table class="hkgv" cellspacing="0" rules="all" border="1" id="GridView1" style="width:100%;border-collapse:collapse;">
+										<tr class="hkHeadStyle">
+											<th scope="col" style="width:30px;">
+											<img src="/pic/refresh.gif" alt="序号" /></th>
+											<th scope="col" style="width:100px;">用户编码</th>
+											<th scope="col">用户名称</th><th scope="col">登录次数</th>
+										</tr>
+										<tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+											<td align="center">
+                                                <span id="GridView1_ctl02_Label1">1</span>
+                                            </td><td>hr</td><td>
+                                                <span id="GridView1_ctl02_Label3">HR管理员</span>
+                                            </td><td align="right">4</td>
+										</tr>
+									</table>
+								</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="height: 22px">
+                                
+<!-- AspNetPager 7.5 Copyright:2003-2015 Webdiyer (www.webdiyer.com) -->
+<!--记录总数只有一页，AspNetPager已自动隐藏，若需在只有一页数据时显示AspNetPager，请将AlwaysShow属性值设为true！-->
+<!-- AspNetPager 7.5 Copyright:2003-2015 Webdiyer (www.webdiyer.com) -->
+
+
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <div id="ValidationSummary2" style="display:none;">
+
+</div>
+        <span id="RequiredFieldValidator8" style="visibility:hidden;">&nbsp;
+        </span>
+        <span id="RequiredFieldValidator9" style="visibility:hidden;">&nbsp;
+        </span>
+    
+<script type="text/javascript">
+//<![CDATA[
+var Page_ValidationSummaries =  new Array(document.getElementById("ValidationSummary2"));
+var Page_Validators =  new Array(document.getElementById("RequiredFieldValidator8"), document.getElementById("RequiredFieldValidator9"));
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+var ValidationSummary2 = document.all ? document.all["ValidationSummary2"] : document.getElementById("ValidationSummary2");
+ValidationSummary2.showmessagebox = "True";
+ValidationSummary2.showsummary = "False";
+var RequiredFieldValidator8 = document.all ? document.all["RequiredFieldValidator8"] : document.getElementById("RequiredFieldValidator8");
+RequiredFieldValidator8.controltovalidate = "txtSdate";
+RequiredFieldValidator8.errormessage = "请输入操作日期(自)";
+RequiredFieldValidator8.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+RequiredFieldValidator8.initialvalue = "";
+var RequiredFieldValidator9 = document.all ? document.all["RequiredFieldValidator9"] : document.getElementById("RequiredFieldValidator9");
+RequiredFieldValidator9.controltovalidate = "txtEdate";
+RequiredFieldValidator9.errormessage = "请输入操作日期(至)";
+RequiredFieldValidator9.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+RequiredFieldValidator9.initialvalue = "";
+//]]>
+</script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        //]]>
+</script>
+</form>
+</body>
+</html>

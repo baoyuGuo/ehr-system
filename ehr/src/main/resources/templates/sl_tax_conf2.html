@@ -1,0 +1,223 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head >
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>
+	个人所得税设置
+</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	function addfrom() {
+	    var num = Math.random();
+	    window.open("/page/sl_tax_conf2_add", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=200,left=500")
+	}
+	
+	function showfrom(str) {
+	    var num = Math.random();
+	    window.open("Ygbxgl_R_show.aspx?tmp=" + num + "&id=" + str + "", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=200,left=500")
+	}
+	
+	function updatefrom(str) {
+	    var num = Math.random();
+	    window.open("Ygbxgl_R_Mod.aspx?tmp=" + num + "&id=" + str + "", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=200,left=500")
+	}
+	
+	function updatestrfrom() {
+	    var num = Math.random();
+	    window.open("Ygbxgl_R_Plmod.aspx?tmp=" + num + "", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=notop=200,left=500")
+	}
+	
+	function addstrfrom() {
+	    var num = Math.random();
+	    window.open("Ygbxgl_R_Pladd.aspx?tmp=" + num + "", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=200,left=500")
+	}
+	</script>
+</head>
+<body class="main">
+    <form method="post" action="Sdssz.aspx" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+</div>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="A2B92092" />
+</div>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td style="height: 10px"></td>
+            </tr>
+            <tr>
+                <td>
+                    <table cellspacing="0" cellpadding="0" border="0" width="98%" align="center">
+                        <tr>
+                            <td style="height: 21px; width: 91px; background-image: url(/pic/back.jpg)"
+                                align="center">
+                                <a href="/page/sl_tax_conf" class="black">起征金额</a>
+                            </td>
+                            <td style="width: 91px; background-image: url(/pic/back.jpg)" align="center">
+                                <a href="" class="mail_top">所得税设置</a>
+                            </td>
+                            <td align="right">&nbsp;
+                            </td>
+                        </tr>
+                    </table>
+                    <table cellspacing="0" cellpadding="0" width="98%" align="center" border="0" class="form">
+                        <tr>
+                            <td align="right">
+                                <a href="javascript:void(0)" onclick="chkAllw()" class="gvlink">全选</a>
+                                <a href="javascript:void(0)" onclick="revchkAll()" class="gvlink">反选</a>
+                                <input name="AddBtn" type="button" id="AddBtn" value="增加" class="mybtn" onclick="javascript: addfrom();" />
+                                <input type="submit" name="updatebtn" value="修改" onclick="javascript:return modcheck();" id="updatebtn" class="mybtn" />
+                                <input type="submit" name="DelBtn" value="删除" onclick="javascript:return delcheck();" id="DelBtn" class="mybtn" />
+                            </td>
+                        </tr>
+                    </table>
+                    <table cellspacing="0" cellpadding="0" width="98%" align="center" border="0">
+                        <tr>
+                            <td colspan="2">
+                                <div>
+									<table class="hkgv" cellspacing="0" rules="all" border="1" id="GridView1" style="width:100%;border-collapse:collapse;">
+										<tr class="hkHeadStyle">
+											<th scope="col" style="width:30px;"><img src="/pic/refresh.gif" alt="序号" /></th>
+											<th align="center" scope="col" style="white-space:nowrap;">选择</th>
+											<th scope="col">级数</th>
+											<th scope="col" style="width:140px;white-space:nowrap;">起始金额</th>
+											<th scope="col" style="width:140px;white-space:nowrap;">结束金额</th>
+											<th scope="col" style="width:140px;white-space:nowrap;">税率</th>
+											<th scope="col" style="width:140px;white-space:nowrap;">速扣</th>
+										</tr>
+										<tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+											<td align="center">
+                                                <span id="GridView1_ctl02_lblxh">1</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl02_CheckSelect" type="checkbox" name="GridView1$ctl02$CheckSelect" />
+                                                
+                                                
+                                            </td><td>1</td><td align="center" style="width:140px;white-space:nowrap;">
+                                                ￥0
+                                            </td><td align="center" style="width:140px;white-space:nowrap;">
+                                                ￥3000
+                                            </td><td align="center" style="width:140px;white-space:nowrap;">
+                                                3%
+                                            </td><td align="center" style="width:140px;white-space:nowrap;">
+                                                ￥0
+                                            </td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl03_lblxh">2</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl03_CheckSelect" type="checkbox" name="GridView1$ctl03$CheckSelect" />
+                                                
+                                                
+                                            </td><td>2</td><td align="center" style="width:140px;white-space:nowrap;">
+                                                ￥3000.01
+                                            </td><td align="center" style="width:140px;white-space:nowrap;">
+                                                ￥12000
+                                            </td><td align="center" style="width:140px;white-space:nowrap;">
+                                                10%
+                                            </td><td align="center" style="width:140px;white-space:nowrap;">
+                                                ￥210
+                                            </td>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl04_lblxh">3</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl04_CheckSelect" type="checkbox" name="GridView1$ctl04$CheckSelect" />
+                                                
+                                                
+                                            </td><td>3</td><td align="center" style="width:140px;white-space:nowrap;">
+                                                ￥12000.01
+                                            </td><td align="center" style="width:140px;white-space:nowrap;">
+                                                ￥25000
+                                            </td><td align="center" style="width:140px;white-space:nowrap;">
+                                                20%
+                                            </td><td align="center" style="width:140px;white-space:nowrap;">
+                                                ￥1410
+                                            </td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl05_lblxh">4</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl05_CheckSelect" type="checkbox" name="GridView1$ctl05$CheckSelect" />
+                                                
+                                                
+                                            </td><td>4</td><td align="center" style="width:140px;white-space:nowrap;">
+                                                ￥25000.01
+                                            </td><td align="center" style="width:140px;white-space:nowrap;">
+                                                ￥35000
+                                            </td><td align="center" style="width:140px;white-space:nowrap;">
+                                                25%
+                                            </td><td align="center" style="width:140px;white-space:nowrap;">
+                                                ￥2660
+                                            </td>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl06_lblxh">5</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl06_CheckSelect" type="checkbox" name="GridView1$ctl06$CheckSelect" />
+                                                
+                                                
+                                            </td><td>5</td><td align="center" style="width:140px;white-space:nowrap;">
+                                                ￥35000.01
+                                            </td><td align="center" style="width:140px;white-space:nowrap;">
+                                                ￥55000
+                                            </td><td align="center" style="width:140px;white-space:nowrap;">
+                                                30%
+                                            </td><td align="center" style="width:140px;white-space:nowrap;">
+                                                ￥4410
+                                            </td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl07_lblxh">6</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl07_CheckSelect" type="checkbox" name="GridView1$ctl07$CheckSelect" />
+                                                
+                                                
+                                            </td><td>6</td><td align="center" style="width:140px;white-space:nowrap;">
+                                                ￥55000.01
+                                            </td><td align="center" style="width:140px;white-space:nowrap;">
+                                                ￥80000
+                                            </td><td align="center" style="width:140px;white-space:nowrap;">
+                                                35%
+                                            </td><td align="center" style="width:140px;white-space:nowrap;">
+                                                ￥7160
+                                            </td>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl08_lblxh">7</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl08_CheckSelect" type="checkbox" name="GridView1$ctl08$CheckSelect" />
+                                                
+                                                
+                                            </td><td>7</td><td align="center" style="width:140px;white-space:nowrap;">
+                                                ￥80000.01
+                                            </td><td align="center" style="width:140px;white-space:nowrap;">
+                                                ￥999999999
+                                            </td><td align="center" style="width:140px;white-space:nowrap;">
+                                                45%
+                                            </td><td align="center" style="width:140px;white-space:nowrap;">
+                                                ￥15160
+                                            </td>
+		</tr>
+	</table>
+</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="height: 22px">
+                                
+<!-- AspNetPager 7.5 Copyright:2003-2015 Webdiyer (www.webdiyer.com) -->
+<!--记录总数只有一页，AspNetPager已自动隐藏，若需在只有一页数据时显示AspNetPager，请将AlwaysShow属性值设为true！-->
+<!-- AspNetPager 7.5 Copyright:2003-2015 Webdiyer (www.webdiyer.com) -->
+
+
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

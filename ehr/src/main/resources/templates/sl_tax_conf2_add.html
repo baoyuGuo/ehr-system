@@ -1,0 +1,130 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<script type="text/javascript">
+    function chknull() {
+        if (document.getElementById('Jishu').value == '') {
+            alert('级数不能为空');
+            form1.Jishu.focus();
+            return false;
+        }
+        if (document.getElementById('Startmoney').value == '') {
+            alert('起始金额不能为空');
+            form1.Startmoney.focus();
+            return false;
+        }
+        if (document.getElementById('Startmoney').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('Startmoney').value)) {
+                alert("起始金额只能为正数");
+                form1.Startmoney.focus();
+                return false;
+            }
+        }
+        if (document.getElementById('Endmoney').value == '') {
+            alert('结束金额不能为空');
+            form1.Endmoney.focus();
+            return false;
+        }
+        if (document.getElementById('Endmoney').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('Endmoney').value)) {
+                alert("结束金额只能为正数");
+                form1.Endmoney.focus();
+                return false;
+            }
+        }
+        if (document.getElementById('Suilv').value == '') {
+            alert('税率不能为空');
+            form1.Suilv.focus();
+            return false;
+        }
+        if (document.getElementById('Suilv').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('Suilv').value)) {
+                alert("税率只能为正数");
+                form1.Suilv.focus();
+                return false;
+            }
+        }
+        if (document.getElementById('Sukou').value == '') {
+            alert('速扣不能为空');
+            form1.Sukou.focus();
+            return false;
+        }
+        if (document.getElementById('Sukou').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('Sukou').value)) {
+                alert("速扣只能为正数");
+                form1.Sukou.focus();
+                return false;
+            }
+        }
+    }
+</script>
+<head><meta http-equiv="Content-Type" content="text/html; charset=gb2312" /><title>
+	个人所得税设置
+</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script th:src="@{/js/Choose.js}" ></script>
+<script th:src="@{/js/MyJs.js}" ></script>
+<script th:src="@{/js/WebCalendar.js}" ></script>
+</head>
+<body class="main">
+    <form method="post" action="Sdssz_Add.aspx" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNjMzMzEyMjAzD2QWAgIDD2QWAgILDw9kFgIeB29uY2xpY2sFHGphdmFzY3JpcHQ6cmV0dXJuIGNoa251bGwoKTtkZCu3ZfksN+t6fZYoqD7Oc6bGH/AovavMhdJB1qazpMmc" />
+</div>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="F38B0501" />
+</div>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    <table class="form" border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td class="form-item"><font color="red">*</font>级数：
+                            </td>
+                            <td colspan="3">
+                                <input name="Jishu" type="text" id="Jishu" style="width:96%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item" style="width:20%"><font color="red">*</font>起始金额：
+                            </td>
+                            <td style="width:30%">
+                                <input name="Startmoney" type="text" id="Startmoney" style="width:90%;" />
+                            </td>
+                            <td class="form-item" style="width:20%"><font color="red">*</font>结束金额：
+                            </td>
+                            <td style="width:30%">
+                                <input name="Endmoney" type="text" id="Endmoney" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item"><font color="red">*</font>税率：
+                            </td>
+                            <td>
+                                <input name="Suilv" type="text" id="Suilv" style="width:90%;" />%
+                            </td>
+                            <td class="form-item"><font color="red">*</font>速扣：
+                            </td>
+                            <td>
+                                <input name="Sukou" type="text" id="Sukou" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" colspan="4" height="25" >
+                                <input type="submit" name="Button1" value="确定" onclick="javascript:return chknull();" id="Button1" class="mybtn" />
+                                <input type="submit" name="Button2" value="返回" id="Button2" class="mybtn" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ehr.mapper.EhrSalaryAccountsMapper" >
+  <resultMap id="BaseResultMap" type="com.ehr.pojo.EhrSalaryAccounts" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="bankOfAccount" property="bankofaccount" jdbcType="CHAR" />
+    <result column="account" property="account" jdbcType="VARCHAR" />
+    <result column="eNumber" property="enumber" jdbcType="VARCHAR" />
+    <result column="basicWage" property="basicwage" jdbcType="INTEGER" />
+    <result column="gwgz" property="gwgz" jdbcType="INTEGER" />
+    <result column="jxgz" property="jxgz" jdbcType="INTEGER" />
+    <result column="glgz" property="glgz" jdbcType="INTEGER" />
+    <result column="gwjt" property="gwjt" jdbcType="INTEGER" />
+    <result column="hfbt" property="hfbt" jdbcType="INTEGER" />
+    <result column="cfbt" property="cfbt" jdbcType="INTEGER" />
+    <result column="jtbt" property="jtbt" jdbcType="INTEGER" />
+    <result column="qqjj" property="qqjj" jdbcType="INTEGER" />
+    <result column="qtjj" property="qtjj" jdbcType="INTEGER" />
+    <result column="bxdk" property="bxdk" jdbcType="INTEGER" />
+    <result column="cfdk" property="cfdk" jdbcType="INTEGER" />
+    <result column="qtdk" property="qtdk" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, bankOfAccount, account, eNumber, basicWage, gwgz, jxgz, glgz, gwjt, hfbt, cfbt, 
+    jtbt, qqjj, qtjj, bxdk, cfdk, qtdk
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ehr.pojo.EhrSalaryAccountsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ehr_salary_accounts
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ehr_salary_accounts
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ehr_salary_accounts
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ehr.pojo.EhrSalaryAccountsExample" >
+    delete from ehr_salary_accounts
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ehr.pojo.EhrSalaryAccounts" >
+    insert into ehr_salary_accounts (id, bankOfAccount, account, 
+      eNumber, basicWage, gwgz, 
+      jxgz, glgz, gwjt, hfbt, 
+      cfbt, jtbt, qqjj, qtjj, 
+      bxdk, cfdk, qtdk)
+    values (#{id,jdbcType=INTEGER}, #{bankofaccount,jdbcType=CHAR}, #{account,jdbcType=VARCHAR}, 
+      #{enumber,jdbcType=VARCHAR}, #{basicwage,jdbcType=INTEGER}, #{gwgz,jdbcType=INTEGER}, 
+      #{jxgz,jdbcType=INTEGER}, #{glgz,jdbcType=INTEGER}, #{gwjt,jdbcType=INTEGER}, #{hfbt,jdbcType=INTEGER}, 
+      #{cfbt,jdbcType=INTEGER}, #{jtbt,jdbcType=INTEGER}, #{qqjj,jdbcType=INTEGER}, #{qtjj,jdbcType=INTEGER}, 
+      #{bxdk,jdbcType=INTEGER}, #{cfdk,jdbcType=INTEGER}, #{qtdk,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ehr.pojo.EhrSalaryAccounts" >
+    insert into ehr_salary_accounts
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="bankofaccount != null" >
+        bankOfAccount,
+      </if>
+      <if test="account != null" >
+        account,
+      </if>
+      <if test="enumber != null" >
+        eNumber,
+      </if>
+      <if test="basicwage != null" >
+        basicWage,
+      </if>
+      <if test="gwgz != null" >
+        gwgz,
+      </if>
+      <if test="jxgz != null" >
+        jxgz,
+      </if>
+      <if test="glgz != null" >
+        glgz,
+      </if>
+      <if test="gwjt != null" >
+        gwjt,
+      </if>
+      <if test="hfbt != null" >
+        hfbt,
+      </if>
+      <if test="cfbt != null" >
+        cfbt,
+      </if>
+      <if test="jtbt != null" >
+        jtbt,
+      </if>
+      <if test="qqjj != null" >
+        qqjj,
+      </if>
+      <if test="qtjj != null" >
+        qtjj,
+      </if>
+      <if test="bxdk != null" >
+        bxdk,
+      </if>
+      <if test="cfdk != null" >
+        cfdk,
+      </if>
+      <if test="qtdk != null" >
+        qtdk,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="bankofaccount != null" >
+        #{bankofaccount,jdbcType=CHAR},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="enumber != null" >
+        #{enumber,jdbcType=VARCHAR},
+      </if>
+      <if test="basicwage != null" >
+        #{basicwage,jdbcType=INTEGER},
+      </if>
+      <if test="gwgz != null" >
+        #{gwgz,jdbcType=INTEGER},
+      </if>
+      <if test="jxgz != null" >
+        #{jxgz,jdbcType=INTEGER},
+      </if>
+      <if test="glgz != null" >
+        #{glgz,jdbcType=INTEGER},
+      </if>
+      <if test="gwjt != null" >
+        #{gwjt,jdbcType=INTEGER},
+      </if>
+      <if test="hfbt != null" >
+        #{hfbt,jdbcType=INTEGER},
+      </if>
+      <if test="cfbt != null" >
+        #{cfbt,jdbcType=INTEGER},
+      </if>
+      <if test="jtbt != null" >
+        #{jtbt,jdbcType=INTEGER},
+      </if>
+      <if test="qqjj != null" >
+        #{qqjj,jdbcType=INTEGER},
+      </if>
+      <if test="qtjj != null" >
+        #{qtjj,jdbcType=INTEGER},
+      </if>
+      <if test="bxdk != null" >
+        #{bxdk,jdbcType=INTEGER},
+      </if>
+      <if test="cfdk != null" >
+        #{cfdk,jdbcType=INTEGER},
+      </if>
+      <if test="qtdk != null" >
+        #{qtdk,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ehr.pojo.EhrSalaryAccountsExample" resultType="java.lang.Integer" >
+    select count(*) from ehr_salary_accounts
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ehr_salary_accounts
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.bankofaccount != null" >
+        bankOfAccount = #{record.bankofaccount,jdbcType=CHAR},
+      </if>
+      <if test="record.account != null" >
+        account = #{record.account,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enumber != null" >
+        eNumber = #{record.enumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.basicwage != null" >
+        basicWage = #{record.basicwage,jdbcType=INTEGER},
+      </if>
+      <if test="record.gwgz != null" >
+        gwgz = #{record.gwgz,jdbcType=INTEGER},
+      </if>
+      <if test="record.jxgz != null" >
+        jxgz = #{record.jxgz,jdbcType=INTEGER},
+      </if>
+      <if test="record.glgz != null" >
+        glgz = #{record.glgz,jdbcType=INTEGER},
+      </if>
+      <if test="record.gwjt != null" >
+        gwjt = #{record.gwjt,jdbcType=INTEGER},
+      </if>
+      <if test="record.hfbt != null" >
+        hfbt = #{record.hfbt,jdbcType=INTEGER},
+      </if>
+      <if test="record.cfbt != null" >
+        cfbt = #{record.cfbt,jdbcType=INTEGER},
+      </if>
+      <if test="record.jtbt != null" >
+        jtbt = #{record.jtbt,jdbcType=INTEGER},
+      </if>
+      <if test="record.qqjj != null" >
+        qqjj = #{record.qqjj,jdbcType=INTEGER},
+      </if>
+      <if test="record.qtjj != null" >
+        qtjj = #{record.qtjj,jdbcType=INTEGER},
+      </if>
+      <if test="record.bxdk != null" >
+        bxdk = #{record.bxdk,jdbcType=INTEGER},
+      </if>
+      <if test="record.cfdk != null" >
+        cfdk = #{record.cfdk,jdbcType=INTEGER},
+      </if>
+      <if test="record.qtdk != null" >
+        qtdk = #{record.qtdk,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ehr_salary_accounts
+    set id = #{record.id,jdbcType=INTEGER},
+      bankOfAccount = #{record.bankofaccount,jdbcType=CHAR},
+      account = #{record.account,jdbcType=VARCHAR},
+      eNumber = #{record.enumber,jdbcType=VARCHAR},
+      basicWage = #{record.basicwage,jdbcType=INTEGER},
+      gwgz = #{record.gwgz,jdbcType=INTEGER},
+      jxgz = #{record.jxgz,jdbcType=INTEGER},
+      glgz = #{record.glgz,jdbcType=INTEGER},
+      gwjt = #{record.gwjt,jdbcType=INTEGER},
+      hfbt = #{record.hfbt,jdbcType=INTEGER},
+      cfbt = #{record.cfbt,jdbcType=INTEGER},
+      jtbt = #{record.jtbt,jdbcType=INTEGER},
+      qqjj = #{record.qqjj,jdbcType=INTEGER},
+      qtjj = #{record.qtjj,jdbcType=INTEGER},
+      bxdk = #{record.bxdk,jdbcType=INTEGER},
+      cfdk = #{record.cfdk,jdbcType=INTEGER},
+      qtdk = #{record.qtdk,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ehr.pojo.EhrSalaryAccounts" >
+    update ehr_salary_accounts
+    <set >
+      <if test="bankofaccount != null" >
+        bankOfAccount = #{bankofaccount,jdbcType=CHAR},
+      </if>
+      <if test="account != null" >
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="enumber != null" >
+        eNumber = #{enumber,jdbcType=VARCHAR},
+      </if>
+      <if test="basicwage != null" >
+        basicWage = #{basicwage,jdbcType=INTEGER},
+      </if>
+      <if test="gwgz != null" >
+        gwgz = #{gwgz,jdbcType=INTEGER},
+      </if>
+      <if test="jxgz != null" >
+        jxgz = #{jxgz,jdbcType=INTEGER},
+      </if>
+      <if test="glgz != null" >
+        glgz = #{glgz,jdbcType=INTEGER},
+      </if>
+      <if test="gwjt != null" >
+        gwjt = #{gwjt,jdbcType=INTEGER},
+      </if>
+      <if test="hfbt != null" >
+        hfbt = #{hfbt,jdbcType=INTEGER},
+      </if>
+      <if test="cfbt != null" >
+        cfbt = #{cfbt,jdbcType=INTEGER},
+      </if>
+      <if test="jtbt != null" >
+        jtbt = #{jtbt,jdbcType=INTEGER},
+      </if>
+      <if test="qqjj != null" >
+        qqjj = #{qqjj,jdbcType=INTEGER},
+      </if>
+      <if test="qtjj != null" >
+        qtjj = #{qtjj,jdbcType=INTEGER},
+      </if>
+      <if test="bxdk != null" >
+        bxdk = #{bxdk,jdbcType=INTEGER},
+      </if>
+      <if test="cfdk != null" >
+        cfdk = #{cfdk,jdbcType=INTEGER},
+      </if>
+      <if test="qtdk != null" >
+        qtdk = #{qtdk,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ehr.pojo.EhrSalaryAccounts" >
+    update ehr_salary_accounts
+    set bankOfAccount = #{bankofaccount,jdbcType=CHAR},
+      account = #{account,jdbcType=VARCHAR},
+      eNumber = #{enumber,jdbcType=VARCHAR},
+      basicWage = #{basicwage,jdbcType=INTEGER},
+      gwgz = #{gwgz,jdbcType=INTEGER},
+      jxgz = #{jxgz,jdbcType=INTEGER},
+      glgz = #{glgz,jdbcType=INTEGER},
+      gwjt = #{gwjt,jdbcType=INTEGER},
+      hfbt = #{hfbt,jdbcType=INTEGER},
+      cfbt = #{cfbt,jdbcType=INTEGER},
+      jtbt = #{jtbt,jdbcType=INTEGER},
+      qqjj = #{qqjj,jdbcType=INTEGER},
+      qtjj = #{qtjj,jdbcType=INTEGER},
+      bxdk = #{bxdk,jdbcType=INTEGER},
+      cfdk = #{cfdk,jdbcType=INTEGER},
+      qtdk = #{qtdk,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

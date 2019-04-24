@@ -1,0 +1,249 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script type="text/javascript">
+    function chknull() {
+        if (document.getElementById('name').value == '') {
+            alert('招聘主题不能为空');
+            return false;
+        }
+
+        if (document.getElementById('department').value == '') {
+            alert('招聘部门不能为空');
+            return false;
+        }
+
+        if (document.getElementById('flowpath').value == '') {
+            alert('请选择审批流程');
+            return false;
+        }
+    }
+</script>
+<head id="Head1"><meta http-equiv="Content-Type" content="text/html; charset=gb2312" /><title>
+	新增招聘计划
+</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script th:src="@{/js/Choose.js}" ></script>
+<script th:src="@{/js/MyJs.js}" ></script>
+<script th:src="@{/js/WebCalendar.js}" ></script>
+</head>
+<body class="main">
+    <form method="post" action="/recruitment/addRecruitmentPlan" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTQ2NzM3NTI3OA8WAh4TVmFsaWRhdGVSZXF1ZXN0TW9kZQIBFgICAw9kFgoCAQ8PZBYCHghyZWFkb25seQUIcmVhZG9ubHlkAgcPD2QWAh8BBQhyZWFkb25seWQCCA8PZBYCHwEFCHJlYWRvbmx5ZAIMDw9kFgIfAQUIcmVhZG9ubHlkAg0PD2QWAh4Hb25jbGljawUcamF2YXNjcmlwdDpyZXR1cm4gY2hrbnVsbCgpO2Rk" />
+</div>
+
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    <table class="form" border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td align="center" colspan="4">
+                                <b>基本信息</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item"><font color="red">*</font>招聘计划名称：
+                            </td>
+                            <td colspan="3">
+                                <input name="name" type="text" id="name" class="mytext" style="width:96%;" />
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item" style="width: 20%"><font color="red">*</font>招聘部门：
+                            </td>
+                            <td style="width: 30%">
+                                <input name="department" type="text" id="department" class="mytext" style="width:80%;" />
+                                <img onclick="openunit();" alt="" src="/pic/choose.gif" border="0">
+                            </td>
+                            <td class="form-item" style="width: 20%">招聘岗位：
+                            </td>
+                            <td style="width: 30%">
+                                <input name="post" type="text" id="post" class="mytext" style="width:80%;" />
+                                <img onclick="OpenType('post','h01');" alt="" src="/pic/choose.gif" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">薪资：
+                            </td>
+                            <td>
+                                <input name="salary" type="text" id="salary" class="mytext" style="width:90%;" />
+                            </td>
+                            <td class="form-item">薪资单位：
+                            </td>
+                            <td>
+                                <input name="xzdw" type="text" id="xzdw" class="mytext" value="元" readonly="readonly" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">招聘人数：
+                            </td>
+                            <td>
+                                <input name="needs" type="text" id="needs" class="mytext" style="width:90%;" />
+                            </td>
+                            <td class="form-item">招聘方式：
+                            </td>
+                            <td>
+								<select name="recruitmentway" id="recruitmentway" style="width:90%;">
+									<option value="校招" selected="selected">校招</option>
+									<option value="社招">社招</option>
+								</select>                            
+							</td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">计划开始日期：
+                            </td>
+                            <td>
+                                <input name="start" type="text" id="start" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" DataType="DateTime" readonly="readonly" style="width:90%;" />
+                            </td>
+                            <td class="form-item">计划完成日期：
+                            </td>
+                            <td>
+                                <input name="end" type="text" id="end" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" DataType="DateTime" readonly="readonly" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">岗位要求：
+                            </td>
+                            <td colspan="3">
+                                <textarea name="request" rows="2" cols="20" id="request" style="height:100px;width:96%;">
+								</textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">工作内容：
+                            </td>
+                            <td colspan="3">
+                                <textarea name="duty" id="duty" rows="10" cols="10" style="width: 100%; height: 180px;">
+                                </textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">备注：
+                            </td>
+                            <td colspan="3">
+                                <textarea name="remarks" rows="2" cols="20" id="remarks" style="height:100px;width:96%;">
+								</textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item"><font color="red">*</font>选择流程：
+                            </td>
+                            <td colspan="3">
+                            	 <select name="flowpath" id="flowpath" style="width:90%;">
+									<option value="面试" selected="selected">面试</option>
+									<option value="笔试_面试_hr面">笔试_面试_hr面</option>
+									<option value="笔试_一面_二面_hr面">笔试_一面_二面_hr面</option>
+								</select>
+                            </td>
+                        </tr>
+                        <tr> <td  align=center colspan=4><div align=center><strong>用户自定义字段</strong></div> 
+                        </td> </tr> <tr> <td class=form-item>自定义字段：</td>
+                        <td colspan=3>
+                        <TEXTAREA rows=1 id="others" name="others" cols=80></TEXTAREA></td></tr>
+                        <tr>
+                            <td colspan="4" align="center">
+                                <input type="submit" name="Button1" value="提交" onclick="javascript:return chknull();" id="Button1" class="mybtn" />
+                                <input type="submit" name="Button2" value="返回" id="Button2" class="mybtn" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        
+        <script type="text/javascript">
+            //机构部门
+            var wName2;
+            function openunit() {
+                var num = Math.random();
+                var str = "" + document.getElementById('ZpBmId').value + "";
+
+                //browser
+                var bstr = getBrowserType();
+                if (bstr == '3' | bstr == '4' | bstr == '5') {
+                    window.open("/page/select_department_post", 'window', 'height=600,width=650,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no');
+                }
+                else {
+                    wName2 = window.showModalDialog("/page/select_department_post", "window_unit", "dialogWidth:650px;DialogHeight=600px;status:no;scroll=yes;help:no");
+                }
+
+                var arr = wName2.split("|");
+                for (var i = 0; i < arr.length; i++) {
+                    document.getElementById("ZpBmId").value = arr[0];
+                    document.getElementById("ZpBmName").value = arr[1];
+                }
+            }
+
+            function setValue(str) {
+                var arr = str.split("|");
+                for (var i = 0; i < arr.length; i++) {
+                    document.getElementById("").value = arr[0];
+                    document.getElementById("post").value = arr[1];
+                }
+            }
+        
+            //流程
+            var wName_flow;
+            function openFlow() {
+                var num = Math.random();
+                var str = "" + document.getElementById('FlowName').value + "|" + document.getElementById('FlowNumber').value + "";
+                var FlowNumber = document.getElementById('FlowNumber').value;
+
+                //browser
+                var bstr = getBrowserType();
+                if (bstr == '3' | bstr == '4' | bstr == '5') {
+                    window.open("../../Choose/hr/Xzgzlc.aspx?tmp=" + num + "&requeststr=" + str + "&FlowNumber=" + FlowNumber + "&FormId=2", 'window', 'height=480,width=500,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no');
+                }
+                else {
+                    wName_flow = window.showModalDialog("../../choose/hr/Xzgzlc.aspx?tmp=" + num + "&requeststr=" + str + "&FlowNumber=" + FlowNumber + "&FormId=2", "window", "dialogWidth:500px;DialogHeight=480px;status:no;scroll=yes;help:no");
+                }
+
+                var arr = wName_flow.split("|");
+                for (var i = 0; i < arr.length; i++) {
+                    document.getElementById("FlowName").value = arr[0];
+                    document.getElementById("FlowNumber").value = arr[1];
+                }
+            }
+
+            function setValue_flow(str) {
+                var arr = str.split("|");
+                for (var i = 0; i < arr.length; i++) {
+                    document.getElementById("FlowName").value = arr[0];
+                    document.getElementById("FlowNumber").value = arr[1];
+                }
+            }
+
+            //自定义类型
+            var wName;
+            var vtbox;
+            function OpenType(tbox, ttype) {
+                vtbox = tbox;
+                var rdm = Math.random();
+                var str = "" + document.getElementById(tbox).value;
+
+                //browser
+                var bstr = getBrowserType();
+                if (bstr == '3' | bstr == '4' | bstr == '5') {
+                    window.open("../../Choose/hr/Xzqt.aspx?tmp=" + rdm + "&rqstr=" + str + "&type=" + ttype + "", 'newwindow8', 'height=480,width=400,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no');
+                }
+                else {
+                    wName = window.showModalDialog("../../Choose/hr/Xzqt.aspx?tmp=" + rdm + "&rqstr=" + str + "&type=" + ttype + "", "newwindow", "dialogWidth:400px;DialogHeight=480px;status:no;scroll=yes;help:no");
+                }
+
+                //if (wName != null && wName != "undefined") {
+                document.getElementById(tbox).value = wName;
+                //}
+            }
+
+            function setValue_sys(str) {
+                document.getElementById(vtbox).value = str;
+            }
+        </script>
+        <script type="text/javascript">
+            var ue = UE.getEditor('editor');
+        </script>
+    </form>
+</body>
+</html>

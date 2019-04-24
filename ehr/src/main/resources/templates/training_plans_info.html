@@ -1,0 +1,462 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<script type="text/javascript">
+    function openuser1() {
+        var num = Math.random();
+        var number = document.getElementById('Number').value;
+        window.open("../../hr/pxgl/Pxjhyg_Add.aspx?tmp=" + num + "&number=" + number + " ", "window", "height=410,width=650,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no");
+    }
+
+    function openuser2() {
+        var num = Math.random();
+        var number = document.getElementById('Number').value;
+
+        window.open("../../hr/pxgl/Pxjhyg_Exp.aspx?tmp=" + num + "&number=" + number + "", "_blank", "height=1, width=1")
+    }
+
+    function openkc1() {
+        var num = Math.random();
+        var number = document.getElementById('Number').value;
+        window.open("../../hr/pxgl/Pxjhkc_Add.aspx?tmp=" + num + "&number=" + number + " ", "window", "height=510,width=650,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no");
+    }
+
+    function openkc2() {
+        var num = Math.random();
+        var number = document.getElementById('Number').value;
+
+        window.open("../../hr/pxgl/Pxjhkc_Exp.aspx?tmp=" + num + "&number=" + number + "", "_blank", "height=1, width=1")
+    }
+
+    function onloadpage() {
+        if (document.getElementById('checkpage').value == 'onjbxx') {
+            showjbxx();
+        }
+        if (document.getElementById('checkpage').value == 'onpxry') {
+            showpxry();
+        }
+        if (document.getElementById('checkpage').value == 'onpxkc') {
+            showpxkc();
+        }
+        if (document.getElementById('checkpage').value == 'onpxfy') {
+            showpxfy();
+        }
+    }
+
+    function showjbxx() {
+        document.getElementById('trjbxx1').className = "";
+        document.getElementById('trjbxx2').className = "";
+        document.getElementById('trjbxx3').className = "";
+        document.getElementById('trjbxx4').className = "";
+        document.getElementById('trjbxx5').className = "";
+        document.getElementById('trjbxx6').className = "";
+        document.getElementById('trjbxx7').className = "";
+        document.getElementById('trjbxx8').className = "";
+        document.getElementById('trpxry1').className = "tddisp";
+        document.getElementById('trpxry2').className = "tddisp";
+        document.getElementById('trpxry3').className = "tddisp";
+        document.getElementById('trpxkc1').className = "tddisp";
+        document.getElementById('trpxkc2').className = "tddisp";
+        document.getElementById('trpxkc3').className = "tddisp";
+        document.getElementById('trpxfy1').className = "tddisp";
+        document.getElementById('trpxfy2').className = "tddisp";
+        document.getElementById('trpxfy3').className = "tddisp";
+        document.getElementById('trpxfy4').className = "tddisp";
+        document.getElementById('trpxfy5').className = "tddisp";
+        document.getElementById('trpxfy6').className = "tddisp";
+        document.getElementById('checkpage').value = 'onjbxx';
+        document.getElementById('jbxxb').className = "btn4on";
+        document.getElementById('pxygb').className = "btn4off";
+        document.getElementById('pxkcb').className = "btn4off";
+        document.getElementById('pxfyb').className = "btn4off";
+    }
+
+    function showpxry() {
+        document.getElementById('trjbxx1').className = "tddisp";
+        document.getElementById('trjbxx2').className = "tddisp";
+        document.getElementById('trjbxx3').className = "tddisp";
+        document.getElementById('trjbxx4').className = "tddisp";
+        document.getElementById('trjbxx5').className = "tddisp";
+        document.getElementById('trjbxx6').className = "tddisp";
+        document.getElementById('trjbxx7').className = "tddisp";
+        document.getElementById('trjbxx8').className = "tddisp";
+        document.getElementById('trpxry1').className = "";
+        document.getElementById('trpxry2').className = "";
+        document.getElementById('trpxry3').className = "";
+        document.getElementById('trpxkc1').className = "tddisp";
+        document.getElementById('trpxkc2').className = "tddisp";
+        document.getElementById('trpxkc3').className = "tddisp";
+        document.getElementById('trpxfy1').className = "tddisp";
+        document.getElementById('trpxfy2').className = "tddisp";
+        document.getElementById('trpxfy3').className = "tddisp";
+        document.getElementById('trpxfy4').className = "tddisp";
+        document.getElementById('trpxfy5').className = "tddisp";
+        document.getElementById('trpxfy6').className = "tddisp";
+        document.getElementById('checkpage').value = 'onpxry';
+        document.getElementById('jbxxb').className = "btn4off";
+        document.getElementById('pxygb').className = "btn4on";
+        document.getElementById('pxkcb').className = "btn4off";
+        document.getElementById('pxfyb').className = "btn4off";
+    }
+
+    function showpxkc() {
+        document.getElementById('trjbxx1').className = "tddisp";
+        document.getElementById('trjbxx2').className = "tddisp";
+        document.getElementById('trjbxx3').className = "tddisp";
+        document.getElementById('trjbxx4').className = "tddisp";
+        document.getElementById('trjbxx5').className = "tddisp";
+        document.getElementById('trjbxx6').className = "tddisp";
+        document.getElementById('trjbxx7').className = "tddisp";
+        document.getElementById('trjbxx8').className = "tddisp";
+        document.getElementById('trpxry1').className = "tddisp";
+        document.getElementById('trpxry2').className = "tddisp";
+        document.getElementById('trpxry3').className = "tddisp";
+        document.getElementById('trpxfy1').className = "tddisp";
+        document.getElementById('trpxfy2').className = "tddisp";
+        document.getElementById('trpxfy3').className = "tddisp";
+        document.getElementById('trpxfy4').className = "tddisp";
+        document.getElementById('trpxfy5').className = "tddisp";
+        document.getElementById('trpxfy6').className = "tddisp";
+        document.getElementById('trpxkc1').className = "";
+        document.getElementById('trpxkc2').className = "";
+        document.getElementById('trpxkc3').className = "";
+        document.getElementById('checkpage').value = 'onpxkc';
+        document.getElementById('jbxxb').className = "btn4off";
+        document.getElementById('pxygb').className = "btn4off";
+        document.getElementById('pxkcb').className = "btn4on";
+        document.getElementById('pxfyb').className = "btn4off";
+    }
+
+    function showpxfy() {
+        document.getElementById('trjbxx1').className = "tddisp";
+        document.getElementById('trjbxx2').className = "tddisp";
+        document.getElementById('trjbxx3').className = "tddisp";
+        document.getElementById('trjbxx4').className = "tddisp";
+        document.getElementById('trjbxx5').className = "tddisp";
+        document.getElementById('trjbxx6').className = "tddisp";
+        document.getElementById('trjbxx7').className = "tddisp";
+        document.getElementById('trjbxx8').className = "tddisp";
+        document.getElementById('trpxry1').className = "tddisp";
+        document.getElementById('trpxry2').className = "tddisp";
+        document.getElementById('trpxry3').className = "tddisp";
+        document.getElementById('trpxfy1').className = "";
+        document.getElementById('trpxfy2').className = "";
+        document.getElementById('trpxfy3').className = "";
+        document.getElementById('trpxfy4').className = "";
+        document.getElementById('trpxfy5').className = "";
+        document.getElementById('trpxfy6').className = "";
+        document.getElementById('trpxkc1').className = "tddisp";
+        document.getElementById('trpxkc2').className = "tddisp";
+        document.getElementById('trpxkc3').className = "tddisp";
+        document.getElementById('checkpage').value = 'onpxfy';
+        document.getElementById('jbxxb').className = "btn4off";
+        document.getElementById('pxygb').className = "btn4off";
+        document.getElementById('pxkcb').className = "btn4off";
+        document.getElementById('pxfyb').className = "btn4on";
+    }
+</script>
+<head id="Head1"><meta http-equiv="Content-Type" content="text/html; charset=gb2312" /><title>
+	查看培训计划
+</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
+	<script th:src="@{/js/MyJs.js}" ></script>
+	<script th:src="@{/js/WebCalendar.js}" ></script>
+    
+</head>
+<body class="main" onload="onloadpage()">
+    <form method="post" action="Pxjh_R_Show.aspx?tmp=0.6126850343352135&amp;id=1" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="td_base" width="80%" height="25px">查看培训计划
+                </td>
+                <td class="td_base" width="20%"></td>
+            </tr>
+            <tr>
+                <td style="height: 10px"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <table cellspacing="0" cellpadding="0" border="0" width="100%" align="center">
+                        <tr>
+                            <td>
+                                <button type="button" onclick="showjbxx()" id="jbxxb">
+                               	            基本信息
+                                </button>
+                                <button type="button" onclick="showpxry()" id="pxygb">
+                                 	培训员工
+                                </button>
+                                <button type="button" onclick="showpxkc()" id="pxkcb">
+                          		          培训课程
+                                </button>
+                                <button type="button" onclick="showpxfy()" id="pxfyb">
+                                	   培训费用
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="form" border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr id="trjbxx1">
+                            <td colspan="4" style="text-align: center">
+                                <strong>基本信息</strong>
+                            </td>
+                        </tr>
+                        <tr id="trjbxx2">
+                            <td class="form-item" style="width: 20%">计划编号：
+                            </td>
+                            <td style="width: 30%">
+                                <span id="Bianhao">2017090001</span>
+                            </td>
+                            <td class="form-item" style="width: 20%">计划名称：
+                            </td>
+                            <td style="width: 30%">
+                                <span id="Mingcheng">2017年三季度研发人员培训计划</span>
+                            </td>
+                        </tr>
+                        <tr id="trjbxx3">
+                            <td class="form-item">开始时间：
+                            </td>
+                            <td>
+                                <span id="Kaishi">2017-07-01</span>
+                            </td>
+                            <td class="form-item">结束时间：
+                            </td>
+                            <td>
+                                <span id="Jieshu">2017-09-30</span>
+                            </td>
+                        </tr>
+                        <tr id="trjbxx4">
+                            <td class="form-item">培训类型：
+                            </td>
+                            <td>
+                                <span id="PeixunLX">讲座</span>
+                            </td>
+                            <td class="form-item">培训方式：
+                            </td>
+                            <td>
+                                <span id="PeixunFS">内部网络培训</span>
+                            </td>
+                        </tr>
+                        <tr id="trjbxx5">
+                            <td class="form-item">培训年份：
+                            </td>
+                            <td>
+                                <span id="Nianfen">2017年</span>
+                            </td>
+                            <td class="form-item">培训地点：
+                            </td>
+                            <td>
+                                <span id="PeixunDD">公司培训室</span>
+                            </td>
+                        </tr>
+                        <tr id="trjbxx6">
+                            <td class="form-item">主持人：
+                            </td>
+                            <td>
+                                <span id="Zhuciren">孙权</span>
+                            </td>
+                            <td class="form-item">记录人：
+                            </td>
+                            <td>
+                                <span id="Jiluren">小昭</span>
+                            </td>
+                        </tr>
+                        <tr id="tr1">
+                            <td class="form-item" style="width: 20%">所属部门：
+                            </td>
+                            <td colspan="3" style="width: 80%">
+                                <span id="BuMen">软件系统组</span></td>
+                        </tr>
+                        <tr id="trjbxx7">
+                            <td class="form-item" style="width: 20%">培训目标：
+                            </td>
+                            <td colspan="3" style="width: 80%">
+                                <span id="PeixunMB">确保每位研发人员掌握Asp.Net开发的基本知识，能够根据需求独立订制开发模块。</span>
+                            </td>
+                        </tr>
+                        <tr id="trjbxx8">
+                            <td class="form-item" style="width: 20%">培训内容：
+                            </td>
+                            <td colspan="3" style="width: 80%">
+                                <span id="PeixunNR">培训Asp.net的配置、C#语言的语法、VisualStudio工具的使用。</span>
+                            </td>
+                        </tr>
+                        <tr id="trpxry1">
+                            <td colspan="4" style="text-align: center">
+                                <strong>培训员工</strong>
+                            </td>
+                        </tr>
+                        <tr id="trpxry2">
+                            <td colspan="4">
+                                
+                                <img src="/pic/folder.gif" />
+                                <a onclick="javascript:return openuser2();" id="LinkButton2" href="javascript:__doPostBack(&#39;LinkButton2&#39;,&#39;&#39;)">导出员工</a>
+                            </td>
+                        </tr>
+                        <tr id="trpxry3">
+                            <td colspan="4">
+                                <div>
+	<table class="hkgv" cellspacing="0" rules="all" border="1" id="GridView1" style="width:100%;border-collapse:collapse;">
+		<tr class="hkHeadStyle">
+			<th scope="col">姓名</th><th scope="col">性别</th><th scope="col">部门</th><th scope="col" style="width:100px;white-space:nowrap;">相关操作</th>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td>貂禅</td><td>女</td><td>行政办</td><td align="center" style="width:100px;white-space:nowrap;">
+                                                <a onclick="javascript: window.open(&#39;Pxjhyg_Show.aspx?tmp=57104&amp;id=7&#39;,&#39;window&#39;,&#39;height=410,width=650,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no&#39;);" id="GridView1_ctl02_Xiugai" href="javascript:__doPostBack(&#39;GridView1$ctl02$Xiugai&#39;,&#39;&#39;)">查看</a>
+                                                
+                                            </td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td>张昭</td><td>男</td><td>物业事业部</td><td align="center" style="width:100px;white-space:nowrap;">
+                                                <a onclick="javascript: window.open(&#39;Pxjhyg_Show.aspx?tmp=57104&amp;id=8&#39;,&#39;window&#39;,&#39;height=410,width=650,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no&#39;);" id="GridView1_ctl03_Xiugai" href="javascript:__doPostBack(&#39;GridView1$ctl03$Xiugai&#39;,&#39;&#39;)">查看</a>
+                                                
+                                            </td>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td>司马昭</td><td>男</td><td>信息中心</td><td align="center" style="width:100px;white-space:nowrap;">
+                                                <a onclick="javascript: window.open(&#39;Pxjhyg_Show.aspx?tmp=57104&amp;id=9&#39;,&#39;window&#39;,&#39;height=410,width=650,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no&#39;);" id="GridView1_ctl04_Xiugai" href="javascript:__doPostBack(&#39;GridView1$ctl04$Xiugai&#39;,&#39;&#39;)">查看</a>
+                                                
+                                            </td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td>李典</td><td>男</td><td>财务中心</td><td align="center" style="width:100px;white-space:nowrap;">
+                                                <a onclick="javascript: window.open(&#39;Pxjhyg_Show.aspx?tmp=57104&amp;id=10&#39;,&#39;window&#39;,&#39;height=410,width=650,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no&#39;);" id="GridView1_ctl05_Xiugai" href="javascript:__doPostBack(&#39;GridView1$ctl05$Xiugai&#39;,&#39;&#39;)">查看</a>
+                                                
+                                            </td>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td>马超</td><td>男</td><td>软件系统组</td><td align="center" style="width:100px;white-space:nowrap;">
+                                                <a onclick="javascript: window.open(&#39;Pxjhyg_Show.aspx?tmp=57104&amp;id=11&#39;,&#39;window&#39;,&#39;height=410,width=650,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no&#39;);" id="GridView1_ctl06_Xiugai" href="javascript:__doPostBack(&#39;GridView1$ctl06$Xiugai&#39;,&#39;&#39;)">查看</a>
+                                                
+                                            </td>
+		</tr>
+	</table>
+</div>
+                            </td>
+                        </tr>
+                        <tr id="trpxkc1">
+                            <td colspan="4" style="text-align: center">
+                                <strong>培训课程</strong>
+                            </td>
+                        </tr>
+                        <tr id="trpxkc2">
+                            <td colspan="4">
+                                
+                                <img src="/pic/folder.gif" />
+                                <a onclick="javascript:return openkc2();" id="LinkButton4" href="javascript:__doPostBack(&#39;LinkButton4&#39;,&#39;&#39;)">导出课程</a>
+                            </td>
+                        </tr>
+                        <tr id="trpxkc3">
+                            <td colspan="4">
+                                <div>
+	<table class="hkgv" cellspacing="0" rules="all" border="1" id="GridView2" style="width:100%;border-collapse:collapse;">
+		<tr class="hkHeadStyle">
+			<th scope="col">课程名称</th><th scope="col">开始时间</th><th scope="col">结束时间</th><th scope="col">讲师</th><th scope="col" style="width:100px;white-space:nowrap;">相关操作</th>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td>Asp.Net的配置</td><td>2017-07-01</td><td>2017-07-31</td><td>庞统</td><td align="center" style="width:100px;white-space:nowrap;">
+                                                <a onclick="javascript: window.open(&#39;Pxjhkc_Show.aspx?tmp=57104&amp;id=3&#39;,&#39;window&#39;,&#39;height=510,width=650,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no&#39;);" id="GridView2_ctl02_Xiugai" href="javascript:__doPostBack(&#39;GridView2$ctl02$Xiugai&#39;,&#39;&#39;)">查看</a>
+                                                
+                                            </td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td>C的常用语法</td><td>2017-08-01</td><td>2017-08-31</td><td>庞统</td><td align="center" style="width:100px;white-space:nowrap;">
+                                                <a onclick="javascript: window.open(&#39;Pxjhkc_Show.aspx?tmp=57104&amp;id=4&#39;,&#39;window&#39;,&#39;height=510,width=650,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no&#39;);" id="GridView2_ctl03_Xiugai" href="javascript:__doPostBack(&#39;GridView2$ctl03$Xiugai&#39;,&#39;&#39;)">查看</a>
+                                                
+                                            </td>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td>VisualStudio的使用</td><td>2017-09-01</td><td>2017-09-30</td><td>庞统</td><td align="center" style="width:100px;white-space:nowrap;">
+                                                <a onclick="javascript: window.open(&#39;Pxjhkc_Show.aspx?tmp=57104&amp;id=5&#39;,&#39;window&#39;,&#39;height=510,width=650,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no&#39;);" id="GridView2_ctl04_Xiugai" href="javascript:__doPostBack(&#39;GridView2$ctl04$Xiugai&#39;,&#39;&#39;)">查看</a>
+                                                
+                                            </td>
+		</tr>
+	</table>
+</div>
+                            </td>
+                        </tr>
+                        <tr id="trpxfy6">
+                            <td colspan="4" style="text-align: center">
+                                <strong>培训费用－预算</strong>
+                            </td>
+                        </tr>
+                        <tr id="trpxfy1">
+                            <td class="form-item" style="width: 20%">培训费用：
+                            </td>
+                            <td style="width: 30%">
+                                <span id="PeixunFY">5000</span>
+                            </td>
+                            <td class="form-item" style="width: 20%">咨询费用：
+                            </td>
+                            <td style="width: 30%">
+                                <span id="ZixunFy">1000</span>
+                            </td>
+                        </tr>
+                        <tr id="trpxfy2">
+                            <td class="form-item">其他费用：
+                            </td>
+                            <td>
+                                <span id="QitaFY">800</span>
+                            </td>
+                            <td class="form-item">费用总计：
+                            </td>
+                            <td>
+                                <span id="FeiYongZJ">6800</span>
+                            </td>
+                        </tr>
+                        <tr id="trpxfy3">
+                            <td colspan="4" style="text-align: center">
+                                <strong>培训费用－实际</strong>
+                            </td>
+                        </tr>
+                        <tr id="trpxfy4">
+                            <td class="form-item">培训费用：
+                            </td>
+                            <td>
+                                <span id="PeiXunFY1">6000</span>
+                            </td>
+                            <td class="form-item">咨询费用：
+                            </td>
+                            <td>
+                                <span id="ZixunFY1">1200</span>
+                            </td>
+                        </tr>
+                        <tr id="trpxfy5">
+                            <td class="form-item">其他费用：
+                            </td>
+                            <td>
+                                <span id="QiTaFY1">0</span>
+                            </td>
+                            <td class="form-item">费用总计：
+                            </td>
+                            <td>
+                                <span id="FeiYongZJ1">7200</span>
+                            </td>
+                        </tr>
+                        <tr> <td align=center  colspan=4 ><div align=center><strong>用户自定义字段</strong></div> </td> </tr> <tr> <td  class=form-item >自定义字段：</td> <td   colspan=3>补充说明</td></tr>
+                        <tr>
+                            <td align="center" colspan="4" height="25">
+                                <input id="Button2" class="mybtn" onclick="window.close()" type="button" value="关闭" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <input name="checkpage" type="text" value="onjbxx" id="checkpage" style="display: none" />
+        <input name="Number" type="text" value="20179231623506252104" id="Number" style="display: none" />
+    </form>
+</body>
+</html>

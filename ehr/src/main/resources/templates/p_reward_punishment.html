@@ -1,0 +1,154 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head id="Head1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>
+	奖惩管理</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
+<script th:src="@{/js/MyJs.js}" ></script>
+<script th:src="@{/js/WebCalendar.js}" ></script>
+    
+    <script type="text/javascript">
+        function addfrom() {
+            var num = Math.random();
+            window.open("/page/p_reward_punishment_add", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
+        }
+
+        function showfrom(str) {
+            var num = Math.random();
+            window.open("Jcgl_Show.aspx?tmp=" + num + "&id=" + str + "", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
+        }
+
+        function updatefrom(str) {
+            var num = Math.random();
+            window.open("Jcgl_Mod.aspx?tmp=" + num + "&id=" + str + "", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
+        }
+    </script>
+
+</head>
+<body class="main">
+    <form method="post" action="Jcgl_R.aspx" id="form1">
+		<div class="aspNetHidden">
+		<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTQ5MTUxNDI1MA8WAh4TVmFsaWRhdGVSZXF1ZXN0TW9kZQIBFgICAw9kFgoCCQ8PZBYCHghyZWFkb25seQUIcmVhZG9ubHlkAgsPD2QWAh8BBQhyZWFkb25seWQCEQ8PZBYCHgdvbmNsaWNrBR1qYXZhc2NyaXB0OnJldHVybiBkZWxjaGVjaygpO2QCEw88KwARAwAPFgQeC18hRGF0YUJvdW5kZx4LXyFJdGVtQ291bnQCBGQBEBYAFgAWAAwUKwAAFgJmD2QWCgIBDw9kFgIfAgUZamF2YXNjcmlwdDpjaGFuZ2VCZyh0aGlzKRYQZg9kFgICAQ8PFgIeBFRleHQFATFkZAIBD2QWBAIDDw8WAh8FBQExZGQCBQ8PFgIfBQUG6LKC56aFZGQCAg8PFgIfBQUKMjAxNy0wOS0wN2RkAgMPDxYCHwUFBuiyguemhWRkAgQPDxYCHwUFCeWFqOWLpOWllmRkAgUPDxYCHwUFBuWlluWKsWRkAgYPDxYCHwUFBjQ0OC44MGRkAgcPZBYGAgEPDxYCHwUFATFkZAIDDw8WAh8FBU4gPGEgaHJlZj0iamF2YXNjcmlwdDp2b2lkKDApIiBvbmNsaWNrPSJzaG93ZnJvbSgxKTsiIGNsYXNzPSJndmxpbmsiPuafpeecizwvYT5kZAIFDw8WAh8FBVAgPGEgaHJlZj0iamF2YXNjcmlwdDp2b2lkKDApIiBvbmNsaWNrPSJ1cGRhdGVmcm9tKDEpOyIgY2xhc3M9Imd2bGluayI+5L+u5pS5PC9hPmRkAgIPD2QWAh8CBRlqYXZhc2NyaXB0OmNoYW5nZUJnKHRoaXMpFhBmD2QWAgIBDw8WAh8FBQEyZGQCAQ9kFgQCAw8PFgIfBQUBMmRkAgUPDxYCHwUFBuW6nue7n2RkAgIPDxYCHwUFCjIwMTctMDktMjhkZAIDDw8WAh8FBQblup7nu59kZAIEDw8WAh8FBRXkvJrorq7ov5/liLDljYHliIbpkp9kZAIFDw8WAh8FBQbmg6nnvZpkZAIGDw8WAh8FBQctMTQ1LjQ4ZGQCBw9kFgYCAQ8PFgIfBQUBMmRkAgMPDxYCHwUFTiA8YSBocmVmPSJqYXZhc2NyaXB0OnZvaWQoMCkiIG9uY2xpY2s9InNob3dmcm9tKDIpOyIgY2xhc3M9Imd2bGluayI+5p+l55yLPC9hPmRkAgUPDxYCHwUFUCA8YSBocmVmPSJqYXZhc2NyaXB0OnZvaWQoMCkiIG9uY2xpY2s9InVwZGF0ZWZyb20oMik7IiBjbGFzcz0iZ3ZsaW5rIj7kv67mlLk8L2E+ZGQCAw8PZBYCHwIFGWphdmFzY3JpcHQ6Y2hhbmdlQmcodGhpcykWEGYPZBYCAgEPDxYCHwUFATNkZAIBD2QWBAIDDw8WAh8FBQEzZGQCBQ8PFgIfBQUG6ams6LaFZGQCAg8PFgIfBQUKMjAxNy0wOC0xMGRkAgMPDxYCHwUFBumprOi2hWRkAgQPDxYCHwUFD+acgOS9s+WQjOS6i+WllmRkAgUPDxYCHwUFBuWlluWKsWRkAgYPDxYCHwUFBjQ0OC44MGRkAgcPZBYGAgEPDxYCHwUFATNkZAIDDw8WAh8FBU4gPGEgaHJlZj0iamF2YXNjcmlwdDp2b2lkKDApIiBvbmNsaWNrPSJzaG93ZnJvbSgzKTsiIGNsYXNzPSJndmxpbmsiPuafpeecizwvYT5kZAIFDw8WAh8FBVAgPGEgaHJlZj0iamF2YXNjcmlwdDp2b2lkKDApIiBvbmNsaWNrPSJ1cGRhdGVmcm9tKDMpOyIgY2xhc3M9Imd2bGluayI+5L+u5pS5PC9hPmRkAgQPD2QWAh8CBRlqYXZhc2NyaXB0OmNoYW5nZUJnKHRoaXMpFhBmD2QWAgIBDw8WAh8FBQE0ZGQCAQ9kFgQCAw8PFgIfBQUBOGRkAgUPDxYCHwUFBuiyguemhWRkAgIPDxYCHwUFCjIwMTgtMDUtMDRkZAIDDw8WAh8FBQbosoLnpoVkZAIEDw8WAh8FBRLpg6jpl6jkuJrnu6nmnIDlt65kZAIFDw8WAh8FBQbmg6nnvZpkZAIGDw8WAh8FBQctMTIzLjQwZGQCBw9kFgYCAQ8PFgIfBQUBOGRkAgMPDxYCHwUFTiA8YSBocmVmPSJqYXZhc2NyaXB0OnZvaWQoMCkiIG9uY2xpY2s9InNob3dmcm9tKDgpOyIgY2xhc3M9Imd2bGluayI+5p+l55yLPC9hPmRkAgUPDxYCHwUFUCA8YSBocmVmPSJqYXZhc2NyaXB0OnZvaWQoMCkiIG9uY2xpY2s9InVwZGF0ZWZyb20oOCk7IiBjbGFzcz0iZ3ZsaW5rIj7kv67mlLk8L2E+ZGQCBQ9kFgICBg8PFgIfBQUGNjI4LjcyZGQCFQ8PFgQeCFBhZ2VTaXplAg8eC1JlY29yZGNvdW50AgRkZBgCBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WBAUbR3JpZFZpZXcxJGN0bDAyJENoZWNrU2VsZWN0BRtHcmlkVmlldzEkY3RsMDMkQ2hlY2tTZWxlY3QFG0dyaWRWaWV3MSRjdGwwNCRDaGVja1NlbGVjdAUbR3JpZFZpZXcxJGN0bDA1JENoZWNrU2VsZWN0BQlHcmlkVmlldzEPPCsADAEIAgFk" />
+		</div>
+
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    <table cellspacing="0" cellpadding="0" width="100%" align="center" border="0" class="form">
+                        <tr>
+                            <td align="right">员工工号：
+                            </td>
+                            <td>
+                                <input name="jsStaffNumer" type="text" id="jsStaffNumer" class="mytext" style="width:150px;" />
+                            </td>
+                            <td align="right">员工姓名：
+                            </td>
+                            <td>
+                                <input name="jsXingMing" type="text" id="jsXingMing" class="mytext" style="width:150px;" />
+                            </td>
+                            <td align="right">奖惩属性：
+                            </td>
+                            <td>
+                                <select name="JcShuxing" id="JcShuxing" style="width:150px;">
+									<option selected="selected" value=""></option>
+									<option value="奖励">奖励</option>
+									<option value="惩罚">惩罚</option>
+								
+								</select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">奖惩项目：
+                            </td>
+                            <td colspan="5">
+                                <input name="jsJcXiangMu" type="text" id="jsJcXiangMu" class="mytext" style="width:150px;" />
+                                奖惩时间：
+                            <input name="StartTime" type="text" id="StartTime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />至<input name="EndTime" type="text" id="EndTime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />
+                                <input type="submit" name="QueryBtn" value="查询" id="QueryBtn" class="mybtn" />
+                                <input name="AddBtn" type="button" id="AddBtn" value="增加" class="mybtn" onclick="javascript: addfrom();" />
+                                <input type="submit" name="DelBtn" value="删除" onclick="javascript:return delcheck();" id="DelBtn" class="mybtn" />
+                                <a href="javascript:void(0)" onclick="chkAllw()" class="gvlink">全选</a>
+                                <a href="javascript:void(0)" onclick="revchkAll()" class="gvlink">反选</a>
+                            </td>
+                        </tr>
+                    </table>
+                    <table cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
+                        <tr>
+                            <td colspan="2">
+                                <div>
+									<table class="hkgv" cellspacing="0" rules="all" border="1" id="GridView1" style="width:100%;border-collapse:collapse;">
+										<tr class="hkHeadStyle">
+											<th scope="col" style="width:30px;"><img src="/pic/refresh.gif" alt="序号" /></th><th align="center" scope="col" style="white-space:nowrap;">选择</th><th scope="col" style="width:80px;">奖惩时间</th><th scope="col">员工姓名</th><th scope="col">奖惩项目</th><th scope="col" style="width:70px;">奖惩属性</th><th scope="col">奖惩金额</th><th scope="col" style="width:80px;white-space:nowrap;">操作</th>
+										</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+											<td align="center">
+                                                <span id="GridView1_ctl02_lblxh">1</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl02_CheckSelect" type="checkbox" name="GridView1$ctl02$CheckSelect" />
+                                                
+                                                
+                                            </td><td align="center">2017-09-07</td><td>貂禅</td><td>全勤奖</td><td align="center">奖励</td><td align="right">448.80</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                
+                                                <span id="GridView1_ctl02_Label1"> <a href="javascript:void(0)" onclick="showfrom(1);" class="gvlink">查看</a></span>
+                                                <span id="GridView1_ctl02_Label2"> <a href="javascript:void(0)" onclick="updatefrom(1);" class="gvlink">修改</a></span>
+                                            </td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl03_lblxh">2</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl03_CheckSelect" type="checkbox" name="GridView1$ctl03$CheckSelect" />
+                                                
+                                                
+                                            </td><td align="center">2017-09-28</td><td>庞统</td><td>会议迟到十分钟</td><td align="center">惩罚</td><td align="right">-145.48</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                
+                                                <span id="GridView1_ctl03_Label1"> <a href="javascript:void(0)" onclick="showfrom(2);" class="gvlink">查看</a></span>
+                                                <span id="GridView1_ctl03_Label2"> <a href="javascript:void(0)" onclick="updatefrom(2);" class="gvlink">修改</a></span>
+                                            </td>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl04_lblxh">3</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl04_CheckSelect" type="checkbox" name="GridView1$ctl04$CheckSelect" />
+                                                
+                                                
+                                            </td><td align="center">2017-08-10</td><td>马超</td><td>最佳同事奖</td><td align="center">奖励</td><td align="right">448.80</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                
+                                                <span id="GridView1_ctl04_Label1"> <a href="javascript:void(0)" onclick="showfrom(3);" class="gvlink">查看</a></span>
+                                                <span id="GridView1_ctl04_Label2"> <a href="javascript:void(0)" onclick="updatefrom(3);" class="gvlink">修改</a></span>
+                                            </td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl05_lblxh">4</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl05_CheckSelect" type="checkbox" name="GridView1$ctl05$CheckSelect" />
+                                                
+                                                
+                                            </td><td align="center">2018-05-04</td><td>貂禅</td><td>部门业绩最差</td><td align="center">惩罚</td><td align="right">-123.40</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                
+                                                <span id="GridView1_ctl05_Label1"> <a href="javascript:void(0)" onclick="showfrom(8);" class="gvlink">查看</a></span>
+                                                <span id="GridView1_ctl05_Label2"> <a href="javascript:void(0)" onclick="updatefrom(8);" class="gvlink">修改</a></span>
+                                            </td>
+		</tr><tr class="hkBottomStyle">
+			<td>&nbsp;</td><td>&nbsp;</td><td align="center" style="font-weight:bold;">合计</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td align="right">628.72</td><td>&nbsp;</td>
+		</tr>
+	</table>
+</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="height: 22px">
+                                
+<!-- AspNetPager 7.5 Copyright:2003-2015 Webdiyer (www.webdiyer.com) -->
+<!--记录总数只有一页，AspNetPager已自动隐藏，若需在只有一页数据时显示AspNetPager，请将AlwaysShow属性值设为true！-->
+<!-- AspNetPager 7.5 Copyright:2003-2015 Webdiyer (www.webdiyer.com) -->
+
+
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

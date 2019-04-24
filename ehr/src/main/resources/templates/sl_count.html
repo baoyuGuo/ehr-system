@@ -1,0 +1,206 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head >
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>
+	工资计算
+</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script th:src="@{/js/Choose.js}" ></script>
+<script th:src="@{/js/MyJs.js}" ></script>
+<script th:src="@{/js/WebCalendar.js}" ></script>
+
+    <script type="text/javascript">
+        function addfrom() {
+            window.open("/page/sl_count_add", "_blank", "height=660, width=1000,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=10,left=5")
+        }
+    </script>
+</head>
+<body class="main">
+    <form method="post" action="Gzjs_R.aspx" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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lLk8L2E+ZGQCCA8PZBYCHwAFGWphdmFzY3JpcHQ6Y2hhbmdlQmcodGhpcykWFmYPZBYCAgEPDxYCHwMFAThkZAIBD2QWBAIDDw8WAh8DBQI0OGRkAgUPDxYCHwMFD+edoemtlOS7lea5luWNl2RkAgIPDxYCHwMFD+edoemtlOS7lea5luWNl2RkAgMPDxYCHwMFEuato+W8j+WRmOW3pei0puWll2RkAgQPZBYCZg8VAgcyMDE55bm0BDTmnIhkAgUPDxYCHwMFEuato+W8j+WRmOW3pei0puWll2RkAgYPDxYCHwMFA+WQpmRkAgcPDxYCHwMFBiZuYnNwO2RkAggPDxYCHwMFBiZuYnNwO2RkAgkPDxYCHwMFBiZuYnNwO2RkAgoPZBYIAgEPDxYCHwMFAjQ4ZGQCAw8PFgIfAwUUMjAxOTQxMDEwMTUxNTI2NTg3NDVkZAIFDw8WAh8DBYECIDxhIGhyZWY9J2phdmFzY3JpcHQ6dm9pZCgwKScgb25jbGljaz0nd2luZG93Lm9wZW4gKCJHempzX1JfQWxsX1Nob3cuYXNweD9OdW1iZXI9MjAxOTQxMDEwMTUxNTI2NTg3NDUiLCAiX2JsYW5rIiwgImhlaWdodD02NTAsIHdpZHRoPTEwMDAsdG9vbGJhcj1ubywgbWVudWJhcj1ubywgc2Nyb2xsYmFycz15ZXMscmVzaXphYmxlPXllcyxsb2NhdGlvbj1ubywgc3RhdHVzPW5vLHRvcD0xMCxsZWZ0PTEwIiknIGNsYXNzPSJndmxpbmsiPuafpeecizwvYT5kZAIHDw8WAh8DBfgBIDxhIGhyZWY9J2phdmFzY3JpcHQ6dm9pZCgwKScgb25jbGljaz0nd2luZG93Lm9wZW4gKCJHempzcWIuYXNweD9OdW1iZXI9MjAxOTQxMDEwMTUxNTI2NTg3NDUiLCAiX2JsYW5rIiwgImhlaWdodD02NTAsIHdpZHRoPTEwMDAsdG9vbGJhcj1ubywgbWVudWJhcj1ubywgc2Nyb2xsYmFycz15ZXMscmVzaXphYmxlPXllcyxsb2NhdGlvbj1ubywgc3RhdHVzPW5vLHRvcD0xMCxsZWZ0PTEwIiknIGNsYXNzPSJndmxpbmsiPuS/ruaUuTwvYT5kZAIJDw8WAh4HVmlzaWJsZWhkZAINDw8WBB4IUGFnZVNpemUCDx4LUmVjb3JkY291bnQCCGRkGAIFHl9fQ29udHJvbHNSZXF1aXJlUG9zdEJhY2tLZXlfXxYIBRtHcmlkVmlldzEkY3RsMDIkQ2hlY2tTZWxlY3QFG0dyaWRWaWV3MSRjdGwwMyRDaGVja1NlbGVjdAUbR3JpZFZpZXcxJGN0bDA0JENoZWNrU2VsZWN0BRtHcmlkVmlldzEkY3RsMDUkQ2hlY2tTZWxlY3QFG0dyaWRWaWV3MSRjdGwwNiRDaGVja1NlbGVjdAUbR3JpZFZpZXcxJGN0bDA3JENoZWNrU2VsZWN0BRtHcmlkVmlldzEkY3RsMDgkQ2hlY2tTZWxlY3QFG0dyaWRWaWV3MSRjdGwwOSRDaGVja1NlbGVjdAUJR3JpZFZpZXcxDzwrAAwBCAIBZCIu2yoWy9ha+D6qvb6yTMTU86VRB2+hFStvMLQAwJAr" />
+</div>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="A6C0079D" />
+</div>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    <table cellspacing="0" cellpadding="0" width="100%" align="center" border="0" class="form">
+                        <tr>
+                            <td align="right">帐套名称：
+                            </td>
+                            <td>
+                                <input name="jsSaName" type="text" id="jsSaName" class="mytext" />
+                            </td>
+                            <td align="right">薪资名称：
+                            </td>
+                            <td>
+                                <input name="jsName" type="text" id="jsName" class="mytext" />
+                            </td>
+                            <td align="right"></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td align="right"></td>
+                            <td colspan="5">
+                                <input type="submit" name="QueryBtn" value="查询" id="QueryBtn" class="mybtn" />
+                                <input name="AddBtn" type="button" id="AddBtn" value="增加" class="mybtn" onclick="javascript: addfrom();" />
+                                <input type="submit" name="DelBtn" value="删除" onclick="javascript:return delcheck();" id="DelBtn" class="mybtn" />
+                                <a href="javascript:void(0)" onclick="chkAllw()" class="gvlink">全选</a>
+                                <a href="javascript:void(0)" onclick="revchkAll()" class="gvlink">反选</a>
+                            </td>
+                        </tr>
+                    </table>
+                    <table cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
+                        <tr>
+                            <td colspan="2">
+                                <div>
+									<table class="hkgv" cellspacing="0" rules="all" border="1" id="GridView1" style="width:100%;border-collapse:collapse;">
+										<tr class="hkHeadStyle">
+											<th scope="col" style="width:30px;"><img src="/pic/refresh.gif" alt="序号" /></th><th align="center" scope="col" style="white-space:nowrap;">选择</th><th scope="col">薪资名称</th><th scope="col">帐套名称</th><th scope="col" style="width:80px;white-space:nowrap;">对应年月</th><th scope="col">对应帐套</th><th scope="col">是否封存</th><th scope="col">总金额</th><th scope="col">个人所得税</th><th scope="col">实发金额</th><th scope="col" style="width:80px;white-space:nowrap;">操作</th>
+										</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+											<td align="center">
+                                                <span id="GridView1_ctl02_lblxh">1</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl02_CheckSelect" type="checkbox" name="GridView1$ctl02$CheckSelect" />
+                                                
+                                                
+                                            </td><td>2017年9月份工资表</td><td>正式员工账套</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                2017年9月
+                                            </td><td>正式员工账套</td><td align="center">否</td><td align="right">100444.00</td><td align="right">35454.20</td><td align="right">530227.80</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                
+                                                
+                                                <span id="GridView1_ctl02_Label1"> <a href='javascript:void(0)' onclick='window.open ("Gzjs_R_All_Show.aspx?Number=20179261610551392287", "_blank", "height=650, width=1000,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=10,left=10")' class="gvlink">查看</a></span>
+                                                <span id="GridView1_ctl02_Label2"> <a href='javascript:void(0)' onclick='window.open ("Gzjsqb.aspx?Number=20179261610551392287", "_blank", "height=650, width=1000,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=10,left=10")' class="gvlink">修改</a></span>
+                                            </td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl03_lblxh">2</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl03_CheckSelect" type="checkbox" name="GridView1$ctl03$CheckSelect" />
+                                                
+                                                
+                                            </td><td>2017年8月份工资表</td><td>正式员工账套</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                2017年8月
+                                            </td><td>正式员工账套</td><td align="center">否</td><td align="right">71480.00</td><td align="right">2996.00</td><td align="right">68484.00</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                
+                                                
+                                                <span id="GridView1_ctl03_Label1"> <a href='javascript:void(0)' onclick='window.open ("Gzjs_R_All_Show.aspx?Number=2017926181147897780", "_blank", "height=650, width=1000,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=10,left=10")' class="gvlink">查看</a></span>
+                                                <span id="GridView1_ctl03_Label2"> <a href='javascript:void(0)' onclick='window.open ("Gzjsqb.aspx?Number=2017926181147897780", "_blank", "height=650, width=1000,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=10,left=10")' class="gvlink">修改</a></span>
+                                            </td>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl04_lblxh">3</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl04_CheckSelect" type="checkbox" name="GridView1$ctl04$CheckSelect" />
+                                                
+                                                
+                                            </td><td>2017年7月份工资表</td><td>正式员工账套</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                2017年7月
+                                            </td><td>正式员工账套</td><td align="center">否</td><td align="right">71480.00</td><td align="right">2996.00</td><td align="right">68484.00</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                
+                                                
+                                                <span id="GridView1_ctl04_Label1"> <a href='javascript:void(0)' onclick='window.open ("Gzjs_R_All_Show.aspx?Number=20179261811429306019", "_blank", "height=650, width=1000,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=10,left=10")' class="gvlink">查看</a></span>
+                                                <span id="GridView1_ctl04_Label2"> <a href='javascript:void(0)' onclick='window.open ("Gzjsqb.aspx?Number=20179261811429306019", "_blank", "height=650, width=1000,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=10,left=10")' class="gvlink">修改</a></span>
+                                            </td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl05_lblxh">4</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl05_CheckSelect" type="checkbox" name="GridView1$ctl05$CheckSelect" />
+                                                
+                                                
+                                            </td><td>2017年6月份工资表</td><td>正式员工账套</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                2017年6月
+                                            </td><td>正式员工账套</td><td align="center">是</td><td align="right">71480.00</td><td align="right">2996.00</td><td align="right">68484.00</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                
+                                                
+                                                <span id="GridView1_ctl05_Label1"> <a href='javascript:void(0)' onclick='window.open ("Gzjs_R_All_Show.aspx?Number=2017926181243464746", "_blank", "height=650, width=1000,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=10,left=10")' class="gvlink">查看</a></span>
+                                                <span id="GridView1_ctl05_Label2"> <a href='javascript:void(0)' onclick='window.open ("Gzjsqb.aspx?Number=2017926181243464746", "_blank", "height=650, width=1000,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=10,left=10")' class="gvlink">修改</a></span>
+                                            </td>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl06_lblxh">5</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl06_CheckSelect" type="checkbox" name="GridView1$ctl06$CheckSelect" />
+                                                
+                                                
+                                            </td><td>2017年5月份工资表</td><td>正式员工账套</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                2017年5月
+                                            </td><td>正式员工账套</td><td align="center">是</td><td align="right">71480.00</td><td align="right">2996.00</td><td align="right">68484.00</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                
+                                                
+                                                <span id="GridView1_ctl06_Label1"> <a href='javascript:void(0)' onclick='window.open ("Gzjs_R_All_Show.aspx?Number=20179261812269495110", "_blank", "height=650, width=1000,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=10,left=10")' class="gvlink">查看</a></span>
+                                                <span id="GridView1_ctl06_Label2"> <a href='javascript:void(0)' onclick='window.open ("Gzjsqb.aspx?Number=20179261812269495110", "_blank", "height=650, width=1000,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=10,left=10")' class="gvlink">修改</a></span>
+                                            </td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl07_lblxh">6</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl07_CheckSelect" type="checkbox" name="GridView1$ctl07$CheckSelect" />
+                                                
+                                                
+                                            </td><td>2018年1月份工资表</td><td>正式员工账套</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                2018年1月
+                                            </td><td>正式员工账套</td><td align="center">否</td><td align="right">77750.00</td><td align="right">3727.50</td><td align="right">74022.50</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                
+                                                
+                                                <span id="GridView1_ctl07_Label1"> <a href='javascript:void(0)' onclick='window.open ("Gzjs_R_All_Show.aspx?Number=2018112310478202468", "_blank", "height=650, width=1000,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=10,left=10")' class="gvlink">查看</a></span>
+                                                <span id="GridView1_ctl07_Label2"> <a href='javascript:void(0)' onclick='window.open ("Gzjsqb.aspx?Number=2018112310478202468", "_blank", "height=650, width=1000,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=10,left=10")' class="gvlink">修改</a></span>
+                                            </td>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl08_lblxh">7</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl08_CheckSelect" type="checkbox" name="GridView1$ctl08$CheckSelect" />
+                                                
+                                                
+                                            </td><td>睡魔仕湖南</td><td>正式员工账套</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                2019年4月
+                                            </td><td>正式员工账套</td><td align="center">否</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                
+                                                
+                                                <span id="GridView1_ctl08_Label1"> <a href='javascript:void(0)' onclick='window.open ("Gzjs_R_All_Show.aspx?Number=20194101015152658745", "_blank", "height=650, width=1000,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=10,left=10")' class="gvlink">查看</a></span>
+                                                <span id="GridView1_ctl08_Label2"> <a href='javascript:void(0)' onclick='window.open ("Gzjsqb.aspx?Number=20194101015152658745", "_blank", "height=650, width=1000,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=10,left=10")' class="gvlink">修改</a></span>
+                                            </td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl09_lblxh">8</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl09_CheckSelect" type="checkbox" name="GridView1$ctl09$CheckSelect" />
+                                                
+                                                
+                                            </td><td>睡魔仕湖南</td><td>正式员工账套</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                2019年4月
+                                            </td><td>正式员工账套</td><td align="center">否</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="right">&nbsp;</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                
+                                                
+                                                <span id="GridView1_ctl09_Label1"> <a href='javascript:void(0)' onclick='window.open ("Gzjs_R_All_Show.aspx?Number=20194101015152658745", "_blank", "height=650, width=1000,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=10,left=10")' class="gvlink">查看</a></span>
+                                                <span id="GridView1_ctl09_Label2"> <a href='javascript:void(0)' onclick='window.open ("Gzjsqb.aspx?Number=20194101015152658745", "_blank", "height=650, width=1000,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=10,left=10")' class="gvlink">修改</a></span>
+                                            </td>
+		</tr>
+	</table>
+</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="height: 22px">
+                                
+<!-- AspNetPager 7.5 Copyright:2003-2015 Webdiyer (www.webdiyer.com) -->
+<!--记录总数只有一页，AspNetPager已自动隐藏，若需在只有一页数据时显示AspNetPager，请将AlwaysShow属性值设为true！-->
+<!-- AspNetPager 7.5 Copyright:2003-2015 Webdiyer (www.webdiyer.com) -->
+
+
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

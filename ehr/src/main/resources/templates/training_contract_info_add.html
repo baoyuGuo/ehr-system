@@ -1,0 +1,349 @@
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script type="text/javascript">
+    function chknull() {
+        if (document.getElementById('PeiXunZT').value == '') {
+            alert('协议主题不能为空');
+            form1.PeiXunZT.focus();
+            return false;
+        }
+
+        if (document.getElementById('StaffNumer').value == '') {
+            alert('请选择对应员工不能为空');
+            form1.StaffNumer.focus();
+            return false;
+        }
+
+        if (document.getElementById('QdRiqi').value == '') {
+            alert('签订日期不能为空');
+            form1.QdRiqi.focus();
+            return false;
+        }
+    }
+</script>
+<script type="text/javascript">
+    function PageCheck() {
+        var strUploadFile = document.getElementById('uploadFile').value;
+        if (strUploadFile == "") {
+            alert("请选择要上传的附件！");
+            return false;
+        }
+        var nameLen = strUploadFile.length;
+        var rightName = strUploadFile.substr(nameLen - 4, 4).toLowerCase();
+
+        var sAllowExt = ".doc|.docx|.xls|.xlsx|.ppt|.pptx|.pdf|.rar|.zip|.gif|.jpg|.jpeg";
+        var str = document.getElementById('uploadFile').value;
+        var rightName = str.substr(str.lastIndexOf('.') + 1, str.length - str.lastIndexOf('.')).toLowerCase();
+
+        if (sAllowExt.indexOf(rightName) == -1) {
+            alert('对不起，您只能上传【' + sAllowExt + '】格式的文件\r如果需要上传其他格式的文件，请联系系统管理员！');
+            return false;
+        }
+    }
+
+    function AttDown() {
+        if (document.getElementById('fjlb').value == '') {
+            alert('请先选中附件！');
+            return false;
+        }
+        else {
+            var num = Math.random();
+            var littleproduct = document.getElementById("fjlb");
+            var cindex = littleproduct.selectedIndex;
+            var cText = littleproduct.options[cindex].text;
+            var cValue = littleproduct.options[cindex].value;
+            window.open("../../AttDown.aspx?tmp=" + num + "&number=" + cValue + "&fname=hr/h10", "_blank", "height=1, width=1,toolbar=no, menubar=no, scrollbars=no,resizable=yes,location=no, status=no")
+        }
+    }
+
+    function AttDel() {
+        if (document.getElementById('fjlb').value == '') {
+            alert('请先选中附件！');
+            return false;
+        }
+        else {
+            if (!confirm("您确定要删除此附件吗？"))
+                return false;
+            var num = Math.random();
+            var littleproduct = document.getElementById("fjlb");
+            var cindex = littleproduct.selectedIndex;
+            var cText = littleproduct.options[cindex].text;
+            var cValue = littleproduct.options[cindex].value;
+
+            window.open("../../AttDel.aspx?tmp=" + num + "&number=" + cValue + " ", "window", "height=1, width=1,top=150,left=150,toolbar=no, menubar=no, scrollbars=no,resizable=yes,location=no, status=no");
+        }
+    }
+</script>
+<head id="Head1"><meta http-equiv="Content-Type" content="text/html; charset=gb2312" /><title>
+	新增培训协议
+</title><link href="../../CssJs/Main.css" type="text/css" rel="stylesheet" />
+    <script src="../../CssJs/MyJs.js" type="text/javascript" charset="gb2312"></script>
+    <script type="text/javascript" src="../../CssJs/WebCalendar.js"></script>
+    
+    <script type="text/javascript" src="../../ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" src="../../ueditor/ueditor.all.min.js"></script>
+    <script type="text/javascript" src="../../ueditor/lang/zh-cn/zh-cn.js"></script>
+</head>
+<body class="main">
+    <form method="post" action="Pxxy_Add.aspx?tmp=0.4211537799171923" id="form1" enctype="multipart/form-data">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTEyMjAyODk4NjkPFgIeE1ZhbGlkYXRlUmVxdWVzdE1vZGUCARYCAgEPFgIeB2VuY3R5cGUFE211bHRpcGFydC9mb3JtLWRhdGEWFgIBDxBkDxYFZgIBAgICAwIEFgUQBQcyMDE25bm0BQcyMDE25bm0ZxAFBzIwMTflubQFBzIwMTflubRnEAUHMjAxOOW5tAUHMjAxOOW5tGcQBQcyMDE55bm0BQcyMDE55bm0ZxAFBzIwMjDlubQFBzIwMjDlubRnZGQCAw8PZBYCHghyZWFkb25seQUIcmVhZG9ubHlkAgQPD2QWAh8CBQhyZWFkb25seWQCBQ8PZBYCHwIFCHJlYWRvbmx5ZAIGDw9kFgIfAgUIcmVhZG9ubHlkAgoPD2QWAh8CBQhyZWFkb25seWQCDQ8QZBAVABUAFCsDAGRkAg4PD2QWAh4Hb25jbGljawUbamF2YXNjcmlwdDpyZXR1cm4gQXR0RGVsKCk7ZAIQDw9kFgIfAwUeamF2YXNjcmlwdDpyZXR1cm4gUGFnZUNoZWNrKCk7ZAIRDw9kFgIfAwUcamF2YXNjcmlwdDpyZXR1cm4gY2hrbnVsbCgpO2QCFA8PZBYCHwIFCHJlYWRvbmx5ZGQ=" />
+</div>
+
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="td_base" width="80%" height="25px">新增培训协议
+                </td>
+                <td class="td_base" width="20%"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <table class="form" border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td colspan="4" style="text-align: center">
+                                <strong>员工培训信息</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item"><font color="red">*</font>培训协议主题：
+                            </td>
+                            <td colspan="3">
+                                <input name="PeiXunZT" type="text" id="PeiXunZT" class="mytext" style="width:96%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item" style="width: 20%">培训年份：
+                            </td>
+                            <td style="width: 30%">
+                                <select name="PeiXunNF" id="PeiXunNF" style="width:90%;">
+	<option value="2016年">2016年</option>
+	<option value="2017年">2017年</option>
+	<option value="2018年">2018年</option>
+	<option selected="selected" value="2019年">2019年</option>
+	<option value="2020年">2020年</option>
+
+</select>
+                            </td>
+                            <td class="form-item" style="width: 20%">培训计划名称：
+                            </td>
+                            <td style="width: 30%">
+                                <input name="PeiXunMC" type="text" id="PeiXunMC" class="mytext" style="width:80%;" /><a href="javascript:void(0)"><img
+                                    onclick="openpxjh();" alt="" src="../../images/choose.gif" border="0"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item"><font color="red">*</font>员工工号：
+                            </td>
+                            <td>
+                                <input name="StaffNumer" type="text" id="StaffNumer" class="mytext" readonly="readonly" style="width:80%;" /><a href="javascript:void(0)"><img
+                                    onclick="openunit();" alt="" src="../../images/choose.gif" border="0"></a>
+                            </td>
+                            <td class="form-item">员工姓名：
+                            </td>
+                            <td>
+                                <input name="YuanGong" type="text" id="YuanGong" class="mytext" readonly="readonly" style="width:80%;" /><a href="javascript:void(0)"><img
+                                    onclick="openunit();" alt="" src="../../images/choose.gif" border="0"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">性别：
+                            </td>
+                            <td>
+                                <input name="XingBie" type="text" id="XingBie" class="mytext" readonly="readonly" style="width:90%;" />
+                            </td>
+                            <td class="form-item">员工所属部门：
+                            </td>
+                            <td>
+                                <input name="BmMC" type="text" id="BmMC" class="mytext" readonly="readonly" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">现任职务：
+                            </td>
+                            <td>
+                                <input name="ZhiWu" type="text" id="ZhiWu" class="mytext" style="width:80%;" /><a href="javascript:void(0)"><img
+                                    onclick="OpenType('ZhiWu','p06');" alt="" src="../../images/choose.gif" border="0"></a>
+                            </td>
+                            <td class="form-item">现任岗位：
+                            </td>
+                            <td>
+                                <input name="GangWei" type="text" id="GangWei" class="mytext" style="width:80%;" /><a href="javascript:void(0)"><img
+                                    onclick="OpenType('GangWei','h01');" alt="" src="../../images/choose.gif" border="0"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" style="text-align: center">
+                                <strong>协议信息</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">协议类型：
+                            </td>
+                            <td>
+                                <input name="XieYiLX" type="text" id="XieYiLX" class="mytext" style="width:80%;" /><a href="javascript:void(0)"><img
+                                    onclick="OpenType('XieYiLX','h21');" alt="" src="../../images/choose.gif" border="0"></a>
+                            </td>
+                            <td class="form-item"><font color="red">*</font>签订日期：
+                            </td>
+                            <td>
+                                <input name="QdRiqi" type="text" id="QdRiqi" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">服务年限：
+                            </td>
+                            <td colspan="3">
+                                <input name="FuWuNx" type="text" id="FuWuNx" class="mytext" style="width:96%;" />
+                            </td>
+                        </tr>
+                        <tr id="Tr1">
+                            <td class="form-item">协议内容：
+                            </td>
+                            <td colspan="3">
+                                <textarea name="editor" id="editor" rows="10" cols="10" style="width: 100%; height: 180px;"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">附件：
+                            </td>
+                            <td colspan="3">
+                                <select name="fjlb" id="fjlb" style="width:70%;">
+
+</select>
+                                &nbsp;
+                            <input id="Button5" type="button" value="下载" onclick="AttDown();" class="mybtn" />
+                                <input type="submit" name="Button3" value="删除" onclick="javascript:return AttDel();" id="Button3" class="mybtn" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">上传附件：
+                            </td>
+                            <td colspan="3">
+                                <input name="uploadFile" type="file" id="uploadFile" style="width: 80%" />
+                                <input type="submit" name="Button4" value="上传" onclick="javascript:return PageCheck();" id="Button4" class="mybtn" />
+                            </td>
+                        </tr>
+                        <tr> <td align=center  colspan=4 ><div align=center><strong>用户自定义字段</strong></div> </td> </tr> <tr> <td class=form-item>自定义字段：</td> <td   colspan=3><TEXTAREA rows=1 id=2017911538188775124 name=2017911538188775124 cols=80></TEXTAREA></td></tr>
+                        <tr>
+                            <td align="center" colspan="4" height="25">
+                                <input type="submit" name="Button1" value="确定" onclick="javascript:return chknull();" id="Button1" class="mybtn" />
+                                <input id="Button2" class="mybtn" onclick="window.close()" type="button" value="关闭" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <input name="Number" type="text" value="2019415654524262145" id="Number" style="display: none" />
+        <input name="PeiXunJhNumber" type="text" id="PeiXunJhNumber" style="display: none" />
+        <input name="StaffId" type="text" id="StaffId" readonly="readonly" style="display: none" />
+        <input name="BmId" type="text" id="BmId" style="display: none" />
+        <input name="ShenFen" type="text" id="ShenFen" style="display: none" />
+        <script type="text/javascript">
+            var wName_2;
+            function openunit() {
+                var num = Math.random();
+                var str = "" + document.getElementById('StaffId').value + "|" + document.getElementById('StaffNumer').value + "|" + document.getElementById('YuanGong').value + "|" + document.getElementById('XingBie').value + "|" + document.getElementById('ShenFen').value + "|" + document.getElementById('BmId').value + "|" + document.getElementById('BmMC').value + "|" + document.getElementById('GangWei').value + "|" + document.getElementById('ZhiWu').value + "";
+
+                //browser
+                var bstr = getBrowserType();
+                if (bstr == '3' | bstr == '4' | bstr == '5') {
+                    window.open("../../Choose/hr/Xzyg_Ht.aspx?tmp=" + num + "&requeststr=" + str + "&id=" + str + "", 'window', 'height=600,width=650,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no');
+                }
+                else {
+                    wName_2 = window.showModalDialog("../../choose/hr/Xzyg_Ht.aspx?tmp=" + num + "&requeststr=" + str + "&id=" + str + "", "window", "dialogWidth:650px;DialogHeight=600px;status:no;scroll=yes;help:no");
+                }
+
+                var arr = wName_2.split("|");
+                for (var i = 0; i < arr.length; i++) {
+                    document.getElementById("StaffId").value = arr[0];
+                    document.getElementById("StaffNumer").value = arr[1];
+                    document.getElementById("YuanGong").value = arr[2];
+                    document.getElementById("XingBie").value = arr[3];
+                    document.getElementById("ShenFen").value = arr[4];
+                    document.getElementById("BmId").value = arr[5];
+                    document.getElementById("BmMC").value = arr[6];
+                    document.getElementById("GangWei").value = arr[7];
+                    document.getElementById("ZhiWu").value = arr[8];
+                }
+            }
+
+            function setValue(str) {
+                var arr = str.split("|");
+                for (var i = 0; i < arr.length; i++) {
+                    document.getElementById("StaffId").value = arr[0];
+                    document.getElementById("StaffNumer").value = arr[1];
+                    document.getElementById("YuanGong").value = arr[2];
+                    document.getElementById("XingBie").value = arr[3];
+                    document.getElementById("ShenFen").value = arr[4];
+                    document.getElementById("BmId").value = arr[5];
+                    document.getElementById("BmMC").value = arr[6];
+                    document.getElementById("GangWei").value = arr[7];
+                    document.getElementById("ZhiWu").value = arr[8];
+                }
+            }
+
+            //培训计划
+            var wName_3;
+            function openpxjh() {
+                var num = Math.random();
+                var str = "" + document.getElementById('PeiXunJhNumber').value + "|" + document.getElementById('PeiXunMC').value + "";
+
+                //browser
+                var bstr = getBrowserType();
+                if (bstr == '3' | bstr == '4' | bstr == '5') {
+                    window.open("../../Choose/hr/Xzpxjh.aspx?tmp=" + num + "&requeststr=" + str + "&id=" + str + "", 'window', 'height=450,width=450,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no');
+                }
+                else {
+                    wName_3 = window.showModalDialog("../../choose/hr/Xzpxjh.aspx?tmp=" + num + "&requeststr=" + str + "&id=" + str + "", "window", "dialogWidth:450px;DialogHeight=450px;status:no;scroll=yes;help:no");
+                }
+
+                var arr = wName_3.split("|");
+                for (var i = 0; i < arr.length; i++) {
+                    document.getElementById("PeiXunJhNumber").value = arr[0];
+                    document.getElementById("PeiXunMC").value = arr[1];
+                }
+            }
+
+            function setValue_pxjh(str) {
+                var arr = str.split("|");
+                for (var i = 0; i < arr.length; i++) {
+                    document.getElementById("PeiXunJhNumber").value = arr[0];
+                    document.getElementById("PeiXunMC").value = arr[1];
+                }
+            }
+        </script>
+
+        <script type="text/javascript">
+            var wName;
+            var vtbox;
+            function OpenType(tbox, ttype) {
+                vtbox = tbox;
+                var rdm = Math.random();
+                var str = "" + document.getElementById(tbox).value;
+
+                //browser
+                var bstr = getBrowserType();
+                if (bstr == '3' | bstr == '4' | bstr == '5') {
+                    window.open("../../Choose/hr/Xzqt.aspx?tmp=" + rdm + "&rqstr=" + str + "&type=" + ttype + "", 'newwindow8', 'height=480,width=400,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no');
+                }
+                else {
+                    wName = window.showModalDialog("../../Choose/hr/Xzqt.aspx?tmp=" + rdm + "&rqstr=" + str + "&type=" + ttype + "", "newwindow", "dialogWidth:400px;DialogHeight=480px;status:no;scroll=yes;help:no");
+                }
+
+                //if (wName != null && wName != "undefined") {
+                document.getElementById(tbox).value = wName;
+                //}
+            }
+
+            function setValue_sys(str) {
+                document.getElementById(vtbox).value = str;
+            }
+        </script>
+        <script type="text/javascript">
+            var ue = UE.getEditor('editor');
+        </script>
+    </form>
+</body>
+</html>

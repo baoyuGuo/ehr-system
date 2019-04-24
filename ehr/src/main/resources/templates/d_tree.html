@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- 部门管理页面 -->
+<title>department management</title>
+</head>
+
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../easyui/locale/easyui-lang-zh_CN.js"></script>
+<link href="../easyui/themes/bootstrap/easyui.css" type="text/css" rel="stylesheet">
+<link href="../easyui/themes/icon.css" type="text/css" rel="stylesheet">
+
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$("#departmentTree").tree({
+		url : '../../department/tree',
+		animate: true,
+		method : "GET",
+		//在节点展开时触发，添加节点
+	});
+});
+</script>
+
+
+<body>
+	<div class="container-fluid">
+		<!-- 部门结构图  easyui创建动态树 -->
+	   	<div  align="left" >
+			<ul id="departmentTree" class="easyui-tree" ></ul>
+		</div>
+	</div>
+</body>
+
+</html>

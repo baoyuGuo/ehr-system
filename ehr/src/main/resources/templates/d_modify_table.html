@@ -1,0 +1,81 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head id="Head1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>
+	机构管理
+</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
+    <script th:src="@{/js/MyJs.js}" ></script>
+	<script th:src="@{/js/WebCalendar.js}" ></script>
+</head>
+<body class="main">
+    <form method="post" action="Jggl_R.aspx?id=10000" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTU3OTY3MTAxMA8WAh4TVmFsaWRhdGVSZXF1ZXN0TW9kZQIBFgICAw9kFgQCBg8PFgIeB1Zpc2libGVoZGQCBw8PFgIfAWhkZGQ=" />
+</div>
+
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    <table class="form" border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td align="center" colspan="4">
+                                <b>
+                                    <font color=red>无部门信息，请点击左边树型菜单</font></b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item" style="width: 20%">部门名称：
+                            </td>
+                            <td colspan="3" style="width: 80%">
+                                <span id="Name"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">上级部门：
+                            </td>
+                            <td colspan="3">
+                                <span id="ParentNodesID"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">单位编制数：
+                            </td>
+                            <td colspan="3">
+                                <span id="BianZhiS"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">岗位编制数：
+                            </td>
+                            <td colspan="3">
+                                <span id="GangWeiBZ"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">下级部门：
+                            </td>
+                            <td colspan="3">
+                                <span id="XiaJiBm"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">备注：
+                            </td>
+                            <td colspan="3">
+                                <span id="remark"></span>
+                            </td>
+                        </tr>
+
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <input type="submit" name="Button4" value="编制当前部门" id="Button4" class="mybtn" />
+                    <input type="submit" name="Button3" value="修改当前部门" id="Button3" class="mybtn" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

@@ -1,0 +1,133 @@
+package com.ehr.pojo;
+
+public class EhrEmployee {
+    private String enumber;
+
+    private String ename;
+
+    private String egender;
+
+    private String eemail;
+
+    private String etelphone;
+
+    private String edepartmentnum;
+
+    private String eabilitylevel;
+
+    private String epost;
+
+    private String efileurl;
+
+    private String estatus;
+
+    private String econtracttype;
+
+    private String eposttype;
+
+    private String photo;
+
+    public String getEnumber() {
+        return enumber;
+    }
+
+    public void setEnumber(String enumber) {
+        this.enumber = enumber == null ? null : enumber.trim();
+    }
+
+    public String getEname() {
+        return ename;
+    }
+
+    public void setEname(String ename) {
+        this.ename = ename == null ? null : ename.trim();
+    }
+
+    public String getEgender() {
+        return egender;
+    }
+
+    public void setEgender(String egender) {
+        this.egender = egender == null ? null : egender.trim();
+    }
+
+    public String getEemail() {
+        return eemail;
+    }
+
+    public void setEemail(String eemail) {
+        this.eemail = eemail == null ? null : eemail.trim();
+    }
+
+    public String getEtelphone() {
+        return etelphone;
+    }
+
+    public void setEtelphone(String etelphone) {
+        this.etelphone = etelphone == null ? null : etelphone.trim();
+    }
+
+    public String getEdepartmentnum() {
+        return edepartmentnum;
+    }
+
+    public void setEdepartmentnum(String edepartmentnum) {
+        this.edepartmentnum = edepartmentnum == null ? null : edepartmentnum.trim();
+    }
+
+    public String getEabilitylevel() {
+        return eabilitylevel;
+    }
+
+    public void setEabilitylevel(String eabilitylevel) {
+        this.eabilitylevel = eabilitylevel == null ? null : eabilitylevel.trim();
+    }
+
+    public String getEpost() {
+        return epost;
+    }
+
+    public void setEpost(String epost) {
+        this.epost = epost == null ? null : epost.trim();
+    }
+
+    public String getEfileurl() {
+        return efileurl;
+    }
+
+    public void setEfileurl(String efileurl) {
+        this.efileurl = efileurl == null ? null : efileurl.trim();
+    }
+
+    public String getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(String estatus) {
+        this.estatus = estatus == null ? null : estatus.trim();
+    }
+
+    public String getEcontracttype() {
+        return econtracttype;
+    }
+
+    public void setEcontracttype(String econtracttype) {
+        this.econtracttype = econtracttype == null ? null : econtracttype.trim();
+    }
+
+    public String getEposttype() {
+        return eposttype;
+    }
+
+    public void setEposttype(String eposttype) {
+        this.eposttype = eposttype == null ? null : eposttype.trim();
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo == null ? null : photo.trim();
+    }
+}

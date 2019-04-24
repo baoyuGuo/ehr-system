@@ -1,0 +1,30 @@
+package com.ehr.mapper;
+
+import com.ehr.pojo.EhrDimission;
+import com.ehr.pojo.EhrDimissionExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+
+public interface EhrDimissionMapper {
+    int countByExample(EhrDimissionExample example);
+
+    int deleteByExample(EhrDimissionExample example);
+
+    int deleteByPrimaryKey(String enumber);
+
+    int insert(EhrDimission record);
+
+    int insertSelective(EhrDimission record);
+
+    List<EhrDimission> selectByExample(EhrDimissionExample example);
+
+    EhrDimission selectByPrimaryKey(String enumber);
+
+    int updateByExampleSelective(@Param("record") EhrDimission record, @Param("example") EhrDimissionExample example);
+
+    int updateByExample(@Param("record") EhrDimission record, @Param("example") EhrDimissionExample example);
+
+    int updateByPrimaryKeySelective(EhrDimission record);
+
+    int updateByPrimaryKey(EhrDimission record);
+}

@@ -1,0 +1,211 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<script type="text/javascript">
+    function chknull() {
+        if (document.getElementById('Bianhao').value == '') {
+            alert('计划编号不能为空');
+            showjbxx();
+            form1.Bianhao.focus();
+            return false;
+        }
+        if (document.getElementById('Mingcheng').value == '') {
+            alert('计划名称不能为空');
+            showjbxx();
+            form1.Mingcheng.focus();
+            return false;
+        }
+    }
+</script>
+<head id="Head1"><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>
+	新增培训计划
+</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script th:src="@{/js/Choose.js}" ></script>
+	<script th:src="@{/js/MyJs.js}" ></script>
+	<script th:src="@{/js/WebCalendar.js}" ></script>
+    
+</head>
+<body class="main">
+    <form method="post" action="Pxjh_R_Add.aspx?tmp=0.27876302136640785" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE0MjIyMjE3MzQPFgIeE1ZhbGlkYXRlUmVxdWVzdE1vZGUCARYCAgMPZBYGAgYPEGQPFgRmAgECAgIDFgQQBQcyMDE15bm0BQcyMDE15bm0ZxAFBzIwMTblubQFBzIwMTblubRnEAUHMjAxN+W5tAUHMjAxN+W5tGcQBQcyMDE45bm0BQcyMDE45bm0Z2RkAgoPD2QWAh4IcmVhZG9ubHkFCHJlYWRvbmx5ZAINDw9kFgIeB29uY2xpY2sFHGphdmFzY3JpcHQ6cmV0dXJuIGNoa251bGwoKTtkZA==" />
+</div>
+
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="td_base" width="80%" height="25px">新增培训计划
+                </td>
+                <td class="td_base" width="20%"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <table class="form" border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td class="form-item" style="width: 20%"><font color="red">*</font>计划编号：
+                            </td>
+                            <td style="width: 30%">
+                                <input name="Bianhao" type="text" id="Bianhao" class="mytext" style="width:90%;" />
+                            </td>
+                            <td class="form-item" style="width: 20%"><font color="red">*</font>计划名称：
+                            </td>
+                            <td style="width: 30%">
+                                <input name="Mingcheng" type="text" id="Mingcheng" class="mytext" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">开始时间：
+                            </td>
+                            <td>
+                                <input name="Kaishi" type="text" id="Kaishi" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" DataType="DateTime" style="width:90%;" />
+                            </td>
+                            <td class="form-item">结束时间：
+                            </td>
+                            <td>
+                                <input name="Jieshu" type="text" id="Jieshu" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" DataType="DateTime" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">培训类型：
+                            </td>
+                            <td>
+                                <input name="PeixunLX" type="text" id="PeixunLX" class="mytext" style="width:80%;" /><a href="javascript:void(0)"><img
+                                    onclick="OpenType('PeixunLX','h14');" alt="" src="/pic/choose.gif" border="0"></a>
+                            </td>
+                            <td class="form-item">培训方式：
+                            </td>
+                            <td>
+                                <input name="PeixunFS" type="text" id="PeixunFS" class="mytext" style="width:80%;" /><a href="javascript:void(0)"><img
+                                    onclick="OpenType('PeixunFS','h18');" alt="" src="/pic/choose.gif" border="0"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">培训年份：
+                            </td>
+                            <td>
+                                 <select name="Nianfen" id="Nianfen" style="width:150px;">
+									<option selected="selected" value="0">所有年份</option>
+									<option value="2019年">2019年</option>
+									<option value="2018年">2018年</option>
+									<option value="2017年">2017年</option>
+									<option value="2016年">2016年</option>
+								</select>
+                            </td>
+                            <td class="form-item">培训地点：
+                            </td>
+                            <td>
+                                <input name="PeixunDD" type="text" id="PeixunDD" class="mytext" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">主持人：
+                            </td>
+                            <td>
+                                <input name="Zhuciren" type="text" id="Zhuciren" class="mytext" style="width:90%;" />
+                            </td>
+                            <td class="form-item">记录人：
+                            </td>
+                            <td>
+                                <input name="Jiluren" type="text" id="Jiluren" class="mytext" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item" style="width: 20%">所属部门：
+                            </td>
+                            <td colspan="3">
+                                <input name="BuMen" type="text" id="BuMen" class="mytext" readonly="readonly" style="width:90%;" /><a href="javascript:void(0)"><img
+                                    onclick="openunit();" alt="" src="/pic/choose.gif" border="0"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">培训目标：
+                            </td>
+                            <td colspan="3">
+                                <textarea name="PeixunMB" rows="2" cols="20" id="PeixunMB" class="mytextarea" style="height:51px;width:96%;">
+</textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">培训内容：
+                            </td>
+                            <td colspan="3">
+                                <textarea name="PeixunNR" rows="2" cols="20" id="PeixunNR" class="mytextarea" style="height:51px;width:96%;">
+</textarea>
+                            </td>
+                        </tr>
+                        <tr> <td align=center  colspan=4 ><div align=center><strong>用户自定义字段</strong></div> </td> </tr> <tr> <td class=form-item>自定义字段：</td> <td   colspan=3><TEXTAREA rows=1 id=2017911537468041532 name=2017911537468041532 cols=80></TEXTAREA></td></tr>
+                        <tr>
+                            <td align="center" colspan="4" height="25">
+                                <input type="submit" name="Button2" value="确定" onclick="javascript:return chknull();" id="Button2" class="mybtn" />
+                                <input id="Button1" class="mybtn" onclick="window.close()" type="button" value="关闭" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <input name="checkpage" type="text" value="onjbxx" id="checkpage" style="display: none" />
+        <input name="Number" type="text" value="20194142244181538911" id="Number" style="display: none" />
+        <input name="BuMenId" type="text" id="BuMenId" style="display: none" />
+        <script type="text/javascript">
+            var wName2;
+            function openunit() {
+                var num = Math.random();
+                var str = "" + document.getElementById('BuMenId').value + "";
+
+                //browser
+                var bstr = getBrowserType();
+                if (bstr == '3' | bstr == '4' | bstr == '5') {
+                    window.open("/page/select_department", 'window', 'height=600,width=650,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no');
+                }
+                else {
+                    wName2 = window.showModalDialog("/page/select_department", "window", "dialogWidth:650px;DialogHeight=600px;status:no;scroll=yes;help:no");
+                }
+
+                var arr = wName2.split("|");
+                for (var i = 0; i < arr.length; i++) {
+                    document.getElementById("BuMenId").value = arr[0];
+                    document.getElementById("BuMen").value = arr[1];
+                }
+            }
+
+            function setValue(str) {
+                var arr = str.split("|");
+                for (var i = 0; i < arr.length; i++) {
+                    document.getElementById("BuMenId").value = arr[0];
+                    document.getElementById("BuMen").value = arr[1];
+                }
+            }
+
+
+
+
+
+            var wName;
+            var vtbox;
+            function OpenType(tbox, ttype) {
+                vtbox = tbox;
+                var rdm = Math.random();
+                var str = "" + document.getElementById(tbox).value;
+
+                //browser
+                var bstr = getBrowserType();
+                if (bstr == '3' | bstr == '4' | bstr == '5') {
+                    window.open("/openType?tmp=" + rdm + "&rqstr=" + str + "&type=" + ttype + "", 'newwindow8', 'height=480,width=400,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no');
+                }
+                else {
+                    wName = window.showModalDialog("/openType?tmp=" + rdm + "&rqstr=" + str + "&type=" + ttype + "", "newwindow", "dialogWidth:400px;DialogHeight=480px;status:no;scroll=yes;help:no");
+                }
+
+                //if (wName != null && wName != "undefined") {
+                document.getElementById(tbox).value = wName;
+                //}
+            }
+
+            function setValue_sys(str) {
+                document.getElementById(vtbox).value = str;
+            }
+        </script>
+    </form>
+</body>
+</html>

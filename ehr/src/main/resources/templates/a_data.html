@@ -1,0 +1,67 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head id="Head1">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>
+	考勤数据采集
+</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+<script th:src="@{/js/Choose.js}" ></script>
+<script th:src="@{/js/MyJs.js}" ></script>
+<script th:src="@{/js/WebCalendar.js}" ></script>
+</head>
+<body class="main">
+    <form method="post" action="/humanfiles/attendence/importData" id="form1" enctype="multipart/form-data">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTI0MDM4NzY3NA8WAh4TVmFsaWRhdGVSZXF1ZXN0TW9kZQIBZGQ=">
+</div>
+
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+                <td>
+                    <table class="form" border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tbody><tr>
+                            <td class="form-item" rowspan="2">&nbsp;
+                            考勤导入格式一：
+                            </td>
+                            <td><a href="../../down/hr/Template_Kqxx.xls" target="_blank" class="gvlink">点击下载导入模板一</a>（列表形式，不含休假、出差信息）
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 80%">
+                                <input type="file" name="FileUpload1" id="FileUpload1" class="mytext" style="width:80%;">
+                                <input type="submit" name="Button1" value="确定导入" id="Button1" class="mybtn">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item" style="width: 20%" rowspan="2">考勤导入格式二：</td>
+                            <td style="width: 80%">
+                                <a href="../../down/hr/Template_Kqxx2.xls" target="_blank" class="gvlink">点击下载导入模板二</a>（列表形式，包含休假、出差、加班信息）</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 80%">
+                                <input type="file" name="FileUpload2" id="FileUpload2" class="mytext" style="width:80%;">
+                                <input type="submit" name="Button2" value="确定导入" id="Button2" class="mybtn">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item" style="width: 20%" rowspan="2">考勤导入格式三：</td>
+                            <td style="width: 80%">
+                                <a href="../../down/hr/Template_Kqxx3.xls" target="_blank" class="gvlink">点击下载导入模板三</a>（交叉表格形式，包含休假信息）</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 80%">导入月份：<input name="kqny" type="text" id="kqny" class="mytext" onclick="SelectDate(this,'yyyy-MM')" style="width:60px;">
+                                选择Excel文档：<input type="file" name="FileUpload3" id="FileUpload3" class="mytext" style="width:62%;">&nbsp;
+                                <input type="submit" name="Button3" value="确认导入" id="Button3" class="mybtn">
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </td>
+            </tr>
+        </tbody></table>
+    </form>
+
+
+</body></html>
+</html>
+

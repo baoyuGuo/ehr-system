@@ -1,0 +1,347 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<script type="text/javascript">
+    function chknull() {
+        if (document.getElementById('PeiXunZT').value == '') {
+            alert('协议主题不能为空');
+            form1.PeiXunZT.focus();
+            return false;
+        }
+
+        if (document.getElementById('StaffNumer').value == '') {
+            alert('请选择对应员工不能为空');
+            form1.StaffNumer.focus();
+            return false;
+        }
+
+        if (document.getElementById('QdRiqi').value == '') {
+            alert('签订日期不能为空');
+            form1.QdRiqi.focus();
+            return false;
+        }
+    }
+</script>
+<script type="text/javascript">
+    function PageCheck() {
+        var strUploadFile = document.getElementById('uploadFile').value;
+        if (strUploadFile == "") {
+            alert("请选择要上传的附件！");
+            return false;
+        }
+        var nameLen = strUploadFile.length;
+        var rightName = strUploadFile.substr(nameLen - 4, 4).toLowerCase();
+
+        var sAllowExt = ".doc|.docx|.xls|.xlsx|.ppt|.pptx|.pdf|.rar|.zip|.gif|.jpg|.jpeg";
+        var str = document.getElementById('uploadFile').value;
+        var rightName = str.substr(str.lastIndexOf('.') + 1, str.length - str.lastIndexOf('.')).toLowerCase();
+
+        if (sAllowExt.indexOf(rightName) == -1) {
+            alert('对不起，您只能上传【' + sAllowExt + '】格式的文件\r如果需要上传其他格式的文件，请联系系统管理员！');
+            return false;
+        }
+    }
+
+    function AttDown() {
+        if (document.getElementById('fjlb').value == '') {
+            alert('请先选中附件！');
+            return false;
+        }
+        else {
+            var num = Math.random();
+            var littleproduct = document.getElementById("fjlb");
+            var cindex = littleproduct.selectedIndex;
+            var cText = littleproduct.options[cindex].text;
+            var cValue = littleproduct.options[cindex].value;
+            window.open("../../AttDown.aspx?tmp=" + num + "&number=" + cValue + "&fname=hr/h10", "_blank", "height=1, width=1,toolbar=no, menubar=no, scrollbars=no,resizable=yes,location=no, status=no")
+        }
+    }
+
+    function AttDel() {
+        if (document.getElementById('fjlb').value == '') {
+            alert('请先选中附件！');
+            return false;
+        }
+        else {
+            if (!confirm("您确定要删除此附件吗？"))
+                return false;
+            var num = Math.random();
+            var littleproduct = document.getElementById("fjlb");
+            var cindex = littleproduct.selectedIndex;
+            var cText = littleproduct.options[cindex].text;
+            var cValue = littleproduct.options[cindex].value;
+            window.open("../../AttDel.aspx?tmp=" + num + "&number=" + cValue + " ", "window", "height=1, width=1,top=150,left=150,toolbar=no, menubar=no, scrollbars=no,resizable=yes,location=no, status=no");
+        }
+    }
+</script>
+<head id="Head1"><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>
+	修改培训协议
+</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
+    <script th:src="@{/js/MyJs.js}" ></script>
+	<script th:src="@{/js/WebCalendar.js}" ></script>
+	<script th:src="@{/js/ueditor/ueditor.config.jss}" ></script>
+	<script th:src="@{/js/ueditor/ueditor.all.min.js}" ></script>
+	<script th:src="@{/js/ueditor/zh-cn.js}" ></script>
+</head>
+<body class="main">
+    <form method="post" action="Pxxy_Mod.aspx?tmp=0.7142498824765307&amp;id=1" id="form1" enctype="multipart/form-data">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTEyMjAyODk4NjkPFgIeE1ZhbGlkYXRlUmVxdWVzdE1vZGUCARYCAgEPFgIeB2VuY3R5cGUFE211bHRpcGFydC9mb3JtLWRhdGEWGAIBDxBkDxYFZgIBAgICAwIEFgUQBQcyMDE25bm0BQcyMDE25bm0ZxAFBzIwMTflubQFBzIwMTflubRnEAUHMjAxOOW5tAUHMjAxOOW5tGcQBQcyMDE55bm0BQcyMDE55bm0ZxAFBzIwMjDlubQFBzIwMjDlubRnZGQCAw8PZBYCHghyZWFkb25seQUIcmVhZG9ubHlkAgQPD2QWAh8CBQhyZWFkb25seWQCBQ8PZBYCHwIFCHJlYWRvbmx5ZAIGDw9kFgIfAgUIcmVhZG9ubHlkAgoPD2QWAh8CBQhyZWFkb25seWQCDA8WAh4JaW5uZXJodG1sBdcwJmx0O3AmZ3Q744CA55Sy5pa577yaJmx0Oy9wJmd0OyZsdDtwJmd0O+OAgOOAgOS5meaWue+8miDlubTpvoTvvJog5oCn5Yir77yaIOWHuueUn+W5tOaciO+8miZsdDsvcCZndDsmbHQ7cCZndDvjgIDjgIDlrabljobvvJog5LiT5Lia77yaIOi6q+S7veivgeWPt+egge+8miDlrrbluq3kvY/lnYDvvJombHQ7L3AmZ3Q7Jmx0O3AmZ3Q744CA44CA5Li65o+Q6auY5LmZ5pa555qE5Z+65pys57Sg6LSo5Y+K6IGM5Lia5oqA6IO977yM55Sy5pa56byT5Yqx5bm25pSv5oyB5LmZ5pa55Y+C5Yqg6IGM5Lia5Z+56K6t44CC5Li656Gu5L+d5LmZ5pa55ZyG5ruh5a6M5oiQ5Z+56K6t5a2m5LiaIO+8jOW5tuaMieaXtui/lOWbnueUsuaWueW3peS9nO+8jOeUsuS5meWPjOaWueiuoueri+WmguS4i+WNj+iuru+8miZsdDsvcCZndDsmbHQ7cCZndDvjgIDjgIDkuIDjgIHnlLLmlrnlkIzmhI/kuZnmlrnotbRfX19fX1/lrabkuaBfX19fX1/kuJPkuJrvvIzlrabkuaDmnJ/oh6pfX19fX1/lubRfX19fX1/mnIhfX19fX1/ml6Xotbfoh7NfX19fX1/lubRfX19fX1/mnIhfX19fX1/ml6XvvIzlrp7orqHkuLrmnJ9fX19fX18uJmx0Oy9wJmd0OyZsdDtwJmd0O+OAgOOAgOS6jOOAgeS5meaWueW6lOWcqOeUsuaWueaMh+WumuaIluS4jueUsuaWuee6puWumueahOWtpuagoeWPiuS4k+S4muWwseWtpuOAguWmgumcgOimgeWPmOabtO+8jOW6lOS6i+WFiOmAmuefpeeUsuaWue+8jOW5tuW+l+WIsOeUsuaWueeahOaJueWHhu+8jOWQpuWImeS7peaXt+W3peiuuuWkhOOAgiZsdDsvcCZndDsmbHQ7cCZndDvjgIDjgIDkuInjgIHkuZnmlrnnmoTlrabkuaDml7bpl7TvvIzorqHlhaXlt6XkvZzml7bpl7TkuYvlhoXvvIzmjInov57nu63lt6XpvoTntK/orqHjgIImbHQ7L3AmZ3Q7Jmx0O3AmZ3Q744CA44CA5Zub44CB5a2m5Lmg5Z+56K6t5pyf6Ze055qE5bel6LWE6KeG5oOF5Ya15oyJ5Y6f5bel6LWE5Yqe5rOV55qEX19fX19f5pSv5LuY44CC5Zyo5pmL57qn5oiW5bel6LWE5Yqe5rOV5L+u6K6i5pe277yM5LmZ5pa55L2c5Li65Zyo57yW5Lq65ZGY5aSE55CG44CC56S+5Lya5L+d6Zmp5Y6f5YiZ5LiK5oyJ5pyJ5YWz6KeE5a6a5L2c5Li65Zyo57yW5Lq65ZGY5aSE55CG44CC5Zyo5Z+56K6t5pyf6Ze077yM55Sy5pa55Y+m6KGM5pSv5LuY57uZ5LmZ5pa555Sf5rS76LS5X19fX19f5YWDL+aciOOAguWfueiureacn+mXtOeahOW3pei1hOWSjOeUn+a0u+i0ueS5n+iuoeWFpeWfueiurei0ueeUqOOAguiLpeWcqOWfueiureWtpuS5oOacn+mXtO+8jOS5meaWueaOpeWPl+eUsuaWueS6pOS7mOeahOiwg+afpeaIluWuieaOkuWHuuW3ru+8jOW3ruaXhei0ueaMieWFrOWPuOinhOWumueahOagh+WHhuaUr+S7mOOAgiZsdDsvcCZndDsmbHQ7cCZndDvjgIDjgIDkupTjgIHkuZnmlrnlrabkuaDmnJ/pl7TmgqPmnInkuI3og73nu6fnu63lrabkuJrnmoTnlr7nl4Xml7bvvIzlupTmjqXlj5fnlLLmlrnmjIfku6TvvIznu4jmraLlrabkuaDvvIzov5Tlm57nlLLmlrnvvIzlubbkvp3mnInlhbPop4TlrprlpITnkIbjgIImbHQ7L3AmZ3Q7Jmx0O3AmZ3Q744CA44CA5YWt44CB5LmZ5pa55Zyo5a2m5Lmg5pyf6Ze077yM5b+F6aG75q+P6ZqUX19fX19f5aSp5ZCR55Sy5pa55Lmm6Z2i5oql5ZGK5LiA5qyh5a2m5Lmg5oOF5Ya177yM5bm26ZmE5a2m5qCh5pyJ5YWz5oiQ57up562J5pa56Z2i55qE6K6w5b2V44CCJmx0Oy9wJmd0OyZsdDtwJmd0O+OAgOOAgOS4g+OAgeS5meaWueW6lOiHquiniemBteWuiOWfueiureagoeaWueeahOWQhOmhueinhOWumuS4juimgeaxguOAguWHoeWboOi/neinhOi/nee6quiAjOWPl+WIsOagoeaWueWkhOWIhueahO+8jOinhuWQjOWcqOeUsuaWueWGheeahOi/nee6qu+8jOeUsuaWueWwhuaMieinhOeroOWItuW6puWkhOeQhuOAgiZsdDsvcCZndDsmbHQ7cCZndDvjgIDjgIDlhavjgIHkuZnmlrnlnKjln7norq3lrabkuaDmnJ/pl7TnmoTlrabotLnjgIHkuabotLnjgIHosIPnoJTotLnjgIHlrp7kuaDotLnjgIHkuIrmnLrotLnjgIHkvY/lrr/otLnjgIHmnaXlm57lvoDov5TnlLLmlrnnmoTkuqTpgJrotLnvvIjpnIDmnInkuovmi5vlm57vvInnlLHnlLLmlrnlhajpop3mib/mi4XjgIImbHQ7L3AmZ3Q7Jmx0O3AmZ3Q744CA44CA5Lmd44CB5LmZ5pa55aaC5Zyo5Z+56K6t5a2m5Lmg5pyf6Ze06L6e6IGM77yM5bqU5ZCR55Sy5pa55pSv5LuY55Sx55Sy5pa557y057qz55qE5YWo6YOo5Z+56K6t5a2m5Lmg6LS555So55qE5Y+M5YCN55qE6L+d57qm6YeR77yM5LiN6LazX19fX19f5YWD55qE5oyJX19fX19f5YWD6K6h566X44CCJmx0Oy9wJmd0OyZsdDtwJmd0O+OAgOOAgOWNgeOAgeWfueiureWtpuS5oOe7k+adn+WQju+8jOS5meaWueW6lOS4uueUsuaWuee7p+e7reacjeWKoV9fX19fX+W5tO+8jOS7juWfueiuree7k+adn+S5i+aXpei1t+eul+OAguivpeacjeWKoeacn+e6puWumuinhuS9nCZsdDthIHRpdGxlPSZxdW90O+WKs+WKqOWQiOWQjCZxdW90OyBjbGFzcz0mcXVvdDtidWxlJnF1b3Q7IGhyZWY9JnF1b3Q7aHR0cDovL3d3dy5jaGluYWxhd2VkdS5jb20vd2ViLzIwMy8mcXVvdDsgdGFyZ2V0PSZxdW90O19ibGFuayZxdW90OyZndDvlirPliqjlkIjlkIwmbHQ7L2EmZ3Q75pyf6ZmQ44CC5Zyo5pyN5Yqh5pyf5YaF77yM5LmZ5pa55Lul5Lu75L2V55CG55Sx6Kej6Zmk5Yqz5Yqo5ZCI5ZCM55qE77yM5LmZ5pa55bqU6LWU5YG/55Sy5pa55Z+56K6t6LS555So77yM5YW35L2T5pSv5LuY5pa55rOV5piv77ya5oyJ5pyN5Yqh5pyf6ZmQ562J5YiG5Z+56K6t6LS577yM5Lul5LmZ5pa55bey5bGl6KGM55qE5ZCI5ZCM5pyf6ZmQ6YCS5YeP5pSv5LuY77yM5pyN5Yqh5pyf6ZmQ5LiN6Laz5LiA5bm055qE5oyJ5a6e6ZmF5pyI5Lu96K6h566X44CC5pyN5Yqh5pyf5ruh6Kej6Zmk55qE5Y+v5YWN5Lqk5Z+56K6t6LS555So77yb5Zug5Lil6YeN6L+d5Y+N6KeE56ug5Yi25bqm6KKr55Sy5pa56Kej6Zmk5Yqz5Yqo5ZCI5ZCM55qE77yM5Lqm54Wn5q2k5Yqe55CG44CCJmx0Oy9wJmd0OyZsdDtwJmd0O+OAgOOAgOWNgeS4gOOAgeWcqOacjeWKoeacn+WGheS5meaWueS7peS7u+S9leeQhueUsei/neWPjeacjeWKoeacn+e6puWumuino+mZpOWKs+WKqOWQiOWQjOeahO+8jOS5meaWueW6lOaUr+S7mOeUsuaWuei/nee6pumHkV9fX19fX+WFg++8m+WboOS4pemHjei/neWPjeinhOeroOWItuW6puiiq+eUsuaWueino+mZpOWKs+WKqOWQiOWQjOeahO+8jOS6pueFp+atpOWKnueQhuOAgiZsdDsvcCZndDsmbHQ7cCZndDvjgIDjgIDljYHkuozjgIHln7norq3lrabkuaDnu5PmnZ/lkI7vvIzkuZnmlrnlupTkuo7ln7norq3nu5PmnZ/kuYvml6XotbdfX19fX1/ml6XlhoXlkJHnlLLmlrnmiqXliLDjgILkuZnmlrnpgL7mnJ/kuI3lkJHnlLLmlrnmiqXliLDvvIzop4bkvZzkuZnmlrnop6PpmaTlirPliqjlkIjlkIzvvIzmjInmnKzljY/orq7nrKzljYHmnaHjgIHnrKzljYHkuIDmnaHlpITnkIbjgIImbHQ7L3AmZ3Q7Jmx0O3AmZ3Q744CA44CA5Y2B5LiJ44CB5LmZ5pa55Zyo5a2m5Lmg5pyf6Ze05oiQ57up5LyY5byC77yM5pyJ5p2w5Ye66KGo546w77yM55Sy5pa55bCG6KeG5oOF5Ya157uZ5LqI5aWW5Yqx44CCJmx0Oy9wJmd0OyZsdDtwJmd0O+OAgOOAgOWNgeWbm+OAgeacrOWNj+iuruS4gOW8j+S4pOS7ve+8jOeUsuS5meWPjOaWueWQhOaJp+S4gOS7veOAgiZsdDsvcCZndDsmbHQ7cCZndDvjgIDjgIDnlLLmlrnnrb7nq6DvvJog5LmZ5pa5562+56ug77yaJmx0Oy9wJmd0OyZsdDtwJmd0O+OAgOOAgOW5tCDmnIgg5pelIOW5tCDmnIgg5pelJmx0Oy9wJmd0OyZsdDtwJmd0O+OAgOOAgOeUsuaWue+8miDvvIjku6XkuIvnroDnp7DnlLLmlrnvvIkmbHQ7L3AmZ3Q7Jmx0O3AmZ3Q744CA44CA5LmZ5pa577yaIO+8iOS7peS4i+eugOensOS5meaWue+8iSZsdDsvcCZndDsmbHQ7cCZndDvjgIDjgIDnlLLmlrnmoLnmja7kvIHkuJrlj5HlsZXpnIDopoHlr7nlkZjlt6Xov5vooYzlronpmLLkuJPkuJrmioDmnK/ln7norq3vvIzkuZnmlrnlkIzmhI/mjqXlj5fnlLLmlrnnmoTln7norq3lronmjpLvvIzku6XkuI3mlq3mj5Dpq5joh6rouqvnmoTmioDmnK/msLTlubPjgILnjrDnu4/lj4zmlrnljY/llYbkuIDoh7TvvIzlsLHmnInlhbPln7norq3lronmjpLlj4rln7norq3lkI7nmoTnm7jlhbPkuovlrpzovr7miJDku6XkuIvljY/orq7vvJombHQ7L3AmZ3Q7Jmx0O3AmZ3Q744CA44CA56ys5LiA5p2hIOWfueiureWGheWuuSZsdDsvcCZndDsmbHQ7cCZndDvjgIDjgIAxLiZsdDsvcCZndDsmbHQ7cCZndDvjgIDjgIAyLiZsdDsvcCZndDsmbHQ7cCZndDvjgIDjgIAzLiZsdDsvcCZndDsmbHQ7cCZndDvjgIDjgIDnrKzkuozmnaEg5Z+56K6t5pe26Ze0Jmx0Oy9wJmd0OyZsdDtwJmd0O+OAgOOAgOWfueiureaXtumXtOS4uiDlpKnvvIzoh6og5bm0IOaciCDml6XotbfvvIzoh7Mg5bm0IOaciCDml6XmraLjgIImbHQ7L3AmZ3Q7Jmx0O3AmZ3Q744CA44CA56ys5LiJ5p2hIOWfueiureW9ouW8jyZsdDsvcCZndDsmbHQ7cCZndDvjgIDjgIDkuZnmlrnohLHkuqflj4LliqDnlLLmlrnlronmjpLnmoTln7norq3jgIImbHQ7L3AmZ3Q7Jmx0O3AmZ3Q744CA44CA56ys5Zub5p2hIOi0o+S7u+WSjOS5ieWKoSZsdDsvcCZndDsmbHQ7cCZndDvjgIDjgIAxLuS5meaWueWPguiureeahOi0ueeUqO+8iOWMheaLrOWtpui0ueOAgeS6pOmAmui0ueOAgeS9j+Wuv+i0ueWSjOWfuuacrOW3pei1hO+8ieeUseeUsuaWueaUr+S7mOOAgiZsdDsvcCZndDsmbHQ7cCZndDvjgIDjgIAyLuS5meaWueW/hemhu+aMieaXtuWPguWKoOWfueiure+8jOWFqOmdouWujOaIkOWfueiureacn+mXtOeahOWFqOmDqOS7u+WKoe+8jOW5tuWPluW+l+ebuOW6lOeahO+8iOWQiOagvOOAgeS4k+S4muOAgee7k+S4muOAgeavleS4mu+8ieivgeS5puOAgiZsdDsvcCZndDsmbHQ7cCZndDvjgIDjgIAzLuS5meaWueWcqOWPguWKoOWfueiureacn+mXtOayoeacieWujOaIkOWfueiureS7u+WKoeaIluWfueiureS4jeWQiOagvO+8iOWboOS4jeWPr+aKl+WKm+S5i+WboOe0oOmZpOWklu+8ie+8jOW6lOWQkeeUsuaWueaUr+S7mOaJgOiKsei0ueeahOWFqOmDqOi0ueeUqO+8jOW5tui1lOWBv+eUsuaWueS8jeS7n+WFg+e7j+a1juaNn+WkseOAgiZsdDsvcCZndDsmbHQ7cCZndDvjgIDjgIA0LuS5meaWueWPguWKoOWfueiureWQju+8jOW/hemhu+S4uueUsuaWuei/nue7reacjeWKoeS4ieW5tOS7peS4iu+8iOWMheaLrOS4ieW5tO+8ieWmguaenOWcqOatpOacn+mXtOS5meaWueaTheiHqui+nuiBjO+8jOmZpOS6huaJv+aLheWFtuWkluWHuuWPguWKoOWfueiureeahOWtpui0ueOAgeS6pOmAmui0ueOAgeS9j+Wuv+i0ueWSjOiWqumFrOetieWFqOmDqOi0ueeUqOWklu+8jOWPpui1lOWBv+WFrOWPuDEtM+S4h+WFg+e7j+a1juaNn+WkseOAguWFtuS4reWfueiureWQjuesrOS4gOW5tOW6pui+nuiBjO+8jOi1lOWBv+eUsuaWuTPkuIflhYPvvJvln7norq3lkI7nrKzkuozlubTluqbovp7ogYzvvIzotZTlgb/nlLLmlrky5LiH5YWD77yb5Z+56K6t5ZCO56ys5LiJ5bm05bqm6L6e6IGM77yM6LWU5YG/55Sy5pa5MeS4h+WFg+OAgiZsdDsvcCZndDsmbHQ7cCZndDvjgIDjgIA1LuWcqOacrOWNj+iuruaJp+ihjOacn+WGhe+8jOWHoeS5meaWueiHquaEv+i+nuiBjOOAgeaIluaTheiHquemu+iBjOOAgeaIluWboOi/neWPjeeUsuaWueWItuW6puinhOWumuiAjOiiq+eUsuaWueWLkuS7pOi+nuiBjO+8iOivleeUqOacn+mZpOWklu+8ieaXtu+8jOaMieeFp+acrOWNj+iuruesrOWbm+adoeesrDPmrL7kuYvop4TlrprnlLHkuZnmlrnmib/mi4Xov53nuqbotKPku7vjgIImbHQ7L3AmZ3Q7Jmx0O3AmZ3Q744CA44CA56ys5LqU5p2hIOWFtuS7liZsdDsvcCZndDsmbHQ7cCZndDvjgIDjgIAxLuacrOWNj+iuruS9nOS4uuOAiuWKs+WKqOWQiOWQjOS5puOAi+eahOmZhOS7tu+8jOWFt+acieWQjOetieaViOWKm+OAgiZsdDsvcCZndDsmbHQ7cCZndDvjgIDjgIAyLuacrOWNj+iuruS4gOW8j+S4pOS7ve+8jOWPjOaWueWQhOaJp+S4gOS7ve+8jOiHquWPjOaWueetvuWtl+eblueroOS5i+aXpeeUn+aViOOAgiZsdDsvcCZndDsmbHQ7cCZndDvjgIDjgIDnlLLmlrnvvIjnm5bnq6DvvIkg5LmZ5pa577yI562+5a2X77yJJmx0Oy9wJmd0OyZsdDtwJmd0O+OAgOOAgOeUsuaWueS7o+ihqO+8iOetvuWQje+8iSZsdDsvcCZndDsmbHQ7cCZndDvjgIDjgIDljY/orq7nrb7orqLml7bpl7TvvJog5bm0IOaciCDml6UmbHQ7L3AmZ3Q7Jmx0O3AmZ3Q7Jmx0O2JyLyZndDsmbHQ7L3AmZ3Q7ZAINDxBkEBUBC1Rlc3RBdHQuZG9jFQEYMjAxNzkyMzIxNTA1NTM4OTIzMTQuZG9jFCsDAWdkZAIODw9kFgIeB29uY2xpY2sFG2phdmFzY3JpcHQ6cmV0dXJuIEF0dERlbCgpO2QCEA8PZBYCHwQFHmphdmFzY3JpcHQ6cmV0dXJuIFBhZ2VDaGVjaygpO2QCEQ8PZBYCHwQFHGphdmFzY3JpcHQ6cmV0dXJuIGNoa251bGwoKTtkAhQPD2QWAh8CBQhyZWFkb25seWRk" />
+</div>
+
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="td_base" width="80%" height="25px">修改培训协议
+                </td>
+                <td class="td_base" width="20%"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <table class="form" border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td colspan="4" style="text-align: center">
+                                <strong>员工培训信息</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item"><font color="red">*</font>培训协议主题：
+                            </td>
+                            <td colspan="3">
+                                <input name="PeiXunZT" type="text" value="试用期员工培训协议" id="PeiXunZT" class="mytext" style="width:96%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item" style="width: 20%">培训年份：
+                            </td>
+                            <td style="width: 30%">
+                                <select name="PeiXunNF" id="PeiXunNF" style="width:90%;">
+							<option value="2016年">2016年</option>
+							<option selected="selected" value="2017年">2017年</option>
+							<option value="2018年">2018年</option>
+							<option value="2019年">2019年</option>
+							<option value="2020年">2020年</option>
+						
+						</select>
+                            </td>
+                            <td class="form-item" style="width: 20%">培训计划名称：
+                            </td>
+                            <td style="width: 30%">
+                                <input name="PeiXunMC" type="text" value="2017年三季度研发人员培训计划" id="PeiXunMC" class="mytext" style="width:80%;" /><a href="javascript:void(0)"><img
+                                    onclick="openpxjh();" alt="" src="../../images/choose.gif" border="0"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item"><font color="red">*</font>员工工号：
+                            </td>
+                            <td>
+                                <input name="StaffNumer" type="text" value="00002" id="StaffNumer" class="mytext" readonly="readonly" style="width:80%;" /><a href="javascript:void(0)"><img
+                                    onclick="openunit();" alt="" src="../../images/choose.gif" border="0"></a>
+                            </td>
+                            <td class="form-item">员工姓名：
+                            </td>
+                            <td>
+                                <input name="YuanGong" type="text" value="庞统" id="YuanGong" class="mytext" readonly="readonly" style="width:80%;" /><a href="javascript:void(0)"><img
+                                    onclick="openunit();" alt="" src="../../images/choose.gif" border="0"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">性别：
+                            </td>
+                            <td>
+                                <input name="XingBie" type="text" value="男" id="XingBie" class="mytext" readonly="readonly" style="width:90%;" />
+                            </td>
+                            <td class="form-item">员工所属部门：
+                            </td>
+                            <td>
+                                <input name="BmMC" type="text" value="零售事业部" id="BmMC" class="mytext" readonly="readonly" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">现任职务：
+                            </td>
+                            <td>
+                                <input name="ZhiWu" type="text" value="店长" id="ZhiWu" class="mytext" style="width:80%;" /><a href="javascript:void(0)"><img
+                                    onclick="OpenType('ZhiWu','p06');" alt="" src="../../images/choose.gif" border="0"></a>
+                            </td>
+                            <td class="form-item">现任岗位：
+                            </td>
+                            <td>
+                                <input name="GangWei" type="text" value="主任" id="GangWei" class="mytext" style="width:80%;" /><a href="javascript:void(0)"><img
+                                    onclick="OpenType('GangWei','h01');" alt="" src="../../images/choose.gif" border="0"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" style="text-align: center">
+                                <strong>协议信息</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">协议类型：
+                            </td>
+                            <td>
+                                <input name="XieYiLX" type="text" value="短期协议" id="XieYiLX" class="mytext" style="width:80%;" /><a href="javascript:void(0)"><img
+                                    onclick="OpenType('XieYiLX','36');" alt="" src="../../images/choose.gif" border="0"></a>
+                            </td>
+                            <td class="form-item"><font color="red">*</font>签订日期：
+                            </td>
+                            <td>
+                                <input name="QdRiqi" type="text" value="2017/9/1" id="QdRiqi" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">服务年限：
+                            </td>
+                            <td colspan="3">
+                                <input name="FuWuNx" type="text" value="6个月" id="FuWuNx" class="mytext" style="width:96%;" />
+                            </td>
+                        </tr>
+                        <tr id="Tr1">
+                            <td class="form-item">协议内容：
+                            </td>
+                            <td colspan="3">
+                                <textarea name="editor" id="editor" rows="10" cols="10" style="width: 100%; height: 180px;">&lt;p&gt;　甲方：&lt;/p&gt;&lt;p&gt;　　乙方： 年龄： 性别： 出生年月：&lt;/p&gt;&lt;p&gt;　　学历： 专业： 身份证号码： 家庭住址：&lt;/p&gt;&lt;p&gt;　　为提高乙方的基本素质及职业技能，甲方鼓励并支持乙方参加职业培训。为确保乙方圆满完成培训学业 ，并按时返回甲方工作，甲乙双方订立如下协议：&lt;/p&gt;&lt;p&gt;　　一、甲方同意乙方赴______学习______专业，学习期自______年______月______日起至______年______月______日，实计为期______.&lt;/p&gt;&lt;p&gt;　　二、乙方应在甲方指定或与甲方约定的学校及专业就学。如需要变更，应事先通知甲方，并得到甲方的批准，否则以旷工论处。&lt;/p&gt;&lt;p&gt;　　三、乙方的学习时间，计入工作时间之内，按连续工龄累计。&lt;/p&gt;&lt;p&gt;　　四、学习培训期间的工资视情况按原工资办法的______支付。在晋级或工资办法修订时，乙方作为在编人员处理。社会保险原则上按有关规定作为在编人员处理。在培训期间，甲方另行支付给乙方生活费______元/月。培训期间的工资和生活费也计入培训费用。若在培训学习期间，乙方接受甲方交付的调查或安排出差，差旅费按公司规定的标准支付。&lt;/p&gt;&lt;p&gt;　　五、乙方学习期间患有不能继续学业的疾病时，应接受甲方指令，终止学习，返回甲方，并依有关规定处理。&lt;/p&gt;&lt;p&gt;　　六、乙方在学习期间，必须每隔______天向甲方书面报告一次学习情况，并附学校有关成绩等方面的记录。&lt;/p&gt;&lt;p&gt;　　七、乙方应自觉遵守培训校方的各项规定与要求。凡因违规违纪而受到校方处分的，视同在甲方内的违纪，甲方将按规章制度处理。&lt;/p&gt;&lt;p&gt;　　八、乙方在培训学习期间的学费、书费、调研费、实习费、上机费、住宿费、来回往返甲方的交通费（需有事招回）由甲方全额承担。&lt;/p&gt;&lt;p&gt;　　九、乙方如在培训学习期间辞职，应向甲方支付由甲方缴纳的全部培训学习费用的双倍的违约金，不足______元的按______元计算。&lt;/p&gt;&lt;p&gt;　　十、培训学习结束后，乙方应为甲方继续服务______年，从培训结束之日起算。该服务期约定视作&lt;a title=&quot;劳动合同&quot; class=&quot;bule&quot; href=&quot;http://www.chinalawedu.com/web/203/&quot; target=&quot;_blank&quot;&gt;劳动合同&lt;/a&gt;期限。在服务期内，乙方以任何理由解除劳动合同的，乙方应赔偿甲方培训费用，具体支付方法是：按服务期限等分培训费，以乙方已履行的合同期限递减支付，服务期限不足一年的按实际月份计算。服务期满解除的可免交培训费用；因严重违反规章制度被甲方解除劳动合同的，亦照此办理。&lt;/p&gt;&lt;p&gt;　　十一、在服务期内乙方以任何理由违反服务期约定解除劳动合同的，乙方应支付甲方违约金______元；因严重违反规章制度被甲方解除劳动合同的，亦照此办理。&lt;/p&gt;&lt;p&gt;　　十二、培训学习结束后，乙方应于培训结束之日起______日内向甲方报到。乙方逾期不向甲方报到，视作乙方解除劳动合同，按本协议第十条、第十一条处理。&lt;/p&gt;&lt;p&gt;　　十三、乙方在学习期间成绩优异，有杰出表现，甲方将视情况给予奖励。&lt;/p&gt;&lt;p&gt;　　十四、本协议一式两份，甲乙双方各执一份。&lt;/p&gt;&lt;p&gt;　　甲方签章： 乙方签章：&lt;/p&gt;&lt;p&gt;　　年 月 日 年 月 日&lt;/p&gt;&lt;p&gt;　　甲方： （以下简称甲方）&lt;/p&gt;&lt;p&gt;　　乙方： （以下简称乙方）&lt;/p&gt;&lt;p&gt;　　甲方根据企业发展需要对员工进行安防专业技术培训，乙方同意接受甲方的培训安排，以不断提高自身的技术水平。现经双方协商一致，就有关培训安排及培训后的相关事宜达成以下协议：&lt;/p&gt;&lt;p&gt;　　第一条 培训内容&lt;/p&gt;&lt;p&gt;　　1.&lt;/p&gt;&lt;p&gt;　　2.&lt;/p&gt;&lt;p&gt;　　3.&lt;/p&gt;&lt;p&gt;　　第二条 培训时间&lt;/p&gt;&lt;p&gt;　　培训时间为 天，自 年 月 日起，至 年 月 日止。&lt;/p&gt;&lt;p&gt;　　第三条 培训形式&lt;/p&gt;&lt;p&gt;　　乙方脱产参加甲方安排的培训。&lt;/p&gt;&lt;p&gt;　　第四条 责任和义务&lt;/p&gt;&lt;p&gt;　　1.乙方参训的费用（包括学费、交通费、住宿费和基本工资）由甲方支付。&lt;/p&gt;&lt;p&gt;　　2.乙方必须按时参加培训，全面完成培训期间的全部任务，并取得相应的（合格、专业、结业、毕业）证书。&lt;/p&gt;&lt;p&gt;　　3.乙方在参加培训期间没有完成培训任务或培训不合格（因不可抗力之因素除外），应向甲方支付所花费的全部费用，并赔偿甲方伍仟元经济损失。&lt;/p&gt;&lt;p&gt;　　4.乙方参加培训后，必须为甲方连续服务三年以上（包括三年）如果在此期间乙方擅自辞职，除了承担其外出参加培训的学费、交通费、住宿费和薪酬等全部费用外，另赔偿公司1-3万元经济损失。其中培训后第一年度辞职，赔偿甲方3万元；培训后第二年度辞职，赔偿甲方2万元；培训后第三年度辞职，赔偿甲方1万元。&lt;/p&gt;&lt;p&gt;　　5.在本协议执行期内，凡乙方自愿辞职、或擅自离职、或因违反甲方制度规定而被甲方勒令辞职（试用期除外）时，按照本协议第四条第3款之规定由乙方承担违约责任。&lt;/p&gt;&lt;p&gt;　　第五条 其他&lt;/p&gt;&lt;p&gt;　　1.本协议作为《劳动合同书》的附件，具有同等效力。&lt;/p&gt;&lt;p&gt;　　2.本协议一式两份，双方各执一份，自双方签字盖章之日生效。&lt;/p&gt;&lt;p&gt;　　甲方（盖章） 乙方（签字）&lt;/p&gt;&lt;p&gt;　　甲方代表（签名）&lt;/p&gt;&lt;p&gt;　　协议签订时间： 年 月 日&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;</textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">附件：
+                            </td>
+                            <td colspan="3">
+                                <select name="fjlb" id="fjlb" style="width:70%;">
+	<option value="20179232150553892314.doc">TestAtt.doc</option>
+
+</select>
+                                &nbsp;
+                            <input id="Button5" type="button" value="下载" onclick="AttDown();" class="mybtn" />
+                                <input type="submit" name="Button3" value="删除" onclick="javascript:return AttDel();" id="Button3" class="mybtn" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">上传附件：
+                            </td>
+                            <td colspan="3">
+                                <input name="uploadFile" type="file" id="uploadFile" style="width: 80%" />
+                                <input type="submit" name="Button4" value="上传" onclick="javascript:return PageCheck();" id="Button4" class="mybtn" />
+                            </td>
+                        </tr>
+                        <tr> <td align=center  colspan=4 ><div align=center><strong>用户自定义字段</strong></div> </td> </tr> <tr> <td  class=form-item >自定义字段：</td><td colspan=3><TEXTAREA rows=1 id=2017911538188775124 name=2017911538188775124 cols=80></TEXTAREA></td></tr>
+                        <tr>
+                            <td align="center" colspan="4" height="25">
+                                <input type="submit" name="Button1" value="确定" onclick="javascript:return chknull();" id="Button1" class="mybtn" />
+                                <input id="Button2" class="mybtn" onclick="window.close()" type="button" value="关闭" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <input name="Number" type="text" value="20179232146414833096" id="Number" style="display: none" />
+        <input name="PeiXunJhNumber" type="text" value="20179231623506252104" id="PeiXunJhNumber" style="display: none" />
+        <input name="StaffId" type="text" value="2" id="StaffId" readonly="readonly" style="display: none" />
+        <input name="BmId" type="text" value="1" id="BmId" style="display: none" />
+        <input name="ShenFen" type="text" id="ShenFen" style="display: none" />
+        <script type="text/javascript">
+            var wName_2;
+            function openunit() {
+                var num = Math.random();
+                var str = "" + document.getElementById('StaffId').value + "|" + document.getElementById('StaffNumer').value + "|" + document.getElementById('YuanGong').value + "|" + document.getElementById('XingBie').value + "|" + document.getElementById('ShenFen').value + "|" + document.getElementById('BmId').value + "|" + document.getElementById('BmMC').value + "|" + document.getElementById('GangWei').value + "|" + document.getElementById('ZhiWu').value + "";
+
+                //browser
+                var bstr = getBrowserType();
+                if (bstr == '3' | bstr == '4' | bstr == '5') {
+                    window.open("../../Choose/hr/Xzyg_Ht.aspx?tmp=" + num + "&requeststr=" + str + "&id=" + str + "", 'window', 'height=600,width=650,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no');
+                }
+                else {
+                    wName_2 = window.showModalDialog("../../choose/hr/Xzyg_Ht.aspx?tmp=" + num + "&requeststr=" + str + "&id=" + str + "", "window", "dialogWidth:650px;DialogHeight=600px;status:no;scroll=yes;help:no");
+                }
+
+                var arr = wName_2.split("|");
+                for (var i = 0; i < arr.length; i++) {
+                    document.getElementById("StaffId").value = arr[0];
+                    document.getElementById("StaffNumer").value = arr[1];
+                    document.getElementById("YuanGong").value = arr[2];
+                    document.getElementById("XingBie").value = arr[3];
+                    document.getElementById("ShenFen").value = arr[4];
+                    document.getElementById("BmId").value = arr[5];
+                    document.getElementById("BmMC").value = arr[6];
+                    document.getElementById("GangWei").value = arr[7];
+                    document.getElementById("ZhiWu").value = arr[8];
+                }
+            }
+
+            function setValue(str) {
+                var arr = str.split("|");
+                for (var i = 0; i < arr.length; i++) {
+                    document.getElementById("StaffId").value = arr[0];
+                    document.getElementById("StaffNumer").value = arr[1];
+                    document.getElementById("YuanGong").value = arr[2];
+                    document.getElementById("XingBie").value = arr[3];
+                    document.getElementById("ShenFen").value = arr[4];
+                    document.getElementById("BmId").value = arr[5];
+                    document.getElementById("BmMC").value = arr[6];
+                    document.getElementById("GangWei").value = arr[7];
+                    document.getElementById("ZhiWu").value = arr[8];
+                }
+            }
+
+            //培训计划
+            var wName_3;
+            function openpxjh() {
+                var num = Math.random();
+                var str = "" + document.getElementById('PeiXunJhNumber').value + "|" + document.getElementById('PeiXunMC').value + "";
+
+                //browser
+                var bstr = getBrowserType();
+                if (bstr == '3' | bstr == '4' | bstr == '5') {
+                    window.open("../../Choose/hr/Xzpxjh.aspx?tmp=" + num + "&requeststr=" + str + "&id=" + str + "", 'window', 'height=450,width=450,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no');
+                }
+                else {
+                    wName_3 = window.showModalDialog("../../choose/hr/Xzpxjh.aspx?tmp=" + num + "&requeststr=" + str + "&id=" + str + "", "window", "dialogWidth:450px;DialogHeight=450px;status:no;scroll=yes;help:no");
+                }
+
+                var arr = wName_3.split("|");
+                for (var i = 0; i < arr.length; i++) {
+                    document.getElementById("PeiXunJhNumber").value = arr[0];
+                    document.getElementById("PeiXunMC").value = arr[1];
+                }
+            }
+
+            function setValue_pxjh(str) {
+                var arr = str.split("|");
+                for (var i = 0; i < arr.length; i++) {
+                    document.getElementById("PeiXunJhNumber").value = arr[0];
+                    document.getElementById("PeiXunMC").value = arr[1];
+                }
+            }
+        </script>
+
+        <script type="text/javascript">
+            var wName;
+            var vtbox;
+            function OpenType(tbox, ttype) {
+                vtbox = tbox;
+                var rdm = Math.random();
+                var str = "" + document.getElementById(tbox).value;
+
+                //browser
+                var bstr = getBrowserType();
+                if (bstr == '3' | bstr == '4' | bstr == '5') {
+                    window.open("../../Choose/hr/Xzqt.aspx?tmp=" + rdm + "&rqstr=" + str + "&type=" + ttype + "", 'newwindow8', 'height=480,width=400,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no');
+                }
+                else {
+                    wName = window.showModalDialog("../../Choose/hr/Xzqt.aspx?tmp=" + rdm + "&rqstr=" + str + "&type=" + ttype + "", "newwindow", "dialogWidth:400px;DialogHeight=480px;status:no;scroll=yes;help:no");
+                }
+
+                //if (wName != null && wName != "undefined") {
+                document.getElementById(tbox).value = wName;
+                //}
+            }
+
+            function setValue_sys(str) {
+                document.getElementById(vtbox).value = str;
+            }
+        </script>
+        <script type="text/javascript">
+            var ue = UE.getEditor('editor');
+        </script>
+    </form>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<script type="text/javascript">
+    function chknull() {
+        if (document.getElementById('Name').value == '') {
+            alert('薪资名称不能为空');
+            form1.Name.focus();
+            return false;
+        }
+    }
+</script>
+<head >
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>
+<title>
+	工资计算
+</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script th:src="@{/js/Choose.js}" ></script>
+<script th:src="@{/js/MyJs.js}" ></script>
+<script th:src="@{/js/WebCalendar.js}" ></script>
+
+</head>
+<body class="main">
+    <form method="post" action="Gzjssz.aspx?tmp=0.12137223927252605" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+</div>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="2D50BFC2" />
+</div>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="td_base" width="80%" height="25px">工资计算
+                </td>
+                <td class="td_base" width="20%"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <table class="form" border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td class="form-item" style="width: 20%">帐套名称：
+                            </td>
+                            <td style="width: 30%">
+                                <select name="SaName" id="SaName" style="width:90%;">
+									<option value="2019412172476564029">飒飒</option>
+									<option value="2019412172295314441">飒飒</option>
+									<option value="20194794997189392">临时工套账</option>
+									<option value="2017926152156049517">正式员工账套</option>
+								</select>
+                            </td>
+                            <td class="form-item" style="width: 20%"><font color="red">*</font>薪资名称：
+                            </td>
+                            <td style="width: 30%">
+                                <input name="Name" type="text" id="Name" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">工资项计算开始时间：
+                            </td>
+                            <td>
+                                <select name="kyear" id="kyear" style="width:71px;">
+									<option value="2015">2015</option>
+									<option value="2016">2016</option>
+									<option value="2017">2017</option>
+									<option value="2018">2018</option>
+									<option selected="selected" value="2019">2019</option>
+									<option value="2020">2020</option>
+									<option value="2021">2021</option>
+									<option value="2022">2022</option>
+									<option value="2023">2023</option>
+									<option value="2024">2024</option>
+									<option value="2025">2025</option>
+								
+								</select>
+								                                年<select name="kmonth" id="kmonth" style="width:67px;">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option selected="selected" value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+									<option value="11">11</option>
+									<option value="12">12</option>
+								
+								</select>
+								                                月<select name="kday" id="kday" style="width:67px;">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+									<option value="11">11</option>
+									<option selected="selected" value="12">12</option>
+									<option value="13">13</option>
+									<option value="14">14</option>
+									<option value="15">15</option>
+									<option value="16">16</option>
+									<option value="17">17</option>
+									<option value="18">18</option>
+									<option value="19">19</option>
+									<option value="20">20</option>
+									<option value="21">21</option>
+									<option value="22">22</option>
+									<option value="23">23</option>
+									<option value="24">24</option>
+									<option value="25">25</option>
+									<option value="26">26</option>
+									<option value="27">27</option>
+									<option value="28">28</option>
+									<option value="29">29</option>
+									<option value="30">30</option>
+									<option value="31">31</option>
+								
+								</select>
+								                                日
+                            <script type="text/javascript">SetNeed('BothDay')</script>
+                            </td>
+                            <td class="form-item">工资项计算结束时间：
+                            </td>
+                            <td>
+                                <select name="jyear" id="jyear" style="width:77px;">
+									<option value="2015">2015</option>
+									<option value="2016">2016</option>
+									<option value="2017">2017</option>
+									<option value="2018">2018</option>
+									<option selected="selected" value="2019">2019</option>
+									<option value="2020">2020</option>
+									<option value="2021">2021</option>
+									<option value="2022">2022</option>
+									<option value="2023">2023</option>
+									<option value="2024">2024</option>
+									<option value="2025">2025</option>
+								
+								</select>
+								                                年<select name="jmonth" id="jmonth" style="width:70px;">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option selected="selected" value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+									<option value="11">11</option>
+									<option value="12">12</option>
+								
+								</select>
+								                                月<select name="jday" id="jday" style="width:69px;">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+									<option value="11">11</option>
+									<option selected="selected" value="12">12</option>
+									<option value="13">13</option>
+									<option value="14">14</option>
+									<option value="15">15</option>
+									<option value="16">16</option>
+									<option value="17">17</option>
+									<option value="18">18</option>
+									<option value="19">19</option>
+									<option value="20">20</option>
+									<option value="21">21</option>
+									<option value="22">22</option>
+									<option value="23">23</option>
+									<option value="24">24</option>
+									<option value="25">25</option>
+									<option value="26">26</option>
+									<option value="27">27</option>
+									<option value="28">28</option>
+									<option value="29">29</option>
+									<option value="30">30</option>
+									<option value="31">31</option>
+								
+								</select>
+								                                日
+                            <script type="text/javascript">SetNeed('BothDay')</script>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">对应年月：
+                            </td>
+                            <td colspan="3" height="25">
+                                <select name="DyYear" id="DyYear" style="width:71px;">
+									<option value="2015年">2015年</option>
+									<option value="2016年">2016年</option>
+									<option value="2017年">2017年</option>
+									<option value="2018年">2018年</option>
+									<option selected="selected" value="2019年">2019年</option>
+									<option value="2020年">2020年</option>
+									<option value="2021年">2021年</option>
+									<option value="2022年">2022年</option>
+									<option value="2023年">2023年</option>
+								
+								</select>
+								                                年<select name="DyMonth" id="DyMonth" style="width:67px;">
+									<option value="1月">1月</option>
+									<option value="2月">2月</option>
+									<option value="3月">3月</option>
+									<option selected="selected" value="4月">4月</option>
+									<option value="5月">5月</option>
+									<option value="6月">6月</option>
+									<option value="7月">7月</option>
+									<option value="8月">8月</option>
+									<option value="9月">9月</option>
+									<option value="10月">10月</option>
+									<option value="11月">11月</option>
+									<option value="12月">12月</option>
+								
+								</select>
+								                                月
+								                            <script type="text/javascript">SetNeed('BothDay')</script>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" colspan="4" height="25" >
+                                <input type="submit" name="Button4" value="保存并导入明细数据" onclick="javascript:return chknull();" id="Button4" class="mybtn" />
+                                <input id="Button3" class="mybtn" onclick="javascript: window.close()" type="button" value="不保存关闭窗口" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        
+    </form>
+</body>
+</html>

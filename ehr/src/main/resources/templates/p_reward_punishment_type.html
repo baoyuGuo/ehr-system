@@ -1,0 +1,108 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head id="Head1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>绩效奖惩类型</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script th:src="@{/js/Choose.js}" ></script>
+<script th:src="@{/js/MyJs.js}" ></script>
+<script th:src="@{/js/WebCalendar.js}" ></script>
+</head>
+<body class="main">
+    <form method="post" action="/page/p_reward_punishment_type_add" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+</div>
+
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td style="height: 30px" align="right">
+                    <a href="javascript:void(0)" onclick="chkAllw()" class="gvlink">全选</a>
+                    <a href="javascript:void(0)" onclick="revchkAll()" class="gvlink">反选</a>
+                    <input type="submit" name="AddBtn" value="增加" id="AddBtn" class="mybtn" />
+                    <input type="submit" name="modBtn" value="修改" onclick="javascript:return modcheck();" id="modBtn" class="mybtn" />
+                    <input type="submit" name="DelBtn" value="删除" onclick="javascript:return delcheck();" id="DelBtn" class="mybtn" />&nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <div>
+	<table class="hkgv" cellspacing="0" rules="all" border="1" id="GridView1" style="width:99%;border-collapse:collapse;">
+		<tr class="hkHeadStyle">
+			<th scope="col" style="width:30px;"><img src="/pic/refresh.gif" alt="序号" /></th><th align="center" scope="col" style="white-space:nowrap;">选择</th><th scope="col">奖惩项目</th><th scope="col">奖惩属性</th>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                    <span id="GridView1_ctl02_lblxh">1</span>
+                                </td><td align="center" style="width:30px;">
+                                    <input id="GridView1_ctl02_CheckSelect" type="checkbox" name="GridView1$ctl02$CheckSelect" />
+                                    
+                                    
+                                </td><td>全勤奖</td><td>奖励</td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                    <span id="GridView1_ctl03_lblxh">2</span>
+                                </td><td align="center" style="width:30px;">
+                                    <input id="GridView1_ctl03_CheckSelect" type="checkbox" name="GridView1$ctl03$CheckSelect" />
+                                    
+                                    
+                                </td><td>最佳员工奖</td><td>奖励</td>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                    <span id="GridView1_ctl04_lblxh">3</span>
+                                </td><td align="center" style="width:30px;">
+                                    <input id="GridView1_ctl04_CheckSelect" type="checkbox" name="GridView1$ctl04$CheckSelect" />
+                                    
+                                    
+                                </td><td>最佳同事奖</td><td>奖励</td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                    <span id="GridView1_ctl05_lblxh">4</span>
+                                </td><td align="center" style="width:30px;">
+                                    <input id="GridView1_ctl05_CheckSelect" type="checkbox" name="GridView1$ctl05$CheckSelect" />
+                                    
+                                    
+                                </td><td>会议迟到十分钟</td><td>惩罚</td>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                    <span id="GridView1_ctl06_lblxh">5</span>
+                                </td><td align="center" style="width:30px;">
+                                    <input id="GridView1_ctl06_CheckSelect" type="checkbox" name="GridView1$ctl06$CheckSelect" />
+                                    
+                                    
+                                </td><td>连续迟到3天</td><td>惩罚</td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                    <span id="GridView1_ctl07_lblxh">6</span>
+                                </td><td align="center" style="width:30px;">
+                                    <input id="GridView1_ctl07_CheckSelect" type="checkbox" name="GridView1$ctl07$CheckSelect" />
+                                    
+                                    
+                                </td><td>部门业绩最差</td><td>惩罚</td>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                    <span id="GridView1_ctl08_lblxh">7</span>
+                                </td><td align="center" style="width:30px;">
+                                    <input id="GridView1_ctl08_CheckSelect" type="checkbox" name="GridView1$ctl08$CheckSelect" />
+                                    
+                                    
+                                </td><td>部门业绩最优</td><td>奖励</td>
+		</tr>
+	</table>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    
+<!-- AspNetPager 7.5 Copyright:2003-2015 Webdiyer (www.webdiyer.com) -->
+<!--记录总数只有一页，AspNetPager已自动隐藏，若需在只有一页数据时显示AspNetPager，请将AlwaysShow属性值设为true！-->
+<!-- AspNetPager 7.5 Copyright:2003-2015 Webdiyer (www.webdiyer.com) -->
+
+
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

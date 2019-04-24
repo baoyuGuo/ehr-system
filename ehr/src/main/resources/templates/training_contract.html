@@ -1,0 +1,68 @@
+<head id="Head1"><meta http-equiv="Content-Type" content="text/html; charset=gb2312" /><title>
+	员工培训
+</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
+	<script th:src="@{/js/MyJs.js}" ></script>
+	<script th:src="@{/js/WebCalendar.js}" ></script>
+	    
+    <script type="text/javascript">
+        function showfrom(str) {
+            var num = Math.random();
+            window.open("/training/queryContractInfo?tmp=" + num + "&id=" + str + "", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
+        }
+    </script>
+</head>
+<body class="main">
+    <form method="post" action="Pxxy.aspx" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTA1ODc1OTczNA8WAh4TVmFsaWRhdGVSZXF1ZXN0TW9kZQIBFgICAw9kFgQCAQ88KwARAwAPFgQeC18hRGF0YUJvdW5kZx4LXyFJdGVtQ291bnQCAWQBEBYAFgAWAAwUKwAAFgJmD2QWBAIBDw9kFgIeB29uY2xpY2sFGWphdmFzY3JpcHQ6Y2hhbmdlQmcodGhpcykWDGYPZBYCAgEPDxYCHgRUZXh0BQExZGQCAQ8PFgIfBAUb6K+V55So5pyf5ZGY5bel5Z+56K6t5Y2P6K6uZGQCAg8PFgIfBAUG5bqe57ufZGQCAw8PFgIfBAUHMjAxN+W5tGRkAgQPDxYCHwQFKDIwMTflubTkuInlraPluqbnoJTlj5HkurrlkZjln7norq3orqHliJJkZAIFD2QWBAIBDw8WAh8EBQExZGQCAw8PFgIfBAVOIDxhIGhyZWY9ImphdmFzY3JpcHQ6dm9pZCgwKSIgb25jbGljaz0ic2hvd2Zyb20oMSk7IiBjbGFzcz0iZ3ZsaW5rIj7mn6XnnIs8L2E+ZGQCAg8PFgIeB1Zpc2libGVoZGQCAw8PFgQeCFBhZ2VTaXplAg8eC1JlY29yZGNvdW50AgFkZBgBBQlHcmlkVmlldzEPPCsADAEIAgFk" />
+</div>
+
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td style="height: 10px"></td>
+            </tr>
+            <tr>
+                <td>
+                    <table cellspacing="0" cellpadding="0" border="0" width="98%" align="center">
+                        <tr>
+                            <td style="width: 91px; background-image: url(/pic/tab_b_y.gif)" align="center">
+                                <a href="Pxxy.aspx" class="mail_top">培训协议</a>
+                            </td>
+                            <td align="right">&nbsp;
+                            </td>
+                        </tr>
+                    </table>
+                    <table cellspacing="0" cellpadding="0" width="98%" align="center" border="0">
+                        <tr>
+                            <td colspan="2">
+                                <div>
+									<table class="hkgv" cellspacing="0" rules="all" border="1" id="GridView1" style="width:100%;border-collapse:collapse;">
+										<tr class="hkHeadStyle">
+											<th scope="col" style="width:30px;"><img src="/pic/refresh.gif" alt="序号" /></th><th scope="col">培训协议主题</th><th scope="col">员工姓名</th><th scope="col">培训年份</th><th scope="col">培训计划名称</th><th scope="col" style="width:80px;white-space:nowrap;">操作</th>
+										</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+											<td align="center">
+                                                <span id="GridView1_ctl02_lblxh">1</span>
+                                            </td><td>试用期员工培训协议</td><td>庞统</td><td>2017年</td><td>2017年三季度研发人员培训计划</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                <span id="GridView1_ctl02_Label1"> <a href="javascript:void(0)" onclick="showfrom(1);" class="gvlink">查看</a></span>
+                                            </td>
+		</tr>
+	</table>
+</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="height: 22px">
+								<!-- AspNetPager 7.5 Copyright:2003-2015 Webdiyer (www.webdiyer.com) -->
+								<!--记录总数只有一页，AspNetPager已自动隐藏，若需在只有一页数据时显示AspNetPager，请将AlwaysShow属性值设为true！-->
+								<!-- AspNetPager 7.5 Copyright:2003-2015 Webdiyer (www.webdiyer.com) -->
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+<!-- ajax初始化页面 -->
+</html>

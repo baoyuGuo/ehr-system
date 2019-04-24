@@ -1,0 +1,199 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head id="Head1"><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>
+	培训计划
+</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script th:src="@{/js/Choose.js}" ></script>
+	<script th:src="@{/js/MyJs.js}" ></script>
+	<script th:src="@{/js/WebCalendar.js}" ></script>
+    
+    <script type="text/javascript">
+        function addfrom() {
+            var num = Math.random();
+            window.open("/page/training_plans_add", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
+        }
+
+        function showfrom(str) {
+            var num = Math.random();
+            window.open("/page/training_plans_info", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
+        }
+
+        function updatefrom(str) {
+            var num = Math.random();
+            window.open("/training/modify_contract?tmp=" + num + "&id=" + str + "", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
+        }
+    </script>
+</head>
+<body class="main">
+    <form method="post" action="Pxjh_R.aspx" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+</div>
+
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    <table cellspacing="0" cellpadding="0" width="100%" align="center" border="0" class="form">
+                        <tr>
+                            <td align="right">计划编号：
+                            </td>
+                            <td>
+                                <input name="jsBianhao" type="text" id="jsBianhao" class="mytext" style="width:150px;" />
+                            </td>
+                            <td align="right">计划名称：
+                            </td>
+                            <td>
+                                <input name="jsMingcheng" type="text" id="jsMingcheng" class="mytext" style="width:150px;" />
+                            </td>
+                            <td align="right">请选择年份：
+                            </td>
+                            <td>
+                                <select name="Nianfen" id="Nianfen" style="width:150px;">
+									<option selected="selected" value="0">所有年份</option>
+									<option value="2019年">2019年</option>
+									<option value="2018年">2018年</option>
+									<option value="2017年">2017年</option>
+									<option value="2016年">2016年</option>
+								</select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">计划开始时间：
+                            </td>
+                            <td colspan="5">
+                                <input name="StartTime" type="text" id="StartTime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:90px;" />至<input name="EndTime" type="text" id="EndTime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:90px;" />
+                                <input type="submit" name="QueryBtn" value="查询" id="QueryBtn" class="mybtn" />
+                                <input name="AddBtn" type="button" id="AddBtn" value="增加" class="mybtn" onclick="javascript: addfrom();" />
+                                <input type="submit" name="DelBtn" value="删除" onclick="javascript:return delcheck();" id="DelBtn" class="mybtn" />
+                                <a href="javascript:void(0)" onclick="chkAllw()" class="gvlink">全选</a>
+                                <a href="javascript:void(0)" onclick="revchkAll()" class="gvlink">反选</a>
+                            </td>
+                        </tr>
+                    </table>
+                    <table cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
+                        <tr>
+                            <td colspan="2">
+                                <div>
+									<table class="hkgv" cellspacing="0" rules="all" border="1" id="GridView1" style="width:100%;border-collapse:collapse;">
+										<tr class="hkHeadStyle">
+											<th scope="col" style="width:30px;"><img src="/pic/refresh.gif" alt="序号" /></th>
+											<th align="center" scope="col" style="white-space:nowrap;">选择</th>
+											<th scope="col">计划编号</th>
+											<th scope="col">计划名称</th>
+											<th scope="col">培训年份</th>
+											<th scope="col">培训地点</th>
+											<th scope="col" style="width:80px;white-space:nowrap;">操作</th>
+										</tr>
+										<tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+											<td align="center">
+                                                <span id="GridView1_ctl02_lblxh">1</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl02_CheckSelect" type="checkbox" name="GridView1$ctl02$CheckSelect" />
+                                                
+                                                
+                                            </td>
+                                            <td>2017090001</td>
+                                            <td>2017年三季度研发人员培训计划</td>
+                                            <td>2017年</td><td>公司培训室</td>
+                                            <td align="center" style="width:80px;white-space:nowrap;">
+                                                
+                                                <span id="GridView1_ctl02_Label1"> <a href="javascript:void(0)" onclick="showfrom(1);" class="gvlink">查看</a></span>
+                                                <span id="GridView1_ctl02_Label2"> <a href="javascript:void(0)" onclick="updatefrom(1);" class="gvlink">修改</a></span>
+                                            </td>
+											</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+												<td align="center">
+                                                <span id="GridView1_ctl03_lblxh">2</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl03_CheckSelect" type="checkbox" name="GridView1$ctl03$CheckSelect" />
+                                                
+                                                
+                                            </td><td>2017090002</td><td>2017年四季度理货人员培训计划</td><td>2017年</td><td>北京</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                
+                                                <span id="GridView1_ctl03_Label1"> <a href="javascript:void(0)" onclick="showfrom(2);" class="gvlink">查看</a></span>
+                                                <span id="GridView1_ctl03_Label2"> <a href="javascript:void(0)" onclick="updatefrom(2);" class="gvlink">修改</a></span>
+                                            </td>
+										</tr>
+										<tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+												<td align="center">
+                                                <span id="GridView1_ctl04_lblxh">3</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl04_CheckSelect" type="checkbox" name="GridView1$ctl04$CheckSelect" />
+                                                
+                                                
+                                            </td><td>2018010001</td><td>2018年一季度人事部门培训计划</td><td>2017年</td><td>上海分公司</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                
+                                                <span id="GridView1_ctl04_Label1"> <a href="javascript:void(0)" onclick="showfrom(3);" class="gvlink">查看</a></span>
+                                                <span id="GridView1_ctl04_Label2"> <a href="javascript:void(0)" onclick="updatefrom(3);" class="gvlink">修改</a></span>
+                                            </td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl05_lblxh">4</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl05_CheckSelect" type="checkbox" name="GridView1$ctl05$CheckSelect" />
+                                                
+                                                
+                                            </td><td>2018030001</td><td>2018年二季度物业部门培训计划</td><td>2017年</td><td>北京</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                
+                                                <span id="GridView1_ctl05_Label1"> <a href="javascript:void(0)" onclick="showfrom(4);" class="gvlink">查看</a></span>
+                                                <span id="GridView1_ctl05_Label2"> <a href="javascript:void(0)" onclick="updatefrom(4);" class="gvlink">修改</a></span>
+                                            </td>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl06_lblxh">5</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl06_CheckSelect" type="checkbox" name="GridView1$ctl06$CheckSelect" />
+                                                
+                                                
+                                            </td><td>2018030002</td><td>2018年二季度幼教公司培训计划</td><td>2017年</td><td>上海分公司</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                
+                                                <span id="GridView1_ctl06_Label1"> <a href="javascript:void(0)" onclick="showfrom(5);" class="gvlink">查看</a></span>
+                                                <span id="GridView1_ctl06_Label2"> <a href="javascript:void(0)" onclick="updatefrom(5);" class="gvlink">修改</a></span>
+                                            </td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl07_lblxh">6</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl07_CheckSelect" type="checkbox" name="GridView1$ctl07$CheckSelect" />
+                                                
+                                                
+                                            </td><td>2017090003</td><td>2017年二季度研发人员培训计划</td><td>2017年</td><td>&nbsp;</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                
+                                                <span id="GridView1_ctl07_Label1"> <a href="javascript:void(0)" onclick="showfrom(6);" class="gvlink">查看</a></span>
+                                                <span id="GridView1_ctl07_Label2"> <a href="javascript:void(0)" onclick="updatefrom(6);" class="gvlink">修改</a></span>
+                                            </td>
+		</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl08_lblxh">7</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl08_CheckSelect" type="checkbox" name="GridView1$ctl08$CheckSelect" />
+                                                
+                                                
+                                            </td><td>00787</td><td>343</td><td>2018年</td><td>&nbsp;</td><td align="center" style="width:80px;white-space:nowrap;">
+                                                
+                                                <span id="GridView1_ctl08_Label1"> <a href="javascript:void(0)" onclick="showfrom(7);" class="gvlink">查看</a></span>
+                                                <span id="GridView1_ctl08_Label2"> <a href="javascript:void(0)" onclick="updatefrom(7);" class="gvlink">修改</a></span>
+                                            </td>
+		</tr>
+	</table>
+</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="height: 22px">
+                                
+<!-- AspNetPager 7.5 Copyright:2003-2015 Webdiyer (www.webdiyer.com) -->
+<!--记录总数只有一页，AspNetPager已自动隐藏，若需在只有一页数据时显示AspNetPager，请将AlwaysShow属性值设为true！-->
+<!-- AspNetPager 7.5 Copyright:2003-2015 Webdiyer (www.webdiyer.com) -->
+
+
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

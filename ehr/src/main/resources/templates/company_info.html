@@ -1,0 +1,301 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>企业档案</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+	<script th:src="@{/js/Choose.js}" ></script>
+	<script th:src="@{/js/MyJs.js}" ></script>
+	<script th:src="@{/js/WebCalendar.js}" ></script>
+</head>
+<body class="main">
+    <form method="post" action="qyda.aspx" onsubmit="javascript:return WebForm_OnSubmit();" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTIxMzI4NTIwNjkPFgIeE1ZhbGlkYXRlUmVxdWVzdE1vZGUCARYCAgEPZBYEAgUPDxYCHgRUZXh0BQMwMDFkZAIxDzwrABECARAWABYAFgAMFCsAAGQYAQUJR3JpZFZpZXcxDzwrAAwCBhUBBXF5X2lkCAL/////D2Q=" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=vudijOiPsXbRNyut9-0U3bMyqqE1zHSia7dIT_ojQbq8fm8-8Z2FcJkm-kIXcPiqpPoVLbDTp26i1VVWpQ17yyMHefgYeJwvJ4pA9C4q8b01&amp;t=634773918900000000" type="text/javascript"></script>
+
+
+<script src="/WebResource.axd?d=1j2eUwFl9gBQNDTyOgcj_mPreLZw4ug354OeQwXJ2_8P5RDnivZ9Uisq7U5SWwtr5qHidkG05t-_E26yIm0ZFk7pFImFy-_dzr4TMJuzXzc1&amp;t=634773918900000000" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+</script>
+
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td valign="top" colspan="2">
+                    <table cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
+                        <tr>
+                            <td align="right" style="height: 30px">
+                                
+                                <input type="submit" name="SaveBtn" value="保 存" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;SaveBtn&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="SaveBtn" class="mybtn" />&nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="form">
+                                    <tr>
+                                        <td width="20%" class="form-item">
+                                            <font color="red">*</font>企业编码：
+                                        </td>
+                                        <td width="30%">
+                                            <input name="qybm" type="text" value="001" maxlength="10" id="qybm" disabled="disabled" class="aspNetDisabled mytext" style="width:90%;" />
+                                        </td>
+                                        <td width="20%" class="form-item">
+                                            <font color="red">*</font>企业品牌：
+                                        </td>
+                                        <td width="30%">
+                                            <input name="pp" type="text" value="测试" maxlength="10" id="pp" class="mytext" style="width:90%;" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">
+                                            <font color="red">*</font>企业全称：
+                                        </td>
+                                        <td colspan="3">
+                                            <input name="qc" type="text" value="测试（中国）集团有限责任公司" id="qc" class="mytext" style="width:96%;" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">
+                                            <font color="red">*</font>企业简称：
+                                        </td>
+                                        <td>
+                                            <input name="jc" type="text" value="测试集团公司" id="jc" class="mytext" style="width:90%;" />
+                                        </td>
+                                        <td class="form-item">英文名称：
+                                        </td>
+                                        <td>
+                                            <input name="ywmc" type="text" value="CeShi" id="ywmc" class="mytext" style="width:90%;" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">企业类型：
+                                        </td>
+                                        <td>
+                                            <input name="lx" type="text" value="集团企业" id="lx" class="mytext" style="width:90%;" />
+                                        </td>
+                                        <td class="form-item">所属行业：
+                                        </td>
+                                        <td>
+                                            <input name="sshy" type="text" id="sshy" class="mytext" style="width:90%;" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">公司地址：
+                                        </td>
+                                        <td>
+                                            <input name="dz" type="text" id="dz" class="mytext" style="width:90%;" />
+                                        </td>
+                                        <td class="form-item">邮政编码：
+                                        </td>
+                                        <td>
+                                            <input name="yzbm" type="text" maxlength="6" id="yzbm" class="mytext" style="width:90%;" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">公司电话：
+                                        </td>
+                                        <td>
+                                            <input name="dh" type="text" id="dh" class="mytext" style="width:90%;" />
+                                        </td>
+                                        <td class="form-item">传真号码：
+                                        </td>
+                                        <td>
+                                            <input name="cz" type="text" id="cz" class="mytext" style="width:90%;" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">公司网站：
+                                        </td>
+                                        <td>
+                                            <input name="wz" type="text" id="wz" class="mytext" style="width:90%;" />
+                                        </td>
+                                        <td class="form-item">电子邮箱：
+                                        </td>
+                                        <td>
+                                            <input name="mail" type="text" id="mail" class="mytext" style="width:90%;" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">法人代表：
+                                        </td>
+                                        <td>
+                                            <input name="frdb" type="text" id="frdb" class="mytext" style="width:90%;" />
+                                        </td>
+                                        <td class="form-item">注册时间：
+                                        </td>
+                                        <td>
+                                            <input name="zcsj" type="text" value="2007/1/1" id="zcsj" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" style="width:90%;" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">注册资金：
+                                        </td>
+                                        <td>
+                                            <input name="zczj" type="text" value="50000000.00" id="zczj" class="mytext" style="width:90%;" />
+                                        </td>
+                                        <td class="form-item">员工人数：
+                                        </td>
+                                        <td>
+                                            <input name="ygrs" type="text" value="500" id="ygrs" class="mytext" style="width:90%;" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">国税号：
+                                        </td>
+                                        <td>
+                                            <input name="gsh" type="text" id="gsh" class="mytext" style="width:90%;" />
+                                        </td>
+                                        <td class="form-item">地税号：
+                                        </td>
+                                        <td>
+                                            <input name="dsh" type="text" id="dsh" class="mytext" style="width:90%;" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">开户银行：
+                                        </td>
+                                        <td>
+                                            <input name="khyh" type="text" id="khyh" class="mytext" style="width:90%;" />
+                                        </td>
+                                        <td class="form-item">银行帐号：
+                                        </td>
+                                        <td>
+                                            <input name="yhzh" type="text" id="yhzh" class="mytext" style="width:90%;" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="form-item">企业简介：
+                                        </td>
+                                        <td colspan="3">
+                                            <textarea name="qyjj" rows="2" cols="20" id="qyjj" class="mytext" style="width:96%;">
+</textarea>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <table cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
+                        <tr>
+                            <td colspan="2">
+                                
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <div id="ValidationSummary2" style="display:none;">
+
+</div>
+        <span id="RequiredFieldValidator2" style="visibility:hidden;">&nbsp;
+        </span>
+        <span id="RequiredFieldValidator5" style="visibility:hidden;">&nbsp;
+        </span>
+        <span id="RequiredFieldValidator1" style="visibility:hidden;">&nbsp;
+        </span>
+        <span id="RegularExpressionValidator1" style="display:none;"></span>
+        <span id="RegularExpressionValidator17" style="display:none;"></span>
+        <span id="RegularExpressionValidator2" style="display:none;"></span>
+    
+<script type="text/javascript">
+//<![CDATA[
+var Page_ValidationSummaries =  new Array(document.getElementById("ValidationSummary2"));
+var Page_Validators =  new Array(document.getElementById("RequiredFieldValidator2"), document.getElementById("RequiredFieldValidator5"), document.getElementById("RequiredFieldValidator1"), document.getElementById("RegularExpressionValidator1"), document.getElementById("RegularExpressionValidator17"), document.getElementById("RegularExpressionValidator2"));
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+var ValidationSummary2 = document.all ? document.all["ValidationSummary2"] : document.getElementById("ValidationSummary2");
+ValidationSummary2.showmessagebox = "True";
+ValidationSummary2.showsummary = "False";
+var RequiredFieldValidator2 = document.all ? document.all["RequiredFieldValidator2"] : document.getElementById("RequiredFieldValidator2");
+RequiredFieldValidator2.controltovalidate = "pp";
+RequiredFieldValidator2.errormessage = "请输入企业品牌";
+RequiredFieldValidator2.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+RequiredFieldValidator2.initialvalue = "";
+var RequiredFieldValidator5 = document.all ? document.all["RequiredFieldValidator5"] : document.getElementById("RequiredFieldValidator5");
+RequiredFieldValidator5.controltovalidate = "qc";
+RequiredFieldValidator5.errormessage = "请输入企业全称";
+RequiredFieldValidator5.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+RequiredFieldValidator5.initialvalue = "";
+var RequiredFieldValidator1 = document.all ? document.all["RequiredFieldValidator1"] : document.getElementById("RequiredFieldValidator1");
+RequiredFieldValidator1.controltovalidate = "jc";
+RequiredFieldValidator1.errormessage = "请输入企业简称";
+RequiredFieldValidator1.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+RequiredFieldValidator1.initialvalue = "";
+var RegularExpressionValidator1 = document.all ? document.all["RegularExpressionValidator1"] : document.getElementById("RegularExpressionValidator1");
+RegularExpressionValidator1.controltovalidate = "qybm";
+RegularExpressionValidator1.errormessage = "企业编码必需为数字、字母或二者组合";
+RegularExpressionValidator1.display = "None";
+RegularExpressionValidator1.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+RegularExpressionValidator1.validationexpression = "^\\w+$";
+var RegularExpressionValidator17 = document.all ? document.all["RegularExpressionValidator17"] : document.getElementById("RegularExpressionValidator17");
+RegularExpressionValidator17.controltovalidate = "zczj";
+RegularExpressionValidator17.errormessage = "注册资金必须为数值型";
+RegularExpressionValidator17.display = "None";
+RegularExpressionValidator17.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+RegularExpressionValidator17.validationexpression = "\\d+\\.\\d+|\\d{0,9}";
+var RegularExpressionValidator2 = document.all ? document.all["RegularExpressionValidator2"] : document.getElementById("RegularExpressionValidator2");
+RegularExpressionValidator2.controltovalidate = "ygrs";
+RegularExpressionValidator2.errormessage = "员工人数必须为大于0的整数";
+RegularExpressionValidator2.display = "None";
+RegularExpressionValidator2.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+RegularExpressionValidator2.validationexpression = "^[1-9]{1}[\\d]*$";
+//]]>
+</script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        //]]>
+</script>
+</form>
+</body>
+</html>

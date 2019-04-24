@@ -1,0 +1,173 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>
+	新增员工离职
+</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/codemirror.css}">
+<script th:src="@{/js/Choose.js}" ></script>
+<script th:src="@{/js/MyJs.js}" ></script>
+</head>
+<body class="main" >
+    <form method="post" action="/humanfiles/dimission" id="form1" enctype="multipart/form-data" style="">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" style="">
+            <tbody style=""><tr>
+                <td class="td_base" width="80%" height="25px">新增员工离职
+                </td>
+                <td class="td_base" width="20%"></td>
+            </tr>
+            <tr style="">
+                <td colspan="2" style="">
+                    <table class="form" border="0" cellpadding="0" cellspacing="0" width="100%" style="">
+                        <tbody style=""><tr>
+                            <td align="center" colspan="4">
+                                <b>员工信息</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item" style="width: 20%"><font color="red">*</font>员工工号：
+                            </td>
+                            <td style="width: 30%">
+                                <input name="enumber" type="text" id="enumber" class="mytext" style="width:80%;"></a>
+                                <script type="text/javascript">
+                                	function fillPage(){
+                                		$.ajax({
+                                			type: "get", //数据发送的方式（post 或者 get）
+                                	        url: "../../humanfiles/queryEmployeeByEnumber", //要发送的后台地址
+                                	        data: { enumber: ${enumber}.value }, //要发送的数据（参数）格式为{'val1':"1","val2":"2"}
+                                	        dataType: "json", //后台处理后返回的数据格式
+                                	        success: function(data) {//ajax请求成功后触发的方法
+                                	            alert('请求成功');
+                                	        },
+                                	        error: function(msg) {//ajax请求失败后触发的方法
+                                	            alert(msg); //弹出错误信息
+                                	        }
+                                		});
+                                	}
+                                </script>
+                                 <a href="javascript:void(0)" onclick="fillPage()">
+                               	 	<img id="queryInfoImg" src="/pic/choose_002.gif" border="0">
+                                 </a>
+                            </td>
+                            <td class="form-item" style="width: 20%">员工姓名：
+                            </td>
+                            <td style="width: 30%">
+                                <input name="ename" type="text" id="ename" class="mytext" style="width:90%;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">性别：
+                            </td>
+                            <td>
+                                <input name="egender" type="text" id="egender" class="mytext" readonly="readonly" style="width:90%;">
+                            </td>
+                            <td class="form-item">员工身份证：
+                            </td>
+                            <td>
+                                <input name="identitynumber" type="text" id="identitynumber" class="mytext" readonly="readonly" style="width:90%;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">所在部门名称：
+                            </td>
+                            <td colspan="3">
+                                <input name="edepartmentnum" type="text" id="edepartmentnum" class="mytext" readonly="readonly" style="width:96%;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">岗位：
+                            </td>
+                            <td>
+                                <input name="eposttype" type="text" id="eposttype" class="mytext" readonly="readonly" style="width:90%;">
+                            </td>
+                            <td class="form-item">职务：
+                            </td>
+                            <td>
+                                <input name="epost" type="text" id="epost" class="mytext" readonly="readonly" style="width:90%;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" style="text-align: center">
+                                <strong>离职信息</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">离职时间：
+                            </td>
+                            <td>
+                                <input name="dmDate" type="text" id="dmDate" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" style="width:90%;">
+                            </td>
+                            <td class="form-item"><font color="red">*</font>离职类型：
+                            </td>
+                            <td>
+                              	<select name="dmType" id="dmType" style="width:90%;">
+									<option value="辞退" selected="selected">辞退</option>
+									<option value="退休">外调</option>
+									<option value="外调">退休</option>
+								</select>
+                              </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">去向：
+                            </td>
+                            <td>
+                                <input name="to" type="text" id="to" class="mytext" style="width:90%;">
+                            </td>
+                            <td class="form-item">工资截止：
+                            </td>
+                            <td>
+                                <input name="gzjz" type="text" id="gzjz" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" style="width:90%;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" style="text-align: center">
+                                <strong>详细信息</strong>
+                            </td>
+                        </tr>
+                        <tr style="">
+                            <td class="form-item">离职说明：
+                            </td>
+                            <td colspan="3">
+                            	<textarea rows="10"  id="dDescription" name="dDescription" cols="80"></textarea></td></tr>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">上传附件：
+                            </td>
+                            <td colspan="3">
+                                <input name="uploadFile" type="file" id="uploadFile" style="width: 80%">
+                                <input type="submit" name="Button4" value="上传" onclick="javascript:return PageCheck();" id="Button4" class="mybtn">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">是否解除合同：
+                            </td>
+                            <td colspan="3">
+                                <select name="deleteconstract" id="deleteconstract" style="width:96%;">
+									<option value="是">是</option>
+									<option value="否">否</option>
+								</select>
+                            </td>
+                        </tr>
+                        <tr> 
+                        	<td align="center" colspan="4"><div align="center"><strong>用户自定义字段</strong></div> </td>
+                         </tr>
+                         <tr><td class="form-item">自定义字段：</td> <td colspan="3">
+                        	<textarea rows="1" id="marks" name="marks" cols="80"></textarea></td></tr>
+                        <tr>
+                            <td align="center" colspan="4" height="25">
+                                <input type="submit" name="Button1" value="确定" onclick="javascript:return chknull();" id="Button1" class="mybtn">
+                                <input id="Button2" class="mybtn" onclick="window.close()" type="button" value="关闭">
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </td>
+            </tr>
+        </tbody></table>
+        <input name="StaffId" type="text" id="StaffId" style="display: none">
+        <input name="BuMenId" type="text" id="BuMenId" style="display: none">
+    </form>
+</body>
+</html>

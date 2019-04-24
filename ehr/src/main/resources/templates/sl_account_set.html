@@ -1,0 +1,94 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head >
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>
+	工资帐套管理
+</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script th:src="@{/js/Choose.js}" ></script>
+<script th:src="@{/js/MyJs.js}" ></script>
+<script th:src="@{/js/WebCalendar.js}" ></script>
+<script type="text/javascript">
+    function showfrom(str) {
+        window.open("Gzztsdgl.aspx", "_blank", "height=650, width=800,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=10,left=120")
+    }
+
+    function addfrom() {
+	    window.open("/page/sl_account_set_add", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=200,left=500")
+    }
+</script>
+
+</head>
+<body class="main">
+    <form method="post" action="Gzztgl.aspx" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTUzODAzMDgzMg9kFgICAw9kFgYCAQ8PZBYCHgdvbmNsaWNrBR1qYXZhc2NyaXB0OnJldHVybiBkZWxjaGVjaygpO2QCAw88KwARAgAPFgQeC18hRGF0YUJvdW5kZx4LXyFJdGVtQ291bnQCAmQBEBYAFgAWABYCZg9kFgYCAQ8PZBYCHwAFGWphdmFzY3JpcHQ6Y2hhbmdlQmcodGhpcykWDmYPZBYCAgEPDxYCHgRUZXh0BQExZGQCAQ9kFgQCAw8PFgIfAwUBNWRkAgUPDxYCHwMFEuato+W8j+WRmOW3pei0puWll2RkAgIPDxYCHwMFEuato+W8j+WRmOW3pei0puWll2RkAgMPDxYCHwMFAjI1ZGQCBA8PFgIfAwUCMjZkZAIFDw8WAh8DBQPmmK9kZAIGD2QWAmYPFQEBNWQCAg8PZBYCHwAFGWphdmFzY3JpcHQ6Y2hhbmdlQmcodGhpcykWDmYPZBYCAgEPDxYCHwMFATJkZAIBD2QWBAIDDw8WAh8DBQE2ZGQCBQ8PFgIfAwUP5Li05pe25bel5aWX6LSmZGQCAg8PFgIfAwUP5Li05pe25bel5aWX6LSmZGQCAw8PFgIfAwUBMWRkAgQPDxYCHwMFATFkZAIFDw8WAh8DBQPmmK9kZAIGD2QWAmYPFQEBNmQCAw8PFgIeB1Zpc2libGVoZGQCBQ8PFgQeCFBhZ2VTaXplAg8eC1JlY29yZGNvdW50AgJkZBgCBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WAgUbR3JpZFZpZXcxJGN0bDAyJENoZWNrU2VsZWN0BRtHcmlkVmlldzEkY3RsMDMkQ2hlY2tTZWxlY3QFCUdyaWRWaWV3MQ88KwAMAQgCAWSwTgcvQ/NJsDvPal+Uf34iJvAeJxHyxxNwkCr31lCfHA==" />
+</div>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="83E29987" />
+</div>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    <table cellspacing="0" cellpadding="0" width="98%" align="center" border="0">
+                        <tr>
+                            <td align="right" style="height: 30px">
+                                <a href="javascript:void(0)" onclick="chkAllw()" class="gvlink">全选</a>
+                                <a href="javascript:void(0)" onclick="revchkAll()" class="gvlink">反选</a>
+                                <input type="button" id="AddBtn" name="AddBtn" value="增加" class="mybtn" onclick="javascript: addfrom();" />
+                                <input type="submit" name="DelBtn" value="删除" onclick="javascript:return delcheck();" id="DelBtn" class="mybtn" />
+                            </td>
+                        </tr>
+                    </table>
+                    <table cellspacing="0" cellpadding="0" width="98%" align="center" border="0">
+                        <tr>
+                            <td colspan="2">
+                                <div>
+									<table class="hkgv" cellspacing="0" rules="all" border="1" id="GridView1" style="width:100%;border-collapse:collapse;">
+										<tr class="hkHeadStyle">
+											<th scope="col" style="width:30px;"><img src="/pic/refresh.gif" alt="序号" /></th><th align="center" scope="col" style="white-space:nowrap;">选择</th><th scope="col">帐套名称</th><th scope="col">开始时间（上一月）</th><th scope="col">结束时间（本月）</th><th scope="col">是否有效</th><th scope="col" style="width:50px;white-space:nowrap;">管理</th>
+										</tr><tr class="hkRowStyle" onclick="javascript:changeBg(this)">
+											<td align="center">
+                                                <span id="GridView1_ctl02_lblxh">1</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl02_CheckSelect" type="checkbox" name="GridView1$ctl02$CheckSelect" />
+                                                
+                                                
+                                            </td><td>正式员工账套</td><td align="center">25</td><td align="center">26</td><td>是</td><td align="center" style="width:50px;white-space:nowrap;">
+                                                <a href="javascript:void(0)" onclick="showfrom(5);" class="gvlink">管理</a>
+                                            </td>
+		</tr><tr class="hkAltRowStyle" onclick="javascript:changeBg(this)">
+			<td align="center">
+                                                <span id="GridView1_ctl03_lblxh">2</span>
+                                            </td><td align="center" style="width:30px;">
+                                                <input id="GridView1_ctl03_CheckSelect" type="checkbox" name="GridView1$ctl03$CheckSelect" />
+                                                
+                                                
+                                            </td><td>临时工套账</td><td align="center">1</td><td align="center">1</td><td>是</td><td align="center" style="width:50px;white-space:nowrap;">
+                                                <a href="javascript:void(0)" onclick="showfrom(6);" class="gvlink">管理</a>
+                                            </td>
+		</tr>
+	</table>
+</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="height: 22px">
+                                
+<!-- AspNetPager 7.5 Copyright:2003-2015 Webdiyer (www.webdiyer.com) -->
+<!--记录总数只有一页，AspNetPager已自动隐藏，若需在只有一页数据时显示AspNetPager，请将AlwaysShow属性值设为true！-->
+<!-- AspNetPager 7.5 Copyright:2003-2015 Webdiyer (www.webdiyer.com) -->
+
+
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
