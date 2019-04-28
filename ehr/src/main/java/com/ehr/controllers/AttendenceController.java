@@ -44,20 +44,6 @@ public class AttendenceController {
 	@Autowired
 	EhrOvertimeMapper overtimeMapper;
 	
-	@RequestMapping("/queryByName")
-	@ResponseBody
-	public ModelAndView queryByName(String ename) {
-		EhrEmployeeExample example = new EhrEmployeeExample();
-		example.createCriteria().andEnameEqualTo(ename);
-		ModelAndView mv = new ModelAndView();
-		List<EhrEmployee> list = eMapper.selectByExample(example);
-		if(list !=null) {
-			mv.addObject("employInfo", list);
-			mv.setViewName("select_employee");
-		}
-		return mv;
-	}
-	
 	@RequestMapping("/queryAll")
 	@ResponseBody
 	public EhrResult queryAllRecords() {

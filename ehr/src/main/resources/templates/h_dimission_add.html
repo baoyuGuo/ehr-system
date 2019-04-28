@@ -31,63 +31,27 @@
                             </td>
                             <td style="width: 30%">
                                 <input name="enumber" type="text" id="enumber" class="mytext" style="width:80%;"></a>
-                                <script type="text/javascript">
-                                	function fillPage(){
-                                		$.ajax({
-                                			type: "get", //数据发送的方式（post 或者 get）
-                                	        url: "../../humanfiles/queryEmployeeByEnumber", //要发送的后台地址
-                                	        data: { enumber: ${enumber}.value }, //要发送的数据（参数）格式为{'val1':"1","val2":"2"}
-                                	        dataType: "json", //后台处理后返回的数据格式
-                                	        success: function(data) {//ajax请求成功后触发的方法
-                                	            alert('请求成功');
-                                	        },
-                                	        error: function(msg) {//ajax请求失败后触发的方法
-                                	            alert(msg); //弹出错误信息
-                                	        }
-                                		});
-                                	}
-                                </script>
-                                 <a href="javascript:void(0)" onclick="fillPage()">
-                               	 	<img id="queryInfoImg" src="/pic/choose_002.gif" border="0">
-                                 </a>
+                                <a href="javascript:void(0)"> <img onclick="openSelEmp();" id="selectPost" alt="" src="/pic/choose_002.gif" border="0"></a>
+                               
                             </td>
-                            <td class="form-item" style="width: 20%">员工姓名：
+                            <td class="form-item" style="width: 20%"><font color="red">*</font>员工姓名：
                             </td>
                             <td style="width: 30%">
                                 <input name="ename" type="text" id="ename" class="mytext" style="width:90%;">
                             </td>
                         </tr>
-                        <tr>
-                            <td class="form-item">性别：
-                            </td>
-                            <td>
-                                <input name="egender" type="text" id="egender" class="mytext" readonly="readonly" style="width:90%;">
-                            </td>
-                            <td class="form-item">员工身份证：
-                            </td>
-                            <td>
-                                <input name="identitynumber" type="text" id="identitynumber" class="mytext" readonly="readonly" style="width:90%;">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="form-item">所在部门名称：
-                            </td>
-                            <td colspan="3">
-                                <input name="edepartmentnum" type="text" id="edepartmentnum" class="mytext" readonly="readonly" style="width:96%;">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="form-item">岗位：
-                            </td>
-                            <td>
-                                <input name="eposttype" type="text" id="eposttype" class="mytext" readonly="readonly" style="width:90%;">
-                            </td>
-                            <td class="form-item">职务：
-                            </td>
-                            <td>
-                                <input name="epost" type="text" id="epost" class="mytext" readonly="readonly" style="width:90%;">
-                            </td>
-                        </tr>
+                         <tr>
+                           <td class="form-item"><font color="red">*</font>部门名称：
+                           </td>
+                           <td>
+                               <input name="edname" type="text" id="edname" class="mytext" readonly="readonly" style="width:80%;">
+                           </td>
+                           <td class="form-item"><font color="red">*</font>岗位名称：
+                           </td>
+                           <td>
+                               <input name="epname" type="text" id="epname" class="mytext" readonly="readonly" style="width:80%;">
+                           </td>
+                       </tr>
                         <tr>
                             <td colspan="4" style="text-align: center">
                                 <strong>离职信息</strong>
@@ -97,12 +61,12 @@
                             <td class="form-item">离职时间：
                             </td>
                             <td>
-                                <input name="dmDate" type="text" id="dmDate" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" style="width:90%;">
+                                <input name="start" type="text" id="start" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" style="width:90%;">
                             </td>
                             <td class="form-item"><font color="red">*</font>离职类型：
                             </td>
                             <td>
-                              	<select name="dmType" id="dmType" style="width:90%;">
+                              	<select name="type" id="type" style="width:90%;">
 									<option value="辞退" selected="selected">辞退</option>
 									<option value="退休">外调</option>
 									<option value="外调">退休</option>
@@ -113,7 +77,7 @@
                             <td class="form-item">去向：
                             </td>
                             <td>
-                                <input name="to" type="text" id="to" class="mytext" style="width:90%;">
+                                <input name="gone" type="text" id="gone" class="mytext" style="width:90%;">
                             </td>
                             <td class="form-item">工资截止：
                             </td>
@@ -130,7 +94,7 @@
                             <td class="form-item">离职说明：
                             </td>
                             <td colspan="3">
-                            	<textarea rows="10"  id="dDescription" name="dDescription" cols="80"></textarea></td></tr>
+                            	<textarea rows="10"  id="marks" name="marks" cols="80"></textarea></td></tr>
                             </td>
                         </tr>
                         <tr>
@@ -155,7 +119,7 @@
                         	<td align="center" colspan="4"><div align="center"><strong>用户自定义字段</strong></div> </td>
                          </tr>
                          <tr><td class="form-item">自定义字段：</td> <td colspan="3">
-                        	<textarea rows="1" id="marks" name="marks" cols="80"></textarea></td></tr>
+                        	<textarea rows="1" id="userdefined" name="userdefined" cols="80" placeholder=""></textarea></td></tr>
                         <tr>
                             <td align="center" colspan="4" height="25">
                                 <input type="submit" name="Button1" value="确定" onclick="javascript:return chknull();" id="Button1" class="mybtn">
@@ -166,8 +130,26 @@
                 </td>
             </tr>
         </tbody></table>
-        <input name="StaffId" type="text" id="StaffId" style="display: none">
-        <input name="BuMenId" type="text" id="BuMenId" style="display: none">
     </form>
 </body>
+<script type="text/javascript">
+function openSelEmp() {
+    //browser
+    var bstr = getBrowserType();
+    if (bstr == '3' | bstr == '4' | bstr == '5') {
+        window.open("/page/select_employee", 'window', 'height=600,width=650,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no');
+    }
+    else {
+        wName2 = window.showModalDialog("/page/select_employee", "window", "dialogWidth:650px;DialogHeight=600px;status:no;scroll=yes;help:no");
+    }
+}
+
+function setEmpValue(str) {
+	sp = str.split("|");
+    document.getElementById("enumber").value = sp[0];
+    document.getElementById("ename").value = sp[1];
+    document.getElementById("edname").value = sp[2];
+    document.getElementById("epname").value = sp[3];
+}
+</script>
 </html>

@@ -472,76 +472,6 @@ public class EhrDimissionExample {
             return (Criteria) this;
         }
 
-        public Criteria andDeleteconstractIsNull() {
-            addCriterion("deleteConstract is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteconstractIsNotNull() {
-            addCriterion("deleteConstract is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteconstractEqualTo(String value) {
-            addCriterion("deleteConstract =", value, "deleteconstract");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteconstractNotEqualTo(String value) {
-            addCriterion("deleteConstract <>", value, "deleteconstract");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteconstractGreaterThan(String value) {
-            addCriterion("deleteConstract >", value, "deleteconstract");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteconstractGreaterThanOrEqualTo(String value) {
-            addCriterion("deleteConstract >=", value, "deleteconstract");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteconstractLessThan(String value) {
-            addCriterion("deleteConstract <", value, "deleteconstract");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteconstractLessThanOrEqualTo(String value) {
-            addCriterion("deleteConstract <=", value, "deleteconstract");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteconstractLike(String value) {
-            addCriterion("deleteConstract like", value, "deleteconstract");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteconstractNotLike(String value) {
-            addCriterion("deleteConstract not like", value, "deleteconstract");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteconstractIn(List<String> values) {
-            addCriterion("deleteConstract in", values, "deleteconstract");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteconstractNotIn(List<String> values) {
-            addCriterion("deleteConstract not in", values, "deleteconstract");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteconstractBetween(String value1, String value2) {
-            addCriterion("deleteConstract between", value1, value2, "deleteconstract");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteconstractNotBetween(String value1, String value2) {
-            addCriterion("deleteConstract not between", value1, value2, "deleteconstract");
-            return (Criteria) this;
-        }
-
         public Criteria andMarksIsNull() {
             addCriterion("marks is null");
             return (Criteria) this;
@@ -749,6 +679,266 @@ public class EhrDimissionExample {
 
         public Criteria andEnameNotBetween(String value1, String value2) {
             addCriterion("ename not between", value1, value2, "ename");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoneIsNull() {
+            addCriterion("gone is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoneIsNotNull() {
+            addCriterion("gone is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoneEqualTo(String value) {
+            addCriterion("gone =", value, "gone");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoneNotEqualTo(String value) {
+            addCriterion("gone <>", value, "gone");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoneGreaterThan(String value) {
+            addCriterion("gone >", value, "gone");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoneGreaterThanOrEqualTo(String value) {
+            addCriterion("gone >=", value, "gone");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoneLessThan(String value) {
+            addCriterion("gone <", value, "gone");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoneLessThanOrEqualTo(String value) {
+            addCriterion("gone <=", value, "gone");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoneLike(String value) {
+            addCriterion("gone like", value, "gone");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoneNotLike(String value) {
+            addCriterion("gone not like", value, "gone");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoneIn(List<String> values) {
+            addCriterion("gone in", values, "gone");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoneNotIn(List<String> values) {
+            addCriterion("gone not in", values, "gone");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoneBetween(String value1, String value2) {
+            addCriterion("gone between", value1, value2, "gone");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoneNotBetween(String value1, String value2) {
+            addCriterion("gone not between", value1, value2, "gone");
+            return (Criteria) this;
+        }
+
+        public Criteria andGzjzIsNull() {
+            addCriterion("gzjz is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGzjzIsNotNull() {
+            addCriterion("gzjz is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGzjzEqualTo(Date value) {
+            addCriterionForJDBCDate("gzjz =", value, "gzjz");
+            return (Criteria) this;
+        }
+
+        public Criteria andGzjzNotEqualTo(Date value) {
+            addCriterionForJDBCDate("gzjz <>", value, "gzjz");
+            return (Criteria) this;
+        }
+
+        public Criteria andGzjzGreaterThan(Date value) {
+            addCriterionForJDBCDate("gzjz >", value, "gzjz");
+            return (Criteria) this;
+        }
+
+        public Criteria andGzjzGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("gzjz >=", value, "gzjz");
+            return (Criteria) this;
+        }
+
+        public Criteria andGzjzLessThan(Date value) {
+            addCriterionForJDBCDate("gzjz <", value, "gzjz");
+            return (Criteria) this;
+        }
+
+        public Criteria andGzjzLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("gzjz <=", value, "gzjz");
+            return (Criteria) this;
+        }
+
+        public Criteria andGzjzIn(List<Date> values) {
+            addCriterionForJDBCDate("gzjz in", values, "gzjz");
+            return (Criteria) this;
+        }
+
+        public Criteria andGzjzNotIn(List<Date> values) {
+            addCriterionForJDBCDate("gzjz not in", values, "gzjz");
+            return (Criteria) this;
+        }
+
+        public Criteria andGzjzBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("gzjz between", value1, value2, "gzjz");
+            return (Criteria) this;
+        }
+
+        public Criteria andGzjzNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("gzjz not between", value1, value2, "gzjz");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteconstractIsNull() {
+            addCriterion("deleteconstract is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteconstractIsNotNull() {
+            addCriterion("deleteconstract is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteconstractEqualTo(Integer value) {
+            addCriterion("deleteconstract =", value, "deleteconstract");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteconstractNotEqualTo(Integer value) {
+            addCriterion("deleteconstract <>", value, "deleteconstract");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteconstractGreaterThan(Integer value) {
+            addCriterion("deleteconstract >", value, "deleteconstract");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteconstractGreaterThanOrEqualTo(Integer value) {
+            addCriterion("deleteconstract >=", value, "deleteconstract");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteconstractLessThan(Integer value) {
+            addCriterion("deleteconstract <", value, "deleteconstract");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteconstractLessThanOrEqualTo(Integer value) {
+            addCriterion("deleteconstract <=", value, "deleteconstract");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteconstractIn(List<Integer> values) {
+            addCriterion("deleteconstract in", values, "deleteconstract");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteconstractNotIn(List<Integer> values) {
+            addCriterion("deleteconstract not in", values, "deleteconstract");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteconstractBetween(Integer value1, Integer value2) {
+            addCriterion("deleteconstract between", value1, value2, "deleteconstract");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeleteconstractNotBetween(Integer value1, Integer value2) {
+            addCriterion("deleteconstract not between", value1, value2, "deleteconstract");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserdefinedIsNull() {
+            addCriterion("userdefined is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserdefinedIsNotNull() {
+            addCriterion("userdefined is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserdefinedEqualTo(String value) {
+            addCriterion("userdefined =", value, "userdefined");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserdefinedNotEqualTo(String value) {
+            addCriterion("userdefined <>", value, "userdefined");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserdefinedGreaterThan(String value) {
+            addCriterion("userdefined >", value, "userdefined");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserdefinedGreaterThanOrEqualTo(String value) {
+            addCriterion("userdefined >=", value, "userdefined");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserdefinedLessThan(String value) {
+            addCriterion("userdefined <", value, "userdefined");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserdefinedLessThanOrEqualTo(String value) {
+            addCriterion("userdefined <=", value, "userdefined");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserdefinedLike(String value) {
+            addCriterion("userdefined like", value, "userdefined");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserdefinedNotLike(String value) {
+            addCriterion("userdefined not like", value, "userdefined");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserdefinedIn(List<String> values) {
+            addCriterion("userdefined in", values, "userdefined");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserdefinedNotIn(List<String> values) {
+            addCriterion("userdefined not in", values, "userdefined");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserdefinedBetween(String value1, String value2) {
+            addCriterion("userdefined between", value1, value2, "userdefined");
+            return (Criteria) this;
+        }
+
+        public Criteria andUserdefinedNotBetween(String value1, String value2) {
+            addCriterion("userdefined not between", value1, value2, "userdefined");
             return (Criteria) this;
         }
     }

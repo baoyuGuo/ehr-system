@@ -1,17 +1,23 @@
 package com.ehr.humanfiles.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ehr.exception.UploadFileException;
 import com.ehr.humanfiles.service.HumanFilesService;
+import com.ehr.mapper.EhrDepartmentMapper;
 import com.ehr.mapper.EhrEmployeeBaseInfoMapper;
 import com.ehr.mapper.EhrEmployeeMapper;
 import com.ehr.mapper.EhrSalaryAccountsMapper;
+import com.ehr.pojo.EhrDepartment;
+import com.ehr.pojo.EhrDepartmentExample;
 import com.ehr.pojo.EhrDimission;
 import com.ehr.pojo.EhrEmployee;
 import com.ehr.pojo.EhrEmployeeBaseInfo;
+import com.ehr.pojo.EhrEmployeeExample;
 import com.ehr.pojo.EhrSalaryAccounts;
 import com.ehr.pojo.ParamMapping;
 import com.ehr.utils.EhrResult;
@@ -28,6 +34,9 @@ public class HumanfilesServiceImpl  implements HumanFilesService{
 	
 	@Autowired
 	EhrSalaryAccountsMapper salaryMapper;
+	
+	@Autowired
+	EhrDepartmentMapper dMapper;
 	
 	@Override
 	public void entry(EhrEmployee employee, MultipartFile picture,MultipartFile uploadFile,
@@ -68,6 +77,5 @@ public class HumanfilesServiceImpl  implements HumanFilesService{
 	public EhrEmployee queryEmployeeByEnumber(String enumber) {
 		return employeeMapper.selectByPrimaryKey(enumber);
 	}
-
 
 }

@@ -1,6 +1,5 @@
 package com.ehr.controllers;
 
-import java.awt.Window;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -135,5 +134,11 @@ public class HumanFilesController {
 			e.printStackTrace();
 			return EhrResult.build(500, ParamMapping.UNKNOWN_ERROR);
 		}
+	}
+	
+	@RequestMapping("/addDimission")
+	public void addDimission() {
+		//新增离职记录
+		//员工表员工状态设置为离职
 	}
 }

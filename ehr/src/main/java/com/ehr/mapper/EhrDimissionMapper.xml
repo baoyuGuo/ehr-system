@@ -7,10 +7,13 @@
     <result column="start" property="start" jdbcType="DATE" />
     <result column="description" property="description" jdbcType="VARCHAR" />
     <result column="filePath" property="filepath" jdbcType="VARCHAR" />
-    <result column="deleteConstract" property="deleteconstract" jdbcType="VARCHAR" />
     <result column="marks" property="marks" jdbcType="VARCHAR" />
     <result column="edname" property="edname" jdbcType="VARCHAR" />
     <result column="ename" property="ename" jdbcType="VARCHAR" />
+    <result column="gone" property="gone" jdbcType="VARCHAR" />
+    <result column="gzjz" property="gzjz" jdbcType="DATE" />
+    <result column="deleteconstract" property="deleteconstract" jdbcType="INTEGER" />
+    <result column="userdefined" property="userdefined" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,7 +74,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    enumber, type, start, description, filePath, deleteConstract, marks, edname, ename
+    enumber, type, start, description, filePath, marks, edname, ename, gone, gzjz, deleteconstract, 
+    userdefined
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ehr.pojo.EhrDimissionExample" >
     select
@@ -105,12 +109,14 @@
   </delete>
   <insert id="insert" parameterType="com.ehr.pojo.EhrDimission" >
     insert into ehr_dimission (enumber, type, start, 
-      description, filePath, deleteConstract, 
-      marks, edname, ename
+      description, filePath, marks, 
+      edname, ename, gone, 
+      gzjz, deleteconstract, userdefined
       )
     values (#{enumber,jdbcType=VARCHAR}, #{type,jdbcType=CHAR}, #{start,jdbcType=DATE}, 
-      #{description,jdbcType=VARCHAR}, #{filepath,jdbcType=VARCHAR}, #{deleteconstract,jdbcType=VARCHAR}, 
-      #{marks,jdbcType=VARCHAR}, #{edname,jdbcType=VARCHAR}, #{ename,jdbcType=VARCHAR}
+      #{description,jdbcType=VARCHAR}, #{filepath,jdbcType=VARCHAR}, #{marks,jdbcType=VARCHAR}, 
+      #{edname,jdbcType=VARCHAR}, #{ename,jdbcType=VARCHAR}, #{gone,jdbcType=VARCHAR}, 
+      #{gzjz,jdbcType=DATE}, #{deleteconstract,jdbcType=INTEGER}, #{userdefined,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.ehr.pojo.EhrDimission" >
@@ -131,9 +137,6 @@
       <if test="filepath != null" >
         filePath,
       </if>
-      <if test="deleteconstract != null" >
-        deleteConstract,
-      </if>
       <if test="marks != null" >
         marks,
       </if>
@@ -142,6 +145,18 @@
       </if>
       <if test="ename != null" >
         ename,
+      </if>
+      <if test="gone != null" >
+        gone,
+      </if>
+      <if test="gzjz != null" >
+        gzjz,
+      </if>
+      <if test="deleteconstract != null" >
+        deleteconstract,
+      </if>
+      <if test="userdefined != null" >
+        userdefined,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -160,9 +175,6 @@
       <if test="filepath != null" >
         #{filepath,jdbcType=VARCHAR},
       </if>
-      <if test="deleteconstract != null" >
-        #{deleteconstract,jdbcType=VARCHAR},
-      </if>
       <if test="marks != null" >
         #{marks,jdbcType=VARCHAR},
       </if>
@@ -171,6 +183,18 @@
       </if>
       <if test="ename != null" >
         #{ename,jdbcType=VARCHAR},
+      </if>
+      <if test="gone != null" >
+        #{gone,jdbcType=VARCHAR},
+      </if>
+      <if test="gzjz != null" >
+        #{gzjz,jdbcType=DATE},
+      </if>
+      <if test="deleteconstract != null" >
+        #{deleteconstract,jdbcType=INTEGER},
+      </if>
+      <if test="userdefined != null" >
+        #{userdefined,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -198,9 +222,6 @@
       <if test="record.filepath != null" >
         filePath = #{record.filepath,jdbcType=VARCHAR},
       </if>
-      <if test="record.deleteconstract != null" >
-        deleteConstract = #{record.deleteconstract,jdbcType=VARCHAR},
-      </if>
       <if test="record.marks != null" >
         marks = #{record.marks,jdbcType=VARCHAR},
       </if>
@@ -209,6 +230,18 @@
       </if>
       <if test="record.ename != null" >
         ename = #{record.ename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gone != null" >
+        gone = #{record.gone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gzjz != null" >
+        gzjz = #{record.gzjz,jdbcType=DATE},
+      </if>
+      <if test="record.deleteconstract != null" >
+        deleteconstract = #{record.deleteconstract,jdbcType=INTEGER},
+      </if>
+      <if test="record.userdefined != null" >
+        userdefined = #{record.userdefined,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -222,10 +255,13 @@
       start = #{record.start,jdbcType=DATE},
       description = #{record.description,jdbcType=VARCHAR},
       filePath = #{record.filepath,jdbcType=VARCHAR},
-      deleteConstract = #{record.deleteconstract,jdbcType=VARCHAR},
       marks = #{record.marks,jdbcType=VARCHAR},
       edname = #{record.edname,jdbcType=VARCHAR},
-      ename = #{record.ename,jdbcType=VARCHAR}
+      ename = #{record.ename,jdbcType=VARCHAR},
+      gone = #{record.gone,jdbcType=VARCHAR},
+      gzjz = #{record.gzjz,jdbcType=DATE},
+      deleteconstract = #{record.deleteconstract,jdbcType=INTEGER},
+      userdefined = #{record.userdefined,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -245,9 +281,6 @@
       <if test="filepath != null" >
         filePath = #{filepath,jdbcType=VARCHAR},
       </if>
-      <if test="deleteconstract != null" >
-        deleteConstract = #{deleteconstract,jdbcType=VARCHAR},
-      </if>
       <if test="marks != null" >
         marks = #{marks,jdbcType=VARCHAR},
       </if>
@@ -256,6 +289,18 @@
       </if>
       <if test="ename != null" >
         ename = #{ename,jdbcType=VARCHAR},
+      </if>
+      <if test="gone != null" >
+        gone = #{gone,jdbcType=VARCHAR},
+      </if>
+      <if test="gzjz != null" >
+        gzjz = #{gzjz,jdbcType=DATE},
+      </if>
+      <if test="deleteconstract != null" >
+        deleteconstract = #{deleteconstract,jdbcType=INTEGER},
+      </if>
+      <if test="userdefined != null" >
+        userdefined = #{userdefined,jdbcType=VARCHAR},
       </if>
     </set>
     where enumber = #{enumber,jdbcType=VARCHAR}
@@ -266,10 +311,13 @@
       start = #{start,jdbcType=DATE},
       description = #{description,jdbcType=VARCHAR},
       filePath = #{filepath,jdbcType=VARCHAR},
-      deleteConstract = #{deleteconstract,jdbcType=VARCHAR},
       marks = #{marks,jdbcType=VARCHAR},
       edname = #{edname,jdbcType=VARCHAR},
-      ename = #{ename,jdbcType=VARCHAR}
+      ename = #{ename,jdbcType=VARCHAR},
+      gone = #{gone,jdbcType=VARCHAR},
+      gzjz = #{gzjz,jdbcType=DATE},
+      deleteconstract = #{deleteconstract,jdbcType=INTEGER},
+      userdefined = #{userdefined,jdbcType=VARCHAR}
     where enumber = #{enumber,jdbcType=VARCHAR}
   </update>
 </mapper>
