@@ -17,6 +17,11 @@ public class ParamMapping {
 	
 	public static final String REG_SUCCESS = "注册成功，请登录!";
 	
+	public static final String DO_SUCCESS = "操作成功";
+	public static final String DO_FAILED = "操作失败";
+	
+	public static final String UPLOAD_FILE_FAILED = "文件上传失败!";
+	
 	public static Map<String, String> ADJUST_TITLE = new HashMap<>();
 	
 	public static Map<String, String> ADJUST_TYPE = new HashMap<>();

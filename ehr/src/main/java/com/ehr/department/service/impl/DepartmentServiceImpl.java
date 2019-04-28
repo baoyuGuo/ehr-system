@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.ehr.department.service.DepartmentService;
 import com.ehr.mapper.EhrDepartmentMapper;
 import com.ehr.pojo.EhrDepartment;
+import com.ehr.pojo.EhrDepartmentExample;
 
 //@Service
 @Service
@@ -18,8 +19,9 @@ public class DepartmentServiceImpl implements DepartmentService{
 	
 	@Override
 	public List<EhrDepartment> queryDepartment(Integer id) {
-
-		return  mapper.selectChildById(id);
+		EhrDepartmentExample example = new EhrDepartmentExample();
+		example.createCriteria().andPidEqualTo(id);
+		return mapper.selectByExample(example);
 	}
 	
 }

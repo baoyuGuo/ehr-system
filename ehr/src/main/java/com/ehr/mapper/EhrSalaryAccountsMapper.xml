@@ -3,22 +3,20 @@
 <mapper namespace="com.ehr.mapper.EhrSalaryAccountsMapper" >
   <resultMap id="BaseResultMap" type="com.ehr.pojo.EhrSalaryAccounts" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="bankOfAccount" property="bankofaccount" jdbcType="CHAR" />
-    <result column="account" property="account" jdbcType="VARCHAR" />
-    <result column="eNumber" property="enumber" jdbcType="VARCHAR" />
-    <result column="basicWage" property="basicwage" jdbcType="INTEGER" />
-    <result column="gwgz" property="gwgz" jdbcType="INTEGER" />
-    <result column="jxgz" property="jxgz" jdbcType="INTEGER" />
-    <result column="glgz" property="glgz" jdbcType="INTEGER" />
-    <result column="gwjt" property="gwjt" jdbcType="INTEGER" />
-    <result column="hfbt" property="hfbt" jdbcType="INTEGER" />
-    <result column="cfbt" property="cfbt" jdbcType="INTEGER" />
-    <result column="jtbt" property="jtbt" jdbcType="INTEGER" />
-    <result column="qqjj" property="qqjj" jdbcType="INTEGER" />
-    <result column="qtjj" property="qtjj" jdbcType="INTEGER" />
-    <result column="bxdk" property="bxdk" jdbcType="INTEGER" />
-    <result column="cfdk" property="cfdk" jdbcType="INTEGER" />
-    <result column="qtdk" property="qtdk" jdbcType="INTEGER" />
+    <result column="basicwage" property="basicwage" jdbcType="VARCHAR" />
+    <result column="enumber" property="enumber" jdbcType="VARCHAR" />
+    <result column="gwgz" property="gwgz" jdbcType="CHAR" />
+    <result column="glgz" property="glgz" jdbcType="VARCHAR" />
+    <result column="gwjt" property="gwjt" jdbcType="REAL" />
+    <result column="hfbt" property="hfbt" jdbcType="REAL" />
+    <result column="cfbt" property="cfbt" jdbcType="REAL" />
+    <result column="jtbt" property="jtbt" jdbcType="REAL" />
+    <result column="qqjj" property="qqjj" jdbcType="REAL" />
+    <result column="qtjj" property="qtjj" jdbcType="REAL" />
+    <result column="bxdk" property="bxdk" jdbcType="REAL" />
+    <result column="cfdk" property="cfdk" jdbcType="REAL" />
+    <result column="qtdk" property="qtdk" jdbcType="REAL" />
+    <result column="jxgz" property="jxgz" jdbcType="REAL" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -79,8 +77,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, bankOfAccount, account, eNumber, basicWage, gwgz, jxgz, glgz, gwjt, hfbt, cfbt, 
-    jtbt, qqjj, qtjj, bxdk, cfdk, qtdk
+    id, basicwage, enumber, gwgz, glgz, gwjt, hfbt, cfbt, jtbt, qqjj, qtjj, bxdk, cfdk, 
+    qtdk, jxgz
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ehr.pojo.EhrSalaryAccountsExample" >
     select
@@ -113,16 +111,16 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.ehr.pojo.EhrSalaryAccounts" >
-    insert into ehr_salary_accounts (id, bankOfAccount, account, 
-      eNumber, basicWage, gwgz, 
-      jxgz, glgz, gwjt, hfbt, 
+    insert into ehr_salary_accounts (id, basicwage, enumber, 
+      gwgz, glgz, gwjt, hfbt, 
       cfbt, jtbt, qqjj, qtjj, 
-      bxdk, cfdk, qtdk)
-    values (#{id,jdbcType=INTEGER}, #{bankofaccount,jdbcType=CHAR}, #{account,jdbcType=VARCHAR}, 
-      #{enumber,jdbcType=VARCHAR}, #{basicwage,jdbcType=INTEGER}, #{gwgz,jdbcType=INTEGER}, 
-      #{jxgz,jdbcType=INTEGER}, #{glgz,jdbcType=INTEGER}, #{gwjt,jdbcType=INTEGER}, #{hfbt,jdbcType=INTEGER}, 
-      #{cfbt,jdbcType=INTEGER}, #{jtbt,jdbcType=INTEGER}, #{qqjj,jdbcType=INTEGER}, #{qtjj,jdbcType=INTEGER}, 
-      #{bxdk,jdbcType=INTEGER}, #{cfdk,jdbcType=INTEGER}, #{qtdk,jdbcType=INTEGER})
+      bxdk, cfdk, qtdk, jxgz
+      )
+    values (#{id,jdbcType=INTEGER}, #{basicwage,jdbcType=VARCHAR}, #{enumber,jdbcType=VARCHAR}, 
+      #{gwgz,jdbcType=CHAR}, #{glgz,jdbcType=VARCHAR}, #{gwjt,jdbcType=REAL}, #{hfbt,jdbcType=REAL}, 
+      #{cfbt,jdbcType=REAL}, #{jtbt,jdbcType=REAL}, #{qqjj,jdbcType=REAL}, #{qtjj,jdbcType=REAL}, 
+      #{bxdk,jdbcType=REAL}, #{cfdk,jdbcType=REAL}, #{qtdk,jdbcType=REAL}, #{jxgz,jdbcType=REAL}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.ehr.pojo.EhrSalaryAccounts" >
     insert into ehr_salary_accounts
@@ -130,23 +128,14 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="bankofaccount != null" >
-        bankOfAccount,
-      </if>
-      <if test="account != null" >
-        account,
+      <if test="basicwage != null" >
+        basicwage,
       </if>
       <if test="enumber != null" >
-        eNumber,
-      </if>
-      <if test="basicwage != null" >
-        basicWage,
+        enumber,
       </if>
       <if test="gwgz != null" >
         gwgz,
-      </if>
-      <if test="jxgz != null" >
-        jxgz,
       </if>
       <if test="glgz != null" >
         glgz,
@@ -178,58 +167,55 @@
       <if test="qtdk != null" >
         qtdk,
       </if>
+      <if test="jxgz != null" >
+        jxgz,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="bankofaccount != null" >
-        #{bankofaccount,jdbcType=CHAR},
-      </if>
-      <if test="account != null" >
-        #{account,jdbcType=VARCHAR},
+      <if test="basicwage != null" >
+        #{basicwage,jdbcType=VARCHAR},
       </if>
       <if test="enumber != null" >
         #{enumber,jdbcType=VARCHAR},
       </if>
-      <if test="basicwage != null" >
-        #{basicwage,jdbcType=INTEGER},
-      </if>
       <if test="gwgz != null" >
-        #{gwgz,jdbcType=INTEGER},
-      </if>
-      <if test="jxgz != null" >
-        #{jxgz,jdbcType=INTEGER},
+        #{gwgz,jdbcType=CHAR},
       </if>
       <if test="glgz != null" >
-        #{glgz,jdbcType=INTEGER},
+        #{glgz,jdbcType=VARCHAR},
       </if>
       <if test="gwjt != null" >
-        #{gwjt,jdbcType=INTEGER},
+        #{gwjt,jdbcType=REAL},
       </if>
       <if test="hfbt != null" >
-        #{hfbt,jdbcType=INTEGER},
+        #{hfbt,jdbcType=REAL},
       </if>
       <if test="cfbt != null" >
-        #{cfbt,jdbcType=INTEGER},
+        #{cfbt,jdbcType=REAL},
       </if>
       <if test="jtbt != null" >
-        #{jtbt,jdbcType=INTEGER},
+        #{jtbt,jdbcType=REAL},
       </if>
       <if test="qqjj != null" >
-        #{qqjj,jdbcType=INTEGER},
+        #{qqjj,jdbcType=REAL},
       </if>
       <if test="qtjj != null" >
-        #{qtjj,jdbcType=INTEGER},
+        #{qtjj,jdbcType=REAL},
       </if>
       <if test="bxdk != null" >
-        #{bxdk,jdbcType=INTEGER},
+        #{bxdk,jdbcType=REAL},
       </if>
       <if test="cfdk != null" >
-        #{cfdk,jdbcType=INTEGER},
+        #{cfdk,jdbcType=REAL},
       </if>
       <if test="qtdk != null" >
-        #{qtdk,jdbcType=INTEGER},
+        #{qtdk,jdbcType=REAL},
+      </if>
+      <if test="jxgz != null" >
+        #{jxgz,jdbcType=REAL},
       </if>
     </trim>
   </insert>
@@ -245,53 +231,47 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.bankofaccount != null" >
-        bankOfAccount = #{record.bankofaccount,jdbcType=CHAR},
-      </if>
-      <if test="record.account != null" >
-        account = #{record.account,jdbcType=VARCHAR},
+      <if test="record.basicwage != null" >
+        basicwage = #{record.basicwage,jdbcType=VARCHAR},
       </if>
       <if test="record.enumber != null" >
-        eNumber = #{record.enumber,jdbcType=VARCHAR},
-      </if>
-      <if test="record.basicwage != null" >
-        basicWage = #{record.basicwage,jdbcType=INTEGER},
+        enumber = #{record.enumber,jdbcType=VARCHAR},
       </if>
       <if test="record.gwgz != null" >
-        gwgz = #{record.gwgz,jdbcType=INTEGER},
-      </if>
-      <if test="record.jxgz != null" >
-        jxgz = #{record.jxgz,jdbcType=INTEGER},
+        gwgz = #{record.gwgz,jdbcType=CHAR},
       </if>
       <if test="record.glgz != null" >
-        glgz = #{record.glgz,jdbcType=INTEGER},
+        glgz = #{record.glgz,jdbcType=VARCHAR},
       </if>
       <if test="record.gwjt != null" >
-        gwjt = #{record.gwjt,jdbcType=INTEGER},
+        gwjt = #{record.gwjt,jdbcType=REAL},
       </if>
       <if test="record.hfbt != null" >
-        hfbt = #{record.hfbt,jdbcType=INTEGER},
+        hfbt = #{record.hfbt,jdbcType=REAL},
       </if>
       <if test="record.cfbt != null" >
-        cfbt = #{record.cfbt,jdbcType=INTEGER},
+        cfbt = #{record.cfbt,jdbcType=REAL},
       </if>
       <if test="record.jtbt != null" >
-        jtbt = #{record.jtbt,jdbcType=INTEGER},
+        jtbt = #{record.jtbt,jdbcType=REAL},
       </if>
       <if test="record.qqjj != null" >
-        qqjj = #{record.qqjj,jdbcType=INTEGER},
+        qqjj = #{record.qqjj,jdbcType=REAL},
       </if>
       <if test="record.qtjj != null" >
-        qtjj = #{record.qtjj,jdbcType=INTEGER},
+        qtjj = #{record.qtjj,jdbcType=REAL},
       </if>
       <if test="record.bxdk != null" >
-        bxdk = #{record.bxdk,jdbcType=INTEGER},
+        bxdk = #{record.bxdk,jdbcType=REAL},
       </if>
       <if test="record.cfdk != null" >
-        cfdk = #{record.cfdk,jdbcType=INTEGER},
+        cfdk = #{record.cfdk,jdbcType=REAL},
       </if>
       <if test="record.qtdk != null" >
-        qtdk = #{record.qtdk,jdbcType=INTEGER},
+        qtdk = #{record.qtdk,jdbcType=REAL},
+      </if>
+      <if test="record.jxgz != null" >
+        jxgz = #{record.jxgz,jdbcType=REAL},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -301,22 +281,20 @@
   <update id="updateByExample" parameterType="map" >
     update ehr_salary_accounts
     set id = #{record.id,jdbcType=INTEGER},
-      bankOfAccount = #{record.bankofaccount,jdbcType=CHAR},
-      account = #{record.account,jdbcType=VARCHAR},
-      eNumber = #{record.enumber,jdbcType=VARCHAR},
-      basicWage = #{record.basicwage,jdbcType=INTEGER},
-      gwgz = #{record.gwgz,jdbcType=INTEGER},
-      jxgz = #{record.jxgz,jdbcType=INTEGER},
-      glgz = #{record.glgz,jdbcType=INTEGER},
-      gwjt = #{record.gwjt,jdbcType=INTEGER},
-      hfbt = #{record.hfbt,jdbcType=INTEGER},
-      cfbt = #{record.cfbt,jdbcType=INTEGER},
-      jtbt = #{record.jtbt,jdbcType=INTEGER},
-      qqjj = #{record.qqjj,jdbcType=INTEGER},
-      qtjj = #{record.qtjj,jdbcType=INTEGER},
-      bxdk = #{record.bxdk,jdbcType=INTEGER},
-      cfdk = #{record.cfdk,jdbcType=INTEGER},
-      qtdk = #{record.qtdk,jdbcType=INTEGER}
+      basicwage = #{record.basicwage,jdbcType=VARCHAR},
+      enumber = #{record.enumber,jdbcType=VARCHAR},
+      gwgz = #{record.gwgz,jdbcType=CHAR},
+      glgz = #{record.glgz,jdbcType=VARCHAR},
+      gwjt = #{record.gwjt,jdbcType=REAL},
+      hfbt = #{record.hfbt,jdbcType=REAL},
+      cfbt = #{record.cfbt,jdbcType=REAL},
+      jtbt = #{record.jtbt,jdbcType=REAL},
+      qqjj = #{record.qqjj,jdbcType=REAL},
+      qtjj = #{record.qtjj,jdbcType=REAL},
+      bxdk = #{record.bxdk,jdbcType=REAL},
+      cfdk = #{record.cfdk,jdbcType=REAL},
+      qtdk = #{record.qtdk,jdbcType=REAL},
+      jxgz = #{record.jxgz,jdbcType=REAL}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -324,75 +302,67 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.ehr.pojo.EhrSalaryAccounts" >
     update ehr_salary_accounts
     <set >
-      <if test="bankofaccount != null" >
-        bankOfAccount = #{bankofaccount,jdbcType=CHAR},
-      </if>
-      <if test="account != null" >
-        account = #{account,jdbcType=VARCHAR},
+      <if test="basicwage != null" >
+        basicwage = #{basicwage,jdbcType=VARCHAR},
       </if>
       <if test="enumber != null" >
-        eNumber = #{enumber,jdbcType=VARCHAR},
-      </if>
-      <if test="basicwage != null" >
-        basicWage = #{basicwage,jdbcType=INTEGER},
+        enumber = #{enumber,jdbcType=VARCHAR},
       </if>
       <if test="gwgz != null" >
-        gwgz = #{gwgz,jdbcType=INTEGER},
-      </if>
-      <if test="jxgz != null" >
-        jxgz = #{jxgz,jdbcType=INTEGER},
+        gwgz = #{gwgz,jdbcType=CHAR},
       </if>
       <if test="glgz != null" >
-        glgz = #{glgz,jdbcType=INTEGER},
+        glgz = #{glgz,jdbcType=VARCHAR},
       </if>
       <if test="gwjt != null" >
-        gwjt = #{gwjt,jdbcType=INTEGER},
+        gwjt = #{gwjt,jdbcType=REAL},
       </if>
       <if test="hfbt != null" >
-        hfbt = #{hfbt,jdbcType=INTEGER},
+        hfbt = #{hfbt,jdbcType=REAL},
       </if>
       <if test="cfbt != null" >
-        cfbt = #{cfbt,jdbcType=INTEGER},
+        cfbt = #{cfbt,jdbcType=REAL},
       </if>
       <if test="jtbt != null" >
-        jtbt = #{jtbt,jdbcType=INTEGER},
+        jtbt = #{jtbt,jdbcType=REAL},
       </if>
       <if test="qqjj != null" >
-        qqjj = #{qqjj,jdbcType=INTEGER},
+        qqjj = #{qqjj,jdbcType=REAL},
       </if>
       <if test="qtjj != null" >
-        qtjj = #{qtjj,jdbcType=INTEGER},
+        qtjj = #{qtjj,jdbcType=REAL},
       </if>
       <if test="bxdk != null" >
-        bxdk = #{bxdk,jdbcType=INTEGER},
+        bxdk = #{bxdk,jdbcType=REAL},
       </if>
       <if test="cfdk != null" >
-        cfdk = #{cfdk,jdbcType=INTEGER},
+        cfdk = #{cfdk,jdbcType=REAL},
       </if>
       <if test="qtdk != null" >
-        qtdk = #{qtdk,jdbcType=INTEGER},
+        qtdk = #{qtdk,jdbcType=REAL},
+      </if>
+      <if test="jxgz != null" >
+        jxgz = #{jxgz,jdbcType=REAL},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.ehr.pojo.EhrSalaryAccounts" >
     update ehr_salary_accounts
-    set bankOfAccount = #{bankofaccount,jdbcType=CHAR},
-      account = #{account,jdbcType=VARCHAR},
-      eNumber = #{enumber,jdbcType=VARCHAR},
-      basicWage = #{basicwage,jdbcType=INTEGER},
-      gwgz = #{gwgz,jdbcType=INTEGER},
-      jxgz = #{jxgz,jdbcType=INTEGER},
-      glgz = #{glgz,jdbcType=INTEGER},
-      gwjt = #{gwjt,jdbcType=INTEGER},
-      hfbt = #{hfbt,jdbcType=INTEGER},
-      cfbt = #{cfbt,jdbcType=INTEGER},
-      jtbt = #{jtbt,jdbcType=INTEGER},
-      qqjj = #{qqjj,jdbcType=INTEGER},
-      qtjj = #{qtjj,jdbcType=INTEGER},
-      bxdk = #{bxdk,jdbcType=INTEGER},
-      cfdk = #{cfdk,jdbcType=INTEGER},
-      qtdk = #{qtdk,jdbcType=INTEGER}
+    set basicwage = #{basicwage,jdbcType=VARCHAR},
+      enumber = #{enumber,jdbcType=VARCHAR},
+      gwgz = #{gwgz,jdbcType=CHAR},
+      glgz = #{glgz,jdbcType=VARCHAR},
+      gwjt = #{gwjt,jdbcType=REAL},
+      hfbt = #{hfbt,jdbcType=REAL},
+      cfbt = #{cfbt,jdbcType=REAL},
+      jtbt = #{jtbt,jdbcType=REAL},
+      qqjj = #{qqjj,jdbcType=REAL},
+      qtjj = #{qtjj,jdbcType=REAL},
+      bxdk = #{bxdk,jdbcType=REAL},
+      cfdk = #{cfdk,jdbcType=REAL},
+      qtdk = #{qtdk,jdbcType=REAL},
+      jxgz = #{jxgz,jdbcType=REAL}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

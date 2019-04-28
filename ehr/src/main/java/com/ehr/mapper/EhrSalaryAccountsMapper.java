@@ -1,14 +1,10 @@
 package com.ehr.mapper;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-
 import com.ehr.pojo.EhrSalaryAccounts;
 import com.ehr.pojo.EhrSalaryAccountsExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
-@Mapper
 public interface EhrSalaryAccountsMapper {
     int countByExample(EhrSalaryAccountsExample example);
 

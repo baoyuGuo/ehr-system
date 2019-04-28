@@ -40,7 +40,7 @@ public class PortalCtrl {
 			if (!result.isOK()) {
 				mv.addObject("login_failed", result.getMsg());
 			}else {
-				mv.setViewName("home");
+				mv.setViewName("redirect:/createLeft/humanfiles");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

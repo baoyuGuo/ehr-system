@@ -1,41 +1,36 @@
 package com.ehr.pojo;
 
-import java.io.Serializable;
-
-public class EhrSalaryAccounts implements Serializable{
+public class EhrSalaryAccounts {
     private Integer id;
-    //开户银行
-    private String bankofaccount;
-    //账户号码
-    private String account;
-    //工号
+
+    //基本工资
+    private String basicwage;
+    //工号 
     private String enumber;
-    //基本薪资
-    private Integer basicwage;
-
-    private Integer gwgz;
-
-    private Integer jxgz;
-
-    private Integer glgz;
-
-    private Integer gwjt;
-
-    private Integer hfbt;
-
-    private Integer cfbt;
-
-    private Integer jtbt;
-
-    private Integer qqjj;
-
-    private Integer qtjj;
-
-    private Integer bxdk;
-
-    private Integer cfdk;
-
-    private Integer qtdk;
+    //岗位工资
+    private String gwgz;
+    //工龄工资
+    private String glgz;
+    //岗位津贴
+    private Float gwjt;
+    //话费补贴
+    private Float hfbt;
+    //餐费补贴
+    private Float cfbt;
+    //交通补贴
+    private Float jtbt;
+    //全勤奖金
+    private Float qqjj;
+    //其他奖金
+    private Float qtjj;
+    //保险代扣
+    private Float bxdk;
+    //餐费代扣
+    private Float cfdk;
+    //其他代扣
+    private Float qtdk;
+    //绩效工资
+    private Float jxgz;
 
     public Integer getId() {
         return id;
@@ -45,20 +40,12 @@ public class EhrSalaryAccounts implements Serializable{
         this.id = id;
     }
 
-    public String getBankofaccount() {
-        return bankofaccount;
+    public String getBasicwage() {
+        return basicwage;
     }
 
-    public void setBankofaccount(String bankofaccount) {
-        this.bankofaccount = bankofaccount == null ? null : bankofaccount.trim();
-    }
-
-    public String getAccount() {
-        return account;
-    }
-
-    public void setAccount(String account) {
-        this.account = account == null ? null : account.trim();
+    public void setBasicwage(String basicwage) {
+        this.basicwage = basicwage == null ? null : basicwage.trim();
     }
 
     public String getEnumber() {
@@ -69,107 +56,99 @@ public class EhrSalaryAccounts implements Serializable{
         this.enumber = enumber == null ? null : enumber.trim();
     }
 
-    public Integer getBasicwage() {
-        return basicwage;
-    }
-
-    public void setBasicwage(Integer basicwage) {
-        this.basicwage = basicwage;
-    }
-
-    public Integer getGwgz() {
+    public String getGwgz() {
         return gwgz;
     }
 
-    public void setGwgz(Integer gwgz) {
-        this.gwgz = gwgz;
+    public void setGwgz(String gwgz) {
+        this.gwgz = gwgz == null ? null : gwgz.trim();
     }
 
-    public Integer getJxgz() {
-        return jxgz;
-    }
-
-    public void setJxgz(Integer jxgz) {
-        this.jxgz = jxgz;
-    }
-
-    public Integer getGlgz() {
+    public String getGlgz() {
         return glgz;
     }
 
-    public void setGlgz(Integer glgz) {
-        this.glgz = glgz;
+    public void setGlgz(String glgz) {
+        this.glgz = glgz == null ? null : glgz.trim();
     }
 
-    public Integer getGwjt() {
+    public Float getGwjt() {
         return gwjt;
     }
 
-    public void setGwjt(Integer gwjt) {
+    public void setGwjt(Float gwjt) {
         this.gwjt = gwjt;
     }
 
-    public Integer getHfbt() {
+    public Float getHfbt() {
         return hfbt;
     }
 
-    public void setHfbt(Integer hfbt) {
+    public void setHfbt(Float hfbt) {
         this.hfbt = hfbt;
     }
 
-    public Integer getCfbt() {
+    public Float getCfbt() {
         return cfbt;
     }
 
-    public void setCfbt(Integer cfbt) {
+    public void setCfbt(Float cfbt) {
         this.cfbt = cfbt;
     }
 
-    public Integer getJtbt() {
+    public Float getJtbt() {
         return jtbt;
     }
 
-    public void setJtbt(Integer jtbt) {
+    public void setJtbt(Float jtbt) {
         this.jtbt = jtbt;
     }
 
-    public Integer getQqjj() {
+    public Float getQqjj() {
         return qqjj;
     }
 
-    public void setQqjj(Integer qqjj) {
+    public void setQqjj(Float qqjj) {
         this.qqjj = qqjj;
     }
 
-    public Integer getQtjj() {
+    public Float getQtjj() {
         return qtjj;
     }
 
-    public void setQtjj(Integer qtjj) {
+    public void setQtjj(Float qtjj) {
         this.qtjj = qtjj;
     }
 
-    public Integer getBxdk() {
+    public Float getBxdk() {
         return bxdk;
     }
 
-    public void setBxdk(Integer bxdk) {
+    public void setBxdk(Float bxdk) {
         this.bxdk = bxdk;
     }
 
-    public Integer getCfdk() {
+    public Float getCfdk() {
         return cfdk;
     }
 
-    public void setCfdk(Integer cfdk) {
+    public void setCfdk(Float cfdk) {
         this.cfdk = cfdk;
     }
 
-    public Integer getQtdk() {
+    public Float getQtdk() {
         return qtdk;
     }
 
-    public void setQtdk(Integer qtdk) {
+    public void setQtdk(Float qtdk) {
         this.qtdk = qtdk;
+    }
+
+    public Float getJxgz() {
+        return jxgz;
+    }
+
+    public void setJxgz(Float jxgz) {
+        this.jxgz = jxgz;
     }
 }

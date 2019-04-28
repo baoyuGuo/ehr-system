@@ -1,5 +1,6 @@
 package com.ehr.controllers;
 
+import java.awt.Window;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ehr.exception.UploadFileException;
 import com.ehr.humanfiles.service.AdjustService;
 import com.ehr.humanfiles.service.DimissionService;
 import com.ehr.humanfiles.service.HumanFilesService;
@@ -25,7 +27,6 @@ import com.ehr.pojo.EhrRewardPunish;
 import com.ehr.pojo.EhrSalaryAccounts;
 import com.ehr.pojo.ParamMapping;
 import com.ehr.utils.EhrResult;
-import com.ehr.utils.FileUploadUtil;
 
 @Controller
 @RequestMapping("/humanfiles")
@@ -49,23 +50,17 @@ public class HumanFilesController {
 	 * 完成员工的入职操作；
 	 */
 	@RequestMapping("/entry")
-	public String entry(EhrEmployee employee,MultipartFile picture,MultipartFile uploadFile,EhrEmployeeBaseInfo baseInfo, EhrSalaryAccounts salaryInfo ) {
-		Map<String, String> msg_map = new HashMap<>();
-		//上传文件
-		EhrResult res1 = FileUploadUtil.uploadPhoto(picture);
-		if(res1.isOK()) {  
-			//上传成功
-			employee.setPhoto(res1.getData() + "");
+	public ModelAndView entry(EhrEmployee employee,MultipartFile picture,MultipartFile uploadFile,EhrEmployeeBaseInfo baseInfo, EhrSalaryAccounts salaryInfo ) {
+		ModelAndView mv = new ModelAndView("success");
+		try {
+			hService.entry(employee, picture, uploadFile, baseInfo, salaryInfo);
+			mv.addObject("success", ParamMapping.DO_SUCCESS);
+		} catch (UploadFileException e) {
+			mv.addObject("failed", ParamMapping.DO_FAILED +":" +  e.getMessage());
+			mv.setViewName("error");
+			e.printStackTrace();
 		}
-		
-		EhrResult res2 = FileUploadUtil.uploadFile(uploadFile);
-		if(res2.isOK()) {
-			//上传成功
-			employee.setEfileurl(res2.getData() + "");
-		}
-		employee.setEemail(baseInfo.getEmail());
-		hService.entry(employee, picture, baseInfo, salaryInfo);
-		return "h_entry";
+		return mv;
 	}
 	
 	@RequestMapping("/generateEnum")

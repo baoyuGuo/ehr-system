@@ -10,13 +10,34 @@
 <script th:src="@{/js/WebCalendar.js}" ></script>
 
 <script type="text/javascript" language="javascript">
-	
     function chknull() {
         if (document.getElementById('enumber').value == '') {
             alert('工号不能为空');
             form1.enumber.focus();
             return false;
         }
+        
+        //econtracttype
+        if (document.getElementById('econtracttype').value == '') {
+            alert('合同类型不能为空');
+            form1.enumber.focus();
+            return false;
+        }
+        
+        //uploadFile
+        if (document.getElementById('uploadFile').value == '') {
+            alert('附件简历不能为空');
+            form1.enumber.focus();
+            return false;
+        }
+
+        //account
+        if (document.getElementById('account').value == '') {
+            alert('银行账户不能为空');
+            form1.enumber.focus();
+            return false;
+        }
+        
         if (document.getElementById('ename').value == '') {
             alert('姓名不能为空');
             form1.ename.focus();
@@ -260,19 +281,11 @@
         }
     }
     
-    //成功工号
-    $("#generateEnum").click(function(){
-	    $.ajax({
-	    	url:'/humanfiles/generateEnum',
-	    	success:function(result){
-	        $("#div1").html(result);
-	    }});
-	});
 </script>
 </head>
 
 <body class="main" cz-shortcut-listen="true">
-    <form method="post" action="/humanfiles/entry" id="entry_form" enctype="multipart/form-data">
+    <form method="post" action="../../humanfiles/entry" id="form1" enctype="multipart/form-data">
         <table width="100%" cellspacing="0" cellpadding="0" border="0">
             <tbody><tr>
                 <td class="td_base" width="80%" height="25px">新增人员信息
@@ -524,12 +537,11 @@
                                         <td>
                                             <input name="dateofentry" type="text" id="dateofentry" class="mytext" onclick="SelectDate(this,'yyyy-MM-dd')" style="width:90%;">
                                         </td>
-                                        <td class="form-item">合同类型：
+                                        <td class="form-item"><font color="red">*</font>合同类型：
                                         </td>
                                         <td>
                                             <select name="econtracttype" id="econtracttype" style="width:90%;">
-												<option value="" selected="selected"></option>
-												<option value="劳务合同">劳务合同</option>
+												<option value="劳务合同" selected="selected">劳务合同</option>
 												<option value="实习合同">实习合同</option>
 												<option value="临时工">临时工</option>
 												<option value="外包">外包</option>
@@ -551,7 +563,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="form-item">员工岗位：
+                                        <td class="form-item"><font color="red">*</font>员工岗位：
                                         </td>
                                         <td>
                                             <input name="epost" type="text" id="epost" class="mytext" style="width:80%;">
@@ -601,15 +613,14 @@
                                         <td colspan="4" align="center"><strong>工资信息</strong></td>
                                     </tr>
                                     <tr>
-                                        <td class="form-item">工资卡开户行：
+                                        <td class="form-item"><font color="red">*</font>工资卡开户行：
                                         </td>
                                         <td>
                                             <select name="bankofaccount" id="bankofaccount" style="width:90%;">
-												<option value="" selected="selected"></option>
-												<option value="招商银行">招商银行</option>
+												<option value="招商银行" selected="selected">招商银行</option>
 											</select>
                                         </td>
-                                        <td class="form-item">工资卡帐号：
+                                        <td class="form-item"><font color="red">*</font>工资卡帐号：
                                         </td>
                                         <td>
                                             <input name="account" type="text" id="account" class="mytext" style="width:90%;">
@@ -688,7 +699,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="form-item">相片：
+                                        <td class="form-item"><font color="red">*</font>证件照：
                                         </td>
                                         <td colspan="3">
                                             <input name="picture" type="file" id="picture" style="width: 80%">
@@ -733,7 +744,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="form-item">上传附件：
+                                        <td class="form-item"><font color="red">*</font>上传附件：
                                         </td>
                                         <td colspan="3">
                                             <input name="uploadFile" type="file" id="uploadFile" style="width: 80%">
@@ -743,7 +754,7 @@
                                     <tr><td colspan="4" align="center"><div align="center"><strong>用户自定义字段</strong></div></td></tr> <tr><td class="form-item">自定义字段：</td><td colspan="3"><textarea rows="1" id="201791153919283549" name="201791153919283549" cols="80"></textarea></td></tr>
                                     <tr>
                                         <td colspan="4" align="center">
-                    						<input type="button" value="确定" onclick="return chknull();" class="mybtn" id="Button1">
+                    						<input type="submit" name="Button1" value="查询" onclick="javascript:return chknull();" id="Button1" class="mybtn" />
                                             <input id="Button2" class="mybtn" onclick="window.close()" type="button" value="关闭">
                                         </td>
                                     </tr>

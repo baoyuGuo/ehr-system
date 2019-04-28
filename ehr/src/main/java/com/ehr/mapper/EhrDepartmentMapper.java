@@ -27,6 +27,4 @@ public interface EhrDepartmentMapper {
     int updateByPrimaryKeySelective(EhrDepartment record);
 
     int updateByPrimaryKey(EhrDepartment record);
-
-	List<EhrDepartment> selectChildById(Integer id);
 }

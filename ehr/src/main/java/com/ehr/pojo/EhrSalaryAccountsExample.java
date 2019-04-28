@@ -164,273 +164,143 @@ public class EhrSalaryAccountsExample {
             return (Criteria) this;
         }
 
-        public Criteria andBankofaccountIsNull() {
-            addCriterion("bankOfAccount is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andBankofaccountIsNotNull() {
-            addCriterion("bankOfAccount is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andBankofaccountEqualTo(String value) {
-            addCriterion("bankOfAccount =", value, "bankofaccount");
-            return (Criteria) this;
-        }
-
-        public Criteria andBankofaccountNotEqualTo(String value) {
-            addCriterion("bankOfAccount <>", value, "bankofaccount");
-            return (Criteria) this;
-        }
-
-        public Criteria andBankofaccountGreaterThan(String value) {
-            addCriterion("bankOfAccount >", value, "bankofaccount");
-            return (Criteria) this;
-        }
-
-        public Criteria andBankofaccountGreaterThanOrEqualTo(String value) {
-            addCriterion("bankOfAccount >=", value, "bankofaccount");
-            return (Criteria) this;
-        }
-
-        public Criteria andBankofaccountLessThan(String value) {
-            addCriterion("bankOfAccount <", value, "bankofaccount");
-            return (Criteria) this;
-        }
-
-        public Criteria andBankofaccountLessThanOrEqualTo(String value) {
-            addCriterion("bankOfAccount <=", value, "bankofaccount");
-            return (Criteria) this;
-        }
-
-        public Criteria andBankofaccountLike(String value) {
-            addCriterion("bankOfAccount like", value, "bankofaccount");
-            return (Criteria) this;
-        }
-
-        public Criteria andBankofaccountNotLike(String value) {
-            addCriterion("bankOfAccount not like", value, "bankofaccount");
-            return (Criteria) this;
-        }
-
-        public Criteria andBankofaccountIn(List<String> values) {
-            addCriterion("bankOfAccount in", values, "bankofaccount");
-            return (Criteria) this;
-        }
-
-        public Criteria andBankofaccountNotIn(List<String> values) {
-            addCriterion("bankOfAccount not in", values, "bankofaccount");
-            return (Criteria) this;
-        }
-
-        public Criteria andBankofaccountBetween(String value1, String value2) {
-            addCriterion("bankOfAccount between", value1, value2, "bankofaccount");
-            return (Criteria) this;
-        }
-
-        public Criteria andBankofaccountNotBetween(String value1, String value2) {
-            addCriterion("bankOfAccount not between", value1, value2, "bankofaccount");
-            return (Criteria) this;
-        }
-
-        public Criteria andAccountIsNull() {
-            addCriterion("account is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAccountIsNotNull() {
-            addCriterion("account is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAccountEqualTo(String value) {
-            addCriterion("account =", value, "account");
-            return (Criteria) this;
-        }
-
-        public Criteria andAccountNotEqualTo(String value) {
-            addCriterion("account <>", value, "account");
-            return (Criteria) this;
-        }
-
-        public Criteria andAccountGreaterThan(String value) {
-            addCriterion("account >", value, "account");
-            return (Criteria) this;
-        }
-
-        public Criteria andAccountGreaterThanOrEqualTo(String value) {
-            addCriterion("account >=", value, "account");
-            return (Criteria) this;
-        }
-
-        public Criteria andAccountLessThan(String value) {
-            addCriterion("account <", value, "account");
-            return (Criteria) this;
-        }
-
-        public Criteria andAccountLessThanOrEqualTo(String value) {
-            addCriterion("account <=", value, "account");
-            return (Criteria) this;
-        }
-
-        public Criteria andAccountLike(String value) {
-            addCriterion("account like", value, "account");
-            return (Criteria) this;
-        }
-
-        public Criteria andAccountNotLike(String value) {
-            addCriterion("account not like", value, "account");
-            return (Criteria) this;
-        }
-
-        public Criteria andAccountIn(List<String> values) {
-            addCriterion("account in", values, "account");
-            return (Criteria) this;
-        }
-
-        public Criteria andAccountNotIn(List<String> values) {
-            addCriterion("account not in", values, "account");
-            return (Criteria) this;
-        }
-
-        public Criteria andAccountBetween(String value1, String value2) {
-            addCriterion("account between", value1, value2, "account");
-            return (Criteria) this;
-        }
-
-        public Criteria andAccountNotBetween(String value1, String value2) {
-            addCriterion("account not between", value1, value2, "account");
-            return (Criteria) this;
-        }
-
-        public Criteria andEnumberIsNull() {
-            addCriterion("eNumber is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andEnumberIsNotNull() {
-            addCriterion("eNumber is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andEnumberEqualTo(String value) {
-            addCriterion("eNumber =", value, "enumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andEnumberNotEqualTo(String value) {
-            addCriterion("eNumber <>", value, "enumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andEnumberGreaterThan(String value) {
-            addCriterion("eNumber >", value, "enumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andEnumberGreaterThanOrEqualTo(String value) {
-            addCriterion("eNumber >=", value, "enumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andEnumberLessThan(String value) {
-            addCriterion("eNumber <", value, "enumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andEnumberLessThanOrEqualTo(String value) {
-            addCriterion("eNumber <=", value, "enumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andEnumberLike(String value) {
-            addCriterion("eNumber like", value, "enumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andEnumberNotLike(String value) {
-            addCriterion("eNumber not like", value, "enumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andEnumberIn(List<String> values) {
-            addCriterion("eNumber in", values, "enumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andEnumberNotIn(List<String> values) {
-            addCriterion("eNumber not in", values, "enumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andEnumberBetween(String value1, String value2) {
-            addCriterion("eNumber between", value1, value2, "enumber");
-            return (Criteria) this;
-        }
-
-        public Criteria andEnumberNotBetween(String value1, String value2) {
-            addCriterion("eNumber not between", value1, value2, "enumber");
-            return (Criteria) this;
-        }
-
         public Criteria andBasicwageIsNull() {
-            addCriterion("basicWage is null");
+            addCriterion("basicwage is null");
             return (Criteria) this;
         }
 
         public Criteria andBasicwageIsNotNull() {
-            addCriterion("basicWage is not null");
+            addCriterion("basicwage is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBasicwageEqualTo(Integer value) {
-            addCriterion("basicWage =", value, "basicwage");
+        public Criteria andBasicwageEqualTo(String value) {
+            addCriterion("basicwage =", value, "basicwage");
             return (Criteria) this;
         }
 
-        public Criteria andBasicwageNotEqualTo(Integer value) {
-            addCriterion("basicWage <>", value, "basicwage");
+        public Criteria andBasicwageNotEqualTo(String value) {
+            addCriterion("basicwage <>", value, "basicwage");
             return (Criteria) this;
         }
 
-        public Criteria andBasicwageGreaterThan(Integer value) {
-            addCriterion("basicWage >", value, "basicwage");
+        public Criteria andBasicwageGreaterThan(String value) {
+            addCriterion("basicwage >", value, "basicwage");
             return (Criteria) this;
         }
 
-        public Criteria andBasicwageGreaterThanOrEqualTo(Integer value) {
-            addCriterion("basicWage >=", value, "basicwage");
+        public Criteria andBasicwageGreaterThanOrEqualTo(String value) {
+            addCriterion("basicwage >=", value, "basicwage");
             return (Criteria) this;
         }
 
-        public Criteria andBasicwageLessThan(Integer value) {
-            addCriterion("basicWage <", value, "basicwage");
+        public Criteria andBasicwageLessThan(String value) {
+            addCriterion("basicwage <", value, "basicwage");
             return (Criteria) this;
         }
 
-        public Criteria andBasicwageLessThanOrEqualTo(Integer value) {
-            addCriterion("basicWage <=", value, "basicwage");
+        public Criteria andBasicwageLessThanOrEqualTo(String value) {
+            addCriterion("basicwage <=", value, "basicwage");
             return (Criteria) this;
         }
 
-        public Criteria andBasicwageIn(List<Integer> values) {
-            addCriterion("basicWage in", values, "basicwage");
+        public Criteria andBasicwageLike(String value) {
+            addCriterion("basicwage like", value, "basicwage");
             return (Criteria) this;
         }
 
-        public Criteria andBasicwageNotIn(List<Integer> values) {
-            addCriterion("basicWage not in", values, "basicwage");
+        public Criteria andBasicwageNotLike(String value) {
+            addCriterion("basicwage not like", value, "basicwage");
             return (Criteria) this;
         }
 
-        public Criteria andBasicwageBetween(Integer value1, Integer value2) {
-            addCriterion("basicWage between", value1, value2, "basicwage");
+        public Criteria andBasicwageIn(List<String> values) {
+            addCriterion("basicwage in", values, "basicwage");
             return (Criteria) this;
         }
 
-        public Criteria andBasicwageNotBetween(Integer value1, Integer value2) {
-            addCriterion("basicWage not between", value1, value2, "basicwage");
+        public Criteria andBasicwageNotIn(List<String> values) {
+            addCriterion("basicwage not in", values, "basicwage");
+            return (Criteria) this;
+        }
+
+        public Criteria andBasicwageBetween(String value1, String value2) {
+            addCriterion("basicwage between", value1, value2, "basicwage");
+            return (Criteria) this;
+        }
+
+        public Criteria andBasicwageNotBetween(String value1, String value2) {
+            addCriterion("basicwage not between", value1, value2, "basicwage");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnumberIsNull() {
+            addCriterion("enumber is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnumberIsNotNull() {
+            addCriterion("enumber is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnumberEqualTo(String value) {
+            addCriterion("enumber =", value, "enumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnumberNotEqualTo(String value) {
+            addCriterion("enumber <>", value, "enumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnumberGreaterThan(String value) {
+            addCriterion("enumber >", value, "enumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnumberGreaterThanOrEqualTo(String value) {
+            addCriterion("enumber >=", value, "enumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnumberLessThan(String value) {
+            addCriterion("enumber <", value, "enumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnumberLessThanOrEqualTo(String value) {
+            addCriterion("enumber <=", value, "enumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnumberLike(String value) {
+            addCriterion("enumber like", value, "enumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnumberNotLike(String value) {
+            addCriterion("enumber not like", value, "enumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnumberIn(List<String> values) {
+            addCriterion("enumber in", values, "enumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnumberNotIn(List<String> values) {
+            addCriterion("enumber not in", values, "enumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnumberBetween(String value1, String value2) {
+            addCriterion("enumber between", value1, value2, "enumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnumberNotBetween(String value1, String value2) {
+            addCriterion("enumber not between", value1, value2, "enumber");
             return (Criteria) this;
         }
 
@@ -444,113 +314,63 @@ public class EhrSalaryAccountsExample {
             return (Criteria) this;
         }
 
-        public Criteria andGwgzEqualTo(Integer value) {
+        public Criteria andGwgzEqualTo(String value) {
             addCriterion("gwgz =", value, "gwgz");
             return (Criteria) this;
         }
 
-        public Criteria andGwgzNotEqualTo(Integer value) {
+        public Criteria andGwgzNotEqualTo(String value) {
             addCriterion("gwgz <>", value, "gwgz");
             return (Criteria) this;
         }
 
-        public Criteria andGwgzGreaterThan(Integer value) {
+        public Criteria andGwgzGreaterThan(String value) {
             addCriterion("gwgz >", value, "gwgz");
             return (Criteria) this;
         }
 
-        public Criteria andGwgzGreaterThanOrEqualTo(Integer value) {
+        public Criteria andGwgzGreaterThanOrEqualTo(String value) {
             addCriterion("gwgz >=", value, "gwgz");
             return (Criteria) this;
         }
 
-        public Criteria andGwgzLessThan(Integer value) {
+        public Criteria andGwgzLessThan(String value) {
             addCriterion("gwgz <", value, "gwgz");
             return (Criteria) this;
         }
 
-        public Criteria andGwgzLessThanOrEqualTo(Integer value) {
+        public Criteria andGwgzLessThanOrEqualTo(String value) {
             addCriterion("gwgz <=", value, "gwgz");
             return (Criteria) this;
         }
 
-        public Criteria andGwgzIn(List<Integer> values) {
+        public Criteria andGwgzLike(String value) {
+            addCriterion("gwgz like", value, "gwgz");
+            return (Criteria) this;
+        }
+
+        public Criteria andGwgzNotLike(String value) {
+            addCriterion("gwgz not like", value, "gwgz");
+            return (Criteria) this;
+        }
+
+        public Criteria andGwgzIn(List<String> values) {
             addCriterion("gwgz in", values, "gwgz");
             return (Criteria) this;
         }
 
-        public Criteria andGwgzNotIn(List<Integer> values) {
+        public Criteria andGwgzNotIn(List<String> values) {
             addCriterion("gwgz not in", values, "gwgz");
             return (Criteria) this;
         }
 
-        public Criteria andGwgzBetween(Integer value1, Integer value2) {
+        public Criteria andGwgzBetween(String value1, String value2) {
             addCriterion("gwgz between", value1, value2, "gwgz");
             return (Criteria) this;
         }
 
-        public Criteria andGwgzNotBetween(Integer value1, Integer value2) {
+        public Criteria andGwgzNotBetween(String value1, String value2) {
             addCriterion("gwgz not between", value1, value2, "gwgz");
-            return (Criteria) this;
-        }
-
-        public Criteria andJxgzIsNull() {
-            addCriterion("jxgz is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andJxgzIsNotNull() {
-            addCriterion("jxgz is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andJxgzEqualTo(Integer value) {
-            addCriterion("jxgz =", value, "jxgz");
-            return (Criteria) this;
-        }
-
-        public Criteria andJxgzNotEqualTo(Integer value) {
-            addCriterion("jxgz <>", value, "jxgz");
-            return (Criteria) this;
-        }
-
-        public Criteria andJxgzGreaterThan(Integer value) {
-            addCriterion("jxgz >", value, "jxgz");
-            return (Criteria) this;
-        }
-
-        public Criteria andJxgzGreaterThanOrEqualTo(Integer value) {
-            addCriterion("jxgz >=", value, "jxgz");
-            return (Criteria) this;
-        }
-
-        public Criteria andJxgzLessThan(Integer value) {
-            addCriterion("jxgz <", value, "jxgz");
-            return (Criteria) this;
-        }
-
-        public Criteria andJxgzLessThanOrEqualTo(Integer value) {
-            addCriterion("jxgz <=", value, "jxgz");
-            return (Criteria) this;
-        }
-
-        public Criteria andJxgzIn(List<Integer> values) {
-            addCriterion("jxgz in", values, "jxgz");
-            return (Criteria) this;
-        }
-
-        public Criteria andJxgzNotIn(List<Integer> values) {
-            addCriterion("jxgz not in", values, "jxgz");
-            return (Criteria) this;
-        }
-
-        public Criteria andJxgzBetween(Integer value1, Integer value2) {
-            addCriterion("jxgz between", value1, value2, "jxgz");
-            return (Criteria) this;
-        }
-
-        public Criteria andJxgzNotBetween(Integer value1, Integer value2) {
-            addCriterion("jxgz not between", value1, value2, "jxgz");
             return (Criteria) this;
         }
 
@@ -564,52 +384,62 @@ public class EhrSalaryAccountsExample {
             return (Criteria) this;
         }
 
-        public Criteria andGlgzEqualTo(Integer value) {
+        public Criteria andGlgzEqualTo(String value) {
             addCriterion("glgz =", value, "glgz");
             return (Criteria) this;
         }
 
-        public Criteria andGlgzNotEqualTo(Integer value) {
+        public Criteria andGlgzNotEqualTo(String value) {
             addCriterion("glgz <>", value, "glgz");
             return (Criteria) this;
         }
 
-        public Criteria andGlgzGreaterThan(Integer value) {
+        public Criteria andGlgzGreaterThan(String value) {
             addCriterion("glgz >", value, "glgz");
             return (Criteria) this;
         }
 
-        public Criteria andGlgzGreaterThanOrEqualTo(Integer value) {
+        public Criteria andGlgzGreaterThanOrEqualTo(String value) {
             addCriterion("glgz >=", value, "glgz");
             return (Criteria) this;
         }
 
-        public Criteria andGlgzLessThan(Integer value) {
+        public Criteria andGlgzLessThan(String value) {
             addCriterion("glgz <", value, "glgz");
             return (Criteria) this;
         }
 
-        public Criteria andGlgzLessThanOrEqualTo(Integer value) {
+        public Criteria andGlgzLessThanOrEqualTo(String value) {
             addCriterion("glgz <=", value, "glgz");
             return (Criteria) this;
         }
 
-        public Criteria andGlgzIn(List<Integer> values) {
+        public Criteria andGlgzLike(String value) {
+            addCriterion("glgz like", value, "glgz");
+            return (Criteria) this;
+        }
+
+        public Criteria andGlgzNotLike(String value) {
+            addCriterion("glgz not like", value, "glgz");
+            return (Criteria) this;
+        }
+
+        public Criteria andGlgzIn(List<String> values) {
             addCriterion("glgz in", values, "glgz");
             return (Criteria) this;
         }
 
-        public Criteria andGlgzNotIn(List<Integer> values) {
+        public Criteria andGlgzNotIn(List<String> values) {
             addCriterion("glgz not in", values, "glgz");
             return (Criteria) this;
         }
 
-        public Criteria andGlgzBetween(Integer value1, Integer value2) {
+        public Criteria andGlgzBetween(String value1, String value2) {
             addCriterion("glgz between", value1, value2, "glgz");
             return (Criteria) this;
         }
 
-        public Criteria andGlgzNotBetween(Integer value1, Integer value2) {
+        public Criteria andGlgzNotBetween(String value1, String value2) {
             addCriterion("glgz not between", value1, value2, "glgz");
             return (Criteria) this;
         }
@@ -624,52 +454,52 @@ public class EhrSalaryAccountsExample {
             return (Criteria) this;
         }
 
-        public Criteria andGwjtEqualTo(Integer value) {
+        public Criteria andGwjtEqualTo(Float value) {
             addCriterion("gwjt =", value, "gwjt");
             return (Criteria) this;
         }
 
-        public Criteria andGwjtNotEqualTo(Integer value) {
+        public Criteria andGwjtNotEqualTo(Float value) {
             addCriterion("gwjt <>", value, "gwjt");
             return (Criteria) this;
         }
 
-        public Criteria andGwjtGreaterThan(Integer value) {
+        public Criteria andGwjtGreaterThan(Float value) {
             addCriterion("gwjt >", value, "gwjt");
             return (Criteria) this;
         }
 
-        public Criteria andGwjtGreaterThanOrEqualTo(Integer value) {
+        public Criteria andGwjtGreaterThanOrEqualTo(Float value) {
             addCriterion("gwjt >=", value, "gwjt");
             return (Criteria) this;
         }
 
-        public Criteria andGwjtLessThan(Integer value) {
+        public Criteria andGwjtLessThan(Float value) {
             addCriterion("gwjt <", value, "gwjt");
             return (Criteria) this;
         }
 
-        public Criteria andGwjtLessThanOrEqualTo(Integer value) {
+        public Criteria andGwjtLessThanOrEqualTo(Float value) {
             addCriterion("gwjt <=", value, "gwjt");
             return (Criteria) this;
         }
 
-        public Criteria andGwjtIn(List<Integer> values) {
+        public Criteria andGwjtIn(List<Float> values) {
             addCriterion("gwjt in", values, "gwjt");
             return (Criteria) this;
         }
 
-        public Criteria andGwjtNotIn(List<Integer> values) {
+        public Criteria andGwjtNotIn(List<Float> values) {
             addCriterion("gwjt not in", values, "gwjt");
             return (Criteria) this;
         }
 
-        public Criteria andGwjtBetween(Integer value1, Integer value2) {
+        public Criteria andGwjtBetween(Float value1, Float value2) {
             addCriterion("gwjt between", value1, value2, "gwjt");
             return (Criteria) this;
         }
 
-        public Criteria andGwjtNotBetween(Integer value1, Integer value2) {
+        public Criteria andGwjtNotBetween(Float value1, Float value2) {
             addCriterion("gwjt not between", value1, value2, "gwjt");
             return (Criteria) this;
         }
@@ -684,52 +514,52 @@ public class EhrSalaryAccountsExample {
             return (Criteria) this;
         }
 
-        public Criteria andHfbtEqualTo(Integer value) {
+        public Criteria andHfbtEqualTo(Float value) {
             addCriterion("hfbt =", value, "hfbt");
             return (Criteria) this;
         }
 
-        public Criteria andHfbtNotEqualTo(Integer value) {
+        public Criteria andHfbtNotEqualTo(Float value) {
             addCriterion("hfbt <>", value, "hfbt");
             return (Criteria) this;
         }
 
-        public Criteria andHfbtGreaterThan(Integer value) {
+        public Criteria andHfbtGreaterThan(Float value) {
             addCriterion("hfbt >", value, "hfbt");
             return (Criteria) this;
         }
 
-        public Criteria andHfbtGreaterThanOrEqualTo(Integer value) {
+        public Criteria andHfbtGreaterThanOrEqualTo(Float value) {
             addCriterion("hfbt >=", value, "hfbt");
             return (Criteria) this;
         }
 
-        public Criteria andHfbtLessThan(Integer value) {
+        public Criteria andHfbtLessThan(Float value) {
             addCriterion("hfbt <", value, "hfbt");
             return (Criteria) this;
         }
 
-        public Criteria andHfbtLessThanOrEqualTo(Integer value) {
+        public Criteria andHfbtLessThanOrEqualTo(Float value) {
             addCriterion("hfbt <=", value, "hfbt");
             return (Criteria) this;
         }
 
-        public Criteria andHfbtIn(List<Integer> values) {
+        public Criteria andHfbtIn(List<Float> values) {
             addCriterion("hfbt in", values, "hfbt");
             return (Criteria) this;
         }
 
-        public Criteria andHfbtNotIn(List<Integer> values) {
+        public Criteria andHfbtNotIn(List<Float> values) {
             addCriterion("hfbt not in", values, "hfbt");
             return (Criteria) this;
         }
 
-        public Criteria andHfbtBetween(Integer value1, Integer value2) {
+        public Criteria andHfbtBetween(Float value1, Float value2) {
             addCriterion("hfbt between", value1, value2, "hfbt");
             return (Criteria) this;
         }
 
-        public Criteria andHfbtNotBetween(Integer value1, Integer value2) {
+        public Criteria andHfbtNotBetween(Float value1, Float value2) {
             addCriterion("hfbt not between", value1, value2, "hfbt");
             return (Criteria) this;
         }
@@ -744,52 +574,52 @@ public class EhrSalaryAccountsExample {
             return (Criteria) this;
         }
 
-        public Criteria andCfbtEqualTo(Integer value) {
+        public Criteria andCfbtEqualTo(Float value) {
             addCriterion("cfbt =", value, "cfbt");
             return (Criteria) this;
         }
 
-        public Criteria andCfbtNotEqualTo(Integer value) {
+        public Criteria andCfbtNotEqualTo(Float value) {
             addCriterion("cfbt <>", value, "cfbt");
             return (Criteria) this;
         }
 
-        public Criteria andCfbtGreaterThan(Integer value) {
+        public Criteria andCfbtGreaterThan(Float value) {
             addCriterion("cfbt >", value, "cfbt");
             return (Criteria) this;
         }
 
-        public Criteria andCfbtGreaterThanOrEqualTo(Integer value) {
+        public Criteria andCfbtGreaterThanOrEqualTo(Float value) {
             addCriterion("cfbt >=", value, "cfbt");
             return (Criteria) this;
         }
 
-        public Criteria andCfbtLessThan(Integer value) {
+        public Criteria andCfbtLessThan(Float value) {
             addCriterion("cfbt <", value, "cfbt");
             return (Criteria) this;
         }
 
-        public Criteria andCfbtLessThanOrEqualTo(Integer value) {
+        public Criteria andCfbtLessThanOrEqualTo(Float value) {
             addCriterion("cfbt <=", value, "cfbt");
             return (Criteria) this;
         }
 
-        public Criteria andCfbtIn(List<Integer> values) {
+        public Criteria andCfbtIn(List<Float> values) {
             addCriterion("cfbt in", values, "cfbt");
             return (Criteria) this;
         }
 
-        public Criteria andCfbtNotIn(List<Integer> values) {
+        public Criteria andCfbtNotIn(List<Float> values) {
             addCriterion("cfbt not in", values, "cfbt");
             return (Criteria) this;
         }
 
-        public Criteria andCfbtBetween(Integer value1, Integer value2) {
+        public Criteria andCfbtBetween(Float value1, Float value2) {
             addCriterion("cfbt between", value1, value2, "cfbt");
             return (Criteria) this;
         }
 
-        public Criteria andCfbtNotBetween(Integer value1, Integer value2) {
+        public Criteria andCfbtNotBetween(Float value1, Float value2) {
             addCriterion("cfbt not between", value1, value2, "cfbt");
             return (Criteria) this;
         }
@@ -804,52 +634,52 @@ public class EhrSalaryAccountsExample {
             return (Criteria) this;
         }
 
-        public Criteria andJtbtEqualTo(Integer value) {
+        public Criteria andJtbtEqualTo(Float value) {
             addCriterion("jtbt =", value, "jtbt");
             return (Criteria) this;
         }
 
-        public Criteria andJtbtNotEqualTo(Integer value) {
+        public Criteria andJtbtNotEqualTo(Float value) {
             addCriterion("jtbt <>", value, "jtbt");
             return (Criteria) this;
         }
 
-        public Criteria andJtbtGreaterThan(Integer value) {
+        public Criteria andJtbtGreaterThan(Float value) {
             addCriterion("jtbt >", value, "jtbt");
             return (Criteria) this;
         }
 
-        public Criteria andJtbtGreaterThanOrEqualTo(Integer value) {
+        public Criteria andJtbtGreaterThanOrEqualTo(Float value) {
             addCriterion("jtbt >=", value, "jtbt");
             return (Criteria) this;
         }
 
-        public Criteria andJtbtLessThan(Integer value) {
+        public Criteria andJtbtLessThan(Float value) {
             addCriterion("jtbt <", value, "jtbt");
             return (Criteria) this;
         }
 
-        public Criteria andJtbtLessThanOrEqualTo(Integer value) {
+        public Criteria andJtbtLessThanOrEqualTo(Float value) {
             addCriterion("jtbt <=", value, "jtbt");
             return (Criteria) this;
         }
 
-        public Criteria andJtbtIn(List<Integer> values) {
+        public Criteria andJtbtIn(List<Float> values) {
             addCriterion("jtbt in", values, "jtbt");
             return (Criteria) this;
         }
 
-        public Criteria andJtbtNotIn(List<Integer> values) {
+        public Criteria andJtbtNotIn(List<Float> values) {
             addCriterion("jtbt not in", values, "jtbt");
             return (Criteria) this;
         }
 
-        public Criteria andJtbtBetween(Integer value1, Integer value2) {
+        public Criteria andJtbtBetween(Float value1, Float value2) {
             addCriterion("jtbt between", value1, value2, "jtbt");
             return (Criteria) this;
         }
 
-        public Criteria andJtbtNotBetween(Integer value1, Integer value2) {
+        public Criteria andJtbtNotBetween(Float value1, Float value2) {
             addCriterion("jtbt not between", value1, value2, "jtbt");
             return (Criteria) this;
         }
@@ -864,52 +694,52 @@ public class EhrSalaryAccountsExample {
             return (Criteria) this;
         }
 
-        public Criteria andQqjjEqualTo(Integer value) {
+        public Criteria andQqjjEqualTo(Float value) {
             addCriterion("qqjj =", value, "qqjj");
             return (Criteria) this;
         }
 
-        public Criteria andQqjjNotEqualTo(Integer value) {
+        public Criteria andQqjjNotEqualTo(Float value) {
             addCriterion("qqjj <>", value, "qqjj");
             return (Criteria) this;
         }
 
-        public Criteria andQqjjGreaterThan(Integer value) {
+        public Criteria andQqjjGreaterThan(Float value) {
             addCriterion("qqjj >", value, "qqjj");
             return (Criteria) this;
         }
 
-        public Criteria andQqjjGreaterThanOrEqualTo(Integer value) {
+        public Criteria andQqjjGreaterThanOrEqualTo(Float value) {
             addCriterion("qqjj >=", value, "qqjj");
             return (Criteria) this;
         }
 
-        public Criteria andQqjjLessThan(Integer value) {
+        public Criteria andQqjjLessThan(Float value) {
             addCriterion("qqjj <", value, "qqjj");
             return (Criteria) this;
         }
 
-        public Criteria andQqjjLessThanOrEqualTo(Integer value) {
+        public Criteria andQqjjLessThanOrEqualTo(Float value) {
             addCriterion("qqjj <=", value, "qqjj");
             return (Criteria) this;
         }
 
-        public Criteria andQqjjIn(List<Integer> values) {
+        public Criteria andQqjjIn(List<Float> values) {
             addCriterion("qqjj in", values, "qqjj");
             return (Criteria) this;
         }
 
-        public Criteria andQqjjNotIn(List<Integer> values) {
+        public Criteria andQqjjNotIn(List<Float> values) {
             addCriterion("qqjj not in", values, "qqjj");
             return (Criteria) this;
         }
 
-        public Criteria andQqjjBetween(Integer value1, Integer value2) {
+        public Criteria andQqjjBetween(Float value1, Float value2) {
             addCriterion("qqjj between", value1, value2, "qqjj");
             return (Criteria) this;
         }
 
-        public Criteria andQqjjNotBetween(Integer value1, Integer value2) {
+        public Criteria andQqjjNotBetween(Float value1, Float value2) {
             addCriterion("qqjj not between", value1, value2, "qqjj");
             return (Criteria) this;
         }
@@ -924,52 +754,52 @@ public class EhrSalaryAccountsExample {
             return (Criteria) this;
         }
 
-        public Criteria andQtjjEqualTo(Integer value) {
+        public Criteria andQtjjEqualTo(Float value) {
             addCriterion("qtjj =", value, "qtjj");
             return (Criteria) this;
         }
 
-        public Criteria andQtjjNotEqualTo(Integer value) {
+        public Criteria andQtjjNotEqualTo(Float value) {
             addCriterion("qtjj <>", value, "qtjj");
             return (Criteria) this;
         }
 
-        public Criteria andQtjjGreaterThan(Integer value) {
+        public Criteria andQtjjGreaterThan(Float value) {
             addCriterion("qtjj >", value, "qtjj");
             return (Criteria) this;
         }
 
-        public Criteria andQtjjGreaterThanOrEqualTo(Integer value) {
+        public Criteria andQtjjGreaterThanOrEqualTo(Float value) {
             addCriterion("qtjj >=", value, "qtjj");
             return (Criteria) this;
         }
 
-        public Criteria andQtjjLessThan(Integer value) {
+        public Criteria andQtjjLessThan(Float value) {
             addCriterion("qtjj <", value, "qtjj");
             return (Criteria) this;
         }
 
-        public Criteria andQtjjLessThanOrEqualTo(Integer value) {
+        public Criteria andQtjjLessThanOrEqualTo(Float value) {
             addCriterion("qtjj <=", value, "qtjj");
             return (Criteria) this;
         }
 
-        public Criteria andQtjjIn(List<Integer> values) {
+        public Criteria andQtjjIn(List<Float> values) {
             addCriterion("qtjj in", values, "qtjj");
             return (Criteria) this;
         }
 
-        public Criteria andQtjjNotIn(List<Integer> values) {
+        public Criteria andQtjjNotIn(List<Float> values) {
             addCriterion("qtjj not in", values, "qtjj");
             return (Criteria) this;
         }
 
-        public Criteria andQtjjBetween(Integer value1, Integer value2) {
+        public Criteria andQtjjBetween(Float value1, Float value2) {
             addCriterion("qtjj between", value1, value2, "qtjj");
             return (Criteria) this;
         }
 
-        public Criteria andQtjjNotBetween(Integer value1, Integer value2) {
+        public Criteria andQtjjNotBetween(Float value1, Float value2) {
             addCriterion("qtjj not between", value1, value2, "qtjj");
             return (Criteria) this;
         }
@@ -984,52 +814,52 @@ public class EhrSalaryAccountsExample {
             return (Criteria) this;
         }
 
-        public Criteria andBxdkEqualTo(Integer value) {
+        public Criteria andBxdkEqualTo(Float value) {
             addCriterion("bxdk =", value, "bxdk");
             return (Criteria) this;
         }
 
-        public Criteria andBxdkNotEqualTo(Integer value) {
+        public Criteria andBxdkNotEqualTo(Float value) {
             addCriterion("bxdk <>", value, "bxdk");
             return (Criteria) this;
         }
 
-        public Criteria andBxdkGreaterThan(Integer value) {
+        public Criteria andBxdkGreaterThan(Float value) {
             addCriterion("bxdk >", value, "bxdk");
             return (Criteria) this;
         }
 
-        public Criteria andBxdkGreaterThanOrEqualTo(Integer value) {
+        public Criteria andBxdkGreaterThanOrEqualTo(Float value) {
             addCriterion("bxdk >=", value, "bxdk");
             return (Criteria) this;
         }
 
-        public Criteria andBxdkLessThan(Integer value) {
+        public Criteria andBxdkLessThan(Float value) {
             addCriterion("bxdk <", value, "bxdk");
             return (Criteria) this;
         }
 
-        public Criteria andBxdkLessThanOrEqualTo(Integer value) {
+        public Criteria andBxdkLessThanOrEqualTo(Float value) {
             addCriterion("bxdk <=", value, "bxdk");
             return (Criteria) this;
         }
 
-        public Criteria andBxdkIn(List<Integer> values) {
+        public Criteria andBxdkIn(List<Float> values) {
             addCriterion("bxdk in", values, "bxdk");
             return (Criteria) this;
         }
 
-        public Criteria andBxdkNotIn(List<Integer> values) {
+        public Criteria andBxdkNotIn(List<Float> values) {
             addCriterion("bxdk not in", values, "bxdk");
             return (Criteria) this;
         }
 
-        public Criteria andBxdkBetween(Integer value1, Integer value2) {
+        public Criteria andBxdkBetween(Float value1, Float value2) {
             addCriterion("bxdk between", value1, value2, "bxdk");
             return (Criteria) this;
         }
 
-        public Criteria andBxdkNotBetween(Integer value1, Integer value2) {
+        public Criteria andBxdkNotBetween(Float value1, Float value2) {
             addCriterion("bxdk not between", value1, value2, "bxdk");
             return (Criteria) this;
         }
@@ -1044,52 +874,52 @@ public class EhrSalaryAccountsExample {
             return (Criteria) this;
         }
 
-        public Criteria andCfdkEqualTo(Integer value) {
+        public Criteria andCfdkEqualTo(Float value) {
             addCriterion("cfdk =", value, "cfdk");
             return (Criteria) this;
         }
 
-        public Criteria andCfdkNotEqualTo(Integer value) {
+        public Criteria andCfdkNotEqualTo(Float value) {
             addCriterion("cfdk <>", value, "cfdk");
             return (Criteria) this;
         }
 
-        public Criteria andCfdkGreaterThan(Integer value) {
+        public Criteria andCfdkGreaterThan(Float value) {
             addCriterion("cfdk >", value, "cfdk");
             return (Criteria) this;
         }
 
-        public Criteria andCfdkGreaterThanOrEqualTo(Integer value) {
+        public Criteria andCfdkGreaterThanOrEqualTo(Float value) {
             addCriterion("cfdk >=", value, "cfdk");
             return (Criteria) this;
         }
 
-        public Criteria andCfdkLessThan(Integer value) {
+        public Criteria andCfdkLessThan(Float value) {
             addCriterion("cfdk <", value, "cfdk");
             return (Criteria) this;
         }
 
-        public Criteria andCfdkLessThanOrEqualTo(Integer value) {
+        public Criteria andCfdkLessThanOrEqualTo(Float value) {
             addCriterion("cfdk <=", value, "cfdk");
             return (Criteria) this;
         }
 
-        public Criteria andCfdkIn(List<Integer> values) {
+        public Criteria andCfdkIn(List<Float> values) {
             addCriterion("cfdk in", values, "cfdk");
             return (Criteria) this;
         }
 
-        public Criteria andCfdkNotIn(List<Integer> values) {
+        public Criteria andCfdkNotIn(List<Float> values) {
             addCriterion("cfdk not in", values, "cfdk");
             return (Criteria) this;
         }
 
-        public Criteria andCfdkBetween(Integer value1, Integer value2) {
+        public Criteria andCfdkBetween(Float value1, Float value2) {
             addCriterion("cfdk between", value1, value2, "cfdk");
             return (Criteria) this;
         }
 
-        public Criteria andCfdkNotBetween(Integer value1, Integer value2) {
+        public Criteria andCfdkNotBetween(Float value1, Float value2) {
             addCriterion("cfdk not between", value1, value2, "cfdk");
             return (Criteria) this;
         }
@@ -1104,53 +934,113 @@ public class EhrSalaryAccountsExample {
             return (Criteria) this;
         }
 
-        public Criteria andQtdkEqualTo(Integer value) {
+        public Criteria andQtdkEqualTo(Float value) {
             addCriterion("qtdk =", value, "qtdk");
             return (Criteria) this;
         }
 
-        public Criteria andQtdkNotEqualTo(Integer value) {
+        public Criteria andQtdkNotEqualTo(Float value) {
             addCriterion("qtdk <>", value, "qtdk");
             return (Criteria) this;
         }
 
-        public Criteria andQtdkGreaterThan(Integer value) {
+        public Criteria andQtdkGreaterThan(Float value) {
             addCriterion("qtdk >", value, "qtdk");
             return (Criteria) this;
         }
 
-        public Criteria andQtdkGreaterThanOrEqualTo(Integer value) {
+        public Criteria andQtdkGreaterThanOrEqualTo(Float value) {
             addCriterion("qtdk >=", value, "qtdk");
             return (Criteria) this;
         }
 
-        public Criteria andQtdkLessThan(Integer value) {
+        public Criteria andQtdkLessThan(Float value) {
             addCriterion("qtdk <", value, "qtdk");
             return (Criteria) this;
         }
 
-        public Criteria andQtdkLessThanOrEqualTo(Integer value) {
+        public Criteria andQtdkLessThanOrEqualTo(Float value) {
             addCriterion("qtdk <=", value, "qtdk");
             return (Criteria) this;
         }
 
-        public Criteria andQtdkIn(List<Integer> values) {
+        public Criteria andQtdkIn(List<Float> values) {
             addCriterion("qtdk in", values, "qtdk");
             return (Criteria) this;
         }
 
-        public Criteria andQtdkNotIn(List<Integer> values) {
+        public Criteria andQtdkNotIn(List<Float> values) {
             addCriterion("qtdk not in", values, "qtdk");
             return (Criteria) this;
         }
 
-        public Criteria andQtdkBetween(Integer value1, Integer value2) {
+        public Criteria andQtdkBetween(Float value1, Float value2) {
             addCriterion("qtdk between", value1, value2, "qtdk");
             return (Criteria) this;
         }
 
-        public Criteria andQtdkNotBetween(Integer value1, Integer value2) {
+        public Criteria andQtdkNotBetween(Float value1, Float value2) {
             addCriterion("qtdk not between", value1, value2, "qtdk");
+            return (Criteria) this;
+        }
+
+        public Criteria andJxgzIsNull() {
+            addCriterion("jxgz is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andJxgzIsNotNull() {
+            addCriterion("jxgz is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andJxgzEqualTo(Float value) {
+            addCriterion("jxgz =", value, "jxgz");
+            return (Criteria) this;
+        }
+
+        public Criteria andJxgzNotEqualTo(Float value) {
+            addCriterion("jxgz <>", value, "jxgz");
+            return (Criteria) this;
+        }
+
+        public Criteria andJxgzGreaterThan(Float value) {
+            addCriterion("jxgz >", value, "jxgz");
+            return (Criteria) this;
+        }
+
+        public Criteria andJxgzGreaterThanOrEqualTo(Float value) {
+            addCriterion("jxgz >=", value, "jxgz");
+            return (Criteria) this;
+        }
+
+        public Criteria andJxgzLessThan(Float value) {
+            addCriterion("jxgz <", value, "jxgz");
+            return (Criteria) this;
+        }
+
+        public Criteria andJxgzLessThanOrEqualTo(Float value) {
+            addCriterion("jxgz <=", value, "jxgz");
+            return (Criteria) this;
+        }
+
+        public Criteria andJxgzIn(List<Float> values) {
+            addCriterion("jxgz in", values, "jxgz");
+            return (Criteria) this;
+        }
+
+        public Criteria andJxgzNotIn(List<Float> values) {
+            addCriterion("jxgz not in", values, "jxgz");
+            return (Criteria) this;
+        }
+
+        public Criteria andJxgzBetween(Float value1, Float value2) {
+            addCriterion("jxgz between", value1, value2, "jxgz");
+            return (Criteria) this;
+        }
+
+        public Criteria andJxgzNotBetween(Float value1, Float value2) {
+            addCriterion("jxgz not between", value1, value2, "jxgz");
             return (Criteria) this;
         }
     }
