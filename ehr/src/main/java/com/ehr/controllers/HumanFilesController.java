@@ -1,5 +1,7 @@
 package com.ehr.controllers;
 
+import static org.junit.Assert.assertFalse;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,8 +9,10 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -26,6 +30,7 @@ import com.ehr.pojo.EhrRewardPunish;
 import com.ehr.pojo.EhrSalaryAccounts;
 import com.ehr.pojo.ParamMapping;
 import com.ehr.utils.EhrResult;
+import com.ehr.utils.FileUploadUtil;
 
 @Controller
 @RequestMapping("/humanfiles")
@@ -136,9 +141,27 @@ public class HumanFilesController {
 		}
 	}
 	
+	//新增离职记录
 	@RequestMapping("/addDimission")
-	public void addDimission() {
-		//新增离职记录
-		//员工表员工状态设置为离职
+	public ModelAndView addDimission(EhrDimission dimission,MultipartFile uploadFile) {
+		ModelAndView mv = new ModelAndView("error");
+		try {
+			if(!uploadFile.isEmpty()) {
+				EhrResult result = FileUploadUtil.uploadFile(uploadFile);
+				if(result.isOK()) {
+					dimission.setFilepath(result.getData().toString());
+				}else {
+					mv.addObject("failed", result.getMsg());
+					return mv;
+				}
+			}
+			dService.add(dimission);
+			mv.setViewName("success");
+		} catch (Exception e) {
+			e.printStackTrace();
+			mv.addObject("failed", ParamMapping.UNKNOWN_ERROR);
+		}
+		return mv;
+		
 	}
 }

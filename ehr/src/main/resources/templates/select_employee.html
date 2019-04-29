@@ -7,6 +7,7 @@
 	<script th:src="@{/js/Choose.js}" ></script>
 	<script th:src="@{/js/MyJs.js}" ></script>
 	<script th:src="@{/js/WebCalendar.js}" ></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <base target="_self" />
     <script type="text/javascript">
    		function checknull(){
@@ -126,6 +127,7 @@
             <tr> 
                 <td colspan="2" style="height: 30px;">&nbsp;姓名：<input name="ename" type="text" id="ename" class="mytext">
                     <input type="submit" name="Button1" value="查询" onclick="javascript:return checknull();" id="Button1" class="mybtn" />
+					<font  th:text="${failed}" color="#EA0C0C"></font>
                 </td>
             </tr>
             <tr>

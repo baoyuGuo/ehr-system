@@ -29,19 +29,22 @@ public class QueryEmpServiceImpl implements QueryEmpService {
 		exam.createCriteria().andEnameLike(ename);
 		List<EhrEmployee> list = employeeMapper.selectByExample(exam);
 		//替换其中的数据
-		formatEmps(list);
+		if (list.size()>0) {
+			formatEmps(list);
+		}
 		return list;
 	}
 
 	public void formatEmps(List<EhrEmployee> list){
 		for (EhrEmployee emp : list) {
 			String dnum = emp.getEdepartmentnum();
+			//解析部门
 			EhrDepartmentExample exam = new EhrDepartmentExample();
 			exam.createCriteria().andCodeEqualTo(dnum);
 			List<EhrDepartment> res = dMapper.selectByExample(exam);
 			String text = res.get(0).getText();
 			emp.setEdepartmentnum(text);
-			
+			//解析岗位
 			exam.clear();
 			exam.createCriteria().andCodeEqualTo(emp.getEpost());
 			String pstr = dMapper.selectByExample(exam).get(0).getText();

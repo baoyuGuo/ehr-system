@@ -18,7 +18,10 @@ public class ParamMapping {
 	public static final String REG_SUCCESS = "注册成功，请登录!";
 	
 	public static final String DO_SUCCESS = "操作成功";
+	
 	public static final String DO_FAILED = "操作失败";
+	
+	public static final String NO_RECORDS = "查询到0条记录！";
 	
 	public static final String UPLOAD_FILE_FAILED = "文件上传失败!";
 	

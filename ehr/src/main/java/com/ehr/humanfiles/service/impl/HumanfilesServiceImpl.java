@@ -1,7 +1,5 @@
 package com.ehr.humanfiles.service.impl;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,12 +10,9 @@ import com.ehr.mapper.EhrDepartmentMapper;
 import com.ehr.mapper.EhrEmployeeBaseInfoMapper;
 import com.ehr.mapper.EhrEmployeeMapper;
 import com.ehr.mapper.EhrSalaryAccountsMapper;
-import com.ehr.pojo.EhrDepartment;
-import com.ehr.pojo.EhrDepartmentExample;
 import com.ehr.pojo.EhrDimission;
 import com.ehr.pojo.EhrEmployee;
 import com.ehr.pojo.EhrEmployeeBaseInfo;
-import com.ehr.pojo.EhrEmployeeExample;
 import com.ehr.pojo.EhrSalaryAccounts;
 import com.ehr.pojo.ParamMapping;
 import com.ehr.utils.EhrResult;
@@ -42,7 +37,7 @@ public class HumanfilesServiceImpl  implements HumanFilesService{
 	public void entry(EhrEmployee employee, MultipartFile picture,MultipartFile uploadFile,
 			EhrEmployeeBaseInfo baseInfo, EhrSalaryAccounts salaryInfo) throws UploadFileException {
 		//上传照片
-		if(picture != null){
+		if(!picture.isEmpty()){
 			EhrResult res1 = FileUploadUtil.uploadPhoto(picture);
 			if(res1.isOK()) {
 				employee.setPhoto(res1.getData().toString());
@@ -51,7 +46,7 @@ public class HumanfilesServiceImpl  implements HumanFilesService{
 			}
 		}
 		//上传附件
-		if(uploadFile != null) {
+		if(!uploadFile.isEmpty()) {
 			EhrResult res2 = FileUploadUtil.uploadFile(uploadFile);
 			if(res2.isOK()) {
 				employee.setEfileurl(res2.getData().toString());
