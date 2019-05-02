@@ -24,5 +24,15 @@ public class SalaryPayRecordServiceImpl implements SalaryPayRecordService {
 		return prMapper.selectByExample(exam);
 	}
 
+	@Override
+	public void delete(String[] enumbers) {
+		EhrPayRecordExample exam = new EhrPayRecordExample();
+		for (String enumber : enumbers) {
+			exam.clear();
+			exam.createCriteria().andEnumberEqualTo(enumber);
+			prMapper.deleteByExample(exam);
+		}
+	}
+
 
 }

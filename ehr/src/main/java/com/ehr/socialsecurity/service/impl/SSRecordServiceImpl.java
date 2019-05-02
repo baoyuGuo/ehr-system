@@ -1,5 +1,9 @@
 package com.ehr.socialsecurity.service.impl;
 
+import static org.hamcrest.CoreMatchers.either;
+
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,4 +31,13 @@ public class SSRecordServiceImpl implements SSRecordService {
 		return ssrMapper.selectByExample(exam);
 	}
 
+	@Override
+	public void delete(String[] enumbers) {
+		System.out.println(enumbers.length);
+		EhrSsRecordsExample exam = new EhrSsRecordsExample();
+		List<String> values = new ArrayList<>();
+		Collections.addAll(values, enumbers);
+		exam.createCriteria().andEnumberIn(values);
+		ssrMapper.deleteByExample(exam);
+	}
 }

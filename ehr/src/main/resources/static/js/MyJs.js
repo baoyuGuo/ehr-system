@@ -1,5 +1,4 @@
-<!--
-//�ж�������汾
+//获取浏览器的类型
 function getBrowserType() { 
     var ua = navigator.userAgent.toLowerCase();
     if (ua.match(/msie ([\d.]+)/)) return 1;
@@ -11,7 +10,6 @@ function getBrowserType() {
     return 0; 
  }
 
-//�ı䵱ǰ����ɫ
 var orObj;
 var orBg;
 function changeBg(obj){
@@ -23,7 +21,6 @@ orBg = obj.style.backgroundColor;
 obj.style.backgroundColor='#C1DDF1';
 }
 
-//ɾ��ǰȷ��
 function check(objName){
     var   o=document.getElementsByName(objName)
     for(i=0;i<o.length;i++)if(o[i].checked)return;
@@ -31,7 +28,6 @@ function check(objName){
     location.reload();
 }
 
-//ˢ�°�ť
 function reload()   
 {   
   var name=navigator.appName   
@@ -44,7 +40,6 @@ function reload()
   }   
 }
 
-//���Ӵ���
 function popAdd(src){
     window.open (src,'newwindow1','height=550,width=750,top='+(screen.height-550)/2+',left='+(screen.width-750)/2+',toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no') 
 }
@@ -180,7 +175,7 @@ function modcheck()
 	
 }
 
-//删除所选中的内容
+//删除所选中的内容前的检查
 function delcheck()
 {
 	var j=0

@@ -42,6 +42,9 @@ public class ParamMapping {
 		//调动类型
 		ADJUST_TYPE.put("reinstate","复职" );
 		ADJUST_TYPE.put("suspension","停职" );
+		ADJUST_TYPE.put("raiseSalary", "涨薪");
+		ADJUST_TYPE.put("downSalary", "降薪");
+		
 		
 		//账户类型
 		ACCOUNT_TYPE.put("salary", "薪资账户");

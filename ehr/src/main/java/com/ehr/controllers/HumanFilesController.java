@@ -137,9 +137,9 @@ public class HumanFilesController {
 	}
 	
 	/**
+	 * 根据title查询调动
 	 * @param title
 	 * @return
-	 * 根据title查询调动
 	 */
 	@ResponseBody
 	@RequestMapping("/queryAdjustment/{title}")
@@ -154,9 +154,9 @@ public class HumanFilesController {
 	}
 	
 	/**
+	 * 根据type查询调动
 	 * @param type
 	 * @return
-	 * 根据type查询调动
 	 */
 	@ResponseBody
 	@RequestMapping("/queryAdjustmentByType/{type}")
@@ -171,8 +171,8 @@ public class HumanFilesController {
 	}
 	
 	/**
-	 * @return
 	 * 查询所有奖惩记录
+	 * @return
 	 */
 	@RequestMapping("/queryRewardPunish")
 	@ResponseBody
@@ -187,10 +187,10 @@ public class HumanFilesController {
 	}
 	
 	/**
+	 * 新增离职记录
 	 * @param dimission
 	 * @param uploadFile
 	 * @return
-	 * 新增离职记录
 	 */
 	@RequestMapping("/addDimission")
 	public ModelAndView addDimission(EhrDimission dimission,MultipartFile uploadFile) {
@@ -212,6 +212,43 @@ public class HumanFilesController {
 			mv.addObject("failed", ParamMapping.UNKNOWN_ERROR);
 		}
 		return mv;
-		
 	}
+	
+	/**
+	 * 批量删除调岗记录
+	 * @param param
+	 * @return
+	 */
+	@RequestMapping(value="/delAdjustment/{paramstr}",method=RequestMethod.GET)
+	@ResponseBody
+	public EhrResult delReassignment(@PathVariable String paramstr) {
+		//前端已经进行校验，param长度大于0
+		try {
+			String[] enumbers = paramstr.split(",");
+			aService.delete(enumbers);
+			return EhrResult.ok();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return EhrResult.build(500, ParamMapping.DO_FAILED );
+		}
+	}
+	
+	/**
+	 * 批量删除所选中的奖惩记录
+	 * @param paramstr
+	 * @return
+	 */
+	@RequestMapping(value="/delRewardPunish/{paramstr}",method=RequestMethod.GET)
+	@ResponseBody
+	public EhrResult delRewardPunish(@PathVariable String paramstr) {
+		//前端已经进行校验，param长度大于0
+		try {
+			String[] enumbers = paramstr.split(",");
+			rpService.delete(enumbers);
+			return EhrResult.ok();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return EhrResult.build(500, ParamMapping.DO_FAILED );
+		}
+	}	
 }

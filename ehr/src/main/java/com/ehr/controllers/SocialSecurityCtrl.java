@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -58,6 +59,7 @@ public class SocialSecurityCtrl {
 		}
 	}
 	
+	
 	@RequestMapping("/queryPayRecord")
 	@ResponseBody
 	public EhrResult queryPayRecord() {
@@ -70,6 +72,10 @@ public class SocialSecurityCtrl {
 		}
 	}
 	
+	/**
+	 * 查询所有的社保类型
+	 * @return
+	 */
 	@RequestMapping("/queryAllTypes")
 	@ResponseBody
 	public EhrResult queryAllTypes() {
@@ -82,5 +88,39 @@ public class SocialSecurityCtrl {
 		}
 	}
 	
+	/**
+	 * 批量删除发放记录
+	 * @param paramstr
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/delPayRecords/{paramstr}")
+	public EhrResult delPayRecords(@PathVariable String paramstr) {
+		try {
+			String[] enumbers = paramstr.split(",");
+			ssprService.delete(enumbers);
+			return EhrResult.ok();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return EhrResult.build(500, ParamMapping.UNKNOWN_ERROR);
+		}
+	}
 	
+	/**
+	 * 批量删除员工投保记录
+	 * @param paramstr
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/delRecords/{paramstr}")
+	public EhrResult delRecords(@PathVariable String paramstr) {
+		try {
+			String[] enumbers = paramstr.split(",");
+			ssrService.delete(enumbers);
+			return EhrResult.ok();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return EhrResult.build(500, ParamMapping.UNKNOWN_ERROR);
+		}
+	}
 }

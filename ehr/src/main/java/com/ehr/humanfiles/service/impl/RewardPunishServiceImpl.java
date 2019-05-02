@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.ehr.humanfiles.service.RewardPunishService;
 import com.ehr.mapper.EhrRewardPunishMapper;
-import com.ehr.pojo.EhrRecruitmentPlanExample;
 import com.ehr.pojo.EhrRewardPunish;
 import com.ehr.pojo.EhrRewardPunishExample;
 
@@ -29,6 +28,13 @@ public class RewardPunishServiceImpl implements RewardPunishService {
 		EhrRewardPunishExample exam = new EhrRewardPunishExample();
 		exam .createCriteria().andTitleEqualTo(title);
 		return rpMapper.selectByExample(exam);
+	}
+
+	@Override
+	public void delete(String[] enumbers) {
+		for (String enumber : enumbers) {
+			rpMapper.deleteByPrimaryKey(enumber);
+		}
 	}
 
 }

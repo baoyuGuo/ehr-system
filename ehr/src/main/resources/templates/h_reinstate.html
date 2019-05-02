@@ -9,10 +9,7 @@
 <script th:src="@{/js/Choose.js}" ></script>
 <script th:src="@{/js/MyJs.js}" ></script>
 <script th:src="@{/js/WebCalendar.js}" ></script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js">
-
-
-
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" language="javascript">
     function addfrom() {
         var num = Math.random();
@@ -28,10 +25,42 @@
         var num = Math.random();
         window.open("Ygdd_Mod.aspx?tmp=" + num + "&id=" + str + "", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
     }
+    
+    function delRecords(){
+    	delcheck();
+    	//获取复选框数组
+    	var ci=$("input:checked");
+		//遍历复选框数组;取出被选中的记录的员工工号
+		
+		var paramstr = "";
+		for(var i = 0;i < ci.length;i++){
+			paramstr += ci[i].getAttribute("value") +",";
+		};
+
+	    function func(str){
+			$.ajax({
+		        type:'get',
+		        url:'/humanfiles/delAdjustment/'+str,
+		        async:false,        
+		        success:function(res){
+		        		if(res.status == 200){
+			        		alert("操作成功!");
+		        		}
+		        		else{
+		        			alert("操作失败!");
+		        		}
+		        		window.location.reload();
+		        		//这里使用reload()而不是refresh()
+	        		}
+		   });
+		};
+		
+		func(paramstr);
+    }
 </script>
 </head>
 <body class="main">
-    <form method="post" id="reassignment_form">
+    <form method="post" id="form1">
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td>
@@ -66,7 +95,7 @@
 								<input name="StartTime" type="text" id="StartTime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />至<input name="EndTime" type="text" id="EndTime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />
                                 <input type="submit" name="QueryBtn" value="查询" id="QueryBtn" class="mybtn" />
                                 <input name="AddBtn" type="button" id="AddBtn" value="增加" class="mybtn" onclick="javascript: addfrom();" />
-                                <input type="submit" name="DelBtn" value="删除" onclick="javascript:return delcheck();" id="DelBtn" class="mybtn" />
+                                <input type="button" name="DelBtn" value="删除" onclick="delRecords();" id="DelBtn" class="mybtn" />
                                 <a href="javascript:void(0)" onclick="chkAllw()" class="gvlink">全选</a>
                                 <a href="javascript:void(0)" onclick="revchkAll()" class="gvlink">反选</a>
                             </td>
@@ -123,7 +152,7 @@
 	        		
 	        		var $tr = $("<tr class=\"hkRowStyle\" onclick=\"javascript:changeBg(this)\">"+
 	    					"<td align=\"center\"> <span id=\"GridView1_ctl\""+ i +"_lblxh\">"+ i +"</span>"+ "</td>"+
-	    					"<td align=\"center\" style=\"width:30px;\"><input id=\"GridView1_ctl\""+ i +"\"_CheckSelect\" type=\"checkbox\" name=\"GridView1$ctl\""+i+"\"$CheckSelect\">"+"</td>"+
+	    					"<td align=\"center\" style=\"width:30px;\"><input id=\"GridView1_ctl\""+ i +"\"_CheckSelect\" type=\"checkbox\"  value=\""+data[i-1].enumber+"\"  name=\"GridView1$ctl\""+i+"\"$CheckSelect\">"+"</td>"+
 	    					"<td>" + data[i-1].enumber + "</td>" +
 	    					"<td>" + data[i-1].ename + "</td>" +
 	    					"<td align=\"center\">" + data[i-1].title + "</td>" +

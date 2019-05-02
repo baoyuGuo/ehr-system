@@ -152,7 +152,7 @@ function __doPostBack(eventTarget, eventArgument) {
 	        		
 	        		var $tr = $("<tr class=\"hkRowStyle\" onclick=\"javascript:changeBg(this)\">"+
 	    					"<td align=\"center\"> <span id=\"GridView1_ctl\""+ i +"_lblxh\">"+ i +"</span>"+ "</td>"+
-	    					"<td align=\"center\" style=\"width:30px;\"><input id=\"GridView1_ctl\""+ i +"\"_CheckSelect\" type=\"checkbox\" name=\"GridView1$ctl\""+i+"\"$CheckSelect\">"+"</td>"+
+	    					"<td align=\"center\" style=\"width:30px;\"><input id=\"GridView1_ctl\""+ i +"\"_CheckSelect\" type=\"checkbox\"  value=\""+data[i-1].enumber+"\"  name=\"GridView1$ctl\""+i+"\"$CheckSelect\">"+"</td>"+
 	    					"<td>" + data[i-1].enumber + "</td>" +
 	    					"<td>" + data[i-1].ename + "</td>" +
 	    					"<td align=\"center\">" + day + "</td>" +

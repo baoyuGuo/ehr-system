@@ -37,5 +37,13 @@ public class AdjustServiceImpl  implements AdjustService{
 		exam.createCriteria().andTypeEqualTo(ParamMapping.ADJUST_TYPE.get(type));
 		return adjustMapper.selectByExample(exam);
 	}
+
+	@Override
+	public void delete(String[] params) {
+		//params长度大于0
+		for (String enumber : params) {
+			adjustMapper.deleteByPrimaryKey(enumber);
+		}
+	}
 	
 }

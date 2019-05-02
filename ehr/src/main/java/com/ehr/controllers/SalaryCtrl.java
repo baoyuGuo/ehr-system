@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -48,4 +49,29 @@ public class SalaryCtrl {
 		}
 	}
 	
+	@RequestMapping("/delAccounts/{paramstr}")
+	@ResponseBody
+	public EhrResult delAccounts(@PathVariable String paramstr) {
+		try {
+			String[] enumbers = paramstr.split(",");
+			saService.delete(enumbers);
+			return EhrResult.ok();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return EhrResult.build(500,  ParamMapping.UNKNOWN_ERROR);
+		}
+	}
+	
+	@RequestMapping("/delPayRecords/{paramstr}")
+	@ResponseBody
+	public EhrResult delPayRecords(@PathVariable String paramstr) {
+		try {
+			String[] enumbers = paramstr.split(",");
+			pService.delete(enumbers);
+			return EhrResult.ok();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return EhrResult.build(500,  ParamMapping.UNKNOWN_ERROR);
+		}
+	}
 }

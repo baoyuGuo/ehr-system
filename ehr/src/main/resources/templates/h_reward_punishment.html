@@ -27,15 +27,44 @@
             var num = Math.random();
             window.open("Jcgl_Mod.aspx?tmp=" + num + "&id=" + str + "", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
         }
+        
+        function delRecords(){
+        	delcheck();
+        	//获取复选框数组
+        	var ci=$("input:checked");
+    		//遍历复选框数组;取出被选中的记录的员工工号
+    		
+    		var paramstr = "";
+    		for(var i = 0;i < ci.length;i++){
+    			paramstr += ci[i].getAttribute("value") +",";
+    		};
+
+    	    function func(str){
+    			$.ajax({
+    		        type:'get',
+    		        url:'/humanfiles/delRewardPunish/'+str,
+    		        async:false,        
+    		        success:function(res){
+    		        		if(res.status == 200){
+    			        		alert("操作成功!");
+    		        		}
+    		        		else{
+    		        			alert("操作失败!");
+    		        		}
+    		        		window.location.reload();
+    		        		//这里使用reload()而不是refresh()
+    	        		}
+    		   });
+    		};
+    		
+    		func(paramstr);
+        }
+        
     </script>
 
 </head>
 <body class="main">
-    <form method="post" action="Jcgl_R.aspx" id="form1">
-<div class="aspNetHidden">
-<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTQ5MTUxNDI1MA9kFgICAw9kFgoCCQ8PZBYCHghyZWFkb25seQUIcmVhZG9ubHlkAgsPD2QWAh8ABQhyZWFkb25seWQCEQ8PZBYCHgdvbmNsaWNrBR1qYXZhc2NyaXB0OnJldHVybiBkZWxjaGVjaygpO2QCEw88KwARAwAPFgQeC18hRGF0YUJvdW5kZx4LXyFJdGVtQ291bnQCBGQBEBYAFgAWAAwUKwAAFgJmD2QWCgIBDw9kFgIfAQUZamF2YXNjcmlwdDpjaGFuZ2VCZyh0aGlzKRYQZg9kFgICAQ8PFgIeBFRleHQFATFkZAIBD2QWBAIDDw8WAh8EBQExZGQCBQ8PFgIfBAUG6LKC56aFZGQCAg8PFgIfBAUKMjAxNy0wOS0wN2RkAgMPDxYCHwQFBuiyguemhWRkAgQPDxYCHwQFCeWFqOWLpOWllmRkAgUPDxYCHwQFBuWlluWKsWRkAgYPDxYCHwQFBjQ0OC44MGRkAgcPZBYGAgEPDxYCHwQFATFkZAIDDw8WAh8EBU4gPGEgaHJlZj0iamF2YXNjcmlwdDp2b2lkKDApIiBvbmNsaWNrPSJzaG93ZnJvbSgxKTsiIGNsYXNzPSJndmxpbmsiPuafpeecizwvYT5kZAIFDw8WAh8EBVAgPGEgaHJlZj0iamF2YXNjcmlwdDp2b2lkKDApIiBvbmNsaWNrPSJ1cGRhdGVmcm9tKDEpOyIgY2xhc3M9Imd2bGluayI+5L+u5pS5PC9hPmRkAgIPD2QWAh8BBRlqYXZhc2NyaXB0OmNoYW5nZUJnKHRoaXMpFhBmD2QWAgIBDw8WAh8EBQEyZGQCAQ9kFgQCAw8PFgIfBAUBMmRkAgUPDxYCHwQFBuW6nue7n2RkAgIPDxYCHwQFCjIwMTctMDktMjhkZAIDDw8WAh8EBQblup7nu59kZAIEDw8WAh8EBRXkvJrorq7ov5/liLDljYHliIbpkp9kZAIFDw8WAh8EBQbmg6nnvZpkZAIGDw8WAh8EBQctMTQ1LjQ4ZGQCBw9kFgYCAQ8PFgIfBAUBMmRkAgMPDxYCHwQFTiA8YSBocmVmPSJqYXZhc2NyaXB0OnZvaWQoMCkiIG9uY2xpY2s9InNob3dmcm9tKDIpOyIgY2xhc3M9Imd2bGluayI+5p+l55yLPC9hPmRkAgUPDxYCHwQFUCA8YSBocmVmPSJqYXZhc2NyaXB0OnZvaWQoMCkiIG9uY2xpY2s9InVwZGF0ZWZyb20oMik7IiBjbGFzcz0iZ3ZsaW5rIj7kv67mlLk8L2E+ZGQCAw8PZBYCHwEFGWphdmFzY3JpcHQ6Y2hhbmdlQmcodGhpcykWEGYPZBYCAgEPDxYCHwQFATNkZAIBD2QWBAIDDw8WAh8EBQEzZGQCBQ8PFgIfBAUG6ams6LaFZGQCAg8PFgIfBAUKMjAxNy0wOC0xMGRkAgMPDxYCHwQFBumprOi2hWRkAgQPDxYCHwQFD+acgOS9s+WQjOS6i+WllmRkAgUPDxYCHwQFBuWlluWKsWRkAgYPDxYCHwQFBjQ0OC44MGRkAgcPZBYGAgEPDxYCHwQFATNkZAIDDw8WAh8EBU4gPGEgaHJlZj0iamF2YXNjcmlwdDp2b2lkKDApIiBvbmNsaWNrPSJzaG93ZnJvbSgzKTsiIGNsYXNzPSJndmxpbmsiPuafpeecizwvYT5kZAIFDw8WAh8EBVAgPGEgaHJlZj0iamF2YXNjcmlwdDp2b2lkKDApIiBvbmNsaWNrPSJ1cGRhdGVmcm9tKDMpOyIgY2xhc3M9Imd2bGluayI+5L+u5pS5PC9hPmRkAgQPD2QWAh8BBRlqYXZhc2NyaXB0OmNoYW5nZUJnKHRoaXMpFhBmD2QWAgIBDw8WAh8EBQE0ZGQCAQ9kFgQCAw8PFgIfBAUBOGRkAgUPDxYCHwQFBuiyguemhWRkAgIPDxYCHwQFCjIwMTgtMDUtMDRkZAIDDw8WAh8EBQbosoLnpoVkZAIEDw8WAh8EBRLpg6jpl6jkuJrnu6nmnIDlt65kZAIFDw8WAh8EBQbmg6nnvZpkZAIGDw8WAh8EBQctMTIzLjQwZGQCBw9kFgYCAQ8PFgIfBAUBOGRkAgMPDxYCHwQFTiA8YSBocmVmPSJqYXZhc2NyaXB0OnZvaWQoMCkiIG9uY2xpY2s9InNob3dmcm9tKDgpOyIgY2xhc3M9Imd2bGluayI+5p+l55yLPC9hPmRkAgUPDxYCHwQFUCA8YSBocmVmPSJqYXZhc2NyaXB0OnZvaWQoMCkiIG9uY2xpY2s9InVwZGF0ZWZyb20oOCk7IiBjbGFzcz0iZ3ZsaW5rIj7kv67mlLk8L2E+ZGQCBQ9kFgICBg8PFgIfBAUGNjI4LjcyZGQCFQ8PFgQeCFBhZ2VTaXplAg8eC1JlY29yZGNvdW50AgRkZBgCBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WBAUbR3JpZFZpZXcxJGN0bDAyJENoZWNrU2VsZWN0BRtHcmlkVmlldzEkY3RsMDMkQ2hlY2tTZWxlY3QFG0dyaWRWaWV3MSRjdGwwNCRDaGVja1NlbGVjdAUbR3JpZFZpZXcxJGN0bDA1JENoZWNrU2VsZWN0BQlHcmlkVmlldzEPPCsADAEIAgFk" />
-</div>
-
+    <form method="post" id="form1">
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td>
@@ -66,11 +95,11 @@
                             </td>
                             <td colspan="5">
                                 <input name="jsJcXiangMu" type="text" id="jsJcXiangMu" class="mytext" style="width:150px;" />
-                                奖惩时间：
+                                	奖惩时间：	
                             <input name="StartTime" type="text" id="StartTime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />至<input name="EndTime" type="text" id="EndTime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />
                                 <input type="submit" name="QueryBtn" value="查询" id="QueryBtn" class="mybtn" />
                                 <input name="AddBtn" type="button" id="AddBtn" value="增加" class="mybtn" onclick="javascript: addfrom();" />
-                                <input type="submit" name="DelBtn" value="删除" onclick="javascript:return delcheck();" id="DelBtn" class="mybtn" />
+                                <input type="button" name="DelBtn" value="删除" onclick="delRecords();" id="DelBtn" class="mybtn" />
                                 <a href="javascript:void(0)" onclick="chkAllw()" class="gvlink">全选</a>
                                 <a href="javascript:void(0)" onclick="revchkAll()" class="gvlink">反选</a>
                             </td>
@@ -130,7 +159,7 @@
 	        		
 	        		var $tr = $("<tr class=\"hkRowStyle\" onclick=\"javascript:changeBg(this)\">"+
 	    					"<td align=\"center\"> <span id=\"GridView1_ctl\""+ i +"_lblxh\">"+ i +"</span>"+ "</td>"+
-	    					"<td align=\"center\" style=\"width:30px;\"><input id=\"GridView1_ctl\""+ i +"\"_CheckSelect\" type=\"checkbox\" name=\"GridView1$ctl\""+i+"\"$CheckSelect\">"+"</td>"+
+	    					"<td align=\"center\" style=\"width:30px;\"><input id=\"GridView1_ctl\""+ i +"\"_CheckSelect\" type=\"checkbox\"  value=\""+data[i-1].enumber+"\"  name=\"GridView1$ctl\""+i+"\"$CheckSelect\">"+"</td>"+
 	    					"<td>" + data[i-1].enumber + "</td>" +
 	    					"<td>" + data[i-1].ename + "</td>" +
 	    					"<td align=\"center\">" + data[i-1].type + "</td>" +

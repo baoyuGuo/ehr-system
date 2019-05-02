@@ -24,4 +24,14 @@ public class SalaryAccountServiceImpl implements SalaryAccountService {
 		return aMapper.selectByExample(exam);
 	}
 
+	@Override
+	public void delete(String[] enumbers) {
+		EhrAccountsExample exam = new EhrAccountsExample();
+		for (String enumber : enumbers) {
+			exam.clear();
+			exam.createCriteria().andEnumberEqualTo(enumber);
+			aMapper.deleteByExample(exam);
+		}
+	}
+
 }
