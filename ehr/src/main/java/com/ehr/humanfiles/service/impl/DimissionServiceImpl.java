@@ -38,4 +38,11 @@ public class DimissionServiceImpl implements DimissionService {
 		dimissionMapper.insert(dimission);
 	}
 
+	@Override
+	public void delete(String[] enumbers) {
+		for (String enumber : enumbers) {
+			dimissionMapper.deleteByPrimaryKey(enumber);
+		}
+	}
+
 }

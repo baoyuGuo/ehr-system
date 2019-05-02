@@ -150,7 +150,6 @@ function CheckAll(form)
     }
 }
 
-//��֤��ѡ�򣺱�ѡһ��
 function modcheck()
 {
     var j=0
@@ -169,7 +168,7 @@ function modcheck()
 	{
         if(j>1)
 	    {
-	        alert('��֧�ֶ�ѡ����ѡ��һ����¼��ִ�д˲�����')
+	        alert('只能选择一项！')
 	        return false;
 	    }
     }
@@ -181,7 +180,7 @@ function modcheck()
 	
 }
 
-//ɾ������֤��ѡ�򣺱�ѡһ������
+//删除所选中的内容
 function delcheck()
 {
 	var j=0
@@ -199,11 +198,11 @@ function delcheck()
 	}
 	else
 	{
-		alert('�뵥��[ѡ��]�еĸ�ѡ��ѡ��һ���������¼����ִ��ɾ��������');
+		alert('请至少选中一项');
 		return false;
 	}
 	
-    if (window.confirm("ɾ�����޷��ٻָ���ȷ��Ҫ����ִ����"))
+    if (window.confirm("删除后无法恢复，确定删除所选内容吗？"))
     {
         return true;
     }
@@ -213,7 +212,6 @@ function delcheck()
     }
 }
 
-//��������֤��ѡ�򣺱�ѡһ������
 function audicheck()
 {
 	var j=0
@@ -231,11 +229,11 @@ function audicheck()
 	}
 	else
 	{
-		alert('�뵥��[ѡ��]�еĸ�ѡ��ѡ��һ���������¼����ִ�д˲�����');
+		alert('请至少选中一项');
 		return false;
 	}
 	
-    if (window.confirm("ȷ��Ҫ����ִ����"))
+    if (window.confirm("删除后无法恢复，确定要删除所选中内容吗？"))
     {
         return true;
     }
@@ -245,7 +243,7 @@ function audicheck()
     }
 }
 
-/*ȫѡ*/
+//全选
 function chkAllw()
 {
 	for(var i=0;i<document.forms["form1"].elements.length;i++)
@@ -253,7 +251,7 @@ function chkAllw()
 		document.forms["form1"].elements[i].checked=true;
 	}
 }
-/*ȫ��*/
+
 function nochkAll()
 {
 	for(var i=0;i<document.forms["form1"].elements.length;i++)
@@ -261,7 +259,8 @@ function nochkAll()
 		document.forms["form1"].elements[i].checked=false;
 	}
 }
-/*��ѡ*/
+
+//反选
 function revchkAll()
 {
 	for(var i=0;i<document.forms["form1"].elements.length;i++)
@@ -273,7 +272,6 @@ function revchkAll()
 	}
 }
 
-/*ҳ����Ҷ�λ��ʼ*/
 var NS4 = (document.layers);    // Which browser?
 var IE4 = (document.all);
 var win = window;    // window to search.
@@ -342,9 +340,7 @@ function findInPage(str) {
 
   return false;
 }
-/*ҳ����Ҷ�λ����*/
 
-/*��ӡ1��hkshow1 + GridView1*/
 function PrintPage1()
 {
     document.getElementById("hkshow1").style.visibility="hidden";

@@ -5,7 +5,7 @@ server.port: 8080
 #日志
 logging:
   config: src/main/resources/logback.xml
-
+  
 #dubbo service consumer config
 #dubbo: 
 # application: 
@@ -44,6 +44,10 @@ spring:
   freemarker:
     cache: false    #页面不加载缓存，修改即时生效      
 
+  thymeleaf: 
+    suffix: .html
+    
+    
 #系统模块配置
 modules: 
   #人事档案  [入职,离职,调岗,调薪,奖励,处分,停职,复职] 

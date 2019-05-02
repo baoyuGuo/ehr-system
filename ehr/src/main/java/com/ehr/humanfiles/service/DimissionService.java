@@ -16,4 +16,10 @@ public interface DimissionService {
 	 * 新增离职记录
 	 */
 	void add(EhrDimission dimission);
+	
+	/**
+	 * @param enumbers
+	 * 批量删除离职记录
+	 */
+	void delete(String[] enumbers);
 }

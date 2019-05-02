@@ -1,7 +1,5 @@
 package com.ehr.controllers;
 
-import static org.junit.Assert.assertFalse;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,10 +7,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -47,6 +43,27 @@ public class HumanFilesController {
 	
 	@Autowired
 	RewardPunishService rpService;
+	
+	/**
+	 * @param param
+	 * @return
+	 * 批量删除离职记录
+	 */
+	@RequestMapping(value="/delDimission/{paramstr}",method=RequestMethod.GET)
+	@ResponseBody
+	public EhrResult delDimission(@PathVariable String paramstr) {
+		//前端已经进行校验，param长度大于0
+		try {
+			String[] enumbers = paramstr.split(",");
+			dService.delete(enumbers);
+			return EhrResult.ok();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return EhrResult.build(500, ParamMapping.DO_FAILED );
+		}
+	}
+	
+	
 	/**
 	 * @param employee 员工信息
 	 * @param baseInfo 员工个人的基本信息
@@ -72,6 +89,11 @@ public class HumanFilesController {
 		//获取现有的工号，进行递增
 	}
 	
+	/**
+	 * @param enumber
+	 * @return
+	 * 根据员工工号查询员工
+	 */
 	@RequestMapping(method=RequestMethod.GET,value="/queryEmployeeByEnumber")
 	@ResponseBody
 	public EhrResult queryEmployeeByEnumber(String enumber) {
@@ -84,6 +106,11 @@ public class HumanFilesController {
 		}
 	}
 	
+	/**
+	 * @param enumber
+	 * @return
+	 * 查询离职记录
+	 */
 	@RequestMapping("/queryDimission")
 	public ModelAndView queryEmployeeInfo(String enumber) {
 		ModelAndView mv = new ModelAndView("h_dimission_info");
@@ -93,6 +120,10 @@ public class HumanFilesController {
 		return mv;
 	}
 	
+	/**
+	 * @return
+	 * 查询所有离职记录
+	 */
 	@RequestMapping("/queryDimissionRecords")
 	@ResponseBody
 	public EhrResult queryDimissionRecords() {
@@ -105,6 +136,11 @@ public class HumanFilesController {
 		}
 	}
 	
+	/**
+	 * @param title
+	 * @return
+	 * 根据title查询调动
+	 */
 	@ResponseBody
 	@RequestMapping("/queryAdjustment/{title}")
 	public EhrResult queryAdjustmentByTitle(@PathVariable String title) {
@@ -117,6 +153,11 @@ public class HumanFilesController {
 		}
 	}
 	
+	/**
+	 * @param type
+	 * @return
+	 * 根据type查询调动
+	 */
 	@ResponseBody
 	@RequestMapping("/queryAdjustmentByType/{type}")
 	public EhrResult queryAdjustmentByType(@PathVariable String type) {
@@ -129,6 +170,10 @@ public class HumanFilesController {
 		}
 	}
 	
+	/**
+	 * @return
+	 * 查询所有奖惩记录
+	 */
 	@RequestMapping("/queryRewardPunish")
 	@ResponseBody
 	public EhrResult queryRewardPunish() {
@@ -141,7 +186,12 @@ public class HumanFilesController {
 		}
 	}
 	
-	//新增离职记录
+	/**
+	 * @param dimission
+	 * @param uploadFile
+	 * @return
+	 * 新增离职记录
+	 */
 	@RequestMapping("/addDimission")
 	public ModelAndView addDimission(EhrDimission dimission,MultipartFile uploadFile) {
 		ModelAndView mv = new ModelAndView("error");
