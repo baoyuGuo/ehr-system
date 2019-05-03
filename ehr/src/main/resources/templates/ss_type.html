@@ -8,7 +8,40 @@
     <script th:src="@{/js/MyJs.js}" ></script>
 	<script th:src="@{/js/WebCalendar.js}" ></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	
+	<script type="text/javascript">
+		 function delRecords(){
+	     	delcheck();
+	     	//获取复选框数组
+	     	var ci=$("input:checked");
+	 		//遍历复选框数组;取出被选中的记录的员工工号
+	 		
+			//拼接选中的类型的id
+	 		var paramstr = "";
+	 		for(var i = 0;i < ci.length;i++){
+	 			paramstr += ci[i].getAttribute("value") +",";
+	 		};
+	 		
+	 	    function func(str){
+	 			$.ajax({
+	 		        type:'get',
+	 		        url:'/socialsecurity/delType/'+str,
+	 		        async:false,        
+	 		        success:function(res){
+	 		        		if(res.status == 200){
+	 			        		alert("操作成功!");
+	 		        		}
+	 		        		else{
+	 		        			alert("操作失败!");
+	 		        		}
+	 		        		window.location.reload();
+	 		        		//这里使用reload()而不是refresh()
+	 	        		}
+	 		   });
+	 		};
+	 		
+	 		func(paramstr);
+	     }
+	</script>
 </head>
 <body class="main">
     <form method="post" action="/page/ss_type_add" id="form1">
@@ -26,7 +59,7 @@
                                 <a href="javascript:void(0)" onclick="revchkAll()" class="gvlink">反选</a>
                                 <input type="submit" name="AddBtn" value="增加" id="AddBtn" class="mybtn"/>
                                 <input type="submit" name="updatebtn" value="修改" onclick="javascript:return modcheck();" id="updatebtn" class="mybtn" />
-                                <input type="submit" name="DelBtn" value="删除" onclick="javascript:return delcheck();" id="DelBtn" class="mybtn" />&nbsp;
+                                <input type="button" name="DelBtn" value="删除" onclick="delRecords();" id="DelBtn" class="mybtn" />
                             </td>
                         </tr>
                     </table>
@@ -70,7 +103,7 @@
 	        		
 	        		var $tr = $("<tr class=\"hkRowStyle\" onclick=\"javascript:changeBg(this)\">"+
 	    					"<td align=\"center\"> <span id=\"GridView1_ctl\""+ i +"_lblxh\">"+ i +"</span>"+ "</td>"+
-	    					"<td align=\"center\" style=\"width:30px;\"><input id=\"GridView1_ctl\""+ i +"\"_CheckSelect\" type=\"checkbox\" name=\"GridView1$ctl\""+i+"\"$CheckSelect\">"+"</td>"+
+	    					"<td align=\"center\" style=\"width:30px;\"><input id=\"GridView1_ctl\""+ i +"\"_CheckSelect\" type=\"checkbox\" value=\""+data[i-1].id+"\" name=\"GridView1$ctl\""+i+"\"$CheckSelect\">"+"</td>"+
 	    					"<td>" + data[i-1].type + "</td>" +
 	    					"<td>" + data[i-1].money + "</td>" +
 	    					"<td align=\"center\">" + data[i-1].period + "</td>" +

@@ -123,4 +123,31 @@ public class SocialSecurityCtrl {
 			return EhrResult.build(500, ParamMapping.UNKNOWN_ERROR);
 		}
 	}
+	
+	@RequestMapping("/delType/{paramstr}")
+	@ResponseBody
+	public EhrResult delType(@PathVariable String paramstr) {
+		try {
+			String[] ids = paramstr.split(",");
+			sstService.delete(ids);
+			return EhrResult.ok();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return EhrResult.build(500, ParamMapping.UNKNOWN_ERROR);
+		}
+	}
+	
+	@RequestMapping("/delAccount/{paramstr}")
+	@ResponseBody
+	public EhrResult delAccount(@PathVariable String paramstr) {
+		try {
+			String[] ids = paramstr.split(",");
+			ssaService.delete(ids);
+			return EhrResult.ok();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return EhrResult.build(500, ParamMapping.UNKNOWN_ERROR);
+		}
+	}
+	
 }

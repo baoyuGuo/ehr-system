@@ -1,7 +1,5 @@
 package com.ehr.socialsecurity.service.impl;
 
-import static org.hamcrest.CoreMatchers.either;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -33,7 +31,6 @@ public class SSRecordServiceImpl implements SSRecordService {
 
 	@Override
 	public void delete(String[] enumbers) {
-		System.out.println(enumbers.length);
 		EhrSsRecordsExample exam = new EhrSsRecordsExample();
 		List<String> values = new ArrayList<>();
 		Collections.addAll(values, enumbers);
