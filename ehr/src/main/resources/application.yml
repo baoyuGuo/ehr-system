@@ -56,7 +56,7 @@ modules:
     h_dimission: 离职
     h_reassignment: 调岗
     h_salary_adujstment: 调薪
-    h_reward_punishment: 奖励&处分
+    reward_punishment: 奖励&处分
     h_suspension: 停职
     h_reinstate: 复职
     
@@ -96,7 +96,7 @@ modules:
   performance: 
     p_records: 考核记录
     p_reward_punishment_type: 绩效奖惩类型
-    p_reward_punishment: 绩效奖惩记录
+    reward_punishment: 绩效奖惩记录
     appeal_record: 申诉记录
     
   #培训

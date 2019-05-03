@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.ibatis.binding.MapperMethod.ParamMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -20,7 +19,6 @@ import com.ehr.pojo.RegisterForm;
 import com.ehr.portal.service.LoginService;
 import com.ehr.portal.service.RegisterService;
 import com.ehr.utils.EhrResult;
-import com.fasterxml.jackson.databind.deser.impl.CreatorCandidate.Param;
 
 @Controller
 @RequestMapping("/portal")

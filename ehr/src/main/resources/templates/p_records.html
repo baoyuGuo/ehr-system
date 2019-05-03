@@ -1,6 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1"><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>
-	考核信息
+	考核记录
 </title>
 <link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
@@ -24,14 +24,42 @@
         var num = Math.random();
         window.open("Khgl_R_Mod.aspx?tmp=" + num + "&id=" + str + "", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
     }
+    
+    function delRecords(){
+    	delcheck();
+    	//获取复选框数组
+    	var ci=$("input:checked");
+		//遍历复选框数组;取出被选中的记录的员工工号
+		
+		var paramstr = "";
+		for(var i = 0;i < ci.length;i++){
+			paramstr += ci[i].getAttribute("value") +",";
+		};
+
+	    function func(str){
+			$.ajax({
+		        type:'get',
+		        url:'/performance/delRecords/'+str,
+		        async:false,        
+		        success:function(res){
+		        		if(res.status == 200){
+			        		alert("操作成功!");
+		        		}
+		        		else{
+		        			alert("操作失败!");
+		        		}
+		        		window.location.reload();
+		        		//这里使用reload()而不是refresh()
+	        		}
+		   });
+		};
+		
+		func(paramstr);
+    }
 </script>
 </head>
 <body class="main">
     <form method="post" action="Khgl_R.aspx" id="form1">
-<div class="aspNetHidden">
-<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
-</div>
-
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td>
@@ -89,7 +117,7 @@
                                 <input name="StartTime" type="text" id="StartTime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />至<input name="EndTime" type="text" id="EndTime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />
                                 <input type="submit" name="QueryBtn" value="查询" id="QueryBtn" class="mybtn" />
                                 <input name="AddBtn" type="button" id="AddBtn" value="增加" class="mybtn" onclick="javascript: addfrom();" />
-                                <input type="submit" name="DelBtn" value="删除" id="DelBtn" class="mybtn" />
+                                <input type="button" name="DelBtn" value="删除" onclick="delRecords();" id="DelBtn" class="mybtn" />
                                 <a href="javascript:void(0)" onclick="chkAllw()" class="gvlink">全选</a>
                                 <a href="javascript:void(0)" onclick="revchkAll()" class="gvlink">反选</a>
                             </td>
@@ -144,7 +172,7 @@
 	        		
 	        		var $tr = $("<tr class=\"hkRowStyle\" onclick=\"javascript:changeBg(this)\">"+
 	    					"<td align=\"center\"> <span id=\"GridView1_ctl\""+ i +"_lblxh\">"+ i +"</span>"+ "</td>"+
-	    					"<td align=\"center\" style=\"width:30px;\"><input id=\"GridView1_ctl\""+ i +"\"_CheckSelect\" type=\"checkbox\" name=\"GridView1$ctl\""+i+"\"$CheckSelect\">"+"</td>"+
+	    					"<td align=\"center\" style=\"width:30px;\"><input value=\""+data[i-1].enumber+"\"  id=\"GridView1_ctl\""+ i +"\"_CheckSelect\" type=\"checkbox\" name=\"GridView1$ctl\""+i+"\"$CheckSelect\">"+"</td>"+
 	    					"<td>" + data[i-1].enumber + "</td>" +
 	    					"<td>" + data[i-1].ename + "</td>" +
 	    					"<td align=\"center\">" + data[i-1].type + "</td>" +

@@ -1,8 +1,6 @@
 package com.ehr.controllers;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -98,7 +96,6 @@ public class HumanFilesController {
 	@ResponseBody
 	public EhrResult queryEmployeeByEnumber(String enumber) {
 		EhrEmployee employee = hService.queryEmployeeByEnumber(enumber);
-		Map<String, Object> map = new HashMap<>();
 		if(null != employee) {
 			return EhrResult.ok(employee);
 		}else {

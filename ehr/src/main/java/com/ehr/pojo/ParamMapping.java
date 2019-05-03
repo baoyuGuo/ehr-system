@@ -1,6 +1,7 @@
 package com.ehr.pojo;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ParamMapping {
@@ -50,4 +51,5 @@ public class ParamMapping {
 		ACCOUNT_TYPE.put("salary", "薪资账户");
 		ACCOUNT_TYPE.put("socialsecurity", "社保账户");
 	}
+	
 }
