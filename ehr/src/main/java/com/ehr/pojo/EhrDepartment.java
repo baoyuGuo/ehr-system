@@ -11,6 +11,10 @@ public class EhrDepartment {
 
     private Integer pid;
 
+    private Integer empsize;
+
+    private String marks;
+
     public Integer getId() {
         return id;
     }
@@ -49,5 +53,21 @@ public class EhrDepartment {
 
     public void setPid(Integer pid) {
         this.pid = pid;
+    }
+
+    public Integer getEmpsize() {
+        return empsize;
+    }
+
+    public void setEmpsize(Integer empsize) {
+        this.empsize = empsize;
+    }
+
+    public String getMarks() {
+        return marks;
+    }
+
+    public void setMarks(String marks) {
+        this.marks = marks == null ? null : marks.trim();
     }
 }

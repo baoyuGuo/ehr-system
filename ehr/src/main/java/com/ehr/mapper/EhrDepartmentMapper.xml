@@ -7,6 +7,8 @@
     <result column="state" property="state" jdbcType="VARCHAR" />
     <result column="code" property="code" jdbcType="VARCHAR" />
     <result column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="empsize" property="empsize" jdbcType="INTEGER" />
+    <result column="marks" property="marks" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, text, state, code, pid
+    id, text, state, code, pid, empsize, marks
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ehr.pojo.EhrDepartmentExample" >
     select
@@ -101,9 +103,11 @@
   </delete>
   <insert id="insert" parameterType="com.ehr.pojo.EhrDepartment" >
     insert into ehr_department (id, text, state, 
-      code, pid)
+      code, pid, empsize, 
+      marks)
     values (#{id,jdbcType=INTEGER}, #{text,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, 
-      #{code,jdbcType=VARCHAR}, #{pid,jdbcType=INTEGER})
+      #{code,jdbcType=VARCHAR}, #{pid,jdbcType=INTEGER}, #{empsize,jdbcType=INTEGER}, 
+      #{marks,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.ehr.pojo.EhrDepartment" >
     insert into ehr_department
@@ -123,6 +127,12 @@
       <if test="pid != null" >
         pid,
       </if>
+      <if test="empsize != null" >
+        empsize,
+      </if>
+      <if test="marks != null" >
+        marks,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -139,6 +149,12 @@
       </if>
       <if test="pid != null" >
         #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="empsize != null" >
+        #{empsize,jdbcType=INTEGER},
+      </if>
+      <if test="marks != null" >
+        #{marks,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -166,6 +182,12 @@
       <if test="record.pid != null" >
         pid = #{record.pid,jdbcType=INTEGER},
       </if>
+      <if test="record.empsize != null" >
+        empsize = #{record.empsize,jdbcType=INTEGER},
+      </if>
+      <if test="record.marks != null" >
+        marks = #{record.marks,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -177,7 +199,9 @@
       text = #{record.text,jdbcType=VARCHAR},
       state = #{record.state,jdbcType=VARCHAR},
       code = #{record.code,jdbcType=VARCHAR},
-      pid = #{record.pid,jdbcType=INTEGER}
+      pid = #{record.pid,jdbcType=INTEGER},
+      empsize = #{record.empsize,jdbcType=INTEGER},
+      marks = #{record.marks,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -197,6 +221,12 @@
       <if test="pid != null" >
         pid = #{pid,jdbcType=INTEGER},
       </if>
+      <if test="empsize != null" >
+        empsize = #{empsize,jdbcType=INTEGER},
+      </if>
+      <if test="marks != null" >
+        marks = #{marks,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -205,7 +235,9 @@
     set text = #{text,jdbcType=VARCHAR},
       state = #{state,jdbcType=VARCHAR},
       code = #{code,jdbcType=VARCHAR},
-      pid = #{pid,jdbcType=INTEGER}
+      pid = #{pid,jdbcType=INTEGER},
+      empsize = #{empsize,jdbcType=INTEGER},
+      marks = #{marks,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

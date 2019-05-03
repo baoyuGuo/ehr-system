@@ -9,21 +9,52 @@
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script th:src="@{/js/MyJs.js}" ></script>
 	<script th:src="@{/js/WebCalendar.js}" ></script>
+	
+	<script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="../easyui/locale/easyui-lang-zh_CN.js"></script>
+	<link href="../easyui/themes/bootstrap/easyui.css" type="text/css" rel="stylesheet">
+	<link href="../easyui/themes/icon.css" type="text/css" rel="stylesheet">
+		
     <script type="text/javascript">
 	//右侧嵌入页面高度自适应
-    function changeFrameHeight(){
-        var dfm= document.getElementById("dframe"); 
-        var dsfm= document.getElementById("dsframe"); 
-        dfm.height=document.documentElement.clientHeight;
-        dsfm.height=document.documentElement.clientHeight;
-    }
-
-    window.onresize=function(){  
-         changeFrameHeight();  
-    };
+	<!--
+	    function changeFrameHeight(){
+	        var dfm= document.getElementById("dframe"); 
+	        var dsfm= document.getElementById("dsframe"); 
+	        dfm.height=document.documentElement.clientHeight;
+	        dsfm.height=document.documentElement.clientHeight;
+	    }
+	
+	    window.onresize=function(){  
+	         changeFrameHeight();  
+	    };
+		    
+	-->
+	$(document).ready(function(){
+		
+		$("#departmentTree").tree({
+			url : '../../department/tree',
+			animate: true,
+			method : "GET",
+			//在节点展开时触发，添加节点
+			onClick: function(node){
+				$("#code").attr("value",node.code);//推荐这种写法,可正常赋值
+				$("#dname").attr("value",node.text);//推荐这种写法,可正常赋值
+				var parent = $("#departmentTree").tree("getParent",node.target);
+				if(parent){
+					$("#pdname").attr("value",parent.text);//推荐这种写法,可正常赋值
+				}else{
+					$("#pdname").attr("value","<当前为总公司>");//推荐这种写法,可正常赋值
+				}
+				$("#empsize").attr("value",node.empsize);//推荐这种写法,可正常赋值
+				$("#marks").attr("value",node.marks);//推荐这种写法,可正常赋值
+			}
+		});
+	});
 </script>
 </head>
 <body>
+		<!-- 
 		<div class="container-fluid">
 			<div  id="d_nav" class="col-xs-3 col-sm3 col-md-3 col-lg-3" >
 			 	<iframe id="dframe" name="dframe" src="../../page/d_tree" scrolling="no" frameborder="0"  onload="changeFrameHeight()" width="100%" ></iframe>
@@ -33,5 +64,73 @@
 				<iframe id="dsframe" name="dsframe" src="../../page/d_modify_table" scrolling="no" frameborder="0"  onload="changeFrameHeight()" width="100%" ></iframe>
 		    </div>
 		</div>
+		 -->
+		 <div>
+			<!-- 部门结构图  easyui创建动态树 -->
+		   	<div  align="left" class="container-fluid col-xs-3 col-sm3 col-md-3 col-lg-3" >
+				<ul id="departmentTree" class="easyui-tree" ></ul>
+			</div>
+			
+			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+				<form method="post" action="Jggl_R.aspx?id=10000" id="form1">
+			        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+			            <tr>
+			                <td>
+			                    <table class="form" border="0" cellpadding="0" cellspacing="0" width="100%">
+			                        <tr>
+			                            <td align="center" colspan="4">
+			                                <b>
+			                                    <font color=red>获取部门信息：请点击左边树型菜单</font></b>
+			                            </td>
+			                        </tr>
+			                        <tr>
+			                            <td class="form-item" style="width: 20%">部门编号：
+			                            </td>
+			                            <td colspan="3" style="width: 40%">
+											<input readonly="readonly" id="code">
+			                            </td>
+			                        </tr>
+			                          <tr>
+			                            <td class="form-item" style="width: 20%">部门名称：
+			                            </td>
+			                            <td colspan="3" style="width: 40%">
+											<input readonly="readonly" id="dname">
+			                            </td>
+			                        </tr>
+			                        <tr>
+			                            <td class="form-item">编制数：
+			                            </td>
+			                            <td colspan="3">
+											<input readonly="readonly" id="empsize">
+			                            </td>
+			                        </tr>
+			                        <tr>
+			                            <td class="form-item">上级部门：
+			                            </td>
+			                            <td colspan="3">
+											<input readonly="readonly" id="pdname">
+			                            </td>
+			                        </tr>
+			                        <tr>
+			                            <td class="form-item">备注：
+			                            </td>
+			                            <td colspan="3">
+             								<input readonly="readonly" id="marks">
+			                            </td>
+			                        </tr>
+			
+			                    </table>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td align="center">
+			                    <input type="submit" name="Button4" value="编制当前部门" id="Button4" class="mybtn" />
+			                    <input type="submit" name="Button3" value="修改当前部门" id="Button3" class="mybtn" />
+			                </td>
+			            </tr>
+			        </table>
+			    </form>				
+		    </div>
+	    </div>
 </body>
 </html>

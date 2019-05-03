@@ -433,6 +433,136 @@ public class EhrDepartmentExample {
             addCriterion("pid not between", value1, value2, "pid");
             return (Criteria) this;
         }
+
+        public Criteria andEmpsizeIsNull() {
+            addCriterion("empsize is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpsizeIsNotNull() {
+            addCriterion("empsize is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpsizeEqualTo(Integer value) {
+            addCriterion("empsize =", value, "empsize");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpsizeNotEqualTo(Integer value) {
+            addCriterion("empsize <>", value, "empsize");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpsizeGreaterThan(Integer value) {
+            addCriterion("empsize >", value, "empsize");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpsizeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("empsize >=", value, "empsize");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpsizeLessThan(Integer value) {
+            addCriterion("empsize <", value, "empsize");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpsizeLessThanOrEqualTo(Integer value) {
+            addCriterion("empsize <=", value, "empsize");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpsizeIn(List<Integer> values) {
+            addCriterion("empsize in", values, "empsize");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpsizeNotIn(List<Integer> values) {
+            addCriterion("empsize not in", values, "empsize");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpsizeBetween(Integer value1, Integer value2) {
+            addCriterion("empsize between", value1, value2, "empsize");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmpsizeNotBetween(Integer value1, Integer value2) {
+            addCriterion("empsize not between", value1, value2, "empsize");
+            return (Criteria) this;
+        }
+
+        public Criteria andMarksIsNull() {
+            addCriterion("marks is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMarksIsNotNull() {
+            addCriterion("marks is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMarksEqualTo(String value) {
+            addCriterion("marks =", value, "marks");
+            return (Criteria) this;
+        }
+
+        public Criteria andMarksNotEqualTo(String value) {
+            addCriterion("marks <>", value, "marks");
+            return (Criteria) this;
+        }
+
+        public Criteria andMarksGreaterThan(String value) {
+            addCriterion("marks >", value, "marks");
+            return (Criteria) this;
+        }
+
+        public Criteria andMarksGreaterThanOrEqualTo(String value) {
+            addCriterion("marks >=", value, "marks");
+            return (Criteria) this;
+        }
+
+        public Criteria andMarksLessThan(String value) {
+            addCriterion("marks <", value, "marks");
+            return (Criteria) this;
+        }
+
+        public Criteria andMarksLessThanOrEqualTo(String value) {
+            addCriterion("marks <=", value, "marks");
+            return (Criteria) this;
+        }
+
+        public Criteria andMarksLike(String value) {
+            addCriterion("marks like", value, "marks");
+            return (Criteria) this;
+        }
+
+        public Criteria andMarksNotLike(String value) {
+            addCriterion("marks not like", value, "marks");
+            return (Criteria) this;
+        }
+
+        public Criteria andMarksIn(List<String> values) {
+            addCriterion("marks in", values, "marks");
+            return (Criteria) this;
+        }
+
+        public Criteria andMarksNotIn(List<String> values) {
+            addCriterion("marks not in", values, "marks");
+            return (Criteria) this;
+        }
+
+        public Criteria andMarksBetween(String value1, String value2) {
+            addCriterion("marks between", value1, value2, "marks");
+            return (Criteria) this;
+        }
+
+        public Criteria andMarksNotBetween(String value1, String value2) {
+            addCriterion("marks not between", value1, value2, "marks");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
