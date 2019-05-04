@@ -1,5 +1,5 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head id="Head1"><meta http-equiv="Content-Type" content="text/html; charset=gb2312" /><title>
+<html xmlns:th="http://www.thymeleaf.org">
+<head id="Head1"><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>
 	人才储备
 </title>
 <link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
@@ -23,14 +23,42 @@
         var num = Math.random();
         window.open("Rccbdj_Mod.aspx?tmp=" + num + "&id=" + str + "", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
     }
+    
+    function delRecords(){
+    	delcheck();
+    	//获取复选框数组
+    	var ci=$("input:checked");
+		//遍历复选框数组;取出被选中的记录的员工工号
+		
+		var paramstr = "";
+		for(var i = 0;i < ci.length;i++){
+			paramstr += ci[i].getAttribute("value") +",";
+		};
+
+	    function func(str){
+			$.ajax({
+		        type:'get',
+		        url:'/recruitment/delPool/'+str,
+		        async:false,        
+		        success:function(res){
+		        		if(res.status == 200){
+			        		alert("操作成功!");
+		        		}
+		        		else{
+		        			alert("操作失败!");
+		        		}
+		        		window.location.reload();
+		        		//这里使用reload()而不是refresh()
+	        		}
+		   });
+		};
+		
+		func(paramstr);
+    }
 </script>
 </head>
 <body class="main">
     <form method="post" action="Rccbdj_R.aspx" id="form1">
-<div class="aspNetHidden">
-<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
-</div>
-
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td>
@@ -59,7 +87,7 @@
                                 <input name="jsYinPinZW" type="text" id="jsYinPinZW" class="mytext" />
                                 <input type="submit" name="QueryBtn" value="查询" id="QueryBtn" class="mybtn" />
                                 <input name="AddBtn" type="button" id="AddBtn" value="增加" class="mybtn" onclick="javascript: addfrom();" />
-                                <input type="submit" name="DelBtn" value="删除" onclick="javascript:return delcheck();" id="DelBtn" class="mybtn" />
+                                <input type="button" name="DelBtn" value="删除" onclick="delRecords();" id="DelBtn" class="mybtn" />
                                 <a href="javascript:void(0)" onclick="chkAllw()" class="gvlink">全选</a>
                                 <a href="javascript:void(0)" onclick="revchkAll()" class="gvlink">反选</a>
                             </td>
@@ -69,34 +97,17 @@
                         <tr>
                             <td colspan="2">
                                 <div>
-						<table class="hkgv" cellspacing="0" rules="all" border="1" id="GridView1" style="width:100%;border-collapse:collapse;">
-							<tr class="hkHeadStyle">
-								<th scope="col" style="width:30px;"><img src="/pic/refresh.gif" alt="序号" /></th>
-								<th align="center" scope="col" style="white-space:nowrap;">选择</th>
-								<th scope="col">姓名</th>
-								<th scope="col">文化程度</th>
-								<th scope="col">应聘岗位</th>
-								<th scope="col">招聘来源</th>
-								<th scope="col">面试得分</th>
-								<th scope="col" style="width:80px;white-space:nowrap;">操作</th>
-							</tr>
-							<tr class="hkRowStyle" onclick="javascript:changeBg(this)">
-								<td align="center">
-					                <span id="GridView1_ctl02_lblxh">1</span>
-					            </td>
-					            <td align="center" style="width:30px;">
-					                <input id="GridView1_ctl02_CheckSelect" type="checkbox" name="GridView1$ctl02$CheckSelect" />
-					            </td>
-					            <td>黄盖</td>
-					            <td>本科</td>
-					            <td>职员</td>
-					            <td>媒体</td>
-					            <td>一般</td>
-					            <td align="center" style="width:80px;white-space:nowrap;">
-					                <span id="GridView1_ctl02_Label1"> <a href="javascript:void(0)" onclick="showfrom(1);" class="gvlink">查看</a></span>
-					                <span id="GridView1_ctl02_Label2"> <a href="javascript:void(0)" onclick="updatefrom(1);" class="gvlink">修改</a></span>
-                                          </td>
-								</tr>
+									<table class="hkgv" cellspacing="0" rules="all" border="1" id="GridView1" style="width:100%;border-collapse:collapse;">
+										<tr class="hkHeadStyle">
+											<th scope="col" style="width:30px;"><img src="/pic/refresh.gif" alt="序号" /></th>
+											<th align="center" scope="col" style="white-space:nowrap;">选择</th>
+											<th scope="col">姓名</th>
+											<th scope="col">文化程度</th>
+											<th scope="col">应聘岗位</th>
+											<th scope="col">招聘来源</th>
+											<th scope="col">面试得分</th>
+											<th scope="col" style="width:80px;white-space:nowrap;">操作</th>
+										</tr>
 									</table>
 								</div>
                             </td>
@@ -117,4 +128,43 @@
         </table>
     </form>
 </body>
+<script type="text/javascript">
+	window.onload=function (){
+		$.ajax({
+	        type:'get',
+	        url:'/recruitment/queryAllPool',
+	        async:false,	        
+	        /*data:{
+	         email:$("#email").val(),
+	         password:$("#password").val()
+	         }*/
+	        success:function(res){
+	        	if(res.status!=200){
+	        		alert(res.msg);
+	        		return;
+	        	}
+	        	var data = res.data;
+	        	if(data.length==0){
+	        		alert("没有相关记录");
+	        		return;
+	        	}
+	        	for (var i=1;i<=data.length;i++){
+	        		var $tr = $("<tr class=\"hkRowStyle\" onclick=\"javascript:changeBg(this)\">"+
+	    					"<td align=\"center\"> <span id=\"GridView1_ctl\""+ i +"_lblxh\">"+ i +"</span>"+ "</td>"+
+	    					"<td align=\"center\" style=\"width:30px;\"><input  value=\""+data[i-1].id+"\"  id=\"GridView1_ctl\""+ i +"\"_CheckSelect\" type=\"checkbox\" name=\"GridView1$ctl\""+i+"\"$CheckSelect\">"+"</td>"+
+	    					"<td>" + data[i-1].name + "</td>" +
+	    					"<td>" + data[i-1].educationbg + "</td>" +
+	    					"<td align=\"center\">" + data[i-1].post  + "</td>" +
+	    					"<td align=\"center\">" + data[i-1].getway  + "</td>" +
+	    					"<td align=\"center\">" + data[i-1].score  + "</td>" +
+	    					"<td align=\"center\" style=\"width:80px;white-space:nowrap;\"> " + 
+	    						"<span id=\"GridView1_ctl"+i+"_Label1\">" + "<a href=\"javascript:void(0)\" onclick=\"showfrom(1);\" class=\"gvlink\">查看</a></span>" + 
+	    						"<span id=\"GridView1_ctl"+i+"_Label2\"> <a href=\"javascript:void(0)\" onclick=\"updatefrom(1);\" class=\"gvlink\">修改</a></span></td></tr>");
+	    					var $table = $(".hkgv tbody");
+	    					$table.append($tr);
+	        	}
+	        }
+	   });
+	}
+</script>
 </html>

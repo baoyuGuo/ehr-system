@@ -1011,6 +1011,76 @@ public class EhrPoolExample {
             addCriterion("post not between", value1, value2, "post");
             return (Criteria) this;
         }
+
+        public Criteria andGetwayIsNull() {
+            addCriterion("getway is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGetwayIsNotNull() {
+            addCriterion("getway is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGetwayEqualTo(String value) {
+            addCriterion("getway =", value, "getway");
+            return (Criteria) this;
+        }
+
+        public Criteria andGetwayNotEqualTo(String value) {
+            addCriterion("getway <>", value, "getway");
+            return (Criteria) this;
+        }
+
+        public Criteria andGetwayGreaterThan(String value) {
+            addCriterion("getway >", value, "getway");
+            return (Criteria) this;
+        }
+
+        public Criteria andGetwayGreaterThanOrEqualTo(String value) {
+            addCriterion("getway >=", value, "getway");
+            return (Criteria) this;
+        }
+
+        public Criteria andGetwayLessThan(String value) {
+            addCriterion("getway <", value, "getway");
+            return (Criteria) this;
+        }
+
+        public Criteria andGetwayLessThanOrEqualTo(String value) {
+            addCriterion("getway <=", value, "getway");
+            return (Criteria) this;
+        }
+
+        public Criteria andGetwayLike(String value) {
+            addCriterion("getway like", value, "getway");
+            return (Criteria) this;
+        }
+
+        public Criteria andGetwayNotLike(String value) {
+            addCriterion("getway not like", value, "getway");
+            return (Criteria) this;
+        }
+
+        public Criteria andGetwayIn(List<String> values) {
+            addCriterion("getway in", values, "getway");
+            return (Criteria) this;
+        }
+
+        public Criteria andGetwayNotIn(List<String> values) {
+            addCriterion("getway not in", values, "getway");
+            return (Criteria) this;
+        }
+
+        public Criteria andGetwayBetween(String value1, String value2) {
+            addCriterion("getway between", value1, value2, "getway");
+            return (Criteria) this;
+        }
+
+        public Criteria andGetwayNotBetween(String value1, String value2) {
+            addCriterion("getway not between", value1, value2, "getway");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

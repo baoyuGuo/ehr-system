@@ -29,6 +29,8 @@ public class EhrPool {
 
     private String post;
 
+    private String getway;
+
     public Integer getId() {
         return id;
     }
@@ -131,5 +133,13 @@ public class EhrPool {
 
     public void setPost(String post) {
         this.post = post == null ? null : post.trim();
+    }
+
+    public String getGetway() {
+        return getway;
+    }
+
+    public void setGetway(String getway) {
+        this.getway = getway == null ? null : getway.trim();
     }
 }
