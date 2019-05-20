@@ -23,6 +23,10 @@
 		var username = document.location.href.split("username=")[1];
 		var atag = document.getElementById("username");
 		atag.append(username);
+		
+		var eles = document.getElementsByClassName("list-group-item");
+		var t = eles[0];
+		t.click();
 	});
 	
 	//右侧嵌入页面高度自适应
@@ -73,10 +77,12 @@
 			<div class="splitter"></div>
 			
 			<div id="workspace" class="col-xs-10 col-sm-10 col-md-10 col-lg-10 ">
-				<a class="list-group-item" target="mainFrame"  href="/page/notice">
-					<span class="">公告栏</span>
-              	</a>
-				<iframe id="mainFrame" name="mainFrame" src="../../page/notice" scrolling="yes" frameborder="0"  onload="changeFrameHeight()" width="100%" >
+				<!-- 
+					<a class="list-group-item" target="mainFrame"  href="/page/notice">
+						<span class="">预警信息</span>
+	              	</a>
+				 -->
+				<iframe id="mainFrame" name="mainFrame" src="" scrolling="yes" frameborder="0"  onload="changeFrameHeight()" width="100%" >
 				</iframe>
 			</div>
 		</div>

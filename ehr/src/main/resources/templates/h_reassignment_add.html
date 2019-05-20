@@ -1,0 +1,773 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<script type="text/javascript">
+    function chknull() {
+        if (document.getElementById('StaffNumer').value == '') {
+            alert('员工工号不能为空');
+            form1.StaffNumer.focus();
+            return false;
+        }
+        if (document.getElementById('DiaoDongLX').value == '') {
+            alert('调动类型不能为空');
+            form1.DiaoDongLX.focus();
+            return false;
+        }
+        if (document.getElementById('DiaoDongSj').value == '') {
+            alert('调动时间不能为空');
+            form1.DiaoDongSj.focus();
+            return false;
+        }
+
+        if (document.getElementById('XjbGongZ').value == '') {
+            alert('现基本工资不能为空');
+            form1.XjbGongZ.focus();
+            return false;
+        }
+        if (document.getElementById('XjbGongZ').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('XjbGongZ').value)) {
+                alert("现基本工资只能为正数");
+                form1.XjbGongZ.focus();
+                return false;
+            }
+        }
+
+        if (document.getElementById('XGwgz').value == '') {
+            alert('现岗位工资不能为空');
+            form1.XGwgz.focus();
+            return false;
+        }
+        if (document.getElementById('XGwgz').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('XGwgz').value)) {
+                alert("现岗位工资只能为正数");
+                form1.XGwgz.focus();
+                return false;
+            }
+        }
+
+        if (document.getElementById('XJxgz').value == '') {
+            alert('现绩效工资不能为空');
+            form1.XJxgz.focus();
+            return false;
+        }
+        if (document.getElementById('XJxgz').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('XJxgz').value)) {
+                alert("现绩效工资只能为正数");
+                form1.XJxgz.focus();
+                return false;
+            }
+        }
+
+        if (document.getElementById('XGlgz').value == '') {
+            alert('现工龄工资不能为空');
+            form1.XGlgz.focus();
+            return false;
+        }
+        if (document.getElementById('XGlgz').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('XGlgz').value)) {
+                alert("现工龄工资只能为正数");
+                form1.XGlgz.focus();
+                return false;
+            }
+        }
+
+        if (document.getElementById('XGwjt').value == '') {
+            alert('现岗位津贴不能为空');
+            form1.XGwjt.focus();
+            return false;
+        }
+        if (document.getElementById('XGwjt').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('XGwjt').value)) {
+                alert("现岗位津贴只能为正数");
+                form1.XGwjt.focus();
+                return false;
+            }
+        }
+
+        if (document.getElementById('XHfbt').value == '') {
+            alert('现话费补贴不能为空');
+            form1.XHfbt.focus();
+            return false;
+        }
+        if (document.getElementById('XHfbt').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('XHfbt').value)) {
+                alert("现话费补贴只能为正数");
+                form1.XHfbt.focus();
+                return false;
+            }
+        }
+
+        if (document.getElementById('XCfbt').value == '') {
+            alert('现餐费补贴不能为空');
+            form1.XCfbt.focus();
+            return false;
+        }
+        if (document.getElementById('XCfbt').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('XCfbt').value)) {
+                alert("现餐费补贴只能为正数");
+                form1.XCfbt.focus();
+                return false;
+            }
+        }
+
+        if (document.getElementById('XJtbt').value == '') {
+            alert('现交通补贴不能为空');
+            form1.XJtbt.focus();
+            return false;
+        }
+        if (document.getElementById('XJtbt').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('XJtbt').value)) {
+                alert("现交通补贴只能为正数");
+                form1.XJtbt.focus();
+                return false;
+            }
+        }
+
+        if (document.getElementById('XQqjj').value == '') {
+            alert('现全勤奖金不能为空');
+            form1.XQqjj.focus();
+            return false;
+        }
+        if (document.getElementById('XQqjj').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('XQqjj').value)) {
+                alert("现全勤奖金只能为正数");
+                form1.XQqjj.focus();
+                return false;
+            }
+        }
+
+        if (document.getElementById('XQtjj').value == '') {
+            alert('现其它奖金不能为空');
+            form1.XQtjj.focus();
+            return false;
+        }
+        if (document.getElementById('XQtjj').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('XQtjj').value)) {
+                alert("现其它奖金只能为正数");
+                form1.XQtjj.focus();
+                return false;
+            }
+        }
+
+        if (document.getElementById('XBxdk').value == '') {
+            alert('现保险代扣不能为空');
+            form1.XBxdk.focus();
+            return false;
+        }
+        if (document.getElementById('XBxdk').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('XBxdk').value)) {
+                alert("现保险代扣只能为正数");
+                form1.XBxdk.focus();
+                return false;
+            }
+        }
+
+        if (document.getElementById('XCfdk').value == '') {
+            alert('现餐费代扣不能为空');
+            form1.XCfdk.focus();
+            return false;
+        }
+        if (document.getElementById('XCfdk').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('XCfdk').value)) {
+                alert("现餐费代扣只能为正数");
+                form1.XCfdk.focus();
+                return false;
+            }
+        }
+
+        if (document.getElementById('XQtdk').value == '') {
+            alert('现其它代扣不能为空');
+            form1.XQtdk.focus();
+            return false;
+        }
+        if (document.getElementById('XQtdk').value != '') {
+            var objRe = /^\d+(\.\d+)?$/;
+            if (!objRe.test(document.getElementById('XQtdk').value)) {
+                alert("现其它代扣只能为正数");
+                form1.XQtdk.focus();
+                return false;
+            }
+        }
+    }
+</script>
+<script type="text/javascript">
+    function PageCheck() {
+        var strUploadFile = document.getElementById('uploadFile').value;
+        if (strUploadFile == "") {
+            alert("请选择要上传的附件！");
+            return false;
+        }
+        var nameLen = strUploadFile.length;
+        var rightName = strUploadFile.substr(nameLen - 4, 4).toLowerCase();
+        var sAllowExt = ".doc|.docx|.xls|.xlsx|.ppt|.pptx|.pdf|.rar|.zip|.gif|.jpg|.jpeg";
+        var str = document.getElementById('uploadFile').value;
+        var rightName = str.substr(str.lastIndexOf('.') + 1, str.length - str.lastIndexOf('.')).toLowerCase();
+        if (sAllowExt.indexOf(rightName) == -1) {
+            alert('对不起，您只能上传【' + sAllowExt + '】格式的文件\r如果需要上传其他格式的文件，请联系系统管理员！');
+            return false;
+        }
+    }
+    function AttDown() {
+        if (document.getElementById('fjlb').value == '') {
+            alert('请先选中附件！');
+            return false;
+        }
+        else {
+            var num = Math.random();
+            var littleproduct = document.getElementById("fjlb");
+            var cindex = littleproduct.selectedIndex;
+            var cText = littleproduct.options[cindex].text;
+            var cValue = littleproduct.options[cindex].value;
+            window.open("../../AttDown.aspx?tmp=" + num + "&number=" + cValue + "&fname=hr/h05", "_blank", "height=1, width=1,toolbar=no, menubar=no, scrollbars=no,resizable=yes,location=no, status=no")
+        }
+    }
+    function AttDel() {
+        if (document.getElementById('fjlb').value == '') {
+            alert('请先选中附件！');
+            return false;
+        }
+        else {
+            if (!confirm("您确定要删除此附件吗？"))
+                return false;
+            var num = Math.random();
+            var littleproduct = document.getElementById("fjlb");
+            var cindex = littleproduct.selectedIndex;
+            var cText = littleproduct.options[cindex].text;
+            var cValue = littleproduct.options[cindex].value;
+            window.open("../../AttDel.aspx?tmp=" + num + "&number=" + cValue + " ", "window", "height=1, width=1,top=150,left=150,toolbar=no, menubar=no, scrollbars=no,resizable=yes,location=no, status=no");
+        }
+    }
+</script>
+<head id="Head1"><meta http-equiv="Content-Type" content="text/html; charset=gb2312" /><title>
+	新增员工调动
+</title><link href="../../CssJs/Main.css" type="text/css" rel="stylesheet" />
+    <script src="../../CssJs/MyJs.js" type="text/javascript" charset="gb2312"></script>
+    <script type="text/javascript" src="../../CssJs/WebCalendar.js"></script>
+    
+    <script type="text/javascript" src="../../ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" src="../../ueditor/ueditor.all.min.js"></script>
+    <script type="text/javascript" src="../../ueditor/lang/zh-cn/zh-cn.js"></script>
+</head>
+<body class="main">
+    <form method="post" action="Ygdd_Add.aspx?tmp=0.6460849224925715" id="form1" enctype="multipart/form-data">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE5MzAwMTY0NzMPFgIeE1ZhbGlkYXRlUmVxdWVzdE1vZGUCARYCAgEPFgIeB2VuY3R5cGUFE211bHRpcGFydC9mb3JtLWRhdGEWYmYPD2QWAh4IcmVhZG9ubHkFCHJlYWRvbmx5ZAIBDw9kFgIfAgUIcmVhZG9ubHlkAgIPD2QWAh8CBQhyZWFkb25seWQCAw8PZBYCHwIFCHJlYWRvbmx5ZAIEDw9kFgIfAgUIcmVhZG9ubHlkAgUPD2QWAh8CBQhyZWFkb25seWQCBw8PZBYCHwIFCHJlYWRvbmx5ZAIIDw9kFgIfAgUIcmVhZG9ubHlkAgkPD2QWAh8CBQhyZWFkb25seWQCCg8PZBYCHwIFCHJlYWRvbmx5ZAILDw9kFgIfAgUIcmVhZG9ubHlkAgwPD2QWAh8CBQhyZWFkb25seWQCDQ8PZBYCHwIFCHJlYWRvbmx5ZAIODw9kFgIfAgUIcmVhZG9ubHlkAg8PD2QWAh8CBQhyZWFkb25seWQCEA8PZBYCHwIFCHJlYWRvbmx5ZAIRDw9kFgIfAgUIcmVhZG9ubHlkAhIPD2QWAh8CBQhyZWFkb25seWQCEw8PZBYCHwIFCHJlYWRvbmx5ZAIUDw8WAh4HRW5hYmxlZGdkZAIVDw9kFgIfAgUIcmVhZG9ubHlkAhYPDxYCHwNnZGQCFw8PZBYCHwIFCHJlYWRvbmx5ZAIYDw8WAh8DZ2RkAhkPD2QWAh8CBQhyZWFkb25seWQCGg8PFgIfA2dkZAIbDw9kFgIfAgUIcmVhZG9ubHlkAhwPDxYCHwNnZGQCHQ8PZBYCHwIFCHJlYWRvbmx5ZAIeDw8WAh8DZ2RkAh8PD2QWAh8CBQhyZWFkb25seWQCIA8PFgIfA2dkZAIhDw9kFgIfAgUIcmVhZG9ubHlkAiIPDxYCHwNnZGQCIw8PZBYCHwIFCHJlYWRvbmx5ZAIkDw8WAh8DZ2RkAiUPD2QWAh8CBQhyZWFkb25seWQCJg8PFgIfA2dkZAInDw9kFgIfAgUIcmVhZG9ubHlkAigPDxYCHwNnZGQCKQ8PZBYCHwIFCHJlYWRvbmx5ZAIqDw8WAh8DZ2RkAisPD2QWAh8CBQhyZWFkb25seWQCLA8PFgIfA2dkZAIuDxBkEBUAFQAUKwMAZGQCLw8PZBYCHgdvbmNsaWNrBRtqYXZhc2NyaXB0OnJldHVybiBBdHREZWwoKTtkAjEPD2QWAh8EBR5qYXZhc2NyaXB0OnJldHVybiBQYWdlQ2hlY2soKTtkAjIPD2QWAh8EBRxqYXZhc2NyaXB0OnJldHVybiBjaGtudWxsKCk7ZAI2Dw8WAh4EVGV4dAUUMjAxOTUyMDEwMjczMjQwMTQ5NDhkZGQ=" />
+</div>
+
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="td_base" width="80%" height="25px">新增员工调动
+                </td>
+                <td class="td_base" width="20%"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <table class="form" border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td colspan="4" style="text-align: center">
+                                <strong>员工基本信息</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item" style="width: 20%"><font color="red">*</font>员工工号：
+                            </td>
+                            <td style="width: 30%">
+                                <input name="StaffNumer" type="text" id="StaffNumer" class="mytext" readonly="readonly" style="width:80%;" /><a
+                                    href="javascript:void(0)"><img onclick="openunit();" alt="" src="../../images/choose.gif"
+                                        border="0"></a>
+                            </td>
+                            <td class="form-item" style="width: 20%">员工姓名：
+                            </td>
+                            <td style="width: 30%">
+                                <input name="XingMing" type="text" id="XingMing" class="mytext" readonly="readonly" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">性别：
+                            </td>
+                            <td>
+                                <input name="XingBie" type="text" id="XingBie" class="mytext" readonly="readonly" style="width:90%;" />
+                            </td>
+                            <td class="form-item">员工身份证：
+                            </td>
+                            <td>
+                                <input name="ShenFen" type="text" id="ShenFen" class="mytext" readonly="readonly" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" style="text-align: center">
+                                <strong>部门调整信息</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item"><font color="red">*</font>调动类型：
+                            </td>
+                            <td>
+                                <input name="DiaoDongLX" type="text" id="DiaoDongLX" class="mytext" readonly="readonly" style="width:80%;" /><a
+                                    href="javascript:void(0)"><img onclick="OpenType('DiaoDongLX','h30');" alt="" src="../../images/choose.gif"
+                                        border="0"></a>
+                            </td>
+                            <td class="form-item"><font color="red">*</font>调动时间：
+                            </td>
+                            <td>
+                                <input name="DiaoDongSj" type="text" id="DiaoDongSj" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">调动标题：
+                            </td>
+                            <td colspan="3">
+                                <input name="Biaoti" type="text" id="Biaoti" class="mytext" style="width:96%;" />&nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">原部门名称：
+                            </td>
+                            <td>
+                                <input name="YBmName" type="text" id="YBmName" class="mytext" readonly="readonly" style="width:90%;" />
+                            </td>
+                            <td class="form-item">现部门名称：
+                            </td>
+                            <td>
+                                <input name="XBmName" type="text" id="XBmName" class="mytext" readonly="readonly" style="width:80%;" /><a
+                                    href="javascript:void(0)"><img onclick="openunit1();" alt="" src="../../images/choose.gif"
+                                        border="0"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">原学历：
+                            </td>
+                            <td>
+                                <input name="YXueLi" type="text" id="YXueLi" class="mytext" readonly="readonly" style="width:90%;" />
+                            </td>
+                            <td class="form-item">现学历：
+                            </td>
+                            <td>
+                                <input name="XXueLi" type="text" id="XXueLi" class="mytext" readonly="readonly" style="width:80%;" /><a
+                                    href="javascript:void(0)"><img onclick="OpenType('XXueLi','p12');" alt="" src="../../images/choose.gif"
+                                        border="0"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">原职称：
+                            </td>
+                            <td>
+                                <input name="YZhiCheng" type="text" id="YZhiCheng" class="mytext" readonly="readonly" style="width:90%;" />
+                            </td>
+                            <td class="form-item">现职称：
+                            </td>
+                            <td>
+                                <input name="XZhiCheng" type="text" id="XZhiCheng" class="mytext" readonly="readonly" style="width:80%;" /><a
+                                    href="javascript:void(0)"><img onclick="OpenType('XZhiCheng','h03');" alt="" src="../../images/choose.gif"
+                                        border="0"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">原工种：
+                            </td>
+                            <td>
+                                <input name="YGongZ" type="text" id="YGongZ" class="mytext" readonly="readonly" style="width:90%;" />
+                            </td>
+                            <td class="form-item">现工种：
+                            </td>
+                            <td>
+                                <input name="XGongZ" type="text" id="XGongZ" class="mytext" readonly="readonly" style="width:80%;" /><a
+                                    href="javascript:void(0)"><img onclick="OpenType('XGongZ','h11');" alt="" src="../../images/choose.gif"
+                                        border="0"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">原岗位：
+                            </td>
+                            <td>
+                                <input name="YGangWei" type="text" id="YGangWei" class="mytext" readonly="readonly" style="width:90%;" />
+                            </td>
+                            <td class="form-item">现岗位：
+                            </td>
+                            <td>
+                                <input name="XGangWei" type="text" id="XGangWei" class="mytext" readonly="readonly" style="width:80%;" /><a
+                                    href="javascript:void(0)"><img onclick="OpenType('XGangWei','h01');" alt="" src="../../images/choose.gif"
+                                        border="0"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">原职务：
+                            </td>
+                            <td>
+                                <input name="YZhiWu" type="text" id="YZhiWu" class="mytext" readonly="readonly" style="width:90%;" />
+                            </td>
+                            <td class="form-item">现职务：
+                            </td>
+                            <td>
+                                <input name="XZhiWu" type="text" id="XZhiWu" class="mytext" readonly="readonly" style="width:80%;" /><a
+                                    href="javascript:void(0)"><img onclick="OpenType('XZhiWu','p06');" alt="" src="../../images/choose.gif"
+                                        border="0"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" align="center"><b>工资调整信息</b></td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">原基本工资：
+                            </td>
+                            <td>
+                                <input name="YJbGongZ" type="text" id="YJbGongZ" class="mytext" readonly="readonly" style="width:90%;" />
+                            </td>
+                            <td class="form-item"><font color="red">*</font>现基本工资：
+                            </td>
+                            <td>
+                                <input name="XjbGongZ" type="text" value="0" id="XjbGongZ" class="mytext" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">原岗位工资：</td>
+                            <td>
+                                <input name="YGwgz" type="text" id="YGwgz" class="mytext" readonly="readonly" style="width:90%;" />
+                            </td>
+                            <td class="form-item"><font color="red">*</font>现岗位工资：</td>
+                            <td>
+                                <input name="XGwgz" type="text" value="0" id="XGwgz" class="mytext" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">原绩效工资：</td>
+                            <td>
+                                <input name="YJxgz" type="text" id="YJxgz" class="mytext" readonly="readonly" style="width:90%;" />
+                            </td>
+                            <td class="form-item"><font color="red">*</font>现绩效工资：</td>
+                            <td>
+                                <input name="XJxgz" type="text" value="0" id="XJxgz" class="mytext" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">原工龄工资：</td>
+                            <td>
+                                <input name="YGlgz" type="text" id="YGlgz" class="mytext" readonly="readonly" style="width:90%;" /></td>
+                            <td class="form-item"><font color="red">*</font>现工龄工资：</td>
+                            <td>
+                                <input name="XGlgz" type="text" value="0" id="XGlgz" class="mytext" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">原岗位津贴：</td>
+                            <td>
+                                <input name="YGwjt" type="text" id="YGwjt" class="mytext" readonly="readonly" style="width:90%;" />
+                            </td>
+                            <td class="form-item"><font color="red">*</font>现岗位津贴：</td>
+                            <td>
+                                <input name="XGwjt" type="text" value="0" id="XGwjt" class="mytext" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">原话费补贴：</td>
+                            <td>
+                                <input name="YHfbt" type="text" id="YHfbt" class="mytext" readonly="readonly" style="width:90%;" />
+                            </td>
+                            <td class="form-item"><font color="red">*</font>现话费补贴：</td>
+                            <td>
+                                <input name="XHfbt" type="text" value="0" id="XHfbt" class="mytext" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">原餐费补贴：</td>
+                            <td>
+                                <input name="YCfbt" type="text" id="YCfbt" class="mytext" readonly="readonly" style="width:90%;" />
+                            </td>
+                            <td class="form-item"><font color="red">*</font>现餐费补贴：</td>
+                            <td>
+                                <input name="XCfbt" type="text" value="0" id="XCfbt" class="mytext" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">原交通补贴：</td>
+                            <td>
+                                <input name="YJtbt" type="text" id="YJtbt" class="mytext" readonly="readonly" style="width:90%;" />
+                            </td>
+                            <td class="form-item"><font color="red">*</font>现交通补贴：</td>
+                            <td>
+                                <input name="XJtbt" type="text" value="0" id="XJtbt" class="mytext" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">原全勤奖金：</td>
+                            <td>
+                                <input name="YQqjj" type="text" id="YQqjj" class="mytext" readonly="readonly" style="width:90%;" />
+                            </td>
+                            <td class="form-item"><font color="red">*</font>现全勤奖金：</td>
+                            <td>
+                                <input name="XQqjj" type="text" value="0" id="XQqjj" class="mytext" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">原其它奖金：</td>
+                            <td>
+                                <input name="YQtjj" type="text" id="YQtjj" class="mytext" readonly="readonly" style="width:90%;" />
+                            </td>
+                            <td class="form-item"><font color="red">*</font>现其它奖金：</td>
+                            <td>
+                                <input name="XQtjj" type="text" value="0" id="XQtjj" class="mytext" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">原保险代扣：</td>
+                            <td>
+                                <input name="YBxdk" type="text" id="YBxdk" class="mytext" readonly="readonly" style="width:90%;" />
+                            </td>
+                            <td class="form-item"><font color="red">*</font>现保险代扣：</td>
+                            <td>
+                                <input name="XBxdk" type="text" value="0" id="XBxdk" class="mytext" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">原餐费代扣：</td>
+                            <td>
+                                <input name="YCfdk" type="text" id="YCfdk" class="mytext" readonly="readonly" style="width:90%;" />
+                            </td>
+                            <td class="form-item"><font color="red">*</font>现餐费代扣：</td>
+                            <td>
+                                <input name="XCfdk" type="text" value="0" id="XCfdk" class="mytext" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">原其它代扣：</td>
+                            <td>
+                                <input name="YQtdk" type="text" id="YQtdk" class="mytext" readonly="readonly" style="width:90%;" />
+                            </td>
+                            <td class="form-item"><font color="red">*</font>现其它代扣：</td>
+                            <td>
+                                <input name="XQtdk" type="text" value="0" id="XQtdk" class="mytext" style="width:90%;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" align="center"><b>其它调动信息</b></td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">调动备注：
+                            </td>
+                            <td colspan="3">
+                                <textarea name="editor" id="editor" rows="10" cols="10" style="width: 100%; height: 180px;"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">附件：
+                            </td>
+                            <td colspan="3">
+                                <select name="fjlb" id="fjlb" style="width:70%;">
+
+</select>
+                                &nbsp;
+                            <input id="Button5" type="button" value="下载" onclick="AttDown();" class="mybtn" />
+                                <input type="submit" name="Button3" value="删除" onclick="javascript:return AttDel();" id="Button3" class="mybtn" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="form-item">上传附件：
+                            </td>
+                            <td colspan="3">
+                                <input name="uploadFile" type="file" id="uploadFile" style="width: 80%" />
+                                <input type="submit" name="Button4" value="上传" onclick="javascript:return PageCheck();" id="Button4" class="mybtn" />
+                            </td>
+                        </tr>
+                        <tr> <td align=center colspan=4 ><div align=center><strong>用户自定义字段</strong></div> </td> </tr> <tr> <td class=form-item>自定义字段：</td><td colspan=3><TEXTAREA rows=1 id=2017911538375532379 name=2017911538375532379 cols=80></TEXTAREA></td></tr>
+                        <tr>
+                            <td align="center" colspan="4" height="25">
+                                <input type="submit" name="Button1" value="确定" onclick="javascript:return chknull();" id="Button1" class="mybtn" />
+                                <input id="Button2" class="mybtn" onclick="window.close()" type="button" value="关闭" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <input name="StaffId" type="text" id="StaffId" style="display: none" />
+        <input name="YBmId" type="text" id="YBmId" style="display: none" />
+        <input name="XBmId" type="text" id="XBmId" style="display: none" />
+        
+        <script type="text/javascript">
+            var wName3;
+            function openunit() {
+                var num = Math.random();
+                var str = "" + document.getElementById('StaffId').value + "|" + document.getElementById('StaffNumer').value + "|" + document.getElementById('XingMing').value + "|" + document.getElementById('XingBie').value + "|" + document.getElementById('ShenFen').value + "|" + document.getElementById('YBmId').value + "|" + document.getElementById('YBmName').value + "|" + document.getElementById('YXueLi').value + "|" + document.getElementById('YZhiCheng').value + "|" + document.getElementById('YGongZ').value + "|" + document.getElementById('YGangWei').value + "|" + document.getElementById('YZhiWu').value + "|" + document.getElementById('YJbGongZ').value + "|" + document.getElementById('YGwgz').value + "|" + document.getElementById('YJxgz').value + "|" + document.getElementById('YGlgz').value + "|" + document.getElementById('YGwjt').value + "|" + document.getElementById('YHfbt').value + "|" + document.getElementById('YCfbt').value + "|" + document.getElementById('YJtbt').value + "|" + document.getElementById('YQqjj').value + "|" + document.getElementById('YQtjj').value + "|" + document.getElementById('YBxdk').value + "|" + document.getElementById('YCfdk').value + "|" + document.getElementById('YQtdk').value + "";
+
+                //browser
+                var bstr = getBrowserType();
+                if (bstr == '3' | bstr == '4' | bstr == '5') {
+                    window.open("../../Choose/hr/Xzygdd.aspx?tmp=" + num + "&requeststr=" + str + "&id=" + str + "", 'window', 'height=600,width=650,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no');
+                }
+                else {
+                    wName3 = window.showModalDialog("../../choose/hr/Xzygdd.aspx?tmp=" + num + "&requeststr=" + str + "&id=" + str + "", "window", "dialogWidth:650px;DialogHeight=600px;status:no;scroll=yes;help:no");
+                }
+
+                var arr = wName3.split("|");
+                for (var i = 0; i < arr.length; i++) {
+                    document.getElementById("StaffId").value = arr[0];
+                    document.getElementById("StaffNumer").value = arr[1];
+                    document.getElementById("XingMing").value = arr[2];
+                    document.getElementById("XingBie").value = arr[3];
+                    document.getElementById("ShenFen").value = arr[4];
+                    document.getElementById("YBmId").value = arr[5];
+                    document.getElementById("YBmName").value = arr[6];
+                    document.getElementById("XBmId").value = arr[5];
+                    document.getElementById("XBmName").value = arr[6];
+                    document.getElementById("YXueLi").value = arr[7];
+                    document.getElementById("XXueLi").value = arr[7];
+                    document.getElementById("YZhiCheng").value = arr[8];
+                    document.getElementById("XZhiCheng").value = arr[8];
+                    document.getElementById("YGongZ").value = arr[9];
+                    document.getElementById("XGongZ").value = arr[9];
+                    document.getElementById("YGangWei").value = arr[10];
+                    document.getElementById("XGangWei").value = arr[10];
+                    document.getElementById("YZhiWu").value = arr[11];
+                    document.getElementById("XZhiWu").value = arr[11];
+                    document.getElementById("YJbGongZ").value = arr[12];
+                    document.getElementById("XjbGongZ").value = arr[12];
+                    document.getElementById("YGwgz").value = arr[13];
+                    document.getElementById("XGwgz").value = arr[13];
+                    document.getElementById("YJxgz").value = arr[14];
+                    document.getElementById("XJxgz").value = arr[14];
+                    document.getElementById("YGlgz").value = arr[15];
+                    document.getElementById("XGlgz").value = arr[15];
+                    document.getElementById("YGwjt").value = arr[16];
+                    document.getElementById("XGwjt").value = arr[16];
+                    document.getElementById("YHfbt").value = arr[17];
+                    document.getElementById("XHfbt").value = arr[17];
+                    document.getElementById("YCfbt").value = arr[18];
+                    document.getElementById("XCfbt").value = arr[18];
+                    document.getElementById("YJtbt").value = arr[19];
+                    document.getElementById("XJtbt").value = arr[19];
+                    document.getElementById("YQqjj").value = arr[20];
+                    document.getElementById("XQqjj").value = arr[20];
+                    document.getElementById("YQtjj").value = arr[21];
+                    document.getElementById("XQtjj").value = arr[21];
+                    document.getElementById("YBxdk").value = arr[22];
+                    document.getElementById("XBxdk").value = arr[22];
+                    document.getElementById("YCfdk").value = arr[23];
+                    document.getElementById("XCfdk").value = arr[23];
+                    document.getElementById("YQtdk").value = arr[24];
+                    document.getElementById("XQtdk").value = arr[24];
+                }
+            }
+
+            function setValue_rsdy(str) {
+                var arr = str.split("|");
+                for (var i = 0; i < arr.length; i++) {
+                    document.getElementById("StaffId").value = arr[0];
+                    document.getElementById("StaffNumer").value = arr[1];
+                    document.getElementById("XingMing").value = arr[2];
+                    document.getElementById("XingBie").value = arr[3];
+                    document.getElementById("ShenFen").value = arr[4];
+                    document.getElementById("YBmId").value = arr[5];
+                    document.getElementById("YBmName").value = arr[6];
+                    document.getElementById("XBmId").value = arr[5];
+                    document.getElementById("XBmName").value = arr[6];
+                    document.getElementById("YXueLi").value = arr[7];
+                    document.getElementById("XXueLi").value = arr[7];
+                    document.getElementById("YZhiCheng").value = arr[8];
+                    document.getElementById("XZhiCheng").value = arr[8];
+                    document.getElementById("YGongZ").value = arr[9];
+                    document.getElementById("XGongZ").value = arr[9];
+                    document.getElementById("YGangWei").value = arr[10];
+                    document.getElementById("XGangWei").value = arr[10];
+                    document.getElementById("YZhiWu").value = arr[11];
+                    document.getElementById("XZhiWu").value = arr[11];
+                    document.getElementById("YJbGongZ").value = arr[12];
+                    document.getElementById("XjbGongZ").value = arr[12];
+                    document.getElementById("YGwgz").value = arr[13];
+                    document.getElementById("XGwgz").value = arr[13];
+                    document.getElementById("YJxgz").value = arr[14];
+                    document.getElementById("XJxgz").value = arr[14];
+                    document.getElementById("YGlgz").value = arr[15];
+                    document.getElementById("XGlgz").value = arr[15];
+                    document.getElementById("YGwjt").value = arr[16];
+                    document.getElementById("XGwjt").value = arr[16];
+                    document.getElementById("YHfbt").value = arr[17];
+                    document.getElementById("XHfbt").value = arr[17];
+                    document.getElementById("YCfbt").value = arr[18];
+                    document.getElementById("XCfbt").value = arr[18];
+                    document.getElementById("YJtbt").value = arr[19];
+                    document.getElementById("XJtbt").value = arr[19];
+                    document.getElementById("YQqjj").value = arr[20];
+                    document.getElementById("XQqjj").value = arr[20];
+                    document.getElementById("YQtjj").value = arr[21];
+                    document.getElementById("XQtjj").value = arr[21];
+                    document.getElementById("YBxdk").value = arr[22];
+                    document.getElementById("XBxdk").value = arr[22];
+                    document.getElementById("YCfdk").value = arr[23];
+                    document.getElementById("XCfdk").value = arr[23];
+                    document.getElementById("YQtdk").value = arr[24];
+                    document.getElementById("XQtdk").value = arr[24];
+                }
+            }
+        </script>
+        <script type="text/javascript">
+            var wName2;
+            function openunit1() {
+                var num = Math.random();
+                var str = "" + document.getElementById('XBmId').value + "";
+
+                //browser
+                var bstr = getBrowserType();
+                if (bstr == '3' | bstr == '4' | bstr == '5') {
+                    window.open("../../Choose/hr/Xzjg.aspx?tmp=" + num + "&requeststr=" + str + "&id=" + str + "", 'window', 'height=600,width=650,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no');
+                }
+                else {
+                    wName2 = window.showModalDialog("../../choose/hr/Xzjg.aspx?tmp=" + num + "&requeststr=" + str + "&id=" + str + "", "window", "dialogWidth:650px;DialogHeight=600px;status:no;scroll=yes;help:no");
+                }
+
+                var arr = wName2.split("|");
+                for (var i = 0; i < arr.length; i++) {
+                    document.getElementById("XBmId").value = arr[0];
+                    document.getElementById("XBmName").value = arr[1];
+                }
+            }
+
+            function setValue(str) {
+                var arr = str.split("|");
+                for (var i = 0; i < arr.length; i++) {
+                    document.getElementById("XBmId").value = arr[0];
+                    document.getElementById("XBmName").value = arr[1];
+                }
+            }
+        </script>
+        <script type="text/javascript">
+            var wName;
+            var vtbox;
+            function OpenType(tbox, ttype) {
+                vtbox = tbox;
+                var rdm = Math.random();
+                var str = "" + document.getElementById(tbox).value;
+
+                //browser
+                var bstr = getBrowserType();
+                if (bstr == '3' | bstr == '4' | bstr == '5') {
+                    window.open("../../Choose/hr/Xzqt.aspx?tmp=" + rdm + "&rqstr=" + str + "&type=" + ttype + "", 'newwindow8', 'height=480,width=400,top=150,left=300,toolbar=no,menubar=no,scrollbars=yes, resizable=yes,location=no, status=no');
+                }
+                else {
+                    wName = window.showModalDialog("../../Choose/hr/Xzqt.aspx?tmp=" + rdm + "&rqstr=" + str + "&type=" + ttype + "", "newwindow", "dialogWidth:400px;DialogHeight=480px;status:no;scroll=yes;help:no");
+                }
+
+                //if (wName != null && wName != "undefined") {
+                document.getElementById(tbox).value = wName;
+                //}
+            }
+
+            function setValue_sys(str) {
+                document.getElementById(vtbox).value = str;
+            }
+        </script>
+        <script type="text/javascript">
+            var ue = UE.getEditor('editor');
+        </script>
+    </form>
+</body>
+</html>

@@ -62,7 +62,7 @@
 
 </head>
 <body class="main">
-    <form method="post" id="form1">
+    <form method="post" id="form1" >
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td>
@@ -72,7 +72,7 @@
                             <td align="right">员工工号：
                             </td>
                             <td>
-                                <input name="enum" type="text" id="enum" class="mytext" />
+                                <input name="enumber" type="text" id="enumber" class="mytext" />
                             </td>
                             <td align="right">员工姓名：
                             </td>
@@ -80,11 +80,6 @@
                                 <input name="ename" type="text" id="ename" class="mytext" />
                             </td>
                             <td align="right">员工部门：
-                            </td>
-                            <td>
-                                <input name="edepartmentnum" type="text" id="edepartmentnum" class="mytext" />
-                            </td>
-                            <td align="right">部门：
                             </td>
                             <td>
                                 <input name="edname" type="text" id="edname" class="mytext" />
@@ -95,13 +90,14 @@
                             </td>
                             <td colspan="5">
                                 <select name="type" id="type">
-									<option value="辞退" selected="selected">辞退</option>
+                           			<option value="" ></option>
+									<option value="辞退" >辞退</option>
 									<option value="外调">外调</option>
 									<option value="退休">退休</option>
 								</select>
                            		  离职时间：
-                           		<input name="start" type="text" id="start" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />至<input name="end" type="text" id="end" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />
-                                <input type="submit" name="QueryBtn" value="查询" id="QueryBtn" class="mybtn" />
+                           		<input name="starttime" type="text" id="starttime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />至<input name="endtime" type="text" id="endtime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />
+                                <input type="button" name="QueryBtn" value="查询" id="QueryBtn" onclick="conditionQuery();" class="mybtn" />
                                 <input name="AddBtn" type="button" id="AddBtn" value="增加" class="mybtn" onclick="javascript: addfrom();" />
                                 <input type="button" name="DelBtn" value="删除" onclick="delRecords();" id="DelBtn" class="mybtn" />
                                 <a href="javascript:void(0)" onclick="chkAllw()" class="gvlink">全选</a>
@@ -146,7 +142,7 @@
 	        async:false,	        
 	        success:function(res){
 	        	if(res.status!=200){
-	        		alert("error");
+	        		alert(res.msg);
 	        		return ;
 	        	}
 	        	var data = res.data;
@@ -176,6 +172,49 @@
 	        	}
 	        }
 	   });
-	}
+	};
+	
+	function conditionQuery(){
+		$.ajax({
+	        type:'post',
+	        url:'/humanfiles/condition_query_dimission',
+	        async:true,
+	        dataType:'json',
+	        data: $("#form1").serialize(),
+	        success:function(res){
+	        	if(res.status!=200){
+	        		alert(res.msg);
+	        		return ;
+	        	}
+	        	var data = res.data;
+	        	if(data.length == 0){
+	        		alert("查询到0条数据");
+	        		return;
+	        	}
+				$(".hkRowStyle").remove();
+	        	for (var i=1;i<=data.length;i++){
+	        		var edname = data[i-1].edname;
+	        		var start = data[i-1].start;
+	        		var index = data[i-1].start.indexOf('T');
+	        		start = start.substring(0,index);
+	        		
+	        		var $tr = $("<tr class=\"hkRowStyle\" onclick=\"javascript:changeBg(this)\">"+
+	    					"<td align=\"center\"> <span id=\"GridView1_ctl\""+ i +"_lblxh\">"+ i +"</span>"+ "</td>"+
+	    					"<td align=\"center\" style=\"width:30px;\"><input id=\"GridView1_ctl\""+ i +"\"_CheckSelect\" value=\""+data[i-1].enumber+"\" type=\"checkbox\" name=\"checkSelect\">"+"</td>"+
+	    					"<td>" + data[i-1].enumber + "</td>" +
+	    					"<td>" + data[i-1].ename + "</td>" +
+	    					"<td align=\"center\">" + edname + "</td>" +
+	    					"<td align=\"center\">" + data[i-1].type + "</td>" +
+	    					"<td align=\"center\">" + start + "</td>" +
+	    					"<td align=\"center\" style=\"width:80px;white-space:nowrap;\"> " + 
+	    						"<span id=\"GridView1_ctl"+i+"_Label1\">" + "<a href=\"javascript:void(0)\" onclick=\"showfrom(1);\" class=\"gvlink\">查看</a></span>" + 
+	    						"<span id=\"GridView1_ctl"+i+"_Label2\"> <a href=\"javascript:void(0)\" onclick=\"updatefrom(1);\" class=\"gvlink\">修改</a></span></td></tr>");
+					var $table = $(".hkgv tbody");
+					$table.append($tr);
+	        	}
+	        }
+	   });
+	};
+	
 </script>
 </html>

@@ -10,6 +10,85 @@ function getBrowserType() {
     return 0; 
  }
 
+function con_query_adjust(){
+	$.ajax({
+        type:'post',
+        url:'/humanfiles/condition_query_adjust',
+        async:true,
+        dataType:'json',
+        data: $("#form1").serialize(),
+        success:function(res){
+        	if(res.status!=200){
+        		alert("error");
+        		return ;
+        	}
+        	var data = res.data;
+        	if(data.length == 0){
+        		alert("查询到0条数据");
+        		return;
+        	}
+        	$(".hkRowStyle").remove();
+        	for (var i=1;i<=data.length;i++){
+        		var time = data[i-1].time;
+        		var index = time.indexOf('T');
+        		time = time.substring(0,index);
+        		
+        		var $tr = $("<tr class=\"hkRowStyle\" onclick=\"javascript:changeBg(this)\">"+
+    					"<td align=\"center\"> <span id=\"GridView1_ctl\""+ i +"_lblxh\">"+ i +"</span>"+ "</td>"+
+    					"<td align=\"center\" style=\"width:30px;\"><input id=\"GridView1_ctl\""+ i +"\"_CheckSelect\"  value=\""+data[i-1].enumber+"\" type=\"checkbox\" name=\"GridView1$ctl\""+i+"\"$CheckSelect\">"+"</td>"+
+    					"<td>" + data[i-1].enumber + "</td>" +
+    					"<td>" + data[i-1].ename + "</td>" +
+    					"<td align=\"center\">" + data[i-1].title + "</td>" +
+    					"<td align=\"center\">" + data[i-1].type + "</td>" +
+    					"<td align=\"center\">" + time + "</td>" +
+    					"<td align=\"center\" style=\"width:80px;white-space:nowrap;\"> " + 
+    						"<span id=\"GridView1_ctl"+i+"_Label1\">" + "<a href=\"javascript:void(0)\" onclick=\"showfrom(1);\" class=\"gvlink\">查看</a></span>" + 
+    						"<span id=\"GridView1_ctl"+i+"_Label2\"> <a href=\"javascript:void(0)\" onclick=\"updatefrom(1);\" class=\"gvlink\">修改</a></span></td></tr>");
+    					var $table = $(".hkgv");
+    					$table.append($tr);
+        	}
+        }
+   });
+};
+
+function con_query_reward_punish(){
+	$.ajax({
+        type:'post',
+        url:'/humanfiles/con_query_reward_punish',
+        async:true,
+        dataType:'json',
+        data: $("#form1").serialize(),
+        success:function(res){
+        	if(res.status!=200){
+        		alert("error");
+        		return ;
+        	}
+        	var data = res.data;
+        	if(data.length == 0){
+        		alert("查询到0条数据");
+        		return;
+        	}
+        	$(".hkRowStyle").remove();
+        	for (var i=1;i<=data.length;i++){
+        		
+        		var $tr = $("<tr class=\"hkRowStyle\" onclick=\"javascript:changeBg(this)\">"+
+    					"<td align=\"center\"> <span id=\"GridView1_ctl\""+ i +"_lblxh\">"+ i +"</span>"+ "</td>"+
+    					"<td align=\"center\" style=\"width:30px;\"><input id=\"GridView1_ctl\""+ i +"\"_CheckSelect\" type=\"checkbox\"  value=\""+data[i-1].enumber+"\"  name=\"GridView1$ctl\""+i+"\"$CheckSelect\">"+"</td>"+
+    					"<td>" + data[i-1].enumber + "</td>" +
+    					"<td>" + data[i-1].ename + "</td>" +
+    					"<td align=\"center\">" + data[i-1].type + "</td>" +
+    					"<td align=\"center\">" + data[i-1].title + "</td>" +
+    					"<td align=\"center\">" + data[i-1].remarks + "</td>" +
+    					"<td align=\"center\" style=\"width:80px;white-space:nowrap;\"> " + 
+    						"<span id=\"GridView1_ctl"+i+"_Label1\">" + "<a href=\"javascript:void(0)\" onclick=\"showfrom(1);\" class=\"gvlink\">查看</a></span>" + 
+    						"<span id=\"GridView1_ctl"+i+"_Label2\"> <a href=\"javascript:void(0)\" onclick=\"updatefrom(1);\" class=\"gvlink\">修改</a></span></td></tr>");
+    					var $table = $(".hkgv");
+    					$table.append($tr);
+        	}
+        }
+   });
+};
+
 var orObj;
 var orBg;
 function changeBg(obj){

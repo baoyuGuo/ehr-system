@@ -1,5 +1,6 @@
 package com.ehr.humanfiles.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.ehr.pojo.EhrRewardPunish;
@@ -24,4 +25,16 @@ public interface RewardPunishService {
 	 * @param enumbers
 	 */
 	void delete(String[] enumbers);
+	
+	/** 
+	 * 条件查询奖惩记录
+	 * @param enumber
+	 * @param ename
+	 * @param title
+	 * @param type
+	 * @param starttime
+	 * @param endtime
+	 * @return
+	 */
+	List<EhrRewardPunish> conditionQuery( String enumber,  String ename, String title,  String type, Date starttime, Date endtime);
 }

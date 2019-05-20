@@ -1,12 +1,19 @@
 package com.ehr.controllers;
 
+import java.io.Reader;
+import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.websocket.server.PathParam;
+import javax.xml.ws.RequestWrapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,7 +35,7 @@ import com.ehr.utils.FileUploadUtil;
 
 @Controller
 @RequestMapping("/humanfiles")
-public class HumanFilesController {
+public class HumanFilesCtrl {
 	
 	@Autowired
 	HumanFilesService hService;
@@ -247,5 +254,45 @@ public class HumanFilesController {
 			e.printStackTrace();
 			return EhrResult.build(500, ParamMapping.DO_FAILED );
 		}
-	}	
+	}
+	
+	@RequestMapping("/condition_query_dimission")
+	@ResponseBody
+	public EhrResult condition_query_dimission(@RequestParam String enumber, @RequestParam String ename, @RequestParam  String edname, @RequestParam String type, Date starttime, Date endtime) {
+		/*传递的参数的样式：
+		 * enum=&ename=&edname=&type=%E8%BE%9E%E9%80%80&starttime=&endtime=
+		 * */
+		try {
+			List<EhrDimission> query_res = dService.condition_query(enumber, ename, edname, type, starttime, endtime);
+			return EhrResult.ok(query_res);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return EhrResult.build(500, ParamMapping.DO_FAILED );
+		}
+	}
+	
+	@RequestMapping("/condition_query_adjust")
+	@ResponseBody
+	public EhrResult condition_query_adjust( String enumber,  String ename, String title,  String type, Date starttime, Date endtime) {
+		try {
+			List<EhrAdjustment> query = aService.conditionQuery(enumber, ename, title, type, starttime, endtime);
+			return EhrResult.ok(query);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return EhrResult.build(500, ParamMapping.DO_FAILED );
+		}
+	}
+	
+	@RequestMapping("/con_query_reward_punish")
+	@ResponseBody
+	public EhrResult con_query_reward_punish( String enumber,  String ename, String title,  String type, Date starttime, Date endtime) {
+		try {
+			List<EhrRewardPunish> query = rpService.conditionQuery(enumber, ename, title, type, starttime, endtime);
+			return EhrResult.ok(query);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return EhrResult.build(500, ParamMapping.DO_FAILED );
+		}
+	}
+	
 }

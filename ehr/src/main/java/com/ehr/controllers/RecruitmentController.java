@@ -20,6 +20,7 @@ import org.springframework.web.context.request.WebRequest;
 import com.ehr.mapper.EhrRecruitmentPlanMapper;
 import com.ehr.pojo.EhrRecruitmentPlan;
 import com.ehr.pojo.ParamMapping;
+import com.ehr.recruitment.service.ExaminationService;
 import com.ehr.recruitment.service.PoolService;
 import com.ehr.recruitment.service.RecruitmentPlanService;
 import com.ehr.utils.EhrResult;
@@ -39,6 +40,9 @@ public class RecruitmentController {
 	
 	@Autowired
 	PoolService pService;
+	
+	@Autowired
+	ExaminationService eService;
 	
 	@RequestMapping("/addRecruitmentPlan")
 	public String addRecruitmentPlan(String start, String end,EhrRecruitmentPlan plan){
@@ -81,6 +85,19 @@ public class RecruitmentController {
 		}
 	}
 	
+	@RequestMapping("/delExamination/{str}")
+	@ResponseBody
+	public EhrResult delExamination(@PathVariable String str) {
+		try {
+			String[] idstrs = str.split(",");
+			eService.delete(idstrs);
+			return EhrResult.ok();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return EhrResult.build(500, ParamMapping.UNKNOWN_ERROR);
+		}
+	}
+	
 	@ResponseBody
 	@RequestMapping("/queryAll")
 	public EhrResult queryAll() {
@@ -102,6 +119,18 @@ public class RecruitmentController {
 			return EhrResult.build(500, ParamMapping.UNKNOWN_ERROR);
 		}
 	}
+	
+	@ResponseBody
+	@RequestMapping("/queryAllExamination")
+	public EhrResult queryAllExamination() {
+		try {
+			return EhrResult.ok(eService.queryAll());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return EhrResult.build(500, ParamMapping.UNKNOWN_ERROR);
+		}
+	}
+	
 	
 	@InitBinder
     public void initBinder(WebDataBinder binder, WebRequest request) {

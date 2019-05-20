@@ -13,8 +13,7 @@
 
 <script type="text/javascript" language="javascript">
     function addfrom() {
-        var num = Math.random();
-        window.open("Ygdd_Add.aspx?tmp=" + num + "", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
+        window.open("/page/h_reassignment_add", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
     }
 
     function showfrom(str) {
@@ -72,17 +71,17 @@
                             <td align="right">员工工号：
                             </td>
                             <td>
-                                <input name="eNum" type="text" id="eNum" class="mytext" />
+                                <input name="enumber" type="text" id="enumber" class="mytext" />
                             </td>
                             <td align="right">员工姓名：
                             </td>
                             <td>
-                                <input name="eName" type="text" id="eName" class="mytext" />
+                                <input name="ename" type="text" id="ename" class="mytext" />
                             </td>
                             <td align="right">调动标题：
                             </td>
                             <td>
-                                <input name="title" type="text" id="title" class="mytext" />
+                                <input name="title" type="text" id="title" class="mytext" value="岗位调动" readonly="readonly" />
                             </td>
                         </tr>
                         <tr>
@@ -90,13 +89,14 @@
                             </td>
                             <td colspan="5">
  								<select name="type" id="type">
-									<option value="晋升" selected="selected">晋升</option>
+ 									<option value=""></option>
+									<option value="晋升">晋升</option>
 									<option value="轮岗">轮岗</option>
 									<option value="平调">平调</option>
 								</select>
 								调动时间：
-								<input name="StartTime" type="text" id="StartTime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />至<input name="EndTime" type="text" id="EndTime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />
-                                <input type="submit" name="QueryBtn" value="查询" id="QueryBtn" class="mybtn" />
+								<input name="starttime" type="text" id="starttime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />至<input name="endtime" type="text" id="endtime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />
+                                <input type="button" name="QueryBtn" value="查询" id="QueryBtn" class="mybtn" onclick="con_query_adjust()" />
                                 <input name="AddBtn" type="button" id="AddBtn" value="增加" class="mybtn" onclick="javascript: addfrom();" />
                                 <input type="button" name="DelBtn" value="删除" onclick="delRecords();" id="DelBtn" class="mybtn" />
                                 <a href="javascript:void(0)" onclick="chkAllw()" class="gvlink">全选</a>
@@ -171,6 +171,8 @@
 	        	}
 	        }
 	   });
-	}
+	};
+	
+	
 </script>
 </html>

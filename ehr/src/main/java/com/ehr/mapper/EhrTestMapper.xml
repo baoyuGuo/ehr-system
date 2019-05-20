@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ehr.mapper.EhrTestMapper" >
+  <resultMap id="BaseResultMap" type="com.ehr.pojo.EhrTest" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="department" property="department" jdbcType="VARCHAR" />
+    <result column="post" property="post" jdbcType="VARCHAR" />
+    <result column="salary" property="salary" jdbcType="INTEGER" />
+    <result column="recruitmentway" property="recruitmentway" jdbcType="VARCHAR" />
+    <result column="testresult" property="testresult" jdbcType="VARCHAR" />
+    <result column="telphone" property="telphone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="writtenscore" property="writtenscore" jdbcType="REAL" />
+    <result column="interviewscore" property="interviewscore" jdbcType="REAL" />
+    <result column="marks" property="marks" jdbcType="VARCHAR" />
+    <result column="filepath" property="filepath" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, name, department, post, salary, recruitmentway, testresult, telphone, email, 
+    writtenscore, interviewscore, marks, filepath
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ehr.pojo.EhrTestExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ehr_test
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ehr_test
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ehr_test
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ehr.pojo.EhrTestExample" >
+    delete from ehr_test
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ehr.pojo.EhrTest" >
+    insert into ehr_test (id, name, department, 
+      post, salary, recruitmentway, 
+      testresult, telphone, email, 
+      writtenscore, interviewscore, marks, 
+      filepath)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR}, 
+      #{post,jdbcType=VARCHAR}, #{salary,jdbcType=INTEGER}, #{recruitmentway,jdbcType=VARCHAR}, 
+      #{testresult,jdbcType=VARCHAR}, #{telphone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{writtenscore,jdbcType=REAL}, #{interviewscore,jdbcType=REAL}, #{marks,jdbcType=VARCHAR}, 
+      #{filepath,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ehr.pojo.EhrTest" >
+    insert into ehr_test
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="department != null" >
+        department,
+      </if>
+      <if test="post != null" >
+        post,
+      </if>
+      <if test="salary != null" >
+        salary,
+      </if>
+      <if test="recruitmentway != null" >
+        recruitmentway,
+      </if>
+      <if test="testresult != null" >
+        testresult,
+      </if>
+      <if test="telphone != null" >
+        telphone,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="writtenscore != null" >
+        writtenscore,
+      </if>
+      <if test="interviewscore != null" >
+        interviewscore,
+      </if>
+      <if test="marks != null" >
+        marks,
+      </if>
+      <if test="filepath != null" >
+        filepath,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="post != null" >
+        #{post,jdbcType=VARCHAR},
+      </if>
+      <if test="salary != null" >
+        #{salary,jdbcType=INTEGER},
+      </if>
+      <if test="recruitmentway != null" >
+        #{recruitmentway,jdbcType=VARCHAR},
+      </if>
+      <if test="testresult != null" >
+        #{testresult,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null" >
+        #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="writtenscore != null" >
+        #{writtenscore,jdbcType=REAL},
+      </if>
+      <if test="interviewscore != null" >
+        #{interviewscore,jdbcType=REAL},
+      </if>
+      <if test="marks != null" >
+        #{marks,jdbcType=VARCHAR},
+      </if>
+      <if test="filepath != null" >
+        #{filepath,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ehr.pojo.EhrTestExample" resultType="java.lang.Integer" >
+    select count(*) from ehr_test
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ehr_test
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.department != null" >
+        department = #{record.department,jdbcType=VARCHAR},
+      </if>
+      <if test="record.post != null" >
+        post = #{record.post,jdbcType=VARCHAR},
+      </if>
+      <if test="record.salary != null" >
+        salary = #{record.salary,jdbcType=INTEGER},
+      </if>
+      <if test="record.recruitmentway != null" >
+        recruitmentway = #{record.recruitmentway,jdbcType=VARCHAR},
+      </if>
+      <if test="record.testresult != null" >
+        testresult = #{record.testresult,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telphone != null" >
+        telphone = #{record.telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.writtenscore != null" >
+        writtenscore = #{record.writtenscore,jdbcType=REAL},
+      </if>
+      <if test="record.interviewscore != null" >
+        interviewscore = #{record.interviewscore,jdbcType=REAL},
+      </if>
+      <if test="record.marks != null" >
+        marks = #{record.marks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.filepath != null" >
+        filepath = #{record.filepath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ehr_test
+    set id = #{record.id,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      department = #{record.department,jdbcType=VARCHAR},
+      post = #{record.post,jdbcType=VARCHAR},
+      salary = #{record.salary,jdbcType=INTEGER},
+      recruitmentway = #{record.recruitmentway,jdbcType=VARCHAR},
+      testresult = #{record.testresult,jdbcType=VARCHAR},
+      telphone = #{record.telphone,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      writtenscore = #{record.writtenscore,jdbcType=REAL},
+      interviewscore = #{record.interviewscore,jdbcType=REAL},
+      marks = #{record.marks,jdbcType=VARCHAR},
+      filepath = #{record.filepath,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ehr.pojo.EhrTest" >
+    update ehr_test
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="post != null" >
+        post = #{post,jdbcType=VARCHAR},
+      </if>
+      <if test="salary != null" >
+        salary = #{salary,jdbcType=INTEGER},
+      </if>
+      <if test="recruitmentway != null" >
+        recruitmentway = #{recruitmentway,jdbcType=VARCHAR},
+      </if>
+      <if test="testresult != null" >
+        testresult = #{testresult,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null" >
+        telphone = #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="writtenscore != null" >
+        writtenscore = #{writtenscore,jdbcType=REAL},
+      </if>
+      <if test="interviewscore != null" >
+        interviewscore = #{interviewscore,jdbcType=REAL},
+      </if>
+      <if test="marks != null" >
+        marks = #{marks,jdbcType=VARCHAR},
+      </if>
+      <if test="filepath != null" >
+        filepath = #{filepath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ehr.pojo.EhrTest" >
+    update ehr_test
+    set name = #{name,jdbcType=VARCHAR},
+      department = #{department,jdbcType=VARCHAR},
+      post = #{post,jdbcType=VARCHAR},
+      salary = #{salary,jdbcType=INTEGER},
+      recruitmentway = #{recruitmentway,jdbcType=VARCHAR},
+      testresult = #{testresult,jdbcType=VARCHAR},
+      telphone = #{telphone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      writtenscore = #{writtenscore,jdbcType=REAL},
+      interviewscore = #{interviewscore,jdbcType=REAL},
+      marks = #{marks,jdbcType=VARCHAR},
+      filepath = #{filepath,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

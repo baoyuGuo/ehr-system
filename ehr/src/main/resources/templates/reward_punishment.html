@@ -73,20 +73,20 @@
                             <td align="right">员工工号：
                             </td>
                             <td>
-                                <input name="eNum" type="text" id="eNum" class="mytext" style="width:150px;" />
+                                <input name="enumber" type="text" id="enumber" class="mytext" style="width:150px;" />
                             </td>
                             <td align="right">员工姓名：
                             </td>
                             <td>
-                                <input name="eName" type="text" id="eName" class="mytext" style="width:150px;" />
+                                <input name="ename" type="text" id="ename" class="mytext" style="width:150px;" />
                             </td>
                             <td align="right">奖惩属性：
                             </td>
                             <td>
-                                <select name="JcShuxing" id="JcShuxing" style="width:150px;">
-									<option selected="selected" value=""></option>
+                                <select name="title" id="title" style="width:150px;">
+									<option value=""></option>
 									<option value="奖励">奖励</option>
-									<option value="惩罚">惩罚</option>
+									<option value="处罚">处罚</option>
 								</select>
                             </td>
                         </tr>
@@ -94,10 +94,14 @@
                             <td align="right">奖惩项目：
                             </td>
                             <td colspan="5">
-                                <input name="jsJcXiangMu" type="text" id="jsJcXiangMu" class="mytext" style="width:150px;" />
-                                	奖惩时间：	
-                            <input name="StartTime" type="text" id="StartTime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />至<input name="EndTime" type="text" id="EndTime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />
-                                <input type="submit" name="QueryBtn" value="查询" id="QueryBtn" class="mybtn" />
+                            <select name="type" id="type"  style="width:150px;">
+								<option value=""></option>
+								<option value="会议迟到">会议迟到</option>
+								<option value="最佳同事奖">最佳同事奖</option>
+                            </select>
+                               	奖惩时间：	
+                            <input name="starttime" type="text" id="starttime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />至<input name="endtime" type="text" id="endtime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />
+                                <input type="button" name="QueryBtn" value="查询" id="button" onclick="con_query_reward_punish();" class="mybtn" />
                                 <input name="AddBtn" type="button" id="AddBtn" value="增加" class="mybtn" onclick="javascript: addfrom();" />
                                 <input type="button" name="DelBtn" value="删除" onclick="delRecords();" id="DelBtn" class="mybtn" />
                                 <a href="javascript:void(0)" onclick="chkAllw()" class="gvlink">全选</a>

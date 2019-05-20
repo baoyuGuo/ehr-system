@@ -1,5 +1,6 @@
 package com.ehr.humanfiles.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.ehr.pojo.EhrAdjustment;
@@ -30,4 +31,15 @@ public interface AdjustService {
 	 * @param params  
 	 */
 	void delete(String[] params);
+	
+	/**
+	 * 条件查询
+	 * @param enumber
+	 * @param ename
+	 * @param type
+	 * @param starttime
+	 * @param endtime
+	 * @return
+	 */
+	List<EhrAdjustment> conditionQuery(String enumber,String ename,String title, String type, Date starttime, Date endtime );
 }

@@ -112,7 +112,7 @@ modules:
     r_needs_deal: 人员申请审批
     r_plans: 招聘计划
     r_pool: 人才储备库
-    r_test_plan: 笔试/面试安排
+   # r_test_plan: 笔试/面试安排
     r_test_res: 笔试/面试结果
     
   #系统管理
