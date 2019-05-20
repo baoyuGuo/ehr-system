@@ -44,4 +44,22 @@ public class AppealCtrl {
 			return EhrResult.build(500, ParamMapping.UNKNOWN_ERROR);
 		}
 	}
+	
+	/**
+	 * 条件查询申诉记录
+	 * @param enumber
+	 * @param ename
+	 * @param type
+	 * @return
+	 */
+	@RequestMapping("/con_query_appeal")
+	@ResponseBody
+	public EhrResult con_query_appeal(String enumber, String ename , String type) {
+		try {
+			return EhrResult.ok(appealService.conditionQuery(enumber, ename, type));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return EhrResult.build(500, ParamMapping.UNKNOWN_ERROR);
+		}
+	}
 }

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head id="Head1"><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
-	薪资发放记录
+	社保发放记录
 </title>
 <link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
@@ -71,17 +71,18 @@
                             <td align="right">员工工号：
                             </td>
                             <td>
-                                <input name="eNum" type="text" id="eNum" class="mytext" />
+                                <input name="enumber" type="text" id="enumber" class="mytext" />
                             </td>
                             <td align="right">员工姓名：
                             </td>
                             <td>
-                                <input name="eName" type="text" id="eName" class="mytext" />
+                                <input name="ename" type="text" id="ename" class="mytext" />
                             </td>
+                            <td><input name="type" id="type" value="社保账户" hidden="true"></td>
                           	<td>
                           		发放时间：
-                          		<input name="StartTime" type="text" id="StartTime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />至<input name="EndTime" type="text" id="EndTime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />
-                                <input type="submit" name="QueryBtn" value="查询" id="QueryBtn" class="mybtn" />
+                          		<input name="starttime" type="text" id="starttime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />至<input name="endtime" type="text" id="endtime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />
+                                <input type="button" name="QueryBtn" value="查询" onclick="con_query_pay();" id="QueryBtn" class="mybtn" />
                                 <input name="AddBtn" type="button" id="AddBtn" value="增加" class="mybtn" onclick="javascript: addfrom();" />
                                 <input type="button" name="DelBtn" value="删除" onclick="delRecords();" id="DelBtn" class="mybtn" />
                                 <a href="javascript:void(0)" onclick="chkAllw()" class="gvlink">全选</a>

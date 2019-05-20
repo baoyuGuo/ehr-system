@@ -1,5 +1,6 @@
 package com.ehr.controllers;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,6 +70,30 @@ public class SalaryCtrl {
 			String[] enumbers = paramstr.split(",");
 			pService.delete(enumbers);
 			return EhrResult.ok();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return EhrResult.build(500,  ParamMapping.UNKNOWN_ERROR);
+		}
+	}
+	
+	@RequestMapping("/con_query_account")
+	@ResponseBody
+	public EhrResult con_query_account(String enumber,String ename,String type,Date starttime, Date endtime) {
+		try {
+			List<EhrAccounts> query = saService.conditionQuery(enumber, ename, type, starttime, endtime);
+			return EhrResult.ok(query);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return EhrResult.build(500,  ParamMapping.UNKNOWN_ERROR);
+		}
+	}
+	
+	@RequestMapping("/con_query_pay")
+	@ResponseBody
+	public EhrResult con_query_pay(String enumber,String ename,String type,Date starttime, Date endtime) {
+		try {
+			List<EhrPayRecord> query = pService.conditionQuery(enumber, ename, type, starttime, endtime);
+			return EhrResult.ok(query);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return EhrResult.build(500,  ParamMapping.UNKNOWN_ERROR);

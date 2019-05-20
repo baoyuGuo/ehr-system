@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head id="Head1"><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head ><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
-	薪资账户
+	社保账户
 </title>
 <link rel="stylesheet" type="text/css" th:href="@{/css/Main.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
@@ -11,7 +11,7 @@
 <script th:src="@{/js/WebCalendar.js}" ></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
-<script type="text/javascript" language="javascript">
+<script type="text/javascript" >
     function addfrom() {
         var num = Math.random();
         window.open("Ygdd_Add.aspx?tmp=" + num + "", "_blank", "height=660, width=880,toolbar=no, menubar=no, scrollbars=yes,resizable=yes,location=no, status=no,top=0,left=40")
@@ -71,20 +71,22 @@
                             <td align="right">员工工号：
                             </td>
                             <td>
-                                <input name="eNum" type="text" id="eNum" class="mytext" />
+                                <input name="enumber" type="text" id="enumber" class="mytext" />
                             </td>
                             <td align="right">员工姓名：
                             </td>
                             <td>
-                                <input name="eName" type="text" id="eName" class="mytext" />
+                                <input name="ename" type="text" id="ename" class="mytext" />
                             </td>
-                            <td align="right">账户类型：
+							<td>
+								<input name="type" value="社保账户" hidden="true" id="type"/>
+							</td>
+							 <td>
+                            	导入时间：
+                            	<input name="starttime" type="text" id="starttime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />至<input name="endtime" type="text" id="endtime" class="mytext" onclick="SelectDate(this,&#39;yyyy-MM-dd&#39;)" readonly="readonly" style="width:75px;" />
                             </td>
                             <td colspan="5">
- 								<select name="type" id="type">
-									<option value="社保账户" selected="selected">社保账户</option>
-								</select>
-                                <input type="submit" name="QueryBtn" value="查询" id="QueryBtn" class="mybtn" />
+                                <input type="button" onclick="con_query_account();" name="QueryBtn" value="查询" id="QueryBtn" class="mybtn" />
                                 <input name="AddBtn" type="button" id="AddBtn" value="增加" class="mybtn" onclick="javascript: addfrom();" />
                                 <input type="button" name="DelBtn" value="删除" onclick="delRecords();" id="DelBtn" class="mybtn" />
                                 <a href="javascript:void(0)" onclick="chkAllw()" class="gvlink">全选</a>

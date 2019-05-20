@@ -89,6 +89,173 @@ function con_query_reward_punish(){
    });
 };
 
+function con_query_account(){
+	$.ajax({
+        type:'post',
+        url:'/salary/con_query_account',
+        async:true,
+        dataType:'json',
+        data: $("#form1").serialize(),
+        success:function(res){
+        	if(res.status!=200){
+        		alert("error");
+        		return ;
+        	}
+        	var data = res.data;
+        	if(data.length == 0){
+        		alert("查询到0条数据");
+        		return;
+        	}
+        	$(".hkRowStyle").remove();
+        	for (var i=1;i<=data.length;i++){
+        		var date = data[i-1].createdate;
+        		var index = date.indexOf('T');
+        		date = date.substring(0,index);
+        		
+        		var $tr = $("<tr class=\"hkRowStyle\" onclick=\"javascript:changeBg(this)\">"+
+    					"<td align=\"center\"> <span id=\"GridView1_ctl\""+ i +"_lblxh\">"+ i +"</span>"+ "</td>"+
+    					"<td align=\"center\" style=\"width:30px;\"><input id=\"GridView1_ctl\""+ i +"\"_CheckSelect\" type=\"checkbox\" value=\""+data[i-1].enumber+"\" name=\"GridView1$ctl\""+i+"\"$CheckSelect\">"+"</td>"+
+    					"<td>" + data[i-1].enumber + "</td>" +
+    					"<td>" + data[i-1].ename + "</td>" +
+    					"<td align=\"center\">" + data[i-1].type + "</td>" +
+    					"<td align=\"center\">" + data[i-1].account + "</td>" +
+    					"<td align=\"center\">" + date + "</td>" +
+    					"<td align=\"center\" style=\"width:80px;white-space:nowrap;\"> " + 
+    						"<span id=\"GridView1_ctl"+i+"_Label1\">" + "<a href=\"javascript:void(0)\" onclick=\"showfrom(1);\" class=\"gvlink\">查看</a></span>" + 
+    						"<span id=\"GridView1_ctl"+i+"_Label2\"> <a href=\"javascript:void(0)\" onclick=\"updatefrom(1);\" class=\"gvlink\">修改</a></span></td></tr>");
+    					var $table = $(".hkgv tbody");
+    					$table.append($tr);
+        	}
+        }
+   });
+};
+
+function con_query_pay(){
+	$.ajax({
+        type:'post',
+        url:'/salary/con_query_pay',
+        async:true,
+        dataType:'json',
+        data: $("#form1").serialize(),
+        success:function(res){
+        	if(res.status!=200){
+        		alert("error");
+        		return ;
+        	}
+        	var data = res.data;
+        	if(data.length == 0){
+        		alert("查询到0条数据");
+        		return;
+        	}
+        	$(".hkRowStyle").remove();
+        	for (var i=1;i<=data.length;i++){
+        		var date = data[i-1].createdate;
+        		var index = date.indexOf('T');
+        		date = date.substring(0,index);
+        		
+        		var $tr = $("<tr class=\"hkRowStyle\" onclick=\"javascript:changeBg(this)\">"+
+    					"<td align=\"center\"> <span id=\"GridView1_ctl\""+ i +"_lblxh\">"+ i +"</span>"+ "</td>"+
+    					"<td align=\"center\" style=\"width:30px;\"><input id=\"GridView1_ctl\""+ i +"\"_CheckSelect\" type=\"checkbox\"  value=\""+data[i-1].enumber+"\"  name=\"GridView1$ctl\""+i+"\"$CheckSelect\">"+"</td>"+
+    					"<td>" + data[i-1].enumber + "</td>" +
+    					"<td>" + data[i-1].ename + "</td>" +
+    					"<td align=\"center\">" + data[i-1].type + "</td>" +
+    					"<td align=\"center\">" + data[i-1].account + "</td>" +
+    					"<td align=\"center\">" + date + "</td>" +
+    					"<td align=\"center\">" + data[i-1].pay + "</td>" +
+    					"<td align=\"center\" style=\"width:80px;white-space:nowrap;\"> " + 
+    						"<span id=\"GridView1_ctl"+i+"_Label1\">" + "<a href=\"javascript:void(0)\" onclick=\"showfrom(1);\" class=\"gvlink\">查看</a></span>" + 
+    						"<span id=\"GridView1_ctl"+i+"_Label2\"> <a href=\"javascript:void(0)\" onclick=\"updatefrom(1);\" class=\"gvlink\">修改</a></span></td></tr>");
+    					var $table = $(".hkgv tbody");
+    					$table.append($tr);
+        	}
+        }
+   });
+};
+
+
+function con_query_appeal(){
+	$.ajax({
+        type:'post',
+        url:'/appeal/con_query_appeal',
+        async:true,
+        dataType:'json',
+        data: $("#form1").serialize(),
+        success:function(res){
+        	if(res.status!=200){
+        		alert("error");
+        		return ;
+        	}
+        	var data = res.data;
+        	if(data.length == 0){
+        		alert("查询到0条数据");
+        		return;
+        	}
+        	$(".hkRowStyle").remove();
+        	for (var i=1;i<=data.length;i++){
+        		var day = data[i-1].day;
+        		var index = data[i-1].day.indexOf('T');
+        		day = day.substring(0,index);
+        		var $tr = $("<tr class=\"hkRowStyle\" onclick=\"javascript:changeBg(this)\">"+
+    					"<td align=\"center\"> <span id=\"GridView1_ctl\""+ i +"_lblxh\">"+ i +"</span>"+ "</td>"+
+    					"<td align=\"center\" style=\"width:30px;\"><input id=\"GridView1_ctl\""+ i +"\"_CheckSelect\" type=\"checkbox\"  value=\""+data[i-1].enumber+"\"  name=\"GridView1$ctl\""+i+"\"$CheckSelect\">"+"</td>"+
+    					"<td>" + data[i-1].enumber + "</td>" +
+    					"<td>" + data[i-1].ename + "</td>" +
+    					"<td align=\"center\">" + day + "</td>" +
+    					"<td align=\"center\">" + data[i-1].type + "</td>" +
+    					"<td align=\"center\">" + data[i-1].description + "</td>" +
+    					"<td align=\"center\">" + data[i-1].marks+ "</td>" +
+    					"<td align=\"center\" style=\"width:80px;white-space:nowrap;\"> " + 
+    						"<span id=\"GridView1_ctl"+i+"_Label1\">" + "<a href=\"javascript:void(0)\" onclick=\"showfrom(1);\" class=\"gvlink\">查看</a></span>" + 
+    						"<span id=\"GridView1_ctl"+i+"_Label2\"> <a href=\"javascript:void(0)\" onclick=\"updatefrom(1);\" class=\"gvlink\">修改</a></span></td></tr>");
+    					var $table = $(".hkgv tbody");
+    					$table.append($tr);
+        	}
+        }
+   });
+};
+
+//条件查询社保投保记录
+function con_query_ss_record(){
+	$.ajax({
+        type:'post',
+        url:'/socialsecurity/con_query_record',
+        async:true,
+        dataType:'json',
+        data: $("#form1").serialize(),
+        success:function(res){
+        	if(res.status!=200){
+        		alert("error");
+        		return ;
+        	}
+        	var data = res.data;
+        	if(data.length == 0){
+        		alert("查询到0条数据");
+        		return;
+        	}
+        	$(".hkRowStyle").remove();
+        	for (var i=1;i<=data.length;i++){
+        		var index = data[i-1].createdate.indexOf('T') ;
+        		createdate = data[i-1].createdate.substring(0,index);
+        		var $tr = $("<tr class=\"hkRowStyle\" onclick=\"javascript:changeBg(this)\">"+
+    					"<td align=\"center\"> <span id=\"GridView1_ctl\""+ i +"_lblxh\">"+ i +"</span>"+ "</td>"+
+    					"<td align=\"center\" style=\"width:30px;\"><input  id=\"GridView1_ctl\""+ i +"\"_CheckSelect\"   value=\""+data[i-1].enumber+"\"  type=\"checkbox\" name=\"GridView1$ctl\""+i+"\"$CheckSelect\">"+"</td>"+
+    					"<td>" + data[i-1].enumber + "</td>" +
+    					"<td>" + data[i-1].ename + "</td>" +
+    					"<td align=\"center\">" + data[i-1].type + "</td>" +
+    					"<td align=\"center\">" + data[i-1].contractnum + "</td>" +
+    					"<td align=\"center\">" + createdate + "</td>" +
+    					"<td align=\"center\">" + data[i-1].epay + "</td>" +
+    					"<td align=\"center\">" + data[i-1].cpay + "</td>" +
+    					"<td align=\"center\" style=\"width:80px;white-space:nowrap;\"> " + 
+    						"<span id=\"GridView1_ctl"+i+"_Label1\">" + "<a href=\"javascript:void(0)\" onclick=\"showfrom(1);\" class=\"gvlink\">查看</a></span>" + 
+    						"<span id=\"GridView1_ctl"+i+"_Label2\"> <a href=\"javascript:void(0)\" onclick=\"updatefrom(1);\" class=\"gvlink\">修改</a></span></td></tr>");
+    					var $table = $(".hkgv");
+    					$table.append($tr);
+        	}
+        }
+   });
+};
+
 var orObj;
 var orBg;
 function changeBg(obj){

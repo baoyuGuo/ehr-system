@@ -101,11 +101,11 @@ function __doPostBack(eventTarget, eventArgument) {
 								<option value="薪资">薪&nbsp&nbsp资</option>
 								<option value="社保">社&nbsp&nbsp保</option>
 								<option value="考勤">考&nbsp&nbsp勤</option>
-								<option value="考勤">绩效考核</option>
+								<option value="绩效">绩效考核</option>
 							</select>
                             </td>
                             <td colspan="5">
-                                <input type="submit" name="QueryBtn" value="查询" id="QueryBtn" class="mybtn">
+                                <input type="button" name="QueryBtn" value="查询" onclick="con_query_appeal();" id="QueryBtn" class="mybtn">
                                 <input name="AddBtn" type="button" id="AddBtn" value="增加" class="mybtn" onclick="javascript: addfrom();">
                                 <input type="button" name="DelBtn" value="删除" onclick="delRecords();" id="DelBtn" class="mybtn" />
                                 <a href="javascript:void(0)" onclick="chkAllw()" class="gvlink">全选</a>

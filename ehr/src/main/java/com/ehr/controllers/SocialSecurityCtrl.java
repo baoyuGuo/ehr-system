@@ -1,5 +1,6 @@
 package com.ehr.controllers;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -150,4 +151,16 @@ public class SocialSecurityCtrl {
 		}
 	}
 	
+	@ResponseBody
+	@RequestMapping("/con_query_record")
+	public EhrResult con_query_record(String enumber,String ename, String type, String contractnum, Date starttime,Date endtime) {
+		try {
+			List<EhrSsRecords> query = ssrService.conditionQuery(enumber, ename, type, contractnum, starttime, endtime);
+			return EhrResult.ok(query);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return EhrResult.build(500, ParamMapping.UNKNOWN_ERROR);
+		}
+		
+	}
 }

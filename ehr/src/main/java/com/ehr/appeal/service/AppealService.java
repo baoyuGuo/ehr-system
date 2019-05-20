@@ -17,4 +17,13 @@ public interface AppealService {
 	 * @param enumbers
 	 */
 	void delete(String[] enumbers);
+	
+	/**
+	 * 条件查询申诉记录
+	 * @param enumber
+	 * @param ename
+	 * @param type
+	 * @return
+	 */
+	List<EhrAppeal> conditionQuery(String enumber, String ename , String type);
 }
